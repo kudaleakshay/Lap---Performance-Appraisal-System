@@ -1,0 +1,392 @@
+﻿body {
+    line-height: 18px;
+    font-size: 14px;
+    font-family: "Open Sans",sans-serif;
+    background: #EAF5FF url(../Images/bodybg2.jpg) no-repeat fixed top;
+    background-size: 100%;
+    opacity: 1;
+    margin: 0 auto;
+    transition: 1s opacity;
+    background-color: #fff;
+}
+
+    body.fade-out {
+        opacity: 0;
+        transition: none;
+    }
+
+.page-wrapper {
+    width: 90%;
+    margin: auto;
+}
+
+
+.siteHeader {
+    margin: 0 auto;
+    padding: 10px 10px 0 10px;
+    background: #fff url(../../Images/headerBg.png) repeat left top;
+    height: 110px;
+}
+
+    .siteHeader span {
+        font-size: 1.3em;
+        line-height: 26px;
+        float: left;
+        padding: 17px 10px;
+        font-weight: bold;
+        display: block;
+    }
+
+.mahalogo {
+    float: left;
+    margin: 7px 10px 0 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+}
+
+.indiagov {
+    float: right;
+}
+
+
+.top-header {
+    background: #000;
+    display: flex;
+    flex-wrap: wrap;
+    /*height: 27px;*/
+}
+
+    .top-header .left-top-header,
+    .top-header .right-top-header {
+        margin: 5px;
+    }
+
+    .top-header .top-search-box {
+        width: 200px;
+        position: relative;
+    }
+
+        .top-header .top-search-box input {
+            padding: 3px 20px 3px 3px;
+            font-size: 12px;
+        }
+
+        .top-header .top-search-box .fa {
+            position: absolute;
+            right: 5px;
+            color: #000;
+            top: 5px;
+        }
+
+    .top-header .right-top-header {
+        margin-left: auto;
+    }
+
+        .top-header .right-top-header ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+            .top-header .right-top-header ul li {
+                color: #fff;
+                border-right: 1px solid #fff;
+                padding: 0 5px;
+            }
+
+                .top-header .right-top-header ul li a {
+                    color: #fff;
+                }
+
+                    .top-header .right-top-header ul li a:hover {
+                        color: Yellow;
+                    }
+/**** New Home Page ****/
+.home-page {
+    padding: 10px 0;
+}
+
+    .home-page .info-box {
+        background-color: #f2f7fb;
+        border: 1px solid #D4E8FC;
+        padding: 10px;
+    }
+
+        .home-page .info-box .box-title {
+            background: #0262b6;
+            color: #fff;
+            padding: 5px;
+        }
+
+        .home-page .info-box ul {
+            margin: 5px 0;
+            list-style: none;
+            padding: 0;
+        }
+
+            .home-page .info-box ul li {
+                padding: 10px 0;
+            }
+
+        .home-page .info-box p.box-btn {
+            background: #0262b6;
+            color: #fff;
+            display: block;
+            text-align: center;
+            padding: 2px 5px;
+        }
+
+    .home-page .new-box {
+        background-color: #f2f7fb;
+        border: 1px solid #D4E8FC;
+        padding: 10px;
+        margin: 10px 0;
+        overflow: auto;
+    }
+
+        .home-page .new-box h3 {
+            display: inline-block;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .home-page .new-box span {
+            background: #ff8f00;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 2px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 0 1px 1px #000;
+            float: right;
+        }
+
+    .home-page .quick-links .quick-links-title {
+        background: #E8E8E8;
+        color: #000;
+        padding: 5px;
+    }
+
+    .home-page .quick-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 3px 0;
+    }
+
+        .home-page .quick-links ul li {
+            padding: 10px 5px;
+            background-color: #f2f7fb;
+            border: 1px solid #D4E8FC;
+        }
+
+            .home-page .quick-links ul li.numberBox {
+                color: red;
+                border: 1px solid #f1c6c6;
+                padding: 5px;
+                background: #fff9f9;
+            }
+
+    .home-page .imp-box {
+        margin-bottom: 10px;
+    }
+
+        .home-page .imp-box ul li {
+            border-bottom: 1px dotted #ccc;
+            overflow: auto;
+        }
+
+            .home-page .imp-box ul li img {
+                width: 50px;
+                float: left;
+                margin-right: 10px;
+            }
+
+            .home-page .imp-box ul li .person-name {
+                font-weight: bold;
+                display: block;
+            }
+
+    .home-page .about-box {
+        border: 1px dotted #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+        .home-page .about-box h4 {
+            border-bottom: 1px dashed #ccc;
+            margin: 0;
+            color: #0362AF;
+            font-weight: bold;
+            font-size: 16px;
+            padding-bottom: 10px;
+        }
+
+        .home-page .about-box p {
+            margin: 10px 0;
+        }
+
+    .home-page .info-box.slider-box {
+        padding: 65px 0;
+    }
+
+    .home-page .imp-links .imp-links-title {
+        background: #E8E8E8;
+        color: #000;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .home-page .imp-links ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+    }
+
+        .home-page .imp-links ul li {
+            flex: 1 50%;
+            padding: 5px;
+            padding-bottom: 20px;
+            margin-bottom: 10px;
+            background: #eaf6fd;
+            border-bottom: 1px solid #b5e4fc;
+        }
+
+            .home-page .imp-links ul li img {
+                float: left;
+                margin-right: 10px;
+            }
+
+            .home-page .imp-links ul li p {
+                font-size: 14px;
+                margin: 0;
+            }
+
+    .home-page .related-links .related-links-title {
+        background: #E8E8E8;
+        color: #000;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .home-page .related-links ul {
+        padding: 0;
+        list-style: none;
+    }
+
+        .home-page .related-links ul li {
+            background-color: #F7FCFF;
+            border: 1px solid #BDDDF9;
+            font-weight: bold;
+            color: #03569b;
+            padding: 8px 5px;
+            overflow: auto;
+        }
+
+            .home-page .related-links ul li:hover {
+                background-color: #dff4ff;
+                color: #000;
+            }
+
+            .home-page .related-links ul li img {
+                float: left;
+                width: 15px;
+                margin-right: 10px;
+            }
+
+    .home-page .info-box .extra-btn a {
+        background: #0262b6;
+        color: #fff;
+        display: inline-block;
+        width: 48%;
+        font-size: 17px;
+        padding: 10px 5px;
+        margin-bottom: 50px;
+    }
+
+/***** Footer Block *****/
+.page-footer {
+    background: #005BAC;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+    .footer-content .footer-left {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        margin-right: auto;
+        padding: 0;
+        list-style: none;
+        flex-wrap: wrap;
+    }
+
+        .footer-content .footer-left li {
+            padding: 5px;
+            color: #fff;
+            border-right: 1px solid #fff;
+        }
+
+    .footer-content .footer-right {
+        display: flex;
+    }
+
+        .footer-content .footer-right p {
+            margin: 0;
+            padding: 5px;
+            color: #fff;
+        }
+
+.page-footer .page-footer-inner {
+    color: #676c73 !important;
+    text-align: center !important;
+    padding: 8px
+}
+
+/***** Responsive *****/
+@media(max-width:610px) {
+    .logo-header {
+        padding: 10px;
+    }
+
+        .logo-header .left-side {
+            width: calc(100% - 60px);
+        }
+
+        .logo-header .right-side {
+            width: 60px;
+        }
+}
+
+
+.page-content {
+    background: rgb(247, 247, 247);
+    min-height: 694px;
+    margin-left: 0px !important;
+    padding: 0px !important;
+}
+
+#logoutForm {
+    width: 90%; margin: auto;: flex;
+}
+
+.center-group{
+    width: 90%;
+    margin: auto;
+}
+
+
+.field-validation-error, .validation-summary-errors {
+    color: red;
+}

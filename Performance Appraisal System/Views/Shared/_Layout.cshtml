@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -सहकार आयुक्त आणि निबंधक</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/fontawesome")
+
+</head>
+<body>
+    <div class="page-wrapper">
+
+        <div class="top-header">
+            <div class="left-top-header">
+                <div class="top-search-box">
+                    <input type="search" class="form-control" placeholder="येथे शोधा">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+            <div class="right-top-header">
+                <ul>
+                    <li><a class="dropdown-toggle" href="/Account/Login" id="loginLink">लॉग इन</a></li>
+                    <style>
+                        #logoutForm {
+                            display: flex;
+                        }
+                    </style>
+
+                    <li><a href="/">मुख्य पृष्ठ</a></li>
+                    <li>संपर्क</li>
+                    <li><a href="#mainmenu">दिशादर्शकाकडे जा</a></li>
+                    <li><a href="#content">विषयाकडे जा</a></li>
+                    <li>अ--</li>
+                    <li>अ-</li>
+                    <li>अ+</li>
+                    <li>अ++</li>
+                    <li>English</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="siteHeader">
+            <a href="../Home/" class="mahalogo"><img src="../../Images/maharashtralogo.png" id="HeaderMain1_MaharashtraLogo_alt" alt="महाराष्ट्र शासन"></a>
+            <span id="HeaderMain1_lbl_headTitle">
+                सहकार आयुक्त आणि निबंधक, सहकारी संस्था,<br>
+                महाराष्ट्र राज्य, पुणे
+            </span>
+            <a href="http://india.gov.in/" class="indiagov ExternalLinkClick" target="_blank"><img src="../../Images/emblem.png" id="HeaderMain1_NationalEmblem_alt" alt="भारत सरकार"></a>
+        </div>
+
+        <div class="top-menu navbar-collapse collapse monitor-menu ">
+            <ul id="mainmenu" class="nav navbar-nav" style="background: #368bd6;box-shadow: 0px 6px 5px -2px rgba(0,0,0,0.31);z-index: 999;position: relative;">
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="/"> मुखपृष्ठ </a>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="javascript:;" title="About (आमच्याबद्दल)" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> आमच्याबद्दल</a>
+
+                    <ul class="dropdown-menu dropdown-menu-default">
+
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            परिचय
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            अमलातील कायदे आणि नियम
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            संकल्प आणि मोहिम
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            संघटनात्मक संरचना
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            मुख्यालय
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            मान्यवर
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            सहकाराची सात तत्वे
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="https://csmssy.in/?MenuID=1172" target="_blank">CSMSSY</a>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> अधिसूचना</a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            शा.नि / परिपत्रके / विधी आणि कायदे
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            वैधानिक आदेश (MCS Act 1960)
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            योजना
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            माहितीचा अधिकार
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">महत्वपूर्ण कार्यक्रम</a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            कार्यक्रम
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            पुरस्कार आणि कामगिरी
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">डाऊनलोडस</a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            नागरिकांची सनद
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            कायदे आणि नियम
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            आदर्श उप-विधी
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            लेखापरिक्षकांची नामिका प्रविष्टी
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            लेखापरीक्षकांची यादी
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            प्रकाशने
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            ग्रुहनिर्माण पुस्तिका
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            महाराष्ट्र राज्य बिगर कृषि सहकारी पतसंस्था नियामक मंडळ
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            निवडणूका
+                        </li>
+                        <li class="dropdown dropdown-submenu">
+                            अन्य डाउनलोड
+                            <ul class="dropdown-menu dropdown-menu-default" style="background: rgba(111, 149, 202, 0.94) !important; display: none;">
+                                <li>एडोब एक्रोबेट रीडर</li>
+                                <li>सेवा हमी कायदा सांख्यिकी</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            सावकारी माहिती
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    सांख्यिकी
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    नेहमीचे प्रश्न
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    निविदा सूचना
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="/Home/CaseSearch" title="Case Monitoring System(दावा स्थिती)" class="dropdown-toggle">
+                        दावा स्थिती
+                    </a>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="/Home/CauseList" title="Cause List (सुनावणी वेळापत्रक)" class="dropdown-toggle">
+                        सुनावणी वेळापत्रक
+                    </a>
+                </li>
+                <li class="dropdown dropdown-quick-sidebar-toggler last-dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">संपर्क</a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            मुख्यालय
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            प्रशासन शाखा
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            लेखापरिक्षण शाखा
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="page-container" style="margin-top: 1px !important;">
+            <div class="page-content">
+                @RenderBody()
+            </div>
+        </div>
+        <hr />
+        <footer>
+            <div class="page-footer" style="height:auto !important;">
+                <div class="page-footer-inner container-fluid">
+                    <div class="footer-content">
+                        <ul class="footer-left">
+                            <li>धोरणे आणि अस्वीकार</li>
+                            <li>आढावा बैठक माहिती 2019</li>
+                            <li>साईटमॅप</li>
+                            <li>वापरसुलभता</li>
+                            <li>मदत</li>
+                            <li>पत्ता</li>
+                            <li>अटी आणि शर्ती</li>
+                        </ul>
+                        <div class="footer-right">
+                            <p>शेवटचे पुनरावलोकन: ०२-०९-२०२०</p>
+                            <p>एकूण दर्शक: १५८५७१८६</p>
+                            <p>आजचे दर्शक: १२२६१</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="page-footer" style="background-color: #fff;">
+                <div class="page-footer-inner container-fluid">
+                    © हे सहकार आयुक्त आणि निबंधक, सहकारी संस्था, महाराष्ट्र राज्य, पुणे अधिकृत संकेतस्थळ आहे. सर्व हक्क सुरक्षित.
+                </div>
+                <div class="scroll-to-top">
+                    <i class="icon-arrow-up"></i>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery-3.5.1.js")
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @Scripts.Render("~/Scripts/umd/popper.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

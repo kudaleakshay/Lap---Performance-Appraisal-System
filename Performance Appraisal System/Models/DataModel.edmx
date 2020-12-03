@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DocPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Division" Type="int" />
+        </EntityType>
+        <EntityType Name="Divisions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DivisionName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ReportA">
+          <Key>
+            <PropertyRef Name="RaId" />
+          </Key>
+          <Property Name="RaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportBId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="Subject" Type="varchar" MaxLength="40" />
+          <Property Name="Marks" Type="int" />
+          <Property Name="Goal" Type="int" />
+          <Property Name="Completed" Type="int" />
+          <Property Name="TotalMarks" Type="int" />
+          <Property Name="Percentage" Type="int" />
+        </EntityType>
+        <EntityType Name="ReportB">
+          <Key>
+            <PropertyRef Name="RbId" />
+          </Key>
+          <Property Name="RbId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportId" Type="int" />
+          <Property Name="SubjectId" Type="int" />
+          <Property Name="Goal" Type="int" />
+          <Property Name="Completed" Type="int" />
+          <Property Name="Marks" Type="int" />
+          <Property Name="Percentage" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="SId" />
+          </Key>
+          <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="200" />
+          <Property Name="DepartmentId" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UId" />
+          </Key>
+          <Property Name="UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="40" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="varchar" MaxLength="40" />
+          <Property Name="DivisionId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="ReportTo" Type="int" />
+        </EntityType>
+        <EntityType Name="UsersReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="Total" Type="int" />
+        </EntityType>
+        <Association Name="FK__Districts__Divis__2A4B4B5E">
+          <End Role="Divisions" Type="Self.Divisions" Multiplicity="0..1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Divisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="Division" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReportA__ReportB__3B75D760">
+          <End Role="ReportB" Type="Self.ReportB" Multiplicity="0..1" />
+          <End Role="ReportA" Type="Self.ReportA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportB">
+              <PropertyRef Name="RbId" />
+            </Principal>
+            <Dependent Role="ReportA">
+              <PropertyRef Name="ReportBId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReportB__ReportI__37A5467C">
+          <End Role="UsersReport" Type="Self.UsersReport" Multiplicity="0..1" />
+          <End Role="ReportB" Type="Self.ReportB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersReport">
+              <PropertyRef Name="ReportId" />
+            </Principal>
+            <Dependent Role="ReportB">
+              <PropertyRef Name="ReportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReportB__Subject__38996AB5">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+          <End Role="ReportB" Type="Self.ReportB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="ReportB">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subjects__Depart__2D27B809">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subjects">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__DistrictI__30F848ED">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__DivisionI__300424B4">
+          <End Role="Divisions" Type="Self.Divisions" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Divisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__RoleId__31EC6D26">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsersReport__UId__34C8D9D1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UsersReport" Type="Self.UsersReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="UsersReport">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DocPASModelStoreContainer">
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Divisions" EntityType="Self.Divisions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportA" EntityType="Self.ReportA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportB" EntityType="Self.ReportB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersReport" EntityType="Self.UsersReport" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Districts__Divis__2A4B4B5E" Association="Self.FK__Districts__Divis__2A4B4B5E">
+            <End Role="Divisions" EntitySet="Divisions" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReportA__ReportB__3B75D760" Association="Self.FK__ReportA__ReportB__3B75D760">
+            <End Role="ReportB" EntitySet="ReportB" />
+            <End Role="ReportA" EntitySet="ReportA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReportB__ReportI__37A5467C" Association="Self.FK__ReportB__ReportI__37A5467C">
+            <End Role="UsersReport" EntitySet="UsersReport" />
+            <End Role="ReportB" EntitySet="ReportB" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReportB__Subject__38996AB5" Association="Self.FK__ReportB__Subject__38996AB5">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="ReportB" EntitySet="ReportB" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subjects__Depart__2D27B809" Association="Self.FK__Subjects__Depart__2D27B809">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__DistrictI__30F848ED" Association="Self.FK__Users__DistrictI__30F848ED">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__DivisionI__300424B4" Association="Self.FK__Users__DivisionI__300424B4">
+            <End Role="Divisions" EntitySet="Divisions" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__RoleId__31EC6D26" Association="Self.FK__Users__RoleId__31EC6D26">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsersReport__UId__34C8D9D1" Association="Self.FK__UsersReport__UId__34C8D9D1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersReport" EntitySet="UsersReport" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DocPASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subjects" Relationship="Self.FK__Subjects__Depart__2D27B809" FromRole="Departments" ToRole="Subjects" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="Int32" />
+          <NavigationProperty Name="Division1" Relationship="Self.FK__Districts__Divis__2A4B4B5E" FromRole="Districts" ToRole="Divisions" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__DistrictI__30F848ED" FromRole="Districts" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DivisionName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK__Districts__Divis__2A4B4B5E" FromRole="Divisions" ToRole="Districts" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__DivisionI__300424B4" FromRole="Divisions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="ReportA">
+          <Key>
+            <PropertyRef Name="RaId" />
+          </Key>
+          <Property Name="RaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportBId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="Subject" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Marks" Type="Int32" />
+          <Property Name="Goal" Type="Int32" />
+          <Property Name="Completed" Type="Int32" />
+          <Property Name="TotalMarks" Type="Int32" />
+          <Property Name="Percentage" Type="Int32" />
+          <NavigationProperty Name="ReportB" Relationship="Self.FK__ReportA__ReportB__3B75D760" FromRole="ReportA" ToRole="ReportB" />
+        </EntityType>
+        <EntityType Name="ReportB">
+          <Key>
+            <PropertyRef Name="RbId" />
+          </Key>
+          <Property Name="RbId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportId" Type="Int32" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="Goal" Type="Int32" />
+          <Property Name="Completed" Type="Int32" />
+          <Property Name="Marks" Type="Int32" />
+          <Property Name="Percentage" Type="Int32" />
+          <NavigationProperty Name="ReportAs" Relationship="Self.FK__ReportA__ReportB__3B75D760" FromRole="ReportB" ToRole="ReportA" />
+          <NavigationProperty Name="UsersReport" Relationship="Self.FK__ReportB__ReportI__37A5467C" FromRole="ReportB" ToRole="UsersReport" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__ReportB__Subject__38996AB5" FromRole="ReportB" ToRole="Subjects" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__RoleId__31EC6D26" FromRole="Roles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SId" />
+          </Key>
+          <Property Name="SId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Subjects__Depart__2D27B809" FromRole="Subjects" ToRole="Departments" />
+          <NavigationProperty Name="ReportBs" Relationship="Self.FK__ReportB__Subject__38996AB5" FromRole="Subjects" ToRole="ReportB" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UId" />
+          </Key>
+          <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DivisionId" Type="Int32" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ReportTo" Type="Int32" />
+          <NavigationProperty Name="District" Relationship="Self.FK__Users__DistrictI__30F848ED" FromRole="Users" ToRole="Districts" />
+          <NavigationProperty Name="Division" Relationship="Self.FK__Users__DivisionI__300424B4" FromRole="Users" ToRole="Divisions" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleId__31EC6D26" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="UsersReports" Relationship="Self.FK__UsersReport__UId__34C8D9D1" FromRole="Users" ToRole="UsersReport" />
+        </EntityType>
+        <EntityType Name="UsersReport">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="Int32" />
+          <NavigationProperty Name="ReportBs" Relationship="Self.FK__ReportB__ReportI__37A5467C" FromRole="UsersReport" ToRole="ReportB" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UsersReport__UId__34C8D9D1" FromRole="UsersReport" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK__Subjects__Depart__2D27B809">
+          <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subjects">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Districts__Divis__2A4B4B5E">
+          <End Role="Divisions" Type="Self.Division" Multiplicity="0..1" />
+          <End Role="Districts" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Divisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="Division" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__DistrictI__30F848ED">
+          <End Role="Districts" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__DivisionI__300424B4">
+          <End Role="Divisions" Type="Self.Division" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Divisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReportA__ReportB__3B75D760">
+          <End Role="ReportB" Type="Self.ReportB" Multiplicity="0..1" />
+          <End Role="ReportA" Type="Self.ReportA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReportB">
+              <PropertyRef Name="RbId" />
+            </Principal>
+            <Dependent Role="ReportA">
+              <PropertyRef Name="ReportBId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReportB__ReportI__37A5467C">
+          <End Role="UsersReport" Type="Self.UsersReport" Multiplicity="0..1" />
+          <End Role="ReportB" Type="Self.ReportB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersReport">
+              <PropertyRef Name="ReportId" />
+            </Principal>
+            <Dependent Role="ReportB">
+              <PropertyRef Name="ReportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReportB__Subject__38996AB5">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="ReportB" Type="Self.ReportB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="ReportB">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__RoleId__31EC6D26">
+          <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsersReport__UId__34C8D9D1">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UsersReport" Type="Self.UsersReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="UsersReport">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DocPASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Divisions" EntityType="Self.Division" />
+          <EntitySet Name="ReportAs" EntityType="Self.ReportA" />
+          <EntitySet Name="ReportBs" EntityType="Self.ReportB" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UsersReports" EntityType="Self.UsersReport" />
+          <AssociationSet Name="FK__Subjects__Depart__2D27B809" Association="Self.FK__Subjects__Depart__2D27B809">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Districts__Divis__2A4B4B5E" Association="Self.FK__Districts__Divis__2A4B4B5E">
+            <End Role="Divisions" EntitySet="Divisions" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__DistrictI__30F848ED" Association="Self.FK__Users__DistrictI__30F848ED">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__DivisionI__300424B4" Association="Self.FK__Users__DivisionI__300424B4">
+            <End Role="Divisions" EntitySet="Divisions" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReportA__ReportB__3B75D760" Association="Self.FK__ReportA__ReportB__3B75D760">
+            <End Role="ReportB" EntitySet="ReportBs" />
+            <End Role="ReportA" EntitySet="ReportAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReportB__ReportI__37A5467C" Association="Self.FK__ReportB__ReportI__37A5467C">
+            <End Role="UsersReport" EntitySet="UsersReports" />
+            <End Role="ReportB" EntitySet="ReportBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReportB__Subject__38996AB5" Association="Self.FK__ReportB__Subject__38996AB5">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="ReportB" EntitySet="ReportBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__RoleId__31EC6D26" Association="Self.FK__Users__RoleId__31EC6D26">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsersReport__UId__34C8D9D1" Association="Self.FK__UsersReport__UId__34C8D9D1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersReport" EntitySet="UsersReports" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DocPASModelStoreContainer" CdmEntityContainer="DocPASEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="DocPASModel.Department">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="DocPASModel.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisions">
+            <EntityTypeMapping TypeName="DocPASModel.Division">
+              <MappingFragment StoreEntitySet="Divisions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportAs">
+            <EntityTypeMapping TypeName="DocPASModel.ReportA">
+              <MappingFragment StoreEntitySet="ReportA">
+                <ScalarProperty Name="RaId" ColumnName="RaId" />
+                <ScalarProperty Name="ReportBId" ColumnName="ReportBId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="Goal" ColumnName="Goal" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportBs">
+            <EntityTypeMapping TypeName="DocPASModel.ReportB">
+              <MappingFragment StoreEntitySet="ReportB">
+                <ScalarProperty Name="RbId" ColumnName="RbId" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="Goal" ColumnName="Goal" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DocPASModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="DocPASModel.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="SId" ColumnName="SId" />
+                <ScalarProperty Name="Subject1" ColumnName="Subject" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DocPASModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ReportTo" ColumnName="ReportTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersReports">
+            <EntityTypeMapping TypeName="DocPASModel.UsersReport">
+              <MappingFragment StoreEntitySet="UsersReport">
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

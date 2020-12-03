@@ -1,0 +1,11 @@
+﻿@model Performance_Appraisal_System.Models.User
+
+<option value="">-- उच्च अधिकारी निवडा --</option>
+
+@if (ViewBag.UserList != null)
+{
+    foreach (var item in ViewBag.UserList)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}

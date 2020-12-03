@@ -1,0 +1,11 @@
+﻿@model Performance_Appraisal_System.Models.Role
+
+<option value="">-- विभाग निवडा --</option>
+
+@if (ViewBag.DivisionList != null)
+{
+    foreach (var item in ViewBag.DivisionList)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}
