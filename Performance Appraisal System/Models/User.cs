@@ -24,35 +24,35 @@ namespace Performance_Appraisal_System.Models
     
         public int UId { get; set; }
 
-        [Required(ErrorMessage = "Username can't be blank")]
+        [Required(ErrorMessage = "कृपया वापरकर्त्याचे आयडी आवश्यक आहे")]
         [DisplayName("वापरकर्त्याचे आयडी")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Name can't be blank")]
+        [Required(ErrorMessage = "कृपया वापरकर्त्याचे नाव आवश्यक आहे")]
         [DisplayName("वापरकर्त्याचे नाव")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Password can't be blank")]
-        [DisplayName("पासवर्ड ")]
+        [Required(ErrorMessage = "कृपया पासवर्ड आवश्यक आहे")]
+        [DisplayName("पासवर्ड")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Division can't be blank")]
+        /*[Required(ErrorMessage = "Division can't be blank")]*/
         [DisplayName("विभाग")]
         public Nullable<int> DivisionId { get; set; }
 
-        [Required(ErrorMessage = "District can't be blank")]
+        /*[Required(ErrorMessage = "District can't be blank")]*/
         [DisplayName("जिल्हा")]
         public Nullable<int> DistrictId { get; set; }
 
-        [Required(ErrorMessage = "Role can't be blank")]
+        [Required(ErrorMessage = "कृपया पदनाम आवश्यक आहे")]
         [DisplayName("पदनाम")]
         public Nullable<int> RoleId { get; set; }
 
-        [Required(ErrorMessage = "Status can't be blank")]
+        /*[Required(ErrorMessage = "Status can't be blank")]*/
         [DisplayName("स्थिती")]
         public Nullable<int> Status { get; set; }
 
-        [Required(ErrorMessage = "Reporting officer can't be blank")]
+        /*[Required(ErrorMessage = "Reporting officer can't be blank")]*/
         [DisplayName("उच्च अधिकारी")]
         public Nullable<int> ReportTo { get; set; }
 
