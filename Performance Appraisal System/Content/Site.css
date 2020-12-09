@@ -113,36 +113,6 @@
     padding: 10px 0;
 }
 
-    .home-page .info-box {
-        background-color: #f2f7fb;
-        border: 1px solid #D4E8FC;
-        padding: 10px;
-    }
-
-        .home-page .info-box .box-title {
-            background: #0262b6;
-            color: #fff;
-            padding: 5px;
-        }
-
-        .home-page .info-box ul {
-            margin: 5px 0;
-            list-style: none;
-            padding: 0;
-        }
-
-            .home-page .info-box ul li {
-                padding: 10px 0;
-            }
-
-        .home-page .info-box p.box-btn {
-            background: #0262b6;
-            color: #fff;
-            display: block;
-            text-align: center;
-            padding: 2px 5px;
-        }
-
     .home-page .new-box {
         background-color: #f2f7fb;
         border: 1px solid #D4E8FC;
@@ -202,11 +172,6 @@
             overflow: auto;
         }
 
-            .home-page .imp-box ul li img {
-                width: 50px;
-                float: left;
-                margin-right: 10px;
-            }
 
             .home-page .imp-box ul li .person-name {
                 font-weight: bold;
@@ -295,21 +260,19 @@
                 color: #000;
             }
 
-            .home-page .related-links ul li img {
-                float: left;
-                width: 15px;
-                margin-right: 10px;
-            }
 
-    .home-page .info-box .extra-btn a {
-        background: #0262b6;
-        color: #fff;
-        display: inline-block;
-        width: 48%;
-        font-size: 17px;
-        padding: 10px 5px;
-        margin-bottom: 50px;
-    }
+.extra-btn {
+    background: #0262b6 !important;
+    color: #fff !important;
+    display: inline-block !important;
+    width: 48% !important;
+    font-size: 17px !important;
+    padding: 10px 5px !important;
+    line-height: 1.8;
+    font-size: 18px;
+    text-decoration:none !important;
+    text-align: center;
+}
 
 /***** Footer Block *****/
 .page-footer {
@@ -377,9 +340,7 @@
     padding: 0px !important;
 }
 
-#logoutForm {
-    width: 90%; margin: auto;: flex;
-}
+
 
 .center-group{
     width: 90%;

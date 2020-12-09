@@ -35,8 +35,6 @@ namespace Performance_Appraisal_System.Infrastructure
                         if (role == userRole.Role1) return true;
                     }
                 }
-
-
             return authorize;
         }
 
