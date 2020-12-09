@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StatuscodeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -368,6 +369,9 @@
     <Content Include="Views\Shared\DisplayDistricts.cshtml" />
     <Content Include="Views\Shared\DisplayDivisions.cshtml" />
     <Content Include="Views\Shared\DisplayReportingList.cshtml" />
+    <Content Include="Views\Statuscode\BadRequest.cshtml" />
+    <Content Include="Views\Statuscode\NotFound.cshtml" />
+    <Content Include="Views\Statuscode\InternalError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
