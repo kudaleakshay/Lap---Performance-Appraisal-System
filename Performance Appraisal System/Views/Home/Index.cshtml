@@ -1,27 +1,31 @@
 ﻿@{ ViewBag.Title = "Home Page"; }
 
+
+@{var UserRole = ViewBag.UserRole;}
 <br>
 <br>
 <div class="container" style="padding: 30px;background: white;">
-    <div class="col-md-12" style="        box-shadow: 0px 0px 5px lightgrey;
-        background: #f2f7fb !important;
-">
+    <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;
+        background: #f2f7fb !important;">
         <br>
         <br>
         <img style="margin:auto; display:block;" src="~/Images/India_Government_logo.png">
         <hr>
         <h3 class="card-title text-center">मुल्यांकन प्रणाली</h3>
 
-        <div style="margin:auto; display:block; padding:30px;">
-            <a href="/Home/CaseSearch" title="Performance Appraisal Reports(मुल्यांकन अहवाल पहा)" class="extra-btn">
-                मुल्यांकन अहवाल पहा<br>(Check Reports)
-            </a>
-            <a href="/Home/CauseList" title="Performance Appraisal Reports(मुल्यांकन अहवाल पहा)" class="extra-btn">
-                मुल्यांकन अहवाल भरा<br>(Submit  Reports)
-            </a>
-        </div>
 
+            <div class="center-div">
 
-    </div>
+                @if (UserRole != 5 && UserRole != 6)
+                {
+                    <a href="/Home/ViewAppraisalReport" title="Performance Appraisal Reports(मुल्यांकन अहवाल पहा)" class="extra-btn">
+                        मुल्यांकन अहवाल पहा<br>(Check Reports)
+                    </a>
+                }
+                    <a href="/Home/FillAppraisalReport" title="Performance Appraisal Reports(मुल्यांकन अहवाल भरा)" class="extra-btn">
+                        मुल्यांकन अहवाल भरा<br>(Submit Reports)
+                    </a>
+                </div>
+            </div>
 
-    </div>
+</div>

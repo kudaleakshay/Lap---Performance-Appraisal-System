@@ -268,9 +268,17 @@
     width: 48% !important;
     font-size: 17px !important;
     padding: 10px 5px !important;
+    margin: auto !important;
     line-height: 1.8;
     font-size: 18px;
-    text-decoration:none !important;
+    text-decoration: none !important;
+    text-align: center;
+}
+
+.center-div {
+    margin: auto;
+    display: block;
+    padding: 30px;
     text-align: center;
 }
 

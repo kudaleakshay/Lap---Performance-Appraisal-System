@@ -35,6 +35,7 @@ namespace Performance_Appraisal_System.Controllers
                     {
                         Session["UserName"] = user.UserName;
                         Session["UserId"] = user.UId;
+                        Session["RoleId"] = user.RoleId;
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -73,6 +74,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 Session["UserName"] = user.UserName;
                 Session["UserId"] = user.UId;
+                Session["RoleId"] = user.RoleId;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -121,6 +123,7 @@ namespace Performance_Appraisal_System.Controllers
         {
             Session["UserName"] = string.Empty;
             Session["UserId"] = string.Empty;
+            Session["RoleId"] = string.Empty;
             return RedirectToAction("Login");
         }
 

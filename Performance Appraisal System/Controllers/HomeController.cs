@@ -14,22 +14,21 @@ namespace Performance_Appraisal_System.Controllers
         
         public ActionResult Index()
         {
+            ViewBag.UserRole = HttpContext.Session["RoleId"];
+                      
             return View();
         }
 
-        [CustomAuthorize("Admin", "SuperAdmin")]
-        public ActionResult About()
+       
+        /*[CustomAuthorize("Admin", "SuperAdmin")]*/
+        public ActionResult ViewAppraisalReport()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        [CustomAuthorize("DDR")]
-        public ActionResult Contact()
+        /*[CustomAuthorize("DDR")]*/
+        public ActionResult FillAppraisalReport()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
