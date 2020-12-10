@@ -28,11 +28,11 @@ namespace Performance_Appraisal_System.Infrastructure
                                     where u.UId == UId
                                     select new
                                     {
-                                        r.Role1
+                                        r.RoleName
                                     }).FirstOrDefault();
                     foreach (var role in allowedroles)
                     {
-                        if (role == userRole.Role1) return true;
+                        if (role == userRole.RoleName) return true;
                     }
                 }
             return authorize;

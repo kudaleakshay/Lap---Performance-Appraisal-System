@@ -22,9 +22,9 @@ namespace Performance_Appraisal_System.Models
     
         public int Id { get; set; }
         public string DistrictName { get; set; }
-        public Nullable<int> Division { get; set; }
+        public Nullable<int> DivisionId { get; set; }
     
-        public virtual Division Division1 { get; set; }
+        public virtual Division Division { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
     }

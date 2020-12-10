@@ -21,7 +21,7 @@ namespace Performance_Appraisal_System.Models
         {
             this.UsersReports = new HashSet<UsersReport>();
         }
-    
+
         public int UId { get; set; }
 
         [Required(ErrorMessage = "कृपया वापरकर्त्याचे आयडी आवश्यक आहे")]
@@ -35,6 +35,10 @@ namespace Performance_Appraisal_System.Models
         [Required(ErrorMessage = "कृपया पासवर्ड आवश्यक आहे")]
         [DisplayName("पासवर्ड")]
         public string Password { get; set; }
+
+        [DisplayName("ई-मेल")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "ई-मेल वैध नाही")]
+        public string Email { get; set; }
 
         /*[Required(ErrorMessage = "Division can't be blank")]*/
         [DisplayName("विभाग")]
@@ -58,10 +62,10 @@ namespace Performance_Appraisal_System.Models
 
         public virtual District District { get; set; }
 
-  
+
         public virtual Division Division { get; set; }
 
-       
+
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersReport> UsersReports { get; set; }

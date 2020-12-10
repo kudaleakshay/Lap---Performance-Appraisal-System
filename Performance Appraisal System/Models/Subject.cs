@@ -21,7 +21,7 @@ namespace Performance_Appraisal_System.Models
         }
     
         public int SId { get; set; }
-        public string Subject1 { get; set; }
+        public string SubjectName { get; set; }
         public Nullable<int> DepartmentId { get; set; }
     
         public virtual Department Department { get; set; }

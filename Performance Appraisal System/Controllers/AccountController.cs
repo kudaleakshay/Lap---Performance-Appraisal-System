@@ -59,7 +59,7 @@ namespace Performance_Appraisal_System.Controllers
         {
             DocPASEntities db = new DocPASEntities();
             List<Role> RoleList = db.Roles.ToList();
-            ViewBag.RoleList = new SelectList(RoleList, "Id", "Role1");
+            ViewBag.RoleList = new SelectList(RoleList, "Id", "RoleName");
             return View();
         }
 
@@ -87,7 +87,7 @@ namespace Performance_Appraisal_System.Controllers
         public ActionResult GetDistrictList(int DivisionId)
         {
             DocPASEntities db = new DocPASEntities();
-            List<District> DistrictList = db.Districts.Where(x => x.Division == DivisionId).ToList();
+            List<District> DistrictList = db.Districts.Where(x => x.DivisionId == DivisionId).ToList();
             ViewBag.DistrictList = new SelectList(DistrictList, "Id", "DistrictName");
             return PartialView("DisplayDistricts");
         }

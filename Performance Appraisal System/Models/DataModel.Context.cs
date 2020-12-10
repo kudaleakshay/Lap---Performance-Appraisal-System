@@ -9,10 +9,10 @@
 
 namespace Performance_Appraisal_System
 {
-    using Performance_Appraisal_System.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using Performance_Appraisal_System.Models;
     
     public partial class DocPASEntities : DbContext
     {

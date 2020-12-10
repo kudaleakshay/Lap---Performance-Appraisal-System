@@ -18,7 +18,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DistrictName" Type="nvarchar" MaxLength="200" />
-          <Property Name="Division" Type="int" />
+          <Property Name="DivisionId" Type="int" />
         </EntityType>
         <EntityType Name="Divisions">
           <Key>
@@ -58,14 +58,14 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Role" Type="varchar" MaxLength="40" />
+          <Property Name="RoleName" Type="varchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
             <PropertyRef Name="SId" />
           </Key>
           <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Subject" Type="nvarchar" MaxLength="200" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="200" />
           <Property Name="DepartmentId" Type="int" />
         </EntityType>
         <EntityType Name="Users">
@@ -75,6 +75,7 @@
           <Property Name="UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="40" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="40" />
           <Property Name="DivisionId" Type="int" />
           <Property Name="DistrictId" Type="int" />
@@ -100,11 +101,11 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Districts">
-              <PropertyRef Name="Division" />
+              <PropertyRef Name="DivisionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReportA__ReportB__3B75D760">
+        <Association Name="FK__ReportA__ReportB__3C69FB99">
           <End Role="ReportB" Type="Self.ReportB" Multiplicity="0..1" />
           <End Role="ReportA" Type="Self.ReportA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -116,7 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReportB__ReportI__37A5467C">
+        <Association Name="FK__ReportB__ReportI__38996AB5">
           <End Role="UsersReport" Type="Self.UsersReport" Multiplicity="0..1" />
           <End Role="ReportB" Type="Self.ReportB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,7 +129,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReportB__Subject__38996AB5">
+        <Association Name="FK__ReportB__Subject__398D8EEE">
           <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
           <End Role="ReportB" Type="Self.ReportB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -188,7 +189,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsersReport__UId__34C8D9D1">
+        <Association Name="FK__UsersReport__UId__35BCFE0A">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="UsersReport" Type="Self.UsersReport" Multiplicity="*" />
           <ReferentialConstraint>
@@ -214,15 +215,15 @@
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Districts" EntitySet="Districts" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReportA__ReportB__3B75D760" Association="Self.FK__ReportA__ReportB__3B75D760">
+          <AssociationSet Name="FK__ReportA__ReportB__3C69FB99" Association="Self.FK__ReportA__ReportB__3C69FB99">
             <End Role="ReportB" EntitySet="ReportB" />
             <End Role="ReportA" EntitySet="ReportA" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReportB__ReportI__37A5467C" Association="Self.FK__ReportB__ReportI__37A5467C">
+          <AssociationSet Name="FK__ReportB__ReportI__38996AB5" Association="Self.FK__ReportB__ReportI__38996AB5">
             <End Role="UsersReport" EntitySet="UsersReport" />
             <End Role="ReportB" EntitySet="ReportB" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReportB__Subject__38996AB5" Association="Self.FK__ReportB__Subject__38996AB5">
+          <AssociationSet Name="FK__ReportB__Subject__398D8EEE" Association="Self.FK__ReportB__Subject__398D8EEE">
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="ReportB" EntitySet="ReportB" />
           </AssociationSet>
@@ -242,7 +243,7 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsersReport__UId__34C8D9D1" Association="Self.FK__UsersReport__UId__34C8D9D1">
+          <AssociationSet Name="FK__UsersReport__UId__35BCFE0A" Association="Self.FK__UsersReport__UId__35BCFE0A">
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersReport" EntitySet="UsersReport" />
           </AssociationSet>
@@ -266,8 +267,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DistrictName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Division" Type="Int32" />
-          <NavigationProperty Name="Division1" Relationship="Self.FK__Districts__Divis__2A4B4B5E" FromRole="Districts" ToRole="Divisions" />
+          <Property Name="DivisionId" Type="Int32" />
+          <NavigationProperty Name="Division" Relationship="Self.FK__Districts__Divis__2A4B4B5E" FromRole="Districts" ToRole="Divisions" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Users__DistrictI__30F848ED" FromRole="Districts" ToRole="Users" />
         </EntityType>
         <EntityType Name="Division">
@@ -292,7 +293,7 @@
           <Property Name="Completed" Type="Int32" />
           <Property Name="TotalMarks" Type="Int32" />
           <Property Name="Percentage" Type="Int32" />
-          <NavigationProperty Name="ReportB" Relationship="Self.FK__ReportA__ReportB__3B75D760" FromRole="ReportA" ToRole="ReportB" />
+          <NavigationProperty Name="ReportB" Relationship="Self.FK__ReportA__ReportB__3C69FB99" FromRole="ReportA" ToRole="ReportB" />
         </EntityType>
         <EntityType Name="ReportB">
           <Key>
@@ -305,16 +306,16 @@
           <Property Name="Completed" Type="Int32" />
           <Property Name="Marks" Type="Int32" />
           <Property Name="Percentage" Type="Int32" />
-          <NavigationProperty Name="ReportAs" Relationship="Self.FK__ReportA__ReportB__3B75D760" FromRole="ReportB" ToRole="ReportA" />
-          <NavigationProperty Name="UsersReport" Relationship="Self.FK__ReportB__ReportI__37A5467C" FromRole="ReportB" ToRole="UsersReport" />
-          <NavigationProperty Name="Subject" Relationship="Self.FK__ReportB__Subject__38996AB5" FromRole="ReportB" ToRole="Subjects" />
+          <NavigationProperty Name="ReportAs" Relationship="Self.FK__ReportA__ReportB__3C69FB99" FromRole="ReportB" ToRole="ReportA" />
+          <NavigationProperty Name="UsersReport" Relationship="Self.FK__ReportB__ReportI__38996AB5" FromRole="ReportB" ToRole="UsersReport" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__ReportB__Subject__398D8EEE" FromRole="ReportB" ToRole="Subjects" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="RoleName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Users__RoleId__31EC6D26" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="Subject">
@@ -322,10 +323,10 @@
             <PropertyRef Name="SId" />
           </Key>
           <Property Name="SId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Subject1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="DepartmentId" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="Self.FK__Subjects__Depart__2D27B809" FromRole="Subjects" ToRole="Departments" />
-          <NavigationProperty Name="ReportBs" Relationship="Self.FK__ReportB__Subject__38996AB5" FromRole="Subjects" ToRole="ReportB" />
+          <NavigationProperty Name="ReportBs" Relationship="Self.FK__ReportB__Subject__398D8EEE" FromRole="Subjects" ToRole="ReportB" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -334,6 +335,7 @@
           <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="DivisionId" Type="Int32" />
           <Property Name="DistrictId" Type="Int32" />
@@ -343,7 +345,7 @@
           <NavigationProperty Name="District" Relationship="Self.FK__Users__DistrictI__30F848ED" FromRole="Users" ToRole="Districts" />
           <NavigationProperty Name="Division" Relationship="Self.FK__Users__DivisionI__300424B4" FromRole="Users" ToRole="Divisions" />
           <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleId__31EC6D26" FromRole="Users" ToRole="Roles" />
-          <NavigationProperty Name="UsersReports" Relationship="Self.FK__UsersReport__UId__34C8D9D1" FromRole="Users" ToRole="UsersReport" />
+          <NavigationProperty Name="UsersReports" Relationship="Self.FK__UsersReport__UId__35BCFE0A" FromRole="Users" ToRole="UsersReport" />
         </EntityType>
         <EntityType Name="UsersReport">
           <Key>
@@ -354,8 +356,8 @@
           <Property Name="CreatedTime" Type="DateTime" Precision="3" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Total" Type="Int32" />
-          <NavigationProperty Name="ReportBs" Relationship="Self.FK__ReportB__ReportI__37A5467C" FromRole="UsersReport" ToRole="ReportB" />
-          <NavigationProperty Name="User" Relationship="Self.FK__UsersReport__UId__34C8D9D1" FromRole="UsersReport" ToRole="Users" />
+          <NavigationProperty Name="ReportBs" Relationship="Self.FK__ReportB__ReportI__38996AB5" FromRole="UsersReport" ToRole="ReportB" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UsersReport__UId__35BCFE0A" FromRole="UsersReport" ToRole="Users" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2D27B809">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -377,7 +379,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Districts">
-              <PropertyRef Name="Division" />
+              <PropertyRef Name="DivisionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -405,7 +407,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReportA__ReportB__3B75D760">
+        <Association Name="FK__ReportA__ReportB__3C69FB99">
           <End Role="ReportB" Type="Self.ReportB" Multiplicity="0..1" />
           <End Role="ReportA" Type="Self.ReportA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -417,7 +419,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReportB__ReportI__37A5467C">
+        <Association Name="FK__ReportB__ReportI__38996AB5">
           <End Role="UsersReport" Type="Self.UsersReport" Multiplicity="0..1" />
           <End Role="ReportB" Type="Self.ReportB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -429,7 +431,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReportB__Subject__38996AB5">
+        <Association Name="FK__ReportB__Subject__398D8EEE">
           <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1" />
           <End Role="ReportB" Type="Self.ReportB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -453,7 +455,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsersReport__UId__34C8D9D1">
+        <Association Name="FK__UsersReport__UId__35BCFE0A">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
           <End Role="UsersReport" Type="Self.UsersReport" Multiplicity="*" />
           <ReferentialConstraint>
@@ -491,15 +493,15 @@
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReportA__ReportB__3B75D760" Association="Self.FK__ReportA__ReportB__3B75D760">
+          <AssociationSet Name="FK__ReportA__ReportB__3C69FB99" Association="Self.FK__ReportA__ReportB__3C69FB99">
             <End Role="ReportB" EntitySet="ReportBs" />
             <End Role="ReportA" EntitySet="ReportAs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReportB__ReportI__37A5467C" Association="Self.FK__ReportB__ReportI__37A5467C">
+          <AssociationSet Name="FK__ReportB__ReportI__38996AB5" Association="Self.FK__ReportB__ReportI__38996AB5">
             <End Role="UsersReport" EntitySet="UsersReports" />
             <End Role="ReportB" EntitySet="ReportBs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReportB__Subject__38996AB5" Association="Self.FK__ReportB__Subject__38996AB5">
+          <AssociationSet Name="FK__ReportB__Subject__398D8EEE" Association="Self.FK__ReportB__Subject__398D8EEE">
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="ReportB" EntitySet="ReportBs" />
           </AssociationSet>
@@ -507,7 +509,7 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsersReport__UId__34C8D9D1" Association="Self.FK__UsersReport__UId__34C8D9D1">
+          <AssociationSet Name="FK__UsersReport__UId__35BCFE0A" Association="Self.FK__UsersReport__UId__35BCFE0A">
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersReport" EntitySet="UsersReports" />
           </AssociationSet>
@@ -531,7 +533,7 @@
               <MappingFragment StoreEntitySet="Districts">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
-                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -575,7 +577,7 @@
             <EntityTypeMapping TypeName="DocPASModel.Role">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Role1" ColumnName="Role" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -583,7 +585,7 @@
             <EntityTypeMapping TypeName="DocPASModel.Subject">
               <MappingFragment StoreEntitySet="Subjects">
                 <ScalarProperty Name="SId" ColumnName="SId" />
-                <ScalarProperty Name="Subject1" ColumnName="Subject" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
                 <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -594,6 +596,7 @@
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
                 <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
