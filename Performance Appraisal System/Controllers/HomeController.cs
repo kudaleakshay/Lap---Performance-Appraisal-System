@@ -19,9 +19,6 @@ namespace Performance_Appraisal_System.Controllers
 
             ViewBag.UserRole = user.RoleId;
 
-
-
-
             return View();
         }
 
