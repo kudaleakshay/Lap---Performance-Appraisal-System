@@ -68,6 +68,8 @@ namespace Performance_Appraisal_System.Controllers
             if (ModelState.IsValid)
             {
                 DocPASEntities db = new DocPASEntities();
+
+
                 db.Users.Add(user);
                 db.SaveChanges();
 
