@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DocPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppraisalTables">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="Id" />
@@ -56,6 +63,7 @@
           <Property Name="RoleId" Type="int" />
           <Property Name="Status" Type="int" />
           <Property Name="ReportTo" Type="int" />
+          <Property Name="AppraisalType" Type="int" />
         </EntityType>
         <Association Name="FK__Districts__Divis__2A4B4B5E">
           <End Role="Divisions" Type="Self.Divisions" Multiplicity="0..1" />
@@ -118,6 +126,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DocPASModelStoreContainer">
+          <EntitySet Name="AppraisalTables" EntityType="Self.AppraisalTables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Divisions" EntityType="Self.Divisions" Schema="dbo" store:Type="Tables" />
@@ -210,6 +219,7 @@
           <NavigationProperty Name="District" Relationship="Self.FK__Users__DistrictI__30F848ED" FromRole="Users" ToRole="Districts" />
           <NavigationProperty Name="Division" Relationship="Self.FK__Users__DivisionI__300424B4" FromRole="Users" ToRole="Divisions" />
           <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleId__31EC6D26" FromRole="Users" ToRole="Roles" />
+          <Property Name="AppraisalType" Type="Int32" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2D27B809">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -298,7 +308,15 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="AppraisalTables" EntityType="DocPASModel.AppraisalTable" />
         </EntityContainer>
+        <EntityType Name="AppraisalTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -350,6 +368,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DocPASModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="AppraisalType" ColumnName="AppraisalType" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -360,6 +379,14 @@
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ReportTo" ColumnName="ReportTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppraisalTables">
+            <EntityTypeMapping TypeName="DocPASModel.AppraisalTable">
+              <MappingFragment StoreEntitySet="AppraisalTables">
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

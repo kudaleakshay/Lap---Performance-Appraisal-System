@@ -139,6 +139,9 @@
     </Compile>
     <Compile Include="Infrastructure\CustomAuthenticationFilter.cs" />
     <Compile Include="Infrastructure\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Models\AppraisalTable.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -185,6 +188,7 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="DocPAS DB Script.sql" />
     <Content Include="fevicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

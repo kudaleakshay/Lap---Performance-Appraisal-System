@@ -16,7 +16,7 @@ namespace Performance_Appraisal_System.Models
 
     public partial class User
     {
-       
+
         public int UId { get; set; }
 
         [Required(ErrorMessage = "कृपया वापरकर्त्याचे आयडी आवश्यक आहे")]
@@ -55,12 +55,14 @@ namespace Performance_Appraisal_System.Models
         [DisplayName("उच्च अधिकारी")]
         public Nullable<int> ReportTo { get; set; }
 
+        public Nullable<int> AppraisalType { get; set; }
+
         public virtual District District { get; set; }
 
 
         public virtual Division Division { get; set; }
 
 
-        public virtual Role Role { get; set; }   
+        public virtual Role Role { get; set; }
     }
 }
