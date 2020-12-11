@@ -33,9 +33,7 @@ namespace Performance_Appraisal_System.Controllers
 
                     if (user != null)
                     {
-                        Session["UserName"] = user.UserName;
-                        Session["UserId"] = user.UId;
-                        Session["RoleId"] = user.RoleId;
+                        Session["User"] = user;
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -72,9 +70,8 @@ namespace Performance_Appraisal_System.Controllers
                 db.Users.Add(user);
                 db.SaveChanges();
 
-                Session["UserName"] = user.UserName;
-                Session["UserId"] = user.UId;
-                Session["RoleId"] = user.RoleId;
+                Session["User"] = user;
+
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -117,14 +114,11 @@ namespace Performance_Appraisal_System.Controllers
             return PartialView("DisplayDivisions");
         }
 
-
-        [ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
-            Session["UserName"] = string.Empty;
-            Session["UserId"] = string.Empty;
-            Session["RoleId"] = string.Empty;
-            return RedirectToAction("Login");
+            Session.Contents.RemoveAll();
+
+            return RedirectToAction("Index", "Home");
         }
 
     }

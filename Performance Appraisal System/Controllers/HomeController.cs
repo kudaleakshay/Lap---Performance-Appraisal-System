@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Performance_Appraisal_System.Infrastructure;
+using Performance_Appraisal_System.Models;
 
 namespace Performance_Appraisal_System.Controllers
 {
@@ -14,8 +15,13 @@ namespace Performance_Appraisal_System.Controllers
         
         public ActionResult Index()
         {
-            ViewBag.UserRole = HttpContext.Session["RoleId"];
-                      
+            User user = (User)HttpContext.Session["User"];
+
+            ViewBag.UserRole = user.RoleId;
+
+
+
+
             return View();
         }
 

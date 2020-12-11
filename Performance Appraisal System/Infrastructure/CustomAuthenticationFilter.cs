@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
 using System.Web.Routing;
+using Performance_Appraisal_System.Models;
 
 namespace Performance_Appraisal_System.Infrastructure
 {
@@ -9,11 +10,22 @@ namespace Performance_Appraisal_System.Infrastructure
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["UserName"])))
+            User user = (User)filterContext.HttpContext.Session["User"];
+
+            if (user != null)
+            {
+                var UserName = user.UserName;
+                if (string.IsNullOrEmpty(Convert.ToString(UserName)))
+                {
+                    filterContext.Result = new HttpUnauthorizedResult();
+                }
+            }
+            else
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }
         }
+
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
             if (filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
