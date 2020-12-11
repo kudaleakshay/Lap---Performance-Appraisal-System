@@ -32,7 +32,7 @@ namespace Performance_Appraisal_System.Models
         public string Password { get; set; }
 
         [DisplayName("ई-मेल")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "ई-मेल वैध नाही")]
+        [EmailAddress(ErrorMessage = "ई-मेल वैध नाही")]
         public string Email { get; set; }
 
         /*[Required(ErrorMessage = "Division can't be blank")]*/
