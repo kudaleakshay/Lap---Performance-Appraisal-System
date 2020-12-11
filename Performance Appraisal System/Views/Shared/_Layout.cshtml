@@ -22,13 +22,15 @@
             </div>
             <div class="right-top-header">
                 <ul>
-                    <li><a class="dropdown-toggle" href="/Account/Login" id="loginLink">लॉग इन</a></li>
-                    <style>
-                        #logoutForm {
-                            display: flex;
-                        }
-                    </style>
-
+                    @if (Session["UserName"] != null)
+                    {
+                        <li><a class="dropdown-toggle" href="/Account/Logout" id="loginLink">लॉग ऑऊट</a></li>
+                    }
+                    else
+                    {
+                        <li><a class="dropdown-toggle" href="/Account/Login" id="loginLink">लॉग इन</a></li>
+                    }
+                    
                     <li><a href="/">मुख्य पृष्ठ</a></li>
                     <li>संपर्क</li>
                     <li><a href="#mainmenu">दिशादर्शकाकडे जा</a></li>

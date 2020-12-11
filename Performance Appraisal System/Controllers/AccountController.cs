@@ -34,6 +34,7 @@ namespace Performance_Appraisal_System.Controllers
                     if (user != null)
                     {
                         Session["User"] = user;
+                        Session["UserName"] = user.UserName;
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -71,7 +72,7 @@ namespace Performance_Appraisal_System.Controllers
                 db.SaveChanges();
 
                 Session["User"] = user;
-
+                Session["UserName"] = user.UserName;
                 return RedirectToAction("Index", "Home");
             }
             else
