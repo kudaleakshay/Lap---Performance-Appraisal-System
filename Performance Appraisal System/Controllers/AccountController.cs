@@ -96,13 +96,17 @@ namespace Performance_Appraisal_System.Controllers
         {
             DocPASEntities db = new DocPASEntities();
             List<User> UserList = new List<User>();
-            if (RoleId == 4|| RoleId==5 || RoleId==6)
+            if (RoleId==5 || RoleId==6)
             {
-                UserList = db.Users.Where(x => x.DistrictId == SearchId && x.RoleId == RoleId).ToList();
+                UserList = db.Users.Where(x => x.DistrictId == SearchId && x.RoleId == 4).ToList();
+            }
+            if (RoleId == 4)
+            {
+                UserList = db.Users.Where(x => x.DivisionId == SearchId && x.RoleId == 3).ToList();
             }
             if (RoleId == 3)
             {
-                 UserList = db.Users.Where(x => x.DivisionId == SearchId && x.RoleId == RoleId).ToList();
+                 UserList = db.Users.Where(x => x.RoleId == 2).ToList();
             }
 
             ViewBag.UserList = new SelectList(UserList, "UID", "Name");

@@ -162,12 +162,17 @@
         })
 
         $("#DistrictId").change(function () {
-            var DistrictId = $(this).val();
             var RoleId = $("#RoleId").val();
+            if (RoleId == 4) {
+                SearchKey = $("#DivisionId").val();
+            }
+            else {
+                SearchKey = $("#DistrictId").val();
+            }
             debugger
             $.ajax({
                 type: "post",
-                url: "/Account/GetReportingList?SearchId=" + DistrictId + "&RoleId=" + RoleId,
+                url: "/Account/GetReportingList?SearchId=" + SearchKey + "&RoleId=" + RoleId,
                 contentType: "html",
                 success: function (response) {
                     debugger

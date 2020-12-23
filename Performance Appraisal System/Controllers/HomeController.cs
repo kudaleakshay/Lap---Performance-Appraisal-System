@@ -18,7 +18,6 @@ namespace Performance_Appraisal_System.Controllers
             User user = (User)HttpContext.Session["User"];
 
             ViewBag.UserRole = user.RoleId;
-
             return View();
         }
 
@@ -41,8 +40,6 @@ namespace Performance_Appraisal_System.Controllers
 
             return View();
         }
-
-
 
     }
 }
