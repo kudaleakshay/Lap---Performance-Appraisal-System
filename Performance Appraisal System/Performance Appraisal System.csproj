@@ -133,6 +133,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\StatuscodeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,6 +178,7 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AppraisalReportViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -366,7 +369,8 @@
     <Content Include="Views\Statuscode\NotFound.cshtml" />
     <Content Include="Views\Statuscode\InternalError.cshtml" />
     <Content Include="Views\Home\ViewAppraisalReport.cshtml" />
-    <Content Include="Views\Home\FillAppraisalReport.cshtml" />
+    <Content Include="Views\Report\DepartmentWiseReport.cshtml" />
+    <Content Include="Views\Report\SubReports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

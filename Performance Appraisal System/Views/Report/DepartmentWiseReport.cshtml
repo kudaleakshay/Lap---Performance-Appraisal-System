@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "DepartmentWiseReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="text-align:center; padding:30px;">
+    <h5><strong>जिल्हा उपनिबंधक सहकारी संस्था व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता खालीलप्रमाणे </strong></h5>
+
+  @*  <div id="Month" class="form-group col-md-6">
+        Month: 
+            @Html.DropDownList("MySkills", new List<SelectListItem>
+            {
+               new SelectListItem{ Text="ASP.NET MVC", Value = "1" },
+               new SelectListItem{ Text="ASP.NET WEB API", Value = "2" },
+               new SelectListItem{ Text="ENTITY FRAMEWORK", Value = "3" },
+               new SelectListItem{ Text="DOCUSIGN", Value = "4" },
+               new SelectListItem{ Text="ORCHARD CMS", Value = "5" },
+               new SelectListItem{ Text="JQUERY", Value = "6" },
+               new SelectListItem{ Text="ZENDESK", Value = "7" },
+               new SelectListItem{ Text="LINQ", Value = "8" },
+               new SelectListItem{ Text="C#", Value = "9" },
+               new SelectListItem{ Text="GOOGLE ANALYTICS", Value = "10" },
+            })
+    </div>
+*@
+    <hr>
+
+    <table class="table table-hover branchtable" style="text-align:left; margin:auto; width:85%;">
+        <thead style="text-align:center; vertical-align:middle !important;">
+            <tr>
+                <th scope="col" colspan="2">कार्यासनाचे नाव</th>
+                <th scope="col">विषय</th>
+                <th scope="col">गुण</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model)
+            {
+            <tr>
+                <th scope="row" style="vertical-align: middle !important">@department.DepartmentId</th>
+                <td style="vertical-align: middle !important">@department.Department.DepartmentName</td>
+                <td style="vertical-align: middle !important">@department.SubjectName</td>
+                <td style="vertical-align: middle !important"><a href="/Report/SubReports?departmentId=@department.DepartmentId&month=1&year=2020" title="Open" class="btn btn-success">Open</a></td>
+            </tr>
+            }
+
+            <tr style="text-align:center">
+                <td colspan="3"><strong>एकुण</strong></td>
+                <td><strong>100</strong></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+

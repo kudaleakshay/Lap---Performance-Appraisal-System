@@ -34,8 +34,9 @@ go
 
 create table Subjects(
 SId int primary key identity(1,1),
-SubjectName nvarchar(200),
-DepartmentId int references Departments(Id) on delete set null)
+SubjectName nvarchar(500),
+DepartmentId int references Departments(Id) on delete set null,
+Type int)
 go
 
 create table Users(
@@ -73,16 +74,81 @@ insert into Roles values('CO')
 go
 
 
-insert into Subjects values(N'प्रशासकीय बाबी - विभागीय चौकशी करणे, सेवानिवृत्ती प्रकरणे, सेवापुस्तक अदयावत करणे ,अभिलेख वर्गीकरण, महालेखापाल परिच्छेद, मा.उच्च/ सर्वोच्च न्यायालय शपथपत्र दाखल करणे.',1)
-insert into Subjects values(N'खरीप व रब्बी पीक कर्जवाटप,  बिगर कर्जदार सभासदांना कर्जवाटप , व्याज परतावा प्रस्ताव , उपयोगिता प्रमाणपत्र निपटारा',2)
-insert into Subjects values(N'ई-सेवा  व सी.एम. / पी.एम पोर्टल',3)
-insert into Subjects values(N'अंदाजपत्रक  व शासकीय वसुली',4)
-insert into Subjects values(N'लेखापरीक्षण व दोषदुरुस्ती',5)
-insert into Subjects values(N'अवसायन व प्रशिक्षण कलम 83,88,78 (अ), 77(अ) इ.',6)
-insert into Subjects values(N'विकासक असहकार्य नोंदणी , गृहनिर्माण संस्था संबंधित तक्रारी ',7)
-insert into Subjects values(N'कमकुवत संस्थांचे बळकटीकरण व अडचणीतील पतसंस्थांवर कारवाई.',8)
-insert into Subjects values(N'सहकारी संस्थांची व कार्यालय तपासणी',9)
-insert into Subjects values(N'अवैध सावकारी तक्रार अर्ज कार्यवाही',10)
+insert into Subjects values(N'प्रशासकीय बाबी - विभागीय चौकशी करणे, सेवानिवृत्ती प्रकरणे, सेवापुस्तक अदयावत करणे ,अभिलेख वर्गीकरण, महालेखापाल परिच्छेद, मा.उच्च/ सर्वोच्च न्यायालय शपथपत्र दाखल करणे.',1,1)
+insert into Subjects values(N'खरीप व रब्बी पीक कर्जवाटप,  बिगर कर्जदार सभासदांना कर्जवाटप , व्याज परतावा प्रस्ताव , उपयोगिता प्रमाणपत्र निपटारा',2,1)
+insert into Subjects values(N'ई-सेवा  व सी.एम. / पी.एम पोर्टल',3,1)
+insert into Subjects values(N'अंदाजपत्रक  व शासकीय वसुली',4,1)
+insert into Subjects values(N'लेखापरीक्षण व दोषदुरुस्ती',5,1)
+insert into Subjects values(N'अवसायन व प्रशिक्षण कलम 83,88,78 (अ), 77(अ) इ.',6,1)
+insert into Subjects values(N'विकासक असहकार्य नोंदणी , गृहनिर्माण संस्था संबंधित तक्रारी ',7,1)
+insert into Subjects values(N'कमकुवत संस्थांचे बळकटीकरण व अडचणीतील पतसंस्थांवर कारवाई.',8,1)
+insert into Subjects values(N'सहकारी संस्थांची व कार्यालय तपासणी',9,1)
+insert into Subjects values(N'अवैध सावकारी तक्रार अर्ज कार्यवाही',10,1)
+
+insert into Subjects values(N'विभागीय चौकशी',1,2)
+insert into Subjects values(N'सेवानिवृत्ती प्रकरणे',1,2)
+insert into Subjects values(N'सेवा पुस्तक अद्यायवात करणे',1,2)
+insert into Subjects values(N'अभिलेखाचे वर्गीकरण',1,2)
+insert into Subjects values(N'महालेखापाल प्रलंबीत, लेखापरीच्छेद अहवाल सादर करणे.',1,2)
+insert into Subjects values(N'मा.उच्च/सर्वोच्च न्यायालयातील  प्रकरणे शपथ पत्र दाखल करणे',1,2)
+
+insert into Subjects values(N'खरीप पीक कर्जवाटप',2,2)
+insert into Subjects values(N'रब्बी पीक कर्जवाटप',2,2)
+insert into Subjects values(N'बिगर कर्जदार सभासदांना कर्जवाटप',2,2)
+insert into Subjects values(N'1  टक्के व्याजअनुदान प्रस्ताव',2,2)
+insert into Subjects values(N'2.5 टक्के व्याज अनुदान प्रस्ताव',2,2)
+insert into Subjects values(N'उपयोगिता प्रमाणपत्र निपटारा.',2,2)
+insert into Subjects values(N'सभासद वाढ (भूविकास कार्यासन)',2,2)
+
+insert into Subjects values(N'सहकारी संस्थांची नोंदणी',3,2)
+insert into Subjects values(N'सहकारी संस्थांची उपविधी दुरुस्ती',3,2)
+insert into Subjects values(N'सावकारी व्यवसायासाठी परवाना देणे',3,2)
+insert into Subjects values(N'सावकारी व्यवसायासाठी परवाना नुतनीकरण',3,2)
+insert into Subjects values(N'सहकारी गृहनिर्माण संस्थांचे मानीव अभिहस्तांतरण',3,2)
+insert into Subjects values(N'सी.एम. / पी.एम/ पोर्टल  ',3,2)
+
+insert into Subjects values(N'वाटप करण्यात आलेला निधी खर्च करणे या बाबीमध्ये कार्यक्रम खर्च (प्लॅन) व अनिवार्य खर्च (नॉन प्लॅन)',4,2)
+insert into Subjects values(N'मासिक खर्च (एम.ई.एस) अहवाल दरमहा 10 तारखेपर्यंत वेळेत सादर करणे ',4,2)
+insert into Subjects values(N'शासकीय महसूली जमा रक्कमांचे ताळमेळ प्रत्येक तिमाहिस सादर करणे.',4,2)
+insert into Subjects values(N'चारमाही, आठमाही , वार्षिक अंदाजपत्रक विहीत वेळेत सादर करणे',4,2)
+insert into Subjects values(N'शासकीय वसुली ',4,2)
+
+insert into Subjects values(N'लेखापरीक्षण पुर्ण करणे',5,2)
+insert into Subjects values(N'लेखापरीक्षण पुर्ण न झालेल्या संस्था व लेखापरीक्षक यांचेवर केलेली कारवाई',5,2)
+insert into Subjects values(N'प्रशासकीय विशेष अहवालाबाबत कारवाई',5,2)
+insert into Subjects values(N'विनिर्दिष्ट अहवालावर निबंधकाने केलेली कारवाई',5,2)
+insert into Subjects values(N'अ) दोषदुरुस्ती अहवाल सादर न केलेल्या संस्थांवर कारवाई',5,2)
+insert into Subjects values(N'ब) प्राप्त दोष दुरुस्ती अहवालावर केलेली कारवाई',5,2)
+
+insert into Subjects values(N'अवसायनातील 10 वर्षावरील संस्था रद्द करणे',6,2)
+insert into Subjects values(N'अवसायनातील स्थावर जंगम  मालमत्ता नसलेल्या संस्था नोंदणी रद्द करणे',6,2)
+insert into Subjects values(N'कलम 24 नुसार आयोजित केलेल्या  प्रशिक्षणाचा आढावा',6,2)
+insert into Subjects values(N'कलम 83',6,2)
+insert into Subjects values(N'कलम 88',6,2)
+insert into Subjects values(N'कलम 78 (अ)',6,2)
+insert into Subjects values(N'कलम 77 (अ)',6,2)
+insert into Subjects values(N'कलम 101 आर सी देणे',6,2)
+insert into Subjects values(N'कलम 152 प्रकरणांचा निपटारा',6,2)
+insert into Subjects values(N'कलम 154 प्रकरणांचा निपटारा',6,2)
+
+insert into Subjects values(N'विकासक असहकार्य नोंदणी संदर्भातील अर्ज',7,2)
+insert into Subjects values(N'गृहनिर्माण संस्था संबंधित तक्रारी ',7,2)
+
+insert into Subjects values(N'‘ड’ -  वर्गातील पतसंस्था ‘क’ - वर्गात आणणे',8,2)
+insert into Subjects values(N'‘क’ वर्गातील संस्था ‘ब’ वर्गामध्ये आणणे',8,2)
+insert into Subjects values(N'जनहित याचिका क्र.60/2011 चे अनुषंगाने अडचणीतील पतसंस्थांबाबतची कारवाई विहीत मुदतीत करणे',8,2)
+insert into Subjects values(N'अ)कलम 101 अन्वये वसुली दाखले देणे',8,2)
+insert into Subjects values(N'ब)वाजवी मुल्यास मान्यता देणे',8,2)
+insert into Subjects values(N'क) कलम 100 व नियम 85 अन्वये आदेश पारीत करणे',8,2)
+insert into Subjects values(N'ड)कलम 98 अन्वये वसुली दाखल्याप्रमाणे सर्व अपचारी यांचेवर वसुलीची कारवाई करणे',8,2)
+
+insert into Subjects values(N'सहकारी संस्थांची तपासणी',9,2)
+insert into Subjects values(N'कार्यालय तपासणी',9,2)
+
+insert into Subjects values(N'महाराष्ट्र सावकारी (नियमन) अधिनियम 2014 मधील नियम 16 अन्वये चौकशी पुर्ण करणे.',10,2)
+insert into Subjects values(N'महाराष्ट्र सावकारी (नियमन) अधिनियम 2014 मधील नियम 17 अन्वये जिल्हा उप निबंधक यांनी सहा.निबं यांना चौकशी कामी प्राधिकृत केले असल्यास चौकशी पुर्ण करणे / जि.उपनिबंधक यांनी कलम 18 (2) अन्वये आदेश पारित करणे',10,2)
+insert into Subjects values(N'महाराष्ट्र सावकारी (नियमन)अधिनियम 2014 मधील कलम 18 (4) अन्वये विभागीय सहनिबंधक यांनी प्राप्त अपिलावर अंतिम आदेश पारित करणे',10,2)
+
 go
 
 

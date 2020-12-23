@@ -359,3 +359,12 @@
 .field-validation-error, .validation-summary-errors {
     color: red;
 }
+
+.branchtable tr, th {
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.table th, .table td {
+    vertical-align: middle !important;
+}

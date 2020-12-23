@@ -28,11 +28,6 @@ namespace Performance_Appraisal_System.Controllers
             return View();
         }
 
-        /*[CustomAuthorize("DDR")]*/
-        public ActionResult FillAppraisalReport()
-        {
-            return View();
-        }
 
         public ActionResult UnAuthorized()
         {
@@ -40,6 +35,5 @@ namespace Performance_Appraisal_System.Controllers
 
             return View();
         }
-
     }
 }

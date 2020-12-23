@@ -26,12 +26,12 @@ namespace Performance_Appraisal_System.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AppraisalTable> AppraisalTables { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Division> Divisions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<AppraisalTable> AppraisalTables { get; set; }
     }
 }

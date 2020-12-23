@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DocPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DocPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AppraisalTables">
           <Key>
             <PropertyRef Name="Id" />
@@ -49,6 +49,7 @@
           <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubjectName" Type="nvarchar" MaxLength="200" />
           <Property Name="DepartmentId" Type="int" />
+          <Property Name="Type" Type="int" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -155,17 +156,25 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DocPASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AppraisalTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DepartmentName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Subjects" Relationship="Self.FK__Subjects__Depart__2D27B809" FromRole="Departments" ToRole="Subjects" />
+          <NavigationProperty Name="Subjects" Relationship="Self.FK__Subjects__Depart__2F10007B" FromRole="Departments" ToRole="Subjects" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -174,9 +183,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DistrictName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="DivisionId" Type="Int32" />
-          <NavigationProperty Name="Division" Relationship="Self.FK__Districts__Divis__2A4B4B5E" FromRole="Districts" ToRole="Divisions" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__DistrictI__30F848ED" FromRole="Districts" ToRole="Users" />
           <Property Name="AppraisalType" Type="Int32" />
+          <NavigationProperty Name="Division" Relationship="Self.FK__Districts__Divis__2C3393D0" FromRole="Districts" ToRole="Divisions" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__DistrictI__32E0915F" FromRole="Districts" ToRole="Users" />
         </EntityType>
         <EntityType Name="Division">
           <Key>
@@ -184,8 +193,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DivisionName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Districts" Relationship="Self.FK__Districts__Divis__2A4B4B5E" FromRole="Divisions" ToRole="Districts" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__DivisionI__300424B4" FromRole="Divisions" ToRole="Users" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK__Districts__Divis__2C3393D0" FromRole="Divisions" ToRole="Districts" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__DivisionI__31EC6D26" FromRole="Divisions" ToRole="Users" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -193,7 +202,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__RoleId__31EC6D26" FromRole="Roles" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__RoleId__33D4B598" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -202,7 +211,8 @@
           <Property Name="SId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubjectName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="DepartmentId" Type="Int32" />
-          <NavigationProperty Name="Department" Relationship="Self.FK__Subjects__Depart__2D27B809" FromRole="Subjects" ToRole="Departments" />
+          <Property Name="Type" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Subjects__Depart__2F10007B" FromRole="Subjects" ToRole="Departments" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -217,13 +227,13 @@
           <Property Name="DistrictId" Type="Int32" />
           <Property Name="RoleId" Type="Int32" />
           <Property Name="Status" Type="Int32" />
-          <Property Name="ReportTo" Type="Int32" />
-          <NavigationProperty Name="District" Relationship="Self.FK__Users__DistrictI__30F848ED" FromRole="Users" ToRole="Districts" />
-          <NavigationProperty Name="Division" Relationship="Self.FK__Users__DivisionI__300424B4" FromRole="Users" ToRole="Divisions" />
-          <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleId__31EC6D26" FromRole="Users" ToRole="Roles" />
           <Property Name="AppraisalType" Type="Int32" />
+          <Property Name="ReportTo" Type="Int32" />
+          <NavigationProperty Name="District" Relationship="Self.FK__Users__DistrictI__32E0915F" FromRole="Users" ToRole="Districts" />
+          <NavigationProperty Name="Division" Relationship="Self.FK__Users__DivisionI__31EC6D26" FromRole="Users" ToRole="Divisions" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleId__33D4B598" FromRole="Users" ToRole="Roles" />
         </EntityType>
-        <Association Name="FK__Subjects__Depart__2D27B809">
+        <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Subjects" Type="Self.Subject" Multiplicity="*" />
           <ReferentialConstraint>
@@ -235,7 +245,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Districts__Divis__2A4B4B5E">
+        <Association Name="FK__Districts__Divis__2C3393D0">
           <End Role="Divisions" Type="Self.Division" Multiplicity="0..1" />
           <End Role="Districts" Type="Self.District" Multiplicity="*" />
           <ReferentialConstraint>
@@ -247,7 +257,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__DistrictI__30F848ED">
+        <Association Name="FK__Users__DistrictI__32E0915F">
           <End Role="Districts" Type="Self.District" Multiplicity="0..1" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -259,7 +269,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__DivisionI__300424B4">
+        <Association Name="FK__Users__DivisionI__31EC6D26">
           <End Role="Divisions" Type="Self.Division" Multiplicity="0..1" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -271,7 +281,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__RoleId__31EC6D26">
+        <Association Name="FK__Users__RoleId__33D4B598">
           <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -284,47 +294,48 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DocPASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppraisalTables" EntityType="Self.AppraisalTable" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="Divisions" EntityType="Self.Division" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Subjects" EntityType="Self.Subject" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Subjects__Depart__2D27B809" Association="Self.FK__Subjects__Depart__2D27B809">
+          <AssociationSet Name="FK__Subjects__Depart__2F10007B" Association="Self.FK__Subjects__Depart__2F10007B">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Subjects" EntitySet="Subjects" />
           </AssociationSet>
-          <AssociationSet Name="FK__Districts__Divis__2A4B4B5E" Association="Self.FK__Districts__Divis__2A4B4B5E">
+          <AssociationSet Name="FK__Districts__Divis__2C3393D0" Association="Self.FK__Districts__Divis__2C3393D0">
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Districts" EntitySet="Districts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__DistrictI__30F848ED" Association="Self.FK__Users__DistrictI__30F848ED">
+          <AssociationSet Name="FK__Users__DistrictI__32E0915F" Association="Self.FK__Users__DistrictI__32E0915F">
             <End Role="Districts" EntitySet="Districts" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__DivisionI__300424B4" Association="Self.FK__Users__DivisionI__300424B4">
+          <AssociationSet Name="FK__Users__DivisionI__31EC6D26" Association="Self.FK__Users__DivisionI__31EC6D26">
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__RoleId__31EC6D26" Association="Self.FK__Users__RoleId__31EC6D26">
+          <AssociationSet Name="FK__Users__RoleId__33D4B598" Association="Self.FK__Users__RoleId__33D4B598">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="AppraisalTables" EntityType="DocPASModel.AppraisalTable" />
         </EntityContainer>
-        <EntityType Name="AppraisalTable">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DocPASModelStoreContainer" CdmEntityContainer="DocPASEntities">
+          <EntitySetMapping Name="AppraisalTables">
+            <EntityTypeMapping TypeName="DocPASModel.AppraisalTable">
+              <MappingFragment StoreEntitySet="AppraisalTables">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="DocPASModel.Department">
               <MappingFragment StoreEntitySet="Departments">
@@ -336,10 +347,10 @@
           <EntitySetMapping Name="Districts">
             <EntityTypeMapping TypeName="DocPASModel.District">
               <MappingFragment StoreEntitySet="Districts">
-                <ScalarProperty Name="AppraisalType" ColumnName="AppraisalType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
                 <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="AppraisalType" ColumnName="AppraisalType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -365,13 +376,13 @@
                 <ScalarProperty Name="SId" ColumnName="SId" />
                 <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
                 <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DocPASModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="AppraisalType" ColumnName="AppraisalType" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -381,15 +392,8 @@
                 <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AppraisalType" ColumnName="AppraisalType" />
                 <ScalarProperty Name="ReportTo" ColumnName="ReportTo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AppraisalTables">
-            <EntityTypeMapping TypeName="DocPASModel.AppraisalTable">
-              <MappingFragment StoreEntitySet="AppraisalTables">
-                <ScalarProperty Name="TableName" ColumnName="TableName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
