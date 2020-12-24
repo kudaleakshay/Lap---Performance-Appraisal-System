@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Performance_Appraisal_System.Models;
+using Performance_Appraisal_System.ViewModels;
+
 
 namespace Performance_Appraisal_System.Controllers
 {
@@ -19,15 +21,40 @@ namespace Performance_Appraisal_System.Controllers
         public ActionResult DepartmentWiseReport()
         {
             DocPASEntities db = new DocPASEntities();
-            List<Subject> SubjectList = db.Subjects.Where(x => x.Type == 1).ToList();
-            return View(SubjectList);
+
+            AppraisalReportViewModel reports = new AppraisalReportViewModel();
+            reports.Subjects = db.Subjects.Where(x => x.Type == 1).ToList();
+
+            return View(reports);
         }
 
-        public ActionResult SubReports(string departmentId, string month, string year)
+        [HttpPost]
+        public ActionResult SubReports(AppraisalReportViewModel reports)
         {
             DocPASEntities db = new DocPASEntities();
-            List<Subject> SubjectList = db.Subjects.Where(x => x.Type == 2 && x.DepartmentId.ToString() == departmentId).ToList();
-            return View(SubjectList);
+            AppraisalReportViewModel SubReports = new AppraisalReportViewModel();
+            SubReports.Month = reports.Month;
+            SubReports.Year = reports.Year;
+            SubReports.DepartmentId = reports.DepartmentId;
+            SubReports.Subjects = db.Subjects.Where(x => x.Type == 2 && x.DepartmentId == SubReports.DepartmentId).ToList();
+            return View(SubReports);
         }
+
+
+        [HttpPost]
+        public ActionResult getReportForms(AppraisalReportViewModel reports)
+        {
+            DocPASEntities db = new DocPASEntities();
+            AppraisalReportViewModel SubReports = new AppraisalReportViewModel();
+            SubReports.Month = reports.Month;
+            SubReports.Year = reports.Year;
+            SubReports.DepartmentId = reports.DepartmentId;
+            SubReports.Subjects = db.Subjects.Where(x => x.Type == 2 && x.DepartmentId == SubReports.DepartmentId).ToList();
+
+            return View(SubReports);
+        }
+
+
+
     }
 }
