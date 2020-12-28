@@ -44,6 +44,41 @@ namespace Performance_Appraisal_System.Controllers
         [HttpPost]
         public ActionResult getReportForms(AppraisalReportViewModel reports)
         {
+            TempData["ReportData"] = reports;
+            switch (reports.DepartmentId)
+            {
+                case 1:
+                    return RedirectToAction("Index", "O_M");
+
+                case 2:
+                    return RedirectToAction("Index", "Krushipat");
+
+                case 3:
+                    return RedirectToAction("Index", "IT");
+
+                case 4:
+                    return RedirectToAction("Index", "Budget");
+
+                case 5:
+                    return RedirectToAction("Index", "Audit");
+
+                case 6:
+                    return RedirectToAction("Index", "Law");
+
+                case 7:
+                    return RedirectToAction("Index", "Housing");
+
+                case 8:
+                    return RedirectToAction("Index", "Credit_Societies");
+
+                case 9:
+                    return RedirectToAction("Index", "O_M");
+
+                case 10:
+                    return RedirectToAction("Index", "MoneyLending");
+
+            }
+
             DocPASEntities db = new DocPASEntities();
             AppraisalReportViewModel SubReports = new AppraisalReportViewModel();
             SubReports.Month = reports.Month;

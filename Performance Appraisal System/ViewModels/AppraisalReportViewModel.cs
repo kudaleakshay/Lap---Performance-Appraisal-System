@@ -20,7 +20,7 @@ namespace Performance_Appraisal_System.ViewModels
 
         public int DepartmentId { get; set; }
 
-        public int SubSubject { get; set; }
+        public int SubSubjectId { get; set; }
 
         public IEnumerable<Subject> Subjects { get; set; }
 

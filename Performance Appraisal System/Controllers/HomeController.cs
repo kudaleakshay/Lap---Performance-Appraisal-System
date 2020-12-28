@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Performance_Appraisal_System.Infrastructure;
 using Performance_Appraisal_System.Models;
+using Performance_Appraisal_System.ViewModels;
 
 namespace Performance_Appraisal_System.Controllers
 {
