@@ -20,6 +20,11 @@ namespace Performance_Appraisal_System.Models
         public User()
         {
             this.Sub60 = new HashSet<Sub60>();
+            this.Sub24 = new HashSet<Sub24>();
+            this.Sub25 = new HashSet<Sub25>();
+            this.Sub26 = new HashSet<Sub26>();
+            this.Sub27 = new HashSet<Sub27>();
+            this.Sub28 = new HashSet<Sub28>();
         }
 
         public int UId { get; set; }
@@ -72,5 +77,15 @@ namespace Performance_Appraisal_System.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sub60> Sub60 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sub24> Sub24 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sub25> Sub25 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sub26> Sub26 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sub27> Sub27 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sub28> Sub28 { get; set; }
     }
 }

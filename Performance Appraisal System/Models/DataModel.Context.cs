@@ -13,7 +13,7 @@ namespace Performance_Appraisal_System.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using Performance_Appraisal_System.Models;
-
+    
     public partial class DocPASEntities : DbContext
     {
         public DocPASEntities()
@@ -34,5 +34,10 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Sub60> Sub60 { get; set; }
+        public virtual DbSet<Sub24> Sub24 { get; set; }
+        public virtual DbSet<Sub25> Sub25 { get; set; }
+        public virtual DbSet<Sub26> Sub26 { get; set; }
+        public virtual DbSet<Sub27> Sub27 { get; set; }
+        public virtual DbSet<Sub28> Sub28 { get; set; }
     }
 }

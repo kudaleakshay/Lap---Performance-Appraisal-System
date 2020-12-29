@@ -42,6 +42,76 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="varchar" MaxLength="40" />
         </EntityType>
+        <EntityType Name="Sub24">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="Marks" Type="int" />
+          <Property Name="Aim" Type="int" />
+          <Property Name="Achieved" Type="int" />
+          <Property Name="Appraisal_Marks" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="Sub25">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="Marks" Type="int" />
+          <Property Name="Aim" Type="int" />
+          <Property Name="Achieved" Type="int" />
+          <Property Name="Appraisal_Marks" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="Sub26">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="Marks" Type="int" />
+          <Property Name="Aim" Type="int" />
+          <Property Name="Achieved" Type="int" />
+          <Property Name="Appraisal_Marks" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="Sub27">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="Marks" Type="int" />
+          <Property Name="Aim" Type="int" />
+          <Property Name="Achieved" Type="int" />
+          <Property Name="Appraisal_Marks" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="Sub28">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="Marks" Type="int" />
+          <Property Name="Aim" Type="int" />
+          <Property Name="Achieved" Type="int" />
+          <Property Name="Appraisal_Marks" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
         <EntityType Name="Sub60">
           <Key>
             <PropertyRef Name="RId" />
@@ -63,6 +133,7 @@
           <Property Name="Appraisal_Percentage" Type="int" />
           <Property Name="Month" Type="int" />
           <Property Name="Year" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -98,6 +169,66 @@
             </Principal>
             <Dependent Role="Districts">
               <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub24__UId__4E88ABD4">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Sub24" Type="Self.Sub24" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub24">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub25__UId__5165187F">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Sub25" Type="Self.Sub25" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub25">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub26__UId__5441852A">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Sub26" Type="Self.Sub26" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub26">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub27__UId__571DF1D5">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Sub27" Type="Self.Sub27" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub27">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub28__UId__59FA5E80">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Sub28" Type="Self.Sub28" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub28">
+              <PropertyRef Name="UId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -167,12 +298,37 @@
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Divisions" EntityType="Self.Divisions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub24" EntityType="Self.Sub24" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub25" EntityType="Self.Sub25" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub26" EntityType="Self.Sub26" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub27" EntityType="Self.Sub27" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub28" EntityType="Self.Sub28" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sub60" EntityType="Self.Sub60" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Districts__Divis__2C3393D0" Association="Self.FK__Districts__Divis__2C3393D0">
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub24__UId__4E88ABD4" Association="Self.FK__Sub24__UId__4E88ABD4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sub24" EntitySet="Sub24" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub25__UId__5165187F" Association="Self.FK__Sub25__UId__5165187F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sub25" EntitySet="Sub25" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub26__UId__5441852A" Association="Self.FK__Sub26__UId__5441852A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sub26" EntitySet="Sub26" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub27__UId__571DF1D5" Association="Self.FK__Sub27__UId__571DF1D5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sub27" EntitySet="Sub27" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub28__UId__59FA5E80" Association="Self.FK__Sub28__UId__59FA5E80">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sub28" EntitySet="Sub28" />
           </AssociationSet>
           <AssociationSet Name="FK__Sub60__UId__4BAC3F29" Association="Self.FK__Sub60__UId__4BAC3F29">
             <End Role="Users" EntitySet="Users" />
@@ -271,6 +427,11 @@
           <NavigationProperty Name="Division" Relationship="Self.FK__Users__DivisionI__31EC6D26" FromRole="Users" ToRole="Divisions" />
           <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleId__33D4B598" FromRole="Users" ToRole="Roles" />
           <NavigationProperty Name="Sub60" Relationship="DocPASModel.FK__Sub60__UId__4BAC3F29" FromRole="User" ToRole="Sub60" />
+          <NavigationProperty Name="Sub24" Relationship="DocPASModel.FK__Sub24__UId__4E88ABD4" FromRole="User" ToRole="Sub24" />
+          <NavigationProperty Name="Sub25" Relationship="DocPASModel.FK__Sub25__UId__5165187F" FromRole="User" ToRole="Sub25" />
+          <NavigationProperty Name="Sub26" Relationship="DocPASModel.FK__Sub26__UId__5441852A" FromRole="User" ToRole="Sub26" />
+          <NavigationProperty Name="Sub27" Relationship="DocPASModel.FK__Sub27__UId__571DF1D5" FromRole="User" ToRole="Sub27" />
+          <NavigationProperty Name="Sub28" Relationship="DocPASModel.FK__Sub28__UId__59FA5E80" FromRole="User" ToRole="Sub28" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -365,6 +526,31 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Sub60" EntitySet="Sub60" />
           </AssociationSet>
+          <EntitySet Name="Sub24" EntityType="DocPASModel.Sub24" />
+          <EntitySet Name="Sub25" EntityType="DocPASModel.Sub25" />
+          <EntitySet Name="Sub26" EntityType="DocPASModel.Sub26" />
+          <EntitySet Name="Sub27" EntityType="DocPASModel.Sub27" />
+          <EntitySet Name="Sub28" EntityType="DocPASModel.Sub28" />
+          <AssociationSet Name="FK__Sub24__UId__4E88ABD4" Association="DocPASModel.FK__Sub24__UId__4E88ABD4">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sub24" EntitySet="Sub24" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub25__UId__5165187F" Association="DocPASModel.FK__Sub25__UId__5165187F">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sub25" EntitySet="Sub25" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub26__UId__5441852A" Association="DocPASModel.FK__Sub26__UId__5441852A">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sub26" EntitySet="Sub26" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub27__UId__571DF1D5" Association="DocPASModel.FK__Sub27__UId__571DF1D5">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sub27" EntitySet="Sub27" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub28__UId__59FA5E80" Association="DocPASModel.FK__Sub28__UId__59FA5E80">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sub28" EntitySet="Sub28" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Sub60">
           <Key>
@@ -388,6 +574,7 @@
           <Property Name="Month" Type="Int32" />
           <Property Name="Year" Type="Int32" />
           <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub60__UId__4BAC3F29" FromRole="Sub60" ToRole="User" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Sub60__UId__4BAC3F29">
           <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
@@ -397,6 +584,141 @@
               <PropertyRef Name="UId" />
             </Principal>
             <Dependent Role="Sub60">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sub24">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Marks" Type="Int32" />
+          <Property Name="Aim" Type="Int32" />
+          <Property Name="Achieved" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub24__UId__4E88ABD4" FromRole="Sub24" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sub25">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Marks" Type="Int32" />
+          <Property Name="Aim" Type="Int32" />
+          <Property Name="Achieved" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub25__UId__5165187F" FromRole="Sub25" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sub26">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Marks" Type="Int32" />
+          <Property Name="Aim" Type="Int32" />
+          <Property Name="Achieved" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub26__UId__5441852A" FromRole="Sub26" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sub27">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Marks" Type="Int32" />
+          <Property Name="Aim" Type="Int32" />
+          <Property Name="Achieved" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub27__UId__571DF1D5" FromRole="Sub27" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sub28">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Marks" Type="Int32" />
+          <Property Name="Aim" Type="Int32" />
+          <Property Name="Achieved" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub28__UId__59FA5E80" FromRole="Sub28" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Sub24__UId__4E88ABD4">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Sub24" Role="Sub24" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub24">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub25__UId__5165187F">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Sub25" Role="Sub25" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub25">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub26__UId__5441852A">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Sub26" Role="Sub26" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub26">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub27__UId__571DF1D5">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Sub27" Role="Sub27" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub27">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub28__UId__59FA5E80">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Sub28" Role="Sub28" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub28">
               <PropertyRef Name="UId" />
             </Dependent>
           </ReferentialConstraint>
@@ -479,6 +801,7 @@
           <EntitySetMapping Name="Sub60">
             <EntityTypeMapping TypeName="DocPASModel.Sub60">
               <MappingFragment StoreEntitySet="Sub60">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="Month" ColumnName="Month" />
                 <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
@@ -494,6 +817,81 @@
                 <ScalarProperty Name="Total_Staff" ColumnName="Total_Staff" />
                 <ScalarProperty Name="Staff_Count" ColumnName="Staff_Count" />
                 <ScalarProperty Name="Officer_Count" ColumnName="Officer_Count" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub24">
+            <EntityTypeMapping TypeName="DocPASModel.Sub24">
+              <MappingFragment StoreEntitySet="Sub24">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Achieved" ColumnName="Achieved" />
+                <ScalarProperty Name="Aim" ColumnName="Aim" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub25">
+            <EntityTypeMapping TypeName="DocPASModel.Sub25">
+              <MappingFragment StoreEntitySet="Sub25">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Achieved" ColumnName="Achieved" />
+                <ScalarProperty Name="Aim" ColumnName="Aim" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub26">
+            <EntityTypeMapping TypeName="DocPASModel.Sub26">
+              <MappingFragment StoreEntitySet="Sub26">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Achieved" ColumnName="Achieved" />
+                <ScalarProperty Name="Aim" ColumnName="Aim" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub27">
+            <EntityTypeMapping TypeName="DocPASModel.Sub27">
+              <MappingFragment StoreEntitySet="Sub27">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Achieved" ColumnName="Achieved" />
+                <ScalarProperty Name="Aim" ColumnName="Aim" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub28">
+            <EntityTypeMapping TypeName="DocPASModel.Sub28">
+              <MappingFragment StoreEntitySet="Sub28">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Achieved" ColumnName="Achieved" />
+                <ScalarProperty Name="Aim" ColumnName="Aim" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="RId" ColumnName="RId" />
               </MappingFragment>

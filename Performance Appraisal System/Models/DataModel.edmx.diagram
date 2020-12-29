@@ -19,6 +19,16 @@
         <AssociationConnector Association="DocPASModel.FK__Users__RoleId__33D4B598" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DocPASModel.Sub60" Width="1.5" PointX="0.75" PointY="8.75" />
         <AssociationConnector Association="DocPASModel.FK__Sub60__UId__4BAC3F29" />
+        <EntityTypeShape EntityType="DocPASModel.Sub24" Width="1.5" PointX="7.5" PointY="16.5" />
+        <EntityTypeShape EntityType="DocPASModel.Sub25" Width="1.5" PointX="7.5" PointY="9.125" />
+        <EntityTypeShape EntityType="DocPASModel.Sub26" Width="1.5" PointX="7.5" PointY="20.25" />
+        <EntityTypeShape EntityType="DocPASModel.Sub27" Width="1.5" PointX="7.5" PointY="23.875" />
+        <EntityTypeShape EntityType="DocPASModel.Sub28" Width="1.5" PointX="7.5" PointY="12.875" />
+        <AssociationConnector Association="DocPASModel.FK__Sub24__UId__4E88ABD4" />
+        <AssociationConnector Association="DocPASModel.FK__Sub25__UId__5165187F" />
+        <AssociationConnector Association="DocPASModel.FK__Sub26__UId__5441852A" />
+        <AssociationConnector Association="DocPASModel.FK__Sub27__UId__571DF1D5" />
+        <AssociationConnector Association="DocPASModel.FK__Sub28__UId__59FA5E80" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

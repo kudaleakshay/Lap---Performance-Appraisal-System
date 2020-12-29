@@ -207,6 +207,13 @@
                             @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage", @class = "form-control", disabled = "disabled" })
                             @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
                         </div>
+
+                        <div class="form-group col-md-10">
+                            @Html.LabelFor(temp => temp.Remarks)
+                            @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Remarks)
+                        </div>
+
                     </div>
                 </div>
             </div>

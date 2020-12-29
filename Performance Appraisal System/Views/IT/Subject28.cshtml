@@ -1,8 +1,164 @@
-﻿
+﻿@model Performance_Appraisal_System.Models.Sub24
 @{
-    ViewBag.Title = "सहकारी गृहनिर्माण संस्थांचे मानीव अभिहस्तांतरण";
+    ViewBag.Title = "सहकारी संस्थांची नोंदणी";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>सहकारी गृहनिर्माण संस्थांचे मानीव अभिहस्तांतरण</h2>
+<br>
+<br>
+@using (Html.BeginForm("Subject28", "IT", FormMethod.Post))
+{
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <br>
+            <br>
+            <h3 class="card-title text-center"><strong>विभागीय सहनिबंधक, जिल्हा उपनिबंधक व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता</strong></h3>
+            <hr>
+            <div class="card-text">
+                <div class="center-group">
 
+                    <div class="form-row">
+                        <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
+                            कार्यासनाचे नाव: <strong> माहिती तंत्रज्ञान </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> मानीव अभिहस्तांतरण </strong>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @*@Html.LabelFor(temp => temp.Month)*@
+                            @Html.DropDownListFor(model => model.Month, new List<SelectListItem>
+                            {
+                               new SelectListItem{ Text="January", Value = "1" },
+                               new SelectListItem{ Text="February", Value = "2" },
+                               new SelectListItem{ Text="March", Value = "3" },
+                               new SelectListItem{ Text="April", Value = "4" },
+                               new SelectListItem{ Text="May", Value = "5" },
+                               new SelectListItem{ Text="June", Value = "6" },
+                               new SelectListItem{ Text="July", Value = "7" },
+                               new SelectListItem{ Text="August", Value = "8" },
+                               new SelectListItem{ Text="September", Value = "9" },
+                               new SelectListItem{ Text="October", Value = "10" },
+                               new SelectListItem{ Text="November", Value = "11" },
+                               new SelectListItem{ Text="December", Value = "12" },
+                            }, "-- महिना निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Month)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @*@Html.LabelFor(temp => temp.Year)*@
+                            @Html.DropDownListFor(model => model.Year, new List<SelectListItem>
+                            {
+                               new SelectListItem{ Text="2019", Value = "2019" },
+                               new SelectListItem{ Text="2020", Value = "2020" },
+                               new SelectListItem{ Text="2021", Value = "2021" },
+                               new SelectListItem{ Text="2022", Value = "2022" },
+                               new SelectListItem{ Text="2023", Value = "2023" },
+                               new SelectListItem{ Text="2024", Value = "2024" },
+                               new SelectListItem{ Text="2025", Value = "2025" },
+                               new SelectListItem{ Text="2026", Value = "2026" },
+                               new SelectListItem{ Text="2027", Value = "2027" },
+                               new SelectListItem{ Text="2028", Value = "2028" },
+                            }, "-- वर्ष निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Year)
+                        </div>
+                    </div>
+
+                    @*
+                        <div class="center-div">
+                            <h5>एकुण गुण: <strong> 05 </strong></h5>
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <div class="card-text">
+                <div class="center-group">
+                    <br>
+                    <span style="color: #e77817 !important; font-size: 16px;">उद्दीष्टे / साध्य</span>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Marks)
+                            @Html.TextBoxFor(temp => temp.Marks, new { id = "Marks", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Marks)
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Aim)
+                            @Html.TextBoxFor(temp => temp.Aim, new { id = "Aim", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Aim)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Achieved)
+                            @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Achieved)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Appraisal_Marks)
+                            @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            @Html.LabelFor(temp => temp.Remarks)
+                            @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Remarks)
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <div class="card-text">
+                <div class="center-group">
+                    <br>
+                    <span style="color: #e77817 !important; font-size: 17px;">
+                        Confirmation / पुष्टीकरण
+                    </span>
+                    <hr>
+
+                    <div style="text-align:justify; font-size: 16px; line-height:25px">
+                        I affirm that the above mentioned information submitted by me is true and correct to my knowledge and belief. / मी प्रमाणित करतो की मी वर नमूद केलेली माहिती माझ्या माहितीनुसार सत्य आणि अचूक आहे.
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Submit / माहिती भरा</button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+
+
+}
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+
+
+</script>

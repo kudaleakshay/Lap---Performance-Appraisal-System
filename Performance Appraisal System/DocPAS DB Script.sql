@@ -769,5 +769,75 @@ Current_Month_Percentage int,
 Appraisal_Marks int,
 Appraisal_Percentage int,
 Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+Create table Sub24(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Marks int,
+Aim int,
+Achieved int,
+Appraisal_Marks int,
+Remarks varchar(500),
+Month int,
+Year int)
+go
+
+
+
+Create table Sub25(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Marks int,
+Aim int,
+Achieved int,
+Appraisal_Marks int,
+Remarks varchar(500),
+Month int,
+Year int)
+go
+
+
+
+Create table Sub26(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Marks int,
+Aim int,
+Achieved int,
+Appraisal_Marks int,
+Remarks varchar(500),
+Month int,
+Year int)
+go
+
+
+
+Create table Sub27(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Marks int,
+Aim int,
+Achieved int,
+Appraisal_Marks int,
+Remarks varchar(500),
+Month int,
+Year int)
+go
+
+
+
+Create table Sub28(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Marks int,
+Aim int,
+Achieved int,
+Appraisal_Marks int,
+Remarks varchar(500),
+Month int,
 Year int)
 go
