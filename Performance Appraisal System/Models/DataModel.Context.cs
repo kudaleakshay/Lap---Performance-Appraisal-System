@@ -33,5 +33,6 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Sub60> Sub60 { get; set; }
     }
 }

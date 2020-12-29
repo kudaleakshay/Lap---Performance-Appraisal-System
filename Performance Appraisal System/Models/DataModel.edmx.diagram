@@ -17,6 +17,8 @@
         <AssociationConnector Association="DocPASModel.FK__Users__DistrictI__32E0915F" ManuallyRouted="false" />
         <AssociationConnector Association="DocPASModel.FK__Users__DivisionI__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="DocPASModel.FK__Users__RoleId__33D4B598" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DocPASModel.Sub60" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="DocPASModel.FK__Sub60__UId__4BAC3F29" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

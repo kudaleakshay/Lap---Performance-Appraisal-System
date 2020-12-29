@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DocPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DocPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AppraisalTables">
           <Key>
             <PropertyRef Name="Id" />
@@ -42,6 +42,28 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="varchar" MaxLength="40" />
         </EntityType>
+        <EntityType Name="Sub60">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="Officer_Count" Type="int" />
+          <Property Name="Staff_Count" Type="int" />
+          <Property Name="Total_Staff" Type="int" />
+          <Property Name="Officer_Target" Type="int" />
+          <Property Name="Staff_Target" Type="int" />
+          <Property Name="Total_Target" Type="int" />
+          <Property Name="Current_Month_Aim" Type="int" />
+          <Property Name="Last_Month_Achieved" Type="int" />
+          <Property Name="Current_Month_Achieved" Type="int" />
+          <Property Name="Total_Achieved" Type="int" />
+          <Property Name="Current_Month_Percentage" Type="int" />
+          <Property Name="Appraisal_Marks" Type="int" />
+          <Property Name="Appraisal_Percentage" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
         <EntityType Name="Subjects">
           <Key>
             <PropertyRef Name="SId" />
@@ -76,6 +98,18 @@
             </Principal>
             <Dependent Role="Districts">
               <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sub60__UId__4BAC3F29">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Sub60" Type="Self.Sub60" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub60">
+              <PropertyRef Name="UId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -133,11 +167,16 @@
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Divisions" EntityType="Self.Divisions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub60" EntityType="Self.Sub60" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Districts__Divis__2C3393D0" Association="Self.FK__Districts__Divis__2C3393D0">
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub60__UId__4BAC3F29" Association="Self.FK__Sub60__UId__4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sub60" EntitySet="Sub60" />
           </AssociationSet>
           <AssociationSet Name="FK__Subjects__Depart__2F10007B" Association="Self.FK__Subjects__Depart__2F10007B">
             <End Role="Departments" EntitySet="Departments" />
@@ -156,8 +195,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DocPASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -232,6 +270,7 @@
           <NavigationProperty Name="District" Relationship="Self.FK__Users__DistrictI__32E0915F" FromRole="Users" ToRole="Districts" />
           <NavigationProperty Name="Division" Relationship="Self.FK__Users__DivisionI__31EC6D26" FromRole="Users" ToRole="Divisions" />
           <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleId__33D4B598" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="Sub60" Relationship="DocPASModel.FK__Sub60__UId__4BAC3F29" FromRole="User" ToRole="Sub60" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -321,7 +360,47 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Sub60" EntityType="DocPASModel.Sub60" />
+          <AssociationSet Name="FK__Sub60__UId__4BAC3F29" Association="DocPASModel.FK__Sub60__UId__4BAC3F29">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sub60" EntitySet="Sub60" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Sub60">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Officer_Count" Type="Int32" />
+          <Property Name="Staff_Count" Type="Int32" />
+          <Property Name="Total_Staff" Type="Int32" />
+          <Property Name="Officer_Target" Type="Int32" />
+          <Property Name="Staff_Target" Type="Int32" />
+          <Property Name="Total_Target" Type="Int32" />
+          <Property Name="Current_Month_Aim" Type="Int32" />
+          <Property Name="Last_Month_Achieved" Type="Int32" />
+          <Property Name="Current_Month_Achieved" Type="Int32" />
+          <Property Name="Total_Achieved" Type="Int32" />
+          <Property Name="Current_Month_Percentage" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Int32" />
+          <Property Name="Appraisal_Percentage" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub60__UId__4BAC3F29" FromRole="Sub60" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Sub60__UId__4BAC3F29">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Sub60" Role="Sub60" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub60">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -394,6 +473,29 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="AppraisalType" ColumnName="AppraisalType" />
                 <ScalarProperty Name="ReportTo" ColumnName="ReportTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub60">
+            <EntityTypeMapping TypeName="DocPASModel.Sub60">
+              <MappingFragment StoreEntitySet="Sub60">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Current_Month_Percentage" ColumnName="Current_Month_Percentage" />
+                <ScalarProperty Name="Total_Achieved" ColumnName="Total_Achieved" />
+                <ScalarProperty Name="Current_Month_Achieved" ColumnName="Current_Month_Achieved" />
+                <ScalarProperty Name="Last_Month_Achieved" ColumnName="Last_Month_Achieved" />
+                <ScalarProperty Name="Current_Month_Aim" ColumnName="Current_Month_Aim" />
+                <ScalarProperty Name="Total_Target" ColumnName="Total_Target" />
+                <ScalarProperty Name="Staff_Target" ColumnName="Staff_Target" />
+                <ScalarProperty Name="Officer_Target" ColumnName="Officer_Target" />
+                <ScalarProperty Name="Total_Staff" ColumnName="Total_Staff" />
+                <ScalarProperty Name="Staff_Count" ColumnName="Staff_Count" />
+                <ScalarProperty Name="Officer_Count" ColumnName="Officer_Count" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

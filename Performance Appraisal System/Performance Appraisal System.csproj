@@ -181,6 +181,9 @@
     <Compile Include="Models\Role.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sub60.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Subject.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

@@ -48,7 +48,7 @@ namespace Performance_Appraisal_System.Controllers
             switch (reports.DepartmentId)
             {
                 case 1:
-                    return RedirectToAction("Index", "O_M");
+                    return RedirectToAction("Index", "Establishment");
 
                 case 2:
                     return RedirectToAction("Index", "Krushipat");

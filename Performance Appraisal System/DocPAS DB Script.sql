@@ -748,3 +748,26 @@ insert into [DocPAS].[dbo].[Users](UserName,Name,Password,DivisionId,DistrictId,
 insert into [DocPAS].[dbo].[Users](UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo) values('AR368',N'सहाय्यक निबंधक, सहकारी संस्था, ता. मूलचेरी, जि.गडचिरोली','AR123',8,34,5,1,44)
 insert into [DocPAS].[dbo].[Users](UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo) values('AR369',N'सहाय्यक निबंधक, सहकारी संस्था (दुग्ध ) गडचिरोली','AR123',8,34,5,1,44)
 
+
+
+
+
+Create table Sub60(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Officer_Count int,
+Staff_Count int,
+Total_Staff int,
+Officer_Target int,
+Staff_Target int,
+Total_Target int,
+Current_Month_Aim int,
+Last_Month_Achieved int,
+Current_Month_Achieved int,
+Total_Achieved int,
+Current_Month_Percentage int,
+Appraisal_Marks int,
+Appraisal_Percentage int,
+Month int,
+Year int)
+go

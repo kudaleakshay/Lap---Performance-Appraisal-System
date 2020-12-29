@@ -350,7 +350,7 @@
 
 
 
-.center-group{
+.center-group {
     width: 90%;
     margin: auto;
 }
@@ -367,4 +367,9 @@
 
 .table th, .table td {
     vertical-align: middle !important;
+}
+
+.title-header {
+    color: #e77817 !important;
+    font-size: 20px;
 }

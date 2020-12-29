@@ -1,7 +1,7 @@
 ﻿@using Performance_Appraisal_System.Models
 @model Performance_Appraisal_System.ViewModels.AppraisalReportViewModel
 @{
-    ViewBag.Title = "DepartmentWiseReport";
+    ViewBag.Title = "मूल्यांक भारांक तक्ता";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br>
@@ -10,7 +10,7 @@
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
         <br>
         <br>
-        <h3 class="card-title text-center"><strong>जिल्हा उपनिबंधक सहकारी संस्था व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता खालीलप्रमाणे </strong></h3>
+        <h3 class="card-title text-center"><strong>विभागीय सहनिबंधक, जिल्हा उपनिबंधक व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता</strong></h3>
         <div class="card-text">
             <div class="center-group">
                 @using (Html.BeginForm("SubReports", "Report", FormMethod.Post, new { id = Model.Subjects }))
