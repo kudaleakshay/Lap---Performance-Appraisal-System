@@ -750,8 +750,6 @@ insert into [DocPAS].[dbo].[Users](UserName,Name,Password,DivisionId,DistrictId,
 
 
 
-
-
 Create table Sub60(
 RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
@@ -772,6 +770,25 @@ Month int,
 Year int,
 Remarks varchar(500))
 go
+
+
+Create table Sub61(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Target int,
+Current_Month_Aim int,
+Last_Month_Achieved int,
+Current_Month_Achieved int,
+Total_Achieved int,
+Current_Month_Percentage int,
+Appraisal_Marks int,
+Appraisal_Percentage int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
 
 
 Create table Sub24(
@@ -841,3 +858,221 @@ Remarks varchar(500),
 Month int,
 Year int)
 go
+
+
+Create table Sub56(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Target int,
+Current_Month_Aim int,
+Current_Month_Aim_Rs int,
+Last_Month_Achieved int,
+Last_Month_Achieved_Rs int,
+Current_Month_Achieved int,
+Current_Month_Achieved_Rs int,
+Total_Achieved int,
+Total_Achieved_Rs int,
+Current_Month_Percentage int,
+Appraisal_Marks int,
+Appraisal_Percentage int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+Create table Sub57(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Target int,
+Current_Month_Aim int,
+Current_Month_Aim_Rs int,
+Last_Month_Achieved int,
+Last_Month_Achieved_Rs int,
+Current_Month_Achieved int,
+Current_Month_Achieved_Rs int,
+Total_Achieved int,
+Total_Achieved_Rs int,
+Current_Month_Percentage int,
+Appraisal_Marks int,
+Appraisal_Percentage int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Sub58(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Target int,
+Current_Month_Aim int,
+Current_Month_Aim_Rs int,
+Last_Month_Achieved int,
+Last_Month_Achieved_Rs int,
+Current_Month_Achieved int,
+Current_Month_Achieved_Rs int,
+Total_Achieved int,
+Total_Achieved_Rs int,
+Current_Month_Percentage int,
+Appraisal_Marks int,
+Appraisal_Percentage int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+
+Create table Sub59(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Target int,
+Current_Month_Aim int,
+Current_Month_Aim_Rs int,
+Last_Month_Achieved int,
+Last_Month_Achieved_Rs int,
+Current_Month_Achieved int,
+Current_Month_Achieved_Rs int,
+Total_Achieved int,
+Total_Achieved_Rs int,
+Current_Month_Percentage int,
+Appraisal_Marks int,
+Appraisal_Percentage int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Sub53(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Target int,
+Total_Achieved int,
+Current_Month_Percentage int,
+Appraisal_Marks int,
+Appraisal_Percentage int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Sub54(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Target int,
+Total_Achieved int,
+Current_Month_Percentage int,
+Appraisal_Marks int,
+Appraisal_Percentage int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+Create table Sub35(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Target int,
+Last_Month_Achieved int,
+Current_Month_Achieved int,
+Total_Achieved int,
+Appraisal_Percentage int,
+Appraisal_Marks int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+Create table Sub36(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Eligible_for_Audit int,
+Current_Month_Audit int,
+Remaining_for_Audit int,
+Action_Taken int,
+Marks_Action_Taken int,
+Appraisal_Percentage int,
+Appraisal_Marks int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Sub37(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Last_Year_Pending int,
+Current_Year_Pending int,
+Total_Pending int,
+Current_Month_Reports int,
+Total_Reports int,
+Action_Taken int,
+Percentage_Action_Taken int,
+Appraisal_Marks int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+Create table Sub38(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Last_Year_Pending int,
+Current_Year_Pending int,
+Total_Pending int,
+Current_Month_Reports int,
+Total_Reports int,
+Action_Taken int,
+Percentage_Action_Taken int,
+Appraisal_Marks int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Sub39(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Last_Year_Remaining int,
+Current_Year_Remaining int,
+Total_Remaining int,
+Action_Taken int,
+Percentage_Action_Taken int,
+Appraisal_Marks int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Sub40(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Last_Year_Received int,
+Current_Year_Received int,
+Total_Received int,
+Action_Taken int,
+Percentage_Action_Taken int,
+Appraisal_Marks int,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+

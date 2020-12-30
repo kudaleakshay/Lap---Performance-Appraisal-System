@@ -135,6 +135,24 @@
           <Property Name="Year" Type="int" />
           <Property Name="Remarks" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="Sub61">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="Total_Target" Type="int" />
+          <Property Name="Current_Month_Aim" Type="int" />
+          <Property Name="Last_Month_Achieved" Type="int" />
+          <Property Name="Current_Month_Achieved" Type="int" />
+          <Property Name="Total_Achieved" Type="int" />
+          <Property Name="Current_Month_Percentage" Type="int" />
+          <Property Name="Appraisal_Marks" Type="int" />
+          <Property Name="Appraisal_Percentage" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="Subjects">
           <Key>
             <PropertyRef Name="SId" />
@@ -244,6 +262,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Sub61__UId__5CD6CB2B">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Sub61" Type="Self.Sub61" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub61">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="Subjects" Type="Self.Subjects" Multiplicity="*" />
@@ -304,6 +334,7 @@
           <EntitySet Name="Sub27" EntityType="Self.Sub27" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sub28" EntityType="Self.Sub28" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sub60" EntityType="Self.Sub60" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sub61" EntityType="Self.Sub61" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Districts__Divis__2C3393D0" Association="Self.FK__Districts__Divis__2C3393D0">
@@ -333,6 +364,10 @@
           <AssociationSet Name="FK__Sub60__UId__4BAC3F29" Association="Self.FK__Sub60__UId__4BAC3F29">
             <End Role="Users" EntitySet="Users" />
             <End Role="Sub60" EntitySet="Sub60" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sub61__UId__5CD6CB2B" Association="Self.FK__Sub61__UId__5CD6CB2B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Sub61" EntitySet="Sub61" />
           </AssociationSet>
           <AssociationSet Name="FK__Subjects__Depart__2F10007B" Association="Self.FK__Subjects__Depart__2F10007B">
             <End Role="Departments" EntitySet="Departments" />
@@ -432,6 +467,7 @@
           <NavigationProperty Name="Sub26" Relationship="DocPASModel.FK__Sub26__UId__5441852A" FromRole="User" ToRole="Sub26" />
           <NavigationProperty Name="Sub27" Relationship="DocPASModel.FK__Sub27__UId__571DF1D5" FromRole="User" ToRole="Sub27" />
           <NavigationProperty Name="Sub28" Relationship="DocPASModel.FK__Sub28__UId__59FA5E80" FromRole="User" ToRole="Sub28" />
+          <NavigationProperty Name="Sub61" Relationship="DocPASModel.FK__Sub61__UId__5CD6CB2B" FromRole="User" ToRole="Sub61" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -550,6 +586,11 @@
           <AssociationSet Name="FK__Sub28__UId__59FA5E80" Association="DocPASModel.FK__Sub28__UId__59FA5E80">
             <End Role="User" EntitySet="Users" />
             <End Role="Sub28" EntitySet="Sub28" />
+          </AssociationSet>
+          <EntitySet Name="Sub61" EntityType="DocPASModel.Sub61" />
+          <AssociationSet Name="FK__Sub61__UId__5CD6CB2B" Association="DocPASModel.FK__Sub61__UId__5CD6CB2B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sub61" EntitySet="Sub61" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Sub60">
@@ -723,6 +764,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Sub61">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Total_Target" Type="Int32" />
+          <Property Name="Current_Month_Aim" Type="Int32" />
+          <Property Name="Last_Month_Achieved" Type="Int32" />
+          <Property Name="Current_Month_Achieved" Type="Int32" />
+          <Property Name="Total_Achieved" Type="Int32" />
+          <Property Name="Current_Month_Percentage" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Int32" />
+          <Property Name="Appraisal_Percentage" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub61__UId__5CD6CB2B" FromRole="Sub61" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Sub61__UId__5CD6CB2B">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Sub61" Role="Sub61" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub61">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -892,6 +964,25 @@
                 <ScalarProperty Name="Achieved" ColumnName="Achieved" />
                 <ScalarProperty Name="Aim" ColumnName="Aim" />
                 <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub61">
+            <EntityTypeMapping TypeName="DocPASModel.Sub61">
+              <MappingFragment StoreEntitySet="Sub61">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Current_Month_Percentage" ColumnName="Current_Month_Percentage" />
+                <ScalarProperty Name="Total_Achieved" ColumnName="Total_Achieved" />
+                <ScalarProperty Name="Current_Month_Achieved" ColumnName="Current_Month_Achieved" />
+                <ScalarProperty Name="Last_Month_Achieved" ColumnName="Last_Month_Achieved" />
+                <ScalarProperty Name="Current_Month_Aim" ColumnName="Current_Month_Aim" />
+                <ScalarProperty Name="Total_Target" ColumnName="Total_Target" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="RId" ColumnName="RId" />
               </MappingFragment>

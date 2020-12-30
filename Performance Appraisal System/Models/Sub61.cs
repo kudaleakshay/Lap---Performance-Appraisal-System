@@ -14,40 +14,15 @@ namespace Performance_Appraisal_System.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel;
 
-    public partial class Sub60
+    public partial class Sub61
     {
         public int RId { get; set; }
         public Nullable<int> UId { get; set; }
 
-        [Required(ErrorMessage = "कृपया कार्यरत अधिकारी संख्या आवश्यक आहे")]
-        [DisplayName("अधिकारी संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
-        public Nullable<int> Officer_Count { get; set; }
-
-
-        [Required(ErrorMessage = "कृपया कार्यरत कर्मचारी  संख्या आवश्यक आहे")]
-        [DisplayName("कर्मचारी संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
-        public Nullable<int> Staff_Count { get; set; }
-
-
-        [Required(ErrorMessage = "कृपया एकुण कार्यरत संख्या आवश्यक आहे")]
-        [DisplayName("एकुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
-        public Nullable<int> Total_Staff { get; set; }
-
-        [Required(ErrorMessage = "कृपया अधिकारी लक्षांक आवश्यक आहे")]
-        [DisplayName("अधिकारी लक्षांक")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
-        public Nullable<int> Officer_Target { get; set; }
-
-        [Required(ErrorMessage = "कृपया कर्मचारी लक्षांक आवश्यक आहे")]
-        [DisplayName("कर्मचारी लक्षांक ")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
-        public Nullable<int> Staff_Target { get; set; }
-
-        [Required(ErrorMessage = "कृपया एकुण लक्षांक आवश्यक आहे")]
-        [DisplayName("एकुण लक्षांक")]
+       
+       
+        [Required(ErrorMessage = "कृपया  तपासणीचे उद्दीष्टे आवश्यक आहे")]
+        [DisplayName("निकषानुसार तपासणीचे उद्दीष्टे (वार्षिक कार्यालय तपासणी उद्दीष्टे 4)")]
         [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Target { get; set; }
 
@@ -56,18 +31,18 @@ namespace Performance_Appraisal_System.Models
         [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Aim { get; set; }
 
-        [Required(ErrorMessage = "कृपया तपासणी साध्य आवश्यक आहे")]
-        [DisplayName("मागील महिना अखेर सहकारी संख्या तपासणी साध्य")]
+        [Required(ErrorMessage = "कृपया कार्यालय तपासणी साध्य आवश्यक आहे")]
+        [DisplayName("मागील महिना अखेर कार्यालय तपासणी साध्य")]
         [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Achieved { get; set; }
 
-        [Required(ErrorMessage = "कृपया तपासणी साध्य आवश्यक आहे")]
-        [DisplayName("चालू महिना अखेर सहकारी संख्या तपासणी साध्य")]
+        [Required(ErrorMessage = "कृपया कार्यालय तपासणी साध्य आवश्यक आहे")]
+        [DisplayName("चालू महिना अखेर कार्यालय तपासणी साध्य")]
         [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Achieved { get; set; }
 
         [Required(ErrorMessage = "कृपया एकुण तपासणी साध्य आवश्यक आहे")]
-        [DisplayName("एकुण सहकारी संख्या तपासणी साध्य")]
+        [DisplayName("एकुण कार्यालय तपासणी साध्य")]
         [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Achieved { get; set; }
 

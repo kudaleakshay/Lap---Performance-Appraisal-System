@@ -29,6 +29,8 @@
         <AssociationConnector Association="DocPASModel.FK__Sub26__UId__5441852A" />
         <AssociationConnector Association="DocPASModel.FK__Sub27__UId__571DF1D5" />
         <AssociationConnector Association="DocPASModel.FK__Sub28__UId__59FA5E80" />
+        <EntityTypeShape EntityType="DocPASModel.Sub61" Width="1.5" PointX="7.5" PointY="27.625" />
+        <AssociationConnector Association="DocPASModel.FK__Sub61__UId__5CD6CB2B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

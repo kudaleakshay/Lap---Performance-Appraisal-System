@@ -40,17 +40,15 @@ namespace Performance_Appraisal_System.Models
         [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Appraisal_Marks { get; set; }
 
-        
+
         [DisplayName("शेरा")]
         public string Remarks { get; set; }
 
-       
+
         public Nullable<int> Month { get; set; }
 
         public Nullable<int> Year { get; set; }
 
-
-       
         public virtual User User { get; set; }
     }
 }

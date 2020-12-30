@@ -25,6 +25,7 @@ namespace Performance_Appraisal_System.Models
             this.Sub26 = new HashSet<Sub26>();
             this.Sub27 = new HashSet<Sub27>();
             this.Sub28 = new HashSet<Sub28>();
+            this.Sub61 = new HashSet<Sub61>();
         }
 
         public int UId { get; set; }
@@ -87,5 +88,7 @@ namespace Performance_Appraisal_System.Models
         public virtual ICollection<Sub27> Sub27 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sub28> Sub28 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sub61> Sub61 { get; set; }
     }
 }

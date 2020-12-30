@@ -22,13 +22,20 @@ namespace Performance_Appraisal_System.Controllers
                     return View("Subject60");
 
                 case 61:
-                    return View("Subject61", Reports);
+                    return View("Subject61");
             }
             return View();
         }
 
         [HttpPost]
         public ActionResult Subject60()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Subject61()
         {
             return View();
         }
