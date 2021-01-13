@@ -277,7 +277,17 @@ namespace Performance_Appraisal_System.Controllers
         public JsonResult GetReportData(int DepartmentId, int SubjectId, int Month, int Year)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = db.Sub60.Where(x => x.Month == Month & x.Year == Year).ToList();
+            var reports = (from s in db.Sub60
+                           join u in db.Users
+                           on s.UId equals u.UId
+                           where s.Month == Month
+                           select new
+                           {
+                               report = s,
+                               UserName = u.Name,
+                           }).ToList();
+
+
 
             switch (DepartmentId)
             {
@@ -472,7 +482,20 @@ namespace Performance_Appraisal_System.Controllers
                     switch (SubjectId)
                     {
                         case 60:
-                            reports = db.Sub60.Where(x => x.Month == Month & x.Year == Year).ToList();
+                            var reportList = db.Sub60.Where(x => x.Month == Month & x.Year == Year).ToList();
+                            reports = (from s in db.Sub60
+                                       join u in db.Users
+                                       on s.UId equals u.UId
+                                       where s.Month == Month
+                                             && s.Year == Year
+                                       orderby s.UId
+                                       select new
+                                           {
+                                               report = s,
+                                               UserName = u.Name,
+                                           }).ToList();
+
+                            /*reports = db.Sub60.Where(x => x.Month == Month & x.Year == Year).ToList();*/
                             break;
 
                         case 61:

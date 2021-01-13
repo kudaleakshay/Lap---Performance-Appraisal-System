@@ -16,12 +16,12 @@
             <div class="center-group">
                 <div class="form-row">
                     <div class="form-group col-md-6 center-div">
-                        @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, "-- महिना निवडा --", new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, new { @class = "form-control" })
                         @Html.ValidationMessageFor(temp => temp.Month)
                     </div>
 
                     <div class="form-group col-md-6 center-div">
-                        @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, "-- वर्ष निवडा --", new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, new { @class = "form-control" })
                         @Html.ValidationMessageFor(temp => temp.Year)
                     </div>
                 </div>
@@ -108,20 +108,20 @@
                 "datatype": "json"
             },
             "columns": [
-                { "data": "UId" },
-                { "data": "Officer_Count" },
-                { "data": "Staff_Count" },
-                { "data": "Total_Staff" },
-                { "data": "Officer_Target" },
-                { "data": "Staff_Target" },
-                { "data": "Total_Target" },
-                { "data": "Current_Month_Aim" },
-                { "data": "Last_Month_Achieved" },
-                { "data": "Current_Month_Achieved" },
-                { "data": "Total_Achieved" },
-                { "data": "Current_Month_Percentage" },
-                { "data": "Appraisal_Marks" },
-                { "data": "Appraisal_Percentage" }
+                { "data": "UserName" },
+                { "data": "report.Officer_Count" },
+                { "data": "report.Staff_Count" },
+                { "data": "report.Total_Staff" },
+                { "data": "report.Officer_Target" },
+                { "data": "report.Staff_Target" },
+                { "data": "report.Total_Target" },
+                { "data": "report.Current_Month_Aim" },
+                { "data": "report.Last_Month_Achieved" },
+                { "data": "report.Current_Month_Achieved" },
+                { "data": "report.Total_Achieved" },
+                { "data": "report.Current_Month_Percentage" },
+                { "data": "report.Appraisal_Marks" },
+                { "data": "report.Appraisal_Percentage" }
             ]
         });
     }
