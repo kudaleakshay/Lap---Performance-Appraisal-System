@@ -749,6 +749,37 @@ insert into [DocPAS].[dbo].[Users](UserName,Name,Password,DivisionId,DistrictId,
 insert into [DocPAS].[dbo].[Users](UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo) values('AR369',N'सहाय्यक निबंधक, सहकारी संस्था (दुग्ध ) गडचिरोली','AR123',8,34,5,1,44)
 
 
+create table SubMasterReports(
+Id int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Rid int,
+Month int,
+Year int,
+DepartmentId int references Departments(Id) on delete set null,
+Appraisal_Marks float,
+Remarks varchar(500))
+go
+
+
+create table MasterReports(
+Id int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Month int,
+Year int,
+Establishment float,
+Krushipat float,
+IT float,
+Budget float,
+Audit float,
+Law float,
+Housing float,
+Credit_Societies float,
+O_M float,
+Money_Lending float,
+Total float)
+go
+
+
 
 Create table Sub60(
 RId int primary key identity(1,1),
@@ -763,9 +794,9 @@ Current_Month_Aim int,
 Last_Month_Achieved int,
 Current_Month_Achieved int,
 Total_Achieved int,
-Current_Month_Percentage int,
-Appraisal_Marks int,
-Appraisal_Percentage int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -780,9 +811,9 @@ Current_Month_Aim int,
 Last_Month_Achieved int,
 Current_Month_Achieved int,
 Total_Achieved int,
-Current_Month_Percentage int,
-Appraisal_Marks int,
-Appraisal_Percentage int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -797,7 +828,7 @@ UId int references Users(UId) on delete set null,
 Marks int,
 Aim int,
 Achieved int,
-Appraisal_Marks int,
+Appraisal_Marks float,
 Remarks varchar(500),
 Month int,
 Year int)
@@ -811,7 +842,7 @@ UId int references Users(UId) on delete set null,
 Marks int,
 Aim int,
 Achieved int,
-Appraisal_Marks int,
+Appraisal_Marks float,
 Remarks varchar(500),
 Month int,
 Year int)
@@ -825,7 +856,7 @@ UId int references Users(UId) on delete set null,
 Marks int,
 Aim int,
 Achieved int,
-Appraisal_Marks int,
+Appraisal_Marks float,
 Remarks varchar(500),
 Month int,
 Year int)
@@ -839,7 +870,7 @@ UId int references Users(UId) on delete set null,
 Marks int,
 Aim int,
 Achieved int,
-Appraisal_Marks int,
+Appraisal_Marks float,
 Remarks varchar(500),
 Month int,
 Year int)
@@ -853,7 +884,7 @@ UId int references Users(UId) on delete set null,
 Marks int,
 Aim int,
 Achieved int,
-Appraisal_Marks int,
+Appraisal_Marks float,
 Remarks varchar(500),
 Month int,
 Year int)
@@ -872,9 +903,9 @@ Current_Month_Achieved int,
 Current_Month_Achieved_Rs int,
 Total_Achieved int,
 Total_Achieved_Rs int,
-Current_Month_Percentage int,
-Appraisal_Marks int,
-Appraisal_Percentage int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -893,9 +924,9 @@ Current_Month_Achieved int,
 Current_Month_Achieved_Rs int,
 Total_Achieved int,
 Total_Achieved_Rs int,
-Current_Month_Percentage int,
-Appraisal_Marks int,
-Appraisal_Percentage int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -915,9 +946,9 @@ Current_Month_Achieved int,
 Current_Month_Achieved_Rs int,
 Total_Achieved int,
 Total_Achieved_Rs int,
-Current_Month_Percentage int,
-Appraisal_Marks int,
-Appraisal_Percentage int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -938,9 +969,9 @@ Current_Month_Achieved int,
 Current_Month_Achieved_Rs int,
 Total_Achieved int,
 Total_Achieved_Rs int,
-Current_Month_Percentage int,
-Appraisal_Marks int,
-Appraisal_Percentage int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -953,9 +984,9 @@ RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
 Total_Target int,
 Total_Achieved int,
-Current_Month_Percentage int,
-Appraisal_Marks int,
-Appraisal_Percentage int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -968,9 +999,9 @@ RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
 Total_Target int,
 Total_Achieved int,
-Current_Month_Percentage int,
-Appraisal_Marks int,
-Appraisal_Percentage int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -984,8 +1015,8 @@ Total_Target int,
 Last_Month_Achieved int,
 Current_Month_Achieved int,
 Total_Achieved int,
-Appraisal_Percentage int,
-Appraisal_Marks int,
+Appraisal_Percentage float,
+Appraisal_Marks float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -999,9 +1030,10 @@ Eligible_for_Audit int,
 Current_Month_Audit int,
 Remaining_for_Audit int,
 Action_Taken int,
+Percentage_Action_Taken float,
 Marks_Action_Taken int,
-Appraisal_Percentage int,
-Appraisal_Marks int,
+Appraisal_Percentage float,
+Appraisal_Marks float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -1018,8 +1050,8 @@ Total_Pending int,
 Current_Month_Reports int,
 Total_Reports int,
 Action_Taken int,
-Percentage_Action_Taken int,
-Appraisal_Marks int,
+Percentage_Action_Taken float,
+Appraisal_Marks float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -1035,8 +1067,8 @@ Total_Pending int,
 Current_Month_Reports int,
 Total_Reports int,
 Action_Taken int,
-Percentage_Action_Taken int,
-Appraisal_Marks int,
+Percentage_Action_Taken float,
+Appraisal_Marks float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -1051,8 +1083,8 @@ Last_Year_Remaining int,
 Current_Year_Remaining int,
 Total_Remaining int,
 Action_Taken int,
-Percentage_Action_Taken int,
-Appraisal_Marks int,
+Percentage_Action_Taken float,
+Appraisal_Marks float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -1067,8 +1099,24 @@ Last_Year_Received int,
 Current_Year_Received int,
 Total_Received int,
 Action_Taken int,
-Percentage_Action_Taken int,
-Appraisal_Marks int,
+Percentage_Action_Taken float,
+Appraisal_Marks float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+----------------
+
+Create table Report53( 
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Annual_Target int,
+Total_Achieved int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
 Month int,
 Year int,
 Remarks varchar(500))
@@ -1076,3 +1124,217 @@ go
 
 
 
+Create table Report54(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Annual_Target int,
+Total_Achieved int,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Report56(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Annual_Target int,
+Current_Month_Aim_Count int,
+Current_Month_Aim_Amount float,
+Last_Month_Achieved_Count int,
+Last_Month_Achieved_Amount float,
+Current_Month_Achieved_Count int,
+Current_Month_Achieved_Amount float,
+Total_Count int,
+Total_Amount float,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+
+Create table Report58(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Annual_Target int,
+Current_Month_Aim_Count int,
+Current_Month_Aim_Amount float,
+Last_Month_Achieved_Count int,
+Last_Month_Achieved_Amount float,
+Current_Month_Achieved_Count int,
+Current_Month_Achieved_Amount float,
+Total_Count int,
+Total_Amount float,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+Create table Report59(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Annual_Target int,
+Current_Month_Aim_Count int,
+Current_Month_Aim_Amount float,
+Last_Month_Achieved_Count int,
+Last_Month_Achieved_Amount float,
+Current_Month_Achieved_Count int,
+Current_Month_Achieved_Amount float,
+Total_Count int,
+Total_Amount float,
+Current_Month_Percentage float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+
+Create table Report62(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Complaint int,
+Resolved_Complaint int,
+Resolved_Percentage float, 
+Appraisal_Marks float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+Create table Report63(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Application int,
+Resolved_Application int,
+Resolved_Percentage float, 
+Appraisal_Marks float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Report64(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Total_Appeal int,
+Resolved_Appeal int,
+Resolved_Percentage float, 
+Appraisal_Marks float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Report51(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Last_Month_Pending_Cases int,
+Current_Month_Received_Cases int,
+Total_Cases int,
+Last_Month_Cases_Aim int,
+Current_Month_Cases_Aim int,
+Total_Cases_Aim int,
+Last_Month_Disposed_Cases int,
+Current_Month_Disposed_Cases int,
+Total_Disposed_Cases int,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Report52  (
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Last_Month_Pending_Cases int,
+Current_Month_Received_Cases int,
+Total_Cases int,
+Total_Marks int,
+Last_Month_Cases_Aim int,
+Current_Month_Cases_Aim int,
+Total_Cases_Aim int,
+Last_Month_Aim int,
+Current_Month_Aim int,
+Total_Aim int,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+Create table Report17(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Loan_Allocation_Target float,
+Last_Month_Loan_Allocation float,
+Current_Month_Loan_Allocation float,
+Total_Loan_Allocation float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+
+
+Create table Report18(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Loan_Allocation_Target float,
+Last_Month_Loan_Allocation float,
+Current_Month_Loan_Allocation float,
+Total_Loan_Allocation float,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go
+
+
+
+
+Create table Report23(
+RId int primary key identity(1,1),
+UId int references Users(UId) on delete set null,
+Eligible_Members_Aim int,
+Last_Month_Members_Increase  int,
+Current_Month_Members_Increase int,
+Total_Members int,
+Appraisal_Marks float,
+Appraisal_Percentage float,
+Month int,
+Year int,
+Remarks varchar(500))
+go

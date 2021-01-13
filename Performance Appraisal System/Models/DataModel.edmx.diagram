@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e970e4207f274f3086b11b7b67219622" Name="Diagram1">
+      <Diagram DiagramId="e970e4207f274f3086b11b7b67219622" Name="Diagram1" ZoomLevel="75">
         <EntityTypeShape EntityType="DocPASModel.AppraisalTable" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DocPASModel.Department" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DocPASModel.District" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
@@ -17,8 +17,6 @@
         <AssociationConnector Association="DocPASModel.FK__Users__DistrictI__32E0915F" ManuallyRouted="false" />
         <AssociationConnector Association="DocPASModel.FK__Users__DivisionI__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="DocPASModel.FK__Users__RoleId__33D4B598" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DocPASModel.Sub60" Width="1.5" PointX="0.75" PointY="8.75" />
-        <AssociationConnector Association="DocPASModel.FK__Sub60__UId__4BAC3F29" />
         <EntityTypeShape EntityType="DocPASModel.Sub24" Width="1.5" PointX="7.5" PointY="16.5" />
         <EntityTypeShape EntityType="DocPASModel.Sub25" Width="1.5" PointX="7.5" PointY="9.125" />
         <EntityTypeShape EntityType="DocPASModel.Sub26" Width="1.5" PointX="7.5" PointY="20.25" />
@@ -31,6 +29,63 @@
         <AssociationConnector Association="DocPASModel.FK__Sub28__UId__59FA5E80" />
         <EntityTypeShape EntityType="DocPASModel.Sub61" Width="1.5" PointX="7.5" PointY="27.625" />
         <AssociationConnector Association="DocPASModel.FK__Sub61__UId__5CD6CB2B" />
+        <EntityTypeShape EntityType="DocPASModel.Sub35" Width="1.5" PointX="7.5" PointY="55.625" />
+        <EntityTypeShape EntityType="DocPASModel.Sub36" Width="1.5" PointX="7.5" PointY="37.625" />
+        <EntityTypeShape EntityType="DocPASModel.Sub37" Width="1.5" PointX="7.5" PointY="63.625" />
+        <EntityTypeShape EntityType="DocPASModel.Sub38" Width="1.5" PointX="7.5" PointY="41.875" />
+        <EntityTypeShape EntityType="DocPASModel.Sub39" Width="1.5" PointX="7.5" PointY="72" />
+        <EntityTypeShape EntityType="DocPASModel.Sub40" Width="1.5" PointX="7.5" PointY="46.375" />
+        <EntityTypeShape EntityType="DocPASModel.Sub53" Width="1.5" PointX="7.5" PointY="68" />
+        <EntityTypeShape EntityType="DocPASModel.Sub54" Width="1.5" PointX="7.5" PointY="59.75" />
+        <EntityTypeShape EntityType="DocPASModel.Sub56" Width="1.5" PointX="7.5" PointY="32.375" />
+        <EntityTypeShape EntityType="DocPASModel.Sub57" Width="1.5" PointX="7.5" PointY="81.25" />
+        <EntityTypeShape EntityType="DocPASModel.Sub58" Width="1.5" PointX="7.5" PointY="76" />
+        <EntityTypeShape EntityType="DocPASModel.Sub59" Width="1.5" PointX="7.5" PointY="50.375" />
+        <AssociationConnector Association="DocPASModel.FK__Sub35__UId__70DDC3D8" />
+        <AssociationConnector Association="DocPASModel.FK__Sub36__UId__73BA3083" />
+        <AssociationConnector Association="DocPASModel.FK__Sub37__UId__76969D2E" />
+        <AssociationConnector Association="DocPASModel.FK__Sub38__UId__797309D9" />
+        <AssociationConnector Association="DocPASModel.FK__Sub39__UId__7C4F7684" />
+        <AssociationConnector Association="DocPASModel.FK__Sub40__UId__7F2BE32F" />
+        <AssociationConnector Association="DocPASModel.FK__Sub53__UId__6B24EA82" />
+        <AssociationConnector Association="DocPASModel.FK__Sub54__UId__6E01572D" />
+        <AssociationConnector Association="DocPASModel.FK__Sub56__UId__5FB337D6" />
+        <AssociationConnector Association="DocPASModel.FK__Sub57__UId__628FA481" />
+        <AssociationConnector Association="DocPASModel.FK__Sub58__UId__656C112C" />
+        <AssociationConnector Association="DocPASModel.FK__Sub59__UId__68487DD7" />
+        <EntityTypeShape EntityType="DocPASModel.Sub60" Width="1.5" PointX="7.5" PointY="87.375" />
+        <AssociationConnector Association="DocPASModel.FK__Sub60__UId__4BAC3F29" />
+        <EntityTypeShape EntityType="DocPASModel.MasterReport" Width="1.5" PointX="7.5" PointY="100.875" />
+        <EntityTypeShape EntityType="DocPASModel.Report62" Width="1.5" PointX="7.5" PointY="97.25" />
+        <EntityTypeShape EntityType="DocPASModel.Report63" Width="1.5" PointX="7.5" PointY="93.5" />
+        <EntityTypeShape EntityType="DocPASModel.Report64" Width="1.5" PointX="7.5" PointY="105.75" />
+        <EntityTypeShape EntityType="DocPASModel.SubMasterReport" Width="1.5" PointX="10" PointY="1.75" />
+        <AssociationConnector Association="DocPASModel.FK__SubMaster__Depar__123EB7A3" />
+        <AssociationConnector Association="DocPASModel.FK__MasterRepor__UId__151B244E" />
+        <AssociationConnector Association="DocPASModel.FK__Report62__UId__08B54D69" />
+        <AssociationConnector Association="DocPASModel.FK__Report63__UId__0B91BA14" />
+        <AssociationConnector Association="DocPASModel.FK__Report64__UId__0E6E26BF" />
+        <AssociationConnector Association="DocPASModel.FK__SubMasterRe__UId__114A936A" />
+        <EntityTypeShape EntityType="DocPASModel.Report17" Width="1.5" PointX="7.5" PointY="119.125" />
+        <EntityTypeShape EntityType="DocPASModel.Report18" Width="1.5" PointX="7.5" PointY="109.875" />
+        <EntityTypeShape EntityType="DocPASModel.Report23" Width="1.5" PointX="7.5" PointY="123.25" />
+        <EntityTypeShape EntityType="DocPASModel.Report51" Width="1.5" PointX="7.5" PointY="150.75" />
+        <EntityTypeShape EntityType="DocPASModel.Report52" Width="1.5" PointX="7.5" PointY="127.25" />
+        <EntityTypeShape EntityType="DocPASModel.Report53" Width="1.5" PointX="7.5" PointY="141.625" />
+        <EntityTypeShape EntityType="DocPASModel.Report54" Width="1.5" PointX="7.5" PointY="132.5" />
+        <EntityTypeShape EntityType="DocPASModel.Report56" Width="1.5" PointX="7.5" PointY="145.5" />
+        <EntityTypeShape EntityType="DocPASModel.Report58" Width="1.5" PointX="7.5" PointY="136.375" />
+        <EntityTypeShape EntityType="DocPASModel.Report59" Width="1.5" PointX="7.5" PointY="113.875" />
+        <AssociationConnector Association="DocPASModel.FK__Report17__UId__2BFE89A6" />
+        <AssociationConnector Association="DocPASModel.FK__Report18__UId__2EDAF651" />
+        <AssociationConnector Association="DocPASModel.FK__Report23__UId__31B762FC" />
+        <AssociationConnector Association="DocPASModel.FK__Report51__UId__2645B050" />
+        <AssociationConnector Association="DocPASModel.FK__Report52__UId__29221CFB" />
+        <AssociationConnector Association="DocPASModel.FK__Report53__UId__17F790F9" />
+        <AssociationConnector Association="DocPASModel.FK__Report54__UId__1AD3FDA4" />
+        <AssociationConnector Association="DocPASModel.FK__Report56__UId__1DB06A4F" />
+        <AssociationConnector Association="DocPASModel.FK__Report58__UId__208CD6FA" />
+        <AssociationConnector Association="DocPASModel.FK__Report59__UId__236943A5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

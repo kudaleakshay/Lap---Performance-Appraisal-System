@@ -19,8 +19,6 @@ namespace Performance_Appraisal_System.Models
         public int RId { get; set; }
         public Nullable<int> UId { get; set; }
 
-       
-       
         [Required(ErrorMessage = "कृपया  तपासणीचे उद्दीष्टे आवश्यक आहे")]
         [DisplayName("निकषानुसार तपासणीचे उद्दीष्टे (वार्षिक कार्यालय तपासणी उद्दीष्टे 4)")]
         [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
@@ -65,6 +63,7 @@ namespace Performance_Appraisal_System.Models
 
         [DisplayName("शेरा")]
         public string Remarks { get; set; }
+
 
         public virtual User User { get; set; }
     }

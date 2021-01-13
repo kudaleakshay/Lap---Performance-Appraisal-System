@@ -96,7 +96,7 @@ namespace Performance_Appraisal_System.Controllers
         {
             DocPASEntities db = new DocPASEntities();
             List<User> UserList = new List<User>();
-            if (RoleId==5 || RoleId==6)
+            if (RoleId == 5 || RoleId == 6)
             {
                 UserList = db.Users.Where(x => x.DistrictId == SearchId && x.RoleId == 4).ToList();
             }
@@ -106,25 +106,16 @@ namespace Performance_Appraisal_System.Controllers
             }
             if (RoleId == 3)
             {
-                 UserList = db.Users.Where(x => x.RoleId == 2).ToList();
+                UserList = db.Users.Where(x => x.RoleId == 2).ToList();
             }
 
             ViewBag.UserList = new SelectList(UserList, "UID", "Name");
             return PartialView("DisplayReportingList");
         }
 
-        public ActionResult GetDivisionList()
-        {
-            DocPASEntities db = new DocPASEntities();
-            List<Division> DivisionList = db.Divisions.ToList();
-            ViewBag.DivisionList = new SelectList(DivisionList, "Id", "DivisionName");
-            return PartialView("DisplayDivisions");
-        }
-
         public ActionResult Logout()
         {
             Session.Contents.RemoveAll();
-
             return RedirectToAction("Index", "Home");
         }
 

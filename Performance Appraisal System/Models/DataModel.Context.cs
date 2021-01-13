@@ -12,8 +12,7 @@ namespace Performance_Appraisal_System.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using Performance_Appraisal_System.Models;
-
+    
     public partial class DocPASEntities : DbContext
     {
         public DocPASEntities()
@@ -33,12 +32,39 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Sub60> Sub60 { get; set; }
         public virtual DbSet<Sub24> Sub24 { get; set; }
         public virtual DbSet<Sub25> Sub25 { get; set; }
         public virtual DbSet<Sub26> Sub26 { get; set; }
         public virtual DbSet<Sub27> Sub27 { get; set; }
         public virtual DbSet<Sub28> Sub28 { get; set; }
         public virtual DbSet<Sub61> Sub61 { get; set; }
+        public virtual DbSet<Sub35> Sub35 { get; set; }
+        public virtual DbSet<Sub36> Sub36 { get; set; }
+        public virtual DbSet<Sub37> Sub37 { get; set; }
+        public virtual DbSet<Sub38> Sub38 { get; set; }
+        public virtual DbSet<Sub39> Sub39 { get; set; }
+        public virtual DbSet<Sub40> Sub40 { get; set; }
+        public virtual DbSet<Sub53> Sub53 { get; set; }
+        public virtual DbSet<Sub54> Sub54 { get; set; }
+        public virtual DbSet<Sub56> Sub56 { get; set; }
+        public virtual DbSet<Sub57> Sub57 { get; set; }
+        public virtual DbSet<Sub58> Sub58 { get; set; }
+        public virtual DbSet<Sub59> Sub59 { get; set; }
+        public virtual DbSet<Sub60> Sub60 { get; set; }
+        public virtual DbSet<MasterReport> MasterReports { get; set; }
+        public virtual DbSet<Report62> Report62 { get; set; }
+        public virtual DbSet<Report63> Report63 { get; set; }
+        public virtual DbSet<Report64> Report64 { get; set; }
+        public virtual DbSet<SubMasterReport> SubMasterReports { get; set; }
+        public virtual DbSet<Report17> Report17 { get; set; }
+        public virtual DbSet<Report18> Report18 { get; set; }
+        public virtual DbSet<Report23> Report23 { get; set; }
+        public virtual DbSet<Report51> Report51 { get; set; }
+        public virtual DbSet<Report52> Report52 { get; set; }
+        public virtual DbSet<Report53> Report53 { get; set; }
+        public virtual DbSet<Report54> Report54 { get; set; }
+        public virtual DbSet<Report56> Report56 { get; set; }
+        public virtual DbSet<Report58> Report58 { get; set; }
+        public virtual DbSet<Report59> Report59 { get; set; }
     }
 }

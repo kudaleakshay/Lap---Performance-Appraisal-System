@@ -11,6 +11,9 @@ namespace Performance_Appraisal_System.Controllers
 {
     public class ReportController : Controller
     {
+
+        private DocPASEntities db = new DocPASEntities();
+
         // GET: Report
         public ActionResult Index()
         {
@@ -20,31 +23,41 @@ namespace Performance_Appraisal_System.Controllers
         /*[CustomAuthorize("DDR")]*/
         public ActionResult DepartmentWiseReport()
         {
-            DocPASEntities db = new DocPASEntities();
-
             AppraisalReportViewModel reports = new AppraisalReportViewModel();
             reports.Subjects = db.Subjects.Where(x => x.Type == 1).ToList();
-
             return View(reports);
         }
 
         [HttpPost]
         public ActionResult SubReports(AppraisalReportViewModel reports)
         {
-            DocPASEntities db = new DocPASEntities();
+            DateTime date = new DateTime(2020, reports.Month, 1);
+
             AppraisalReportViewModel SubReports = new AppraisalReportViewModel();
-            SubReports.Month = reports.Month;
-            SubReports.Year = reports.Year;
             SubReports.DepartmentId = reports.DepartmentId;
+
+            Session["ReportMonth"] = reports.Month;
+            Session["ReportMonthName"] = date.ToString("MMMM");
+            Session["ReportYear"] = reports.Year;
+            Session["ReportDepartment"] = reports.DepartmentId;
+
+            
+            
+
             SubReports.Subjects = db.Subjects.Where(x => x.Type == 2 && x.DepartmentId == SubReports.DepartmentId).ToList();
+
+            Session["ReportDepartmentName"] = SubReports.Subjects.FirstOrDefault().Department.DepartmentName;
+
             return View(SubReports);
         }
 
 
+
         [HttpPost]
-        public ActionResult getReportForms(AppraisalReportViewModel reports)
+        public ActionResult GetReportForms(AppraisalReportViewModel reports)
         {
-            TempData["ReportData"] = reports;
+            Session["ReportSubDepartment"] = reports.SubSubjectId;
+
             switch (reports.DepartmentId)
             {
                 case 1:
@@ -79,17 +92,86 @@ namespace Performance_Appraisal_System.Controllers
 
             }
 
-            DocPASEntities db = new DocPASEntities();
-            AppraisalReportViewModel SubReports = new AppraisalReportViewModel();
-            SubReports.Month = reports.Month;
-            SubReports.Year = reports.Year;
-            SubReports.DepartmentId = reports.DepartmentId;
-            SubReports.Subjects = db.Subjects.Where(x => x.Type == 2 && x.DepartmentId == SubReports.DepartmentId).ToList();
+            return View();
+        }
 
-            return View(SubReports);
+
+        public ActionResult ViewAppraisalReports()
+        {
+            return View();
+        }
+
+        public ActionResult DepartmentReportSelection()
+        {
+            List<Department> DepartmentList = db.Departments.ToList();
+            ViewBag.DepartmentList = new SelectList(DepartmentList, "Id", "DepartmentName");
+            return View();
+        }
+
+        public ActionResult ViewOfficeWiseReport()
+        {
+            return View();
+        }
+
+        public JsonResult GetDepartmentWiseSubjects(int? DepartmentId)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = db.Subjects.Where(x => x.DepartmentId == DepartmentId && x.Type == 2).ToList();
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetSubjects()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = db.Subjects.Where(x => x.Type == 2).ToList();
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetTalukaWiseReport()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = db.Users.ToList();
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
 
 
+        public Boolean SaveSubMasterReports(SubMasterReport Report, int? RoleId)
+        {
+            Report.Remarks = getRemark(RoleId);
+            db.SubMasterReports.Add(Report);
+            db.SaveChanges();
+            return true;
+        }
+
+
+        public string getRemark(int? RoleId)
+        {
+            if(RoleId != null)
+            {
+                if (!IsReportInTime(RoleId))
+                    return "Late";
+            }
+            return "";
+        }
+
+
+        public Boolean IsReportInTime(int? RoleId)
+        {
+            int Current_Date = DateTime.Now.Day;
+
+            switch (RoleId)
+            {
+                case 3:
+                    return (Current_Date < 15);
+
+                case 4:
+                    return (Current_Date < 10);
+
+                case 5:
+                    return (Current_Date < 5);
+            }
+            return true;
+        }
     }
 }

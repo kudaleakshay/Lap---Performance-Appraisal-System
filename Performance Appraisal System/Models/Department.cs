@@ -18,6 +18,7 @@ namespace Performance_Appraisal_System.Models
         public Department()
         {
             this.Subjects = new HashSet<Subject>();
+            this.SubMasterReports = new HashSet<SubMasterReport>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace Performance_Appraisal_System.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subject> Subjects { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubMasterReport> SubMasterReports { get; set; }
     }
 }

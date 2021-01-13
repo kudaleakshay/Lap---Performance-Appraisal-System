@@ -6,6 +6,7 @@
     <title>@ViewBag.Title -सहकार आयुक्त आणि निबंधक</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/fevicon.ico" />
     @Styles.Render("~/Content/css")
+    <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/fontawesome")
 
@@ -24,13 +25,13 @@
                 <ul>
                     @if (Session["UserName"] != null)
                     {
-                        <li><a class="dropdown-toggle" href="/Account/Logout" id="loginLink">लॉग ऑऊट</a></li>
-                    }
-                    else
-                    {
-                        <li><a class="dropdown-toggle" href="/Account/Login" id="loginLink">लॉग इन</a></li>
-                    }
-                    
+        <li><a class="dropdown-toggle" href="/Account/Logout" id="loginLink">लॉग ऑऊट</a></li>
+ }
+    else
+    {
+<li><a class="dropdown-toggle" href="/Account/Login" id="loginLink">लॉग इन</a></li>
+}
+
                     <li><a href="/">मुख्य पृष्ठ</a></li>
                     <li>संपर्क</li>
                     <li><a href="#mainmenu">दिशादर्शकाकडे जा</a></li>
@@ -243,6 +244,8 @@
     @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
     @Scripts.Render("~/Scripts/umd/popper.js")
     @Scripts.Render("~/Scripts/bootstrap.js")
+    @Scripts.Render("~/Scripts/jquery.dataTables.min.js")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

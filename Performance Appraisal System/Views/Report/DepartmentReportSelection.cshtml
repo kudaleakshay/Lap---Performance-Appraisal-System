@@ -1,0 +1,96 @@
+﻿@using Performance_Appraisal_System.Models
+@model Performance_Appraisal_System.Models.Department
+@{
+    ViewBag.Title = "शाखा निहाय अहवाल";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding: 30px;background: white;">
+    <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+        <br>
+        <br>
+        <h5 class="card-title text-center"><strong>विभागीय सहनिबंधक, जिल्हा उपनिबंधक व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांचा मुल्यांकन प्रणाली अहवाल</strong></h5>
+        <hr>
+        <div class="card-text">
+
+            <div class="center-group">
+                <div class="form-row">
+                    <div class="form-group col-md-6 center-div">
+                        @if (ViewBag.DepartmentList != null)
+                        {
+                            @Html.DropDownListFor(model => model.Id, ViewBag.DepartmentList as SelectList, "-- कार्यासन निवडा --", new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessageFor(temp => temp.Id)
+                    </div>
+                </div>
+
+                <table id="ReportTable" class="table table-striped branchtable">
+                    <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
+                        <tr>
+                            <th>विषय</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        bindDataTable();
+
+    });
+
+
+    function bindDataTable() {
+
+        var DepartmentId = $("#Id").val();
+
+        table = $("#ReportTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: false,
+            fixedColumns: true,
+            language: {
+                emptyTable: "माहिती उपलब्ध नाही "
+            },
+            "ajax": {
+                "url": "/Report/GetDepartmentWiseSubjects?DepartmentId=" + DepartmentId,
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": "SubjectName" },
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<button style="float:right; margin-right:20px;" class = "btn btn-info">Show Report</button>';
+                    }
+                },
+            ]
+        });
+    }
+
+    $('#ReportTable tbody').on('click', 'button', function () {
+        var data = table.row($(this).parents('tr')).data();
+        window.open(
+            "/ReportView/GetReportView?DepartmentId=" + data.DepartmentId + "&SubjectId=" + data.SId, "_blank");
+    });
+
+
+    $("#Id").change(function () {
+        table.destroy();
+        bindDataTable();
+    })
+
+</script>
