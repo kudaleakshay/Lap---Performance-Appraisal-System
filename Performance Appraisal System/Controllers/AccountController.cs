@@ -34,6 +34,7 @@ namespace Performance_Appraisal_System.Controllers
                     if (user != null)
                     {
                         Session["User"] = user;
+                        Session["AppraisalType"] = user.AppraisalType;
                         Session["UserName"] = user.UserName;
                         return RedirectToAction("Index", "Home");
                     }

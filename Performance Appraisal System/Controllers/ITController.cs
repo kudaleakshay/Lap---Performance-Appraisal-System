@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Performance_Appraisal_System.Models;
 using Performance_Appraisal_System.ViewModels;
 
 namespace Performance_Appraisal_System.Controllers
 {
     public class ITController : Controller
     {
+        private DocPASEntities db = new DocPASEntities();
         // GET: IT
+        
         public ActionResult Index()
         {
-            AppraisalReportViewModel Reports = TempData["ReportData"] as AppraisalReportViewModel;
-
-            switch (Reports.SubSubjectId)
+            switch (Session["ReportSubDepartment"])
             {
                 case 24:
                     return View("Subject24");

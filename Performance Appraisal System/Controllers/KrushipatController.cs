@@ -12,30 +12,28 @@ namespace Performance_Appraisal_System.Controllers
         // GET: Krushipat
         public ActionResult Index()
         {
-            AppraisalReportViewModel Reports = TempData["ReportData"] as AppraisalReportViewModel;
-
-            switch (Reports.SubSubjectId)
+            switch (Session["ReportSubDepartment"])
             {
                 case 17:
-                    return View("Subject17", Reports);
+                    return View("Subject17");
 
                 case 18:
-                    return View("Subject18", Reports);
+                    return View("Subject18");
 
                 case 19:
-                    return View("Subject19", Reports);
+                    return View("Subject19");
 
                 case 20:
-                    return View("Subject20", Reports);
+                    return View("Subject20");
 
                 case 21:
-                    return View("Subject21", Reports);
+                    return View("Subject21");
 
                 case 22:
-                    return View("Subject22", Reports);
+                    return View("Subject22");
 
                 case 23:
-                    return View("Subject23", Reports);
+                    return View("Subject23");
             }
             return View();
         }

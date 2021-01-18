@@ -12,18 +12,16 @@ namespace Performance_Appraisal_System.Controllers
         // GET: MoneyLending
         public ActionResult Index()
         {
-            AppraisalReportViewModel Reports = TempData["ReportData"] as AppraisalReportViewModel;
-
-            switch (Reports.SubSubjectId)
+            switch (Session["ReportSubDepartment"])
             {
                 case 62:
-                    return View("Subject62", Reports);
+                    return View("Subject62");
 
                 case 63:
-                    return View("Subject63", Reports);
+                    return View("Subject63");
 
                 case 64:
-                    return View("Subject64", Reports);
+                    return View("Subject64");
             }
             return View();
         }

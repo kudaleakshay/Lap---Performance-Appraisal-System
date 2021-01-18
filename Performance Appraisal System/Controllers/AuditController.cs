@@ -12,9 +12,7 @@ namespace Performance_Appraisal_System.Controllers
         // GET: Audit
         public ActionResult Index()
         {
-            AppraisalReportViewModel Reports = TempData["ReportData"] as AppraisalReportViewModel;
-
-            switch (Reports.SubSubjectId)
+            switch (Session["ReportSubDepartment"])
             {
                 case 35:
                     return View("Subject35");

@@ -12,15 +12,13 @@ namespace Performance_Appraisal_System.Controllers
         // GET: Housing
         public ActionResult Index()
         {
-            AppraisalReportViewModel Reports = TempData["ReportData"] as AppraisalReportViewModel;
-
-            switch (Reports.SubSubjectId)
+            switch (Session["ReportSubDepartment"])
             {
                 case 51:
-                    return View("Subject51", Reports);
+                    return View("Subject51");
 
                 case 52:
-                    return View("Subject52", Reports);
+                    return View("Subject52");
             }
             return View();
         }

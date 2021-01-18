@@ -19,7 +19,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
-                            कार्यासनाचे नाव: <strong> माहिती तंत्रज्ञान </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> सहकारी संस्थांची नोंदणी </strong>
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"] </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> सहकारी संस्थांची नोंदणी </strong>
                         </div>
                     </div>
 
@@ -65,10 +65,9 @@
                         </div>
                     </div>
 
-                    @*
-                        <div class="center-div">
-                            <h5>एकुण गुण: <strong> 05 </strong></h5>
-                        </div>*@
+                    <div class="center-div">
+                        <h5>एकुण गुण: <strong> @Session["Marks"].ToString() </strong></h5>
+                    </div>
 
                 </div>
             </div>
@@ -160,5 +159,5 @@
 <script src="~/Scripts/jquery-3.5.1.min.js"></script>
 <script>
 
-   
+
 </script>

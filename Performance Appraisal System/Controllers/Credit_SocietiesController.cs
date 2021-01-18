@@ -12,30 +12,28 @@ namespace Performance_Appraisal_System.Controllers
         // GET: Credit_Societies
         public ActionResult Index()
         {
-            AppraisalReportViewModel Reports = TempData["ReportData"] as AppraisalReportViewModel;
-
-            switch (Reports.SubSubjectId)
+            switch (Session["ReportSubDepartment"])
             {
                 case 53:
-                    return View("Subject53", Reports);
+                    return View("Subject53");
 
                 case 54:
-                    return View("Subject54", Reports);
+                    return View("Subject54");
 
                 case 55:
-                    return View("Subject55", Reports);
+                    return View("Subject55");
 
                 case 56:
-                    return View("Subject56", Reports);
+                    return View("Subject56");
 
                 case 57:
-                    return View("Subject57", Reports);
+                    return View("Subject57");
 
                 case 58:
-                    return View("Subject58", Reports);
+                    return View("Subject58");
 
                 case 59:
-                    return View("Subject59", Reports);
+                    return View("Subject59");
                
             }
             return View();

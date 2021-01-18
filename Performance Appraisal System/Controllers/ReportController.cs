@@ -53,9 +53,7 @@ namespace Performance_Appraisal_System.Controllers
                                         select s).ToList();
                     break;
             }
-
-            /*List<Department> departments = db.DepartmentMappings.Where(x => x.Type1 == 1).ToList();*/
-            
+           
             return View(reports);
         }
 
@@ -72,9 +70,6 @@ namespace Performance_Appraisal_System.Controllers
             Session["ReportYear"] = reports.Year;
             Session["ReportDepartment"] = reports.DepartmentId;
 
-
-
-
             SubReports.Subjects = db.Subjects.Where(x => x.Type == 2 && x.DepartmentId == SubReports.DepartmentId).ToList();
 
             Session["ReportDepartmentName"] = SubReports.Subjects.FirstOrDefault().Department.DepartmentName;
@@ -82,11 +77,15 @@ namespace Performance_Appraisal_System.Controllers
             return View(SubReports);
         }
 
+     
 
         [HttpPost]
         public ActionResult GetReportForms(AppraisalReportViewModel reports)
         {
             Session["ReportSubDepartment"] = reports.SubSubjectId;
+
+
+            SetAppraisalType(reports.SubSubjectId, Convert.ToInt32(Session["AppraisalType"]));
 
             switch (reports.DepartmentId)
             {
@@ -215,5 +214,26 @@ namespace Performance_Appraisal_System.Controllers
             }
             return true;
         }
+
+        public void SetAppraisalType(int SId, int AppraisalType){
+            MarksMapping Marks = db.MarksMappings.Where(x => x.SId == SId).FirstOrDefault(); ;
+
+            switch (Session["AppraisalType"])
+            {
+                case 1:
+                    Session["Marks"] = Marks.Marks1;
+                    break;
+
+                case 2:
+                    Session["Marks"] = Marks.Marks2;
+                    break;
+
+                case 3:
+                    Session["Marks"] = Marks.Marks3;
+                    break;
+            }
+
+        }
+
     }
 }
