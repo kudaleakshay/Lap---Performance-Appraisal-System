@@ -32,7 +32,7 @@ namespace Performance_Appraisal_System.Controllers
                }), "Value", "Text", Current_Month);
 
 
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 10).Select(x =>
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year-2, 10).Select(x =>
                new SelectListItem()
                {
                    Text = x.ToString(),
@@ -49,7 +49,7 @@ namespace Performance_Appraisal_System.Controllers
 
 
 
-        public ActionResult GetReportView(int DepartmentId, int SubjectId)
+        public ActionResult GetDepartmentReportView(int DepartmentId, int SubjectId)
         {
             ViewBag.DepartmentId = DepartmentId;
             ViewBag.SubjectId = SubjectId;
@@ -274,7 +274,7 @@ namespace Performance_Appraisal_System.Controllers
 
 
 
-        public JsonResult GetReportData(int DepartmentId, int SubjectId, int Month, int Year)
+        public JsonResult GetDepartmentReportData(int DepartmentId, int SubjectId, int Month, int Year)
         {
             db.Configuration.ProxyCreationEnabled = false;
             var reports = (from s in db.Sub60
@@ -482,7 +482,6 @@ namespace Performance_Appraisal_System.Controllers
                     switch (SubjectId)
                     {
                         case 60:
-                            var reportList = db.Sub60.Where(x => x.Month == Month & x.Year == Year).ToList();
                             reports = (from s in db.Sub60
                                        join u in db.Users
                                        on s.UId equals u.UId
@@ -490,12 +489,11 @@ namespace Performance_Appraisal_System.Controllers
                                              && s.Year == Year
                                        orderby s.UId
                                        select new
-                                           {
-                                               report = s,
-                                               UserName = u.Name,
-                                           }).ToList();
+                                       {
+                                           report = s,
+                                           UserName = u.Name,
+                                       }).ToList();
 
-                            /*reports = db.Sub60.Where(x => x.Month == Month & x.Year == Year).ToList();*/
                             break;
 
                         case 61:
@@ -517,6 +515,37 @@ namespace Performance_Appraisal_System.Controllers
                     }
                     return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
             }
+
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult GetOfficeReportView(int UId)
+        {
+            User user = db.Users
+                                       .Where(u => u.UId == UId)
+                                       .FirstOrDefault();
+            ViewBag.UserName = user.Name;
+            ViewBag.UId = UId;
+            return View();
+        }
+
+
+        public JsonResult GetOfficeReportData(int UId, int Month, int Year)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = (from s in db.SubMasterReports
+                           join d in db.Departments
+                           on s.DepartmentId equals d.Id
+                           where s.Month == Month
+                                 && s.Year == Year
+                                 && s.UId == UId
+                           orderby s.DepartmentId
+                           select new
+                           {
+                               report = s,
+                               Department = d.DepartmentName,
+                           }).ToList();
 
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }

@@ -17,7 +17,7 @@ namespace Performance_Appraisal_System.Controllers
 
         public O_MController()
         {
-            var Current_Month = Convert.ToString(DateTime.Now.Month);
+            var Current_Month = Convert.ToString(DateTime.Now.Month-1);
             var Current_Year = Convert.ToString(DateTime.Now.Year);
 
             if(System.Web.HttpContext.Current.Session["ReportMonth"] != null)
@@ -99,13 +99,15 @@ namespace Performance_Appraisal_System.Controllers
 
         public SubMasterReport PrepareSubMasterReport(Sub60 Current_Report)
         {
-            SubMasterReport Report = new SubMasterReport();
-            Report.UId = Current_Report.UId;
-            Report.Rid = Current_Report.RId;
-            Report.Month = Current_Report.Month;
-            Report.Year = Current_Report.Month;
-            Report.DepartmentId = 9;
-            Report.Appraisal_Marks = Current_Report.Appraisal_Marks;
+            SubMasterReport Report = new SubMasterReport
+            {
+                UId = Current_Report.UId,
+                Rid = Current_Report.RId,
+                Month = Current_Report.Month,
+                Year = Current_Report.Month,
+                DepartmentId = 9,
+                Appraisal_Marks = Current_Report.Appraisal_Marks
+            };
 
             return Report;
         }

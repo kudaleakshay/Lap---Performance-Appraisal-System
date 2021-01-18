@@ -54,6 +54,7 @@
     function bindDataTable() {
 
         var DepartmentId = $("#Id").val();
+        $("#Id").blur();
 
         table = $("#ReportTable").DataTable({
             paging: false,
@@ -61,9 +62,10 @@
             processing: true,
             autoWidth: true,
             filter: false,
+            info: false,
             fixedColumns: true,
             language: {
-                emptyTable: "माहिती उपलब्ध नाही "
+                emptyTable: "कृपया कार्यसन निवडा"
             },
             "ajax": {
                 "url": "/Report/GetDepartmentWiseSubjects?DepartmentId=" + DepartmentId,

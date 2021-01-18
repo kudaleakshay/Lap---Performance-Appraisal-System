@@ -86,6 +86,30 @@
         <AssociationConnector Association="DocPASModel.FK__Report56__UId__1DB06A4F" />
         <AssociationConnector Association="DocPASModel.FK__Report58__UId__208CD6FA" />
         <AssociationConnector Association="DocPASModel.FK__Report59__UId__236943A5" />
+        <EntityTypeShape EntityType="DocPASModel.Report41" Width="1.5" PointX="7.5" PointY="160.625" />
+        <EntityTypeShape EntityType="DocPASModel.Report42" Width="1.5" PointX="7.5" PointY="173.5" />
+        <EntityTypeShape EntityType="DocPASModel.Report43" Width="1.5" PointX="7.5" PointY="177.5" />
+        <EntityTypeShape EntityType="DocPASModel.Report44" Width="1.5" PointX="7.5" PointY="194.75" />
+        <EntityTypeShape EntityType="DocPASModel.Report45" Width="1.5" PointX="7.5" PointY="156.75" />
+        <EntityTypeShape EntityType="DocPASModel.Report46" Width="1.5" PointX="7.5" PointY="164.75" />
+        <EntityTypeShape EntityType="DocPASModel.Report47" Width="1.5" PointX="7.5" PointY="190.5" />
+        <EntityTypeShape EntityType="DocPASModel.Report48" Width="1.5" PointX="7.5" PointY="186.125" />
+        <EntityTypeShape EntityType="DocPASModel.Report49" Width="1.5" PointX="7.5" PointY="181.625" />
+        <EntityTypeShape EntityType="DocPASModel.Report50" Width="1.5" PointX="7.5" PointY="169" />
+        <AssociationConnector Association="DocPASModel.FK__Report41__UId__3493CFA7" />
+        <AssociationConnector Association="DocPASModel.FK__Report42__UId__37703C52" />
+        <AssociationConnector Association="DocPASModel.FK__Report43__UId__3A4CA8FD" />
+        <AssociationConnector Association="DocPASModel.FK__Report44__UId__3D2915A8" />
+        <AssociationConnector Association="DocPASModel.FK__Report45__UId__40058253" />
+        <AssociationConnector Association="DocPASModel.FK__Report46__UId__47A6A41B" />
+        <AssociationConnector Association="DocPASModel.FK__Report47__UId__4A8310C6" />
+        <AssociationConnector Association="DocPASModel.FK__Report48__UId__4D5F7D71" />
+        <AssociationConnector Association="DocPASModel.FK__Report49__UId__503BEA1C" />
+        <AssociationConnector Association="DocPASModel.FK__Report50__UId__531856C7" />
+        <EntityTypeShape EntityType="DocPASModel.DepartmentMapping" Width="1.5" PointX="8" PointY="199.625" />
+        <EntityTypeShape EntityType="DocPASModel.MarksMapping" Width="1.5" PointX="10.25" PointY="5.875" />
+        <AssociationConnector Association="DocPASModel.FK__DepartmentM__DId__5CA1C101" />
+        <AssociationConnector Association="DocPASModel.FK__MarksMappin__SId__55F4C372" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

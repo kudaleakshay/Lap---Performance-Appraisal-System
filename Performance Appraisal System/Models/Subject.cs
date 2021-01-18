@@ -14,11 +14,19 @@ namespace Performance_Appraisal_System.Models
     
     public partial class Subject
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Subject()
+        {
+            this.MarksMappings = new HashSet<MarksMapping>();
+        }
+    
         public int SId { get; set; }
         public string SubjectName { get; set; }
         public Nullable<int> DepartmentId { get; set; }
         public Nullable<int> Type { get; set; }
     
         public virtual Department Department { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MarksMapping> MarksMappings { get; set; }
     }
 }

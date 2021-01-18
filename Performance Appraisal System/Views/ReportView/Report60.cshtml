@@ -34,12 +34,9 @@
 
                 <div style="overflow: auto;">
 
-                    <table id="ReportTable" class="table table-striped">
-                        <thead style="        text-align: center;
-        vertical-align: middle !important;
-        position: sticky;
-        top: 0;
-        font-size: 11px;">
+                    <table id="ReportTable" class="table">
+                        <thead style="text-align: center;
+        vertical-align: middle !important;">
                             <tr>
                                 <th rowspan="2">विभाग</th>
                                 <th colspan="3">अधिकारी/कर्मचारी संख्या</th>
@@ -83,7 +80,6 @@
         bindDataTable();
     });
 
-
     function bindDataTable() {
 
         var Month = $("#Month").val();
@@ -101,6 +97,14 @@
             fixedColumns: true,
             language: {
                 emptyTable: "माहिती उपलब्ध नाही "
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                if (aData.report.Remarks == "Late") {
+                    $('td', nRow).css('background-color', '#ffe6e6');
+                }
+                else {
+                    $('td', nRow).css('background-color', '#e6ffe6');
+                }
             },
             "ajax": {
                 "url": "/ReportView/GetReportData?DepartmentId=" + DepartmentId + "&SubjectId=" + SubjectId + "&Month=" + Month + "&Year=" + Year,
@@ -130,11 +134,13 @@
     $("#Month").change(function () {
         table.destroy();
         bindDataTable();
+        $("#Month").blur();
     })
 
     $("#Year").change(function () {
         table.destroy();
         bindDataTable();
+        $("#Year").blur();
     })
 
 </script>

@@ -23,8 +23,39 @@ namespace Performance_Appraisal_System.Controllers
         /*[CustomAuthorize("DDR")]*/
         public ActionResult DepartmentWiseReport()
         {
+            User user = (User)HttpContext.Session["User"];
+
             AppraisalReportViewModel reports = new AppraisalReportViewModel();
-            reports.Subjects = db.Subjects.Where(x => x.Type == 1).ToList();
+            reports.Subjects = (from s in db.Subjects
+                                join d in db.DepartmentMappings
+                                on s.DepartmentId equals d.DId
+                                where d.Type3 == 1
+                                && s.Type == 1
+                                select s).ToList();
+
+            switch (user.AppraisalType)
+            {
+                case 1:
+                    reports.Subjects = (from s in db.Subjects
+                                        join d in db.DepartmentMappings
+                                        on s.DepartmentId equals d.DId
+                                        where d.Type1 == 1
+                                        && s.Type == 1
+                                        select s).ToList();
+                    break;
+
+                case 2:
+                    reports.Subjects = (from s in db.Subjects
+                                        join d in db.DepartmentMappings
+                                        on s.DepartmentId equals d.DId
+                                        where d.Type2 == 1
+                                        && s.Type == 1
+                                        select s).ToList();
+                    break;
+            }
+
+            /*List<Department> departments = db.DepartmentMappings.Where(x => x.Type1 == 1).ToList();*/
+            
             return View(reports);
         }
 
@@ -41,8 +72,8 @@ namespace Performance_Appraisal_System.Controllers
             Session["ReportYear"] = reports.Year;
             Session["ReportDepartment"] = reports.DepartmentId;
 
-            
-            
+
+
 
             SubReports.Subjects = db.Subjects.Where(x => x.Type == 2 && x.DepartmentId == SubReports.DepartmentId).ToList();
 
@@ -50,7 +81,6 @@ namespace Performance_Appraisal_System.Controllers
 
             return View(SubReports);
         }
-
 
 
         [HttpPost]
@@ -108,9 +138,30 @@ namespace Performance_Appraisal_System.Controllers
             return View();
         }
 
-        public ActionResult ViewOfficeWiseReport()
+        public ActionResult OfficeReportSelection()
         {
             return View();
+        }
+
+        public JsonResult GetDJROfficeData()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = db.Users.Where(x => x.RoleId == 3).ToList();
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetDDROfficeData()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = db.Users.Where(x => x.RoleId == 4).ToList();
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetAROfficeData()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = db.Users.Where(x => x.RoleId == 5).ToList();
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetDepartmentWiseSubjects(int? DepartmentId)
@@ -127,15 +178,6 @@ namespace Performance_Appraisal_System.Controllers
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetTalukaWiseReport()
-        {
-            db.Configuration.ProxyCreationEnabled = false;
-            var reports = db.Users.ToList();
-            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
-        }
-
-
-
         public Boolean SaveSubMasterReports(SubMasterReport Report, int? RoleId)
         {
             Report.Remarks = getRemark(RoleId);
@@ -147,7 +189,7 @@ namespace Performance_Appraisal_System.Controllers
 
         public string getRemark(int? RoleId)
         {
-            if(RoleId != null)
+            if (RoleId != null)
             {
                 if (!IsReportInTime(RoleId))
                     return "Late";

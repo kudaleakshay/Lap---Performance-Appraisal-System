@@ -66,5 +66,17 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Report56> Report56 { get; set; }
         public virtual DbSet<Report58> Report58 { get; set; }
         public virtual DbSet<Report59> Report59 { get; set; }
+        public virtual DbSet<Report41> Report41 { get; set; }
+        public virtual DbSet<Report42> Report42 { get; set; }
+        public virtual DbSet<Report43> Report43 { get; set; }
+        public virtual DbSet<Report44> Report44 { get; set; }
+        public virtual DbSet<Report45> Report45 { get; set; }
+        public virtual DbSet<Report46> Report46 { get; set; }
+        public virtual DbSet<Report47> Report47 { get; set; }
+        public virtual DbSet<Report48> Report48 { get; set; }
+        public virtual DbSet<Report49> Report49 { get; set; }
+        public virtual DbSet<Report50> Report50 { get; set; }
+        public virtual DbSet<DepartmentMapping> DepartmentMappings { get; set; }
+        public virtual DbSet<MarksMapping> MarksMappings { get; set; }
     }
 }

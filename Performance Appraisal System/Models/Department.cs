@@ -19,6 +19,7 @@ namespace Performance_Appraisal_System.Models
         {
             this.Subjects = new HashSet<Subject>();
             this.SubMasterReports = new HashSet<SubMasterReport>();
+            this.DepartmentMappings = new HashSet<DepartmentMapping>();
         }
     
         public int Id { get; set; }
@@ -28,5 +29,7 @@ namespace Performance_Appraisal_System.Models
         public virtual ICollection<Subject> Subjects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubMasterReport> SubMasterReports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DepartmentMapping> DepartmentMappings { get; set; }
     }
 }

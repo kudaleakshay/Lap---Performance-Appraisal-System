@@ -825,7 +825,6 @@ go
 Create table Sub24(
 RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
-Marks int,
 Aim int,
 Achieved int,
 Appraisal_Marks float,
@@ -839,7 +838,6 @@ go
 Create table Sub25(
 RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
-Marks int,
 Aim int,
 Achieved int,
 Appraisal_Marks float,
@@ -853,7 +851,6 @@ go
 Create table Sub26(
 RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
-Marks int,
 Aim int,
 Achieved int,
 Appraisal_Marks float,
@@ -867,7 +864,6 @@ go
 Create table Sub27(
 RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
-Marks int,
 Aim int,
 Achieved int,
 Appraisal_Marks float,
@@ -881,7 +877,6 @@ go
 Create table Sub28(
 RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
-Marks int,
 Aim int,
 Achieved int,
 Appraisal_Marks float,
@@ -1338,3 +1333,348 @@ Month int,
 Year int,
 Remarks varchar(500))
 go
+
+
+
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djr_mum@rediffmail.com'
+Where UserName = 'DJR1'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djr_pna@rediffmail.com'
+Where UserName = 'DJR2'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djrkolhapur@gmail.com'
+Where UserName = 'DJR3'
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djr_nsk@rediffmail.com'
+Where UserName = 'DJR4'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djr_agd@rediffmail.com'
+Where UserName = 'DJR5'
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djr_ltr@rediffmail.com'
+Where UserName = 'DJR6'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djr_amravati@rediffmail.com'
+Where UserName = 'DJR7'
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djrngp2011@gmail.com'
+Where UserName = 'DJR8'
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'djrkkn@gmail.com'
+Where UserName = 'DJR9'
+
+
+
+
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr1mumbai@gmail.com'
+Where UserName = 'DDR1'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr2mumbai@gmail.com'
+Where UserName = 'DDR2'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_mum3@rediffmail.com'
+Where UserName = 'DDR3'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_mum4@rediffmail.com'
+Where UserName = 'DDR4'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddrpunecity@gmail.com'
+Where UserName = 'DDR5'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddrpunegramin@gmail.com'
+Where UserName = 'DDR6'
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_spr@rediffmail.com'
+Where UserName = 'DDR7'
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddrkolhapur@gmail.com'
+Where UserName = 'DDR8'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_sat@rediffmail.com'
+Where UserName = 'DDR9'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'sangliddr@gmail.com'
+Where UserName = 'DDR10'
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_nsk@rediffmail.com'
+Where UserName = 'DDR11'
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_dhule2017@gmail.com'
+Where UserName = 'DDR12'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_nbr@rediffmail.com'
+Where UserName = 'DDR13'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_jla@rediffmail.com'
+Where UserName = 'DDR14'
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_anr@rediffmail.com'
+Where UserName = 'DDR15'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_agd@rediffmail.com'
+Where UserName = 'DDR16'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_jal@rediffmail.com'
+Where UserName = 'DDR17'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_pbn@rediffmail.com'
+Where UserName = 'DDR18'
+
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_hli@rediffmail.com'
+Where UserName = 'DDR19'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_ltr@rediffmail.com'
+Where UserName = 'DDR20'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_osm@rediffmail.com'
+Where UserName = 'DDR21'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr.nnd@rediffmail.com'
+Where UserName = 'DDR22'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_bid@rediffmail.com'
+Where UserName = 'DDR23'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_amr@rediffmail.com'
+Where UserName = 'DDR24'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_akl@rediffmail.com'
+Where UserName = 'DDR25'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_wsm@rediffmail.com'
+Where UserName = 'DDR26'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_yml@rediffmail.com'
+Where UserName = 'DDR27'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_bud@rediffmail.com'
+Where UserName = 'DDR28'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddrnagpur_2008@rediffmail.com'
+Where UserName = 'DDR29'
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_wda@rediffmail.com'
+Where UserName = 'DDR30'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddrchandrapur@gmail.com'
+Where UserName = 'DDR31'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddrbhan_2010@rediffmail.com'
+Where UserName = 'DDR32'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_gnd@rediffmail.com'
+Where UserName = 'DDR33'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_gad@rediffmail.com'
+Where UserName = 'DDR34'
+
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr.palghar@gmail.com'
+Where UserName = 'DDR35'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr.tna@gmail.com'
+Where UserName = 'DDR36'
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_rtg@rediffmail.com'
+Where UserName = 'DDR37'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr_rgd@rediffmail.com'
+Where UserName = 'DDR38'
+
+
+Update [DocPAS].[dbo].[Users]
+SET Email = 'ddr.sin@gmail.com'
+Where UserName = 'DDR39'
+
+
+create table MarksMapping(
+Id int primary key identity(1,1),
+SId int references Subjects(SId) on delete set null,
+Marks1 int,
+Marks2 int,
+Marks3 int)
+go
+
+
+Insert into MarksMapping  values(11,10,10,10)
+Insert into MarksMapping  values(12,10,10,10)
+Insert into MarksMapping  values(13,10,10,10)
+Insert into MarksMapping  values(14,10,10,10)
+Insert into MarksMapping  values(15,10,10,10)
+Insert into MarksMapping  values(16,10,10,10)
+Insert into MarksMapping  values(17,10,10,10)
+Insert into MarksMapping  values(18,10,10,10)
+Insert into MarksMapping  values(19,10,10,10)
+Insert into MarksMapping  values(20,10,10,10)
+Insert into MarksMapping  values(21,10,10,10)
+Insert into MarksMapping  values(22,10,10,10)
+Insert into MarksMapping  values(23,10,10,10)
+Insert into MarksMapping  values(24,10,10,10)
+Insert into MarksMapping  values(25,10,10,10)
+Insert into MarksMapping  values(26,10,10,10)
+Insert into MarksMapping  values(27,10,10,10)
+Insert into MarksMapping  values(28,10,10,10)
+Insert into MarksMapping  values(29,10,10,10)
+Insert into MarksMapping  values(30,10,10,10)
+Insert into MarksMapping  values(31,10,10,10)
+Insert into MarksMapping  values(32,10,10,10)
+Insert into MarksMapping  values(33,10,10,10)
+Insert into MarksMapping  values(34,10,10,10)
+Insert into MarksMapping  values(35,10,10,10)
+Insert into MarksMapping  values(36,10,10,10)
+Insert into MarksMapping  values(37,10,10,10)
+Insert into MarksMapping  values(38,10,10,10)
+Insert into MarksMapping  values(39,10,10,10)
+Insert into MarksMapping  values(40,10,10,10)
+Insert into MarksMapping  values(41,10,10,10)
+Insert into MarksMapping  values(42,10,10,10)
+Insert into MarksMapping  values(43,10,10,10)
+Insert into MarksMapping  values(44,10,10,10)
+Insert into MarksMapping  values(45,10,10,10)
+Insert into MarksMapping  values(46,10,10,10)
+Insert into MarksMapping  values(47,10,10,10)
+Insert into MarksMapping  values(48,10,10,10)
+Insert into MarksMapping  values(49,10,10,10)
+Insert into MarksMapping  values(50,10,10,10)
+Insert into MarksMapping  values(51,10,10,10)
+Insert into MarksMapping  values(52,10,10,10)
+Insert into MarksMapping  values(53,10,10,10)
+Insert into MarksMapping  values(54,10,10,10)
+Insert into MarksMapping  values(55,10,10,10)
+Insert into MarksMapping  values(56,10,10,10)
+Insert into MarksMapping  values(57,10,10,10)
+Insert into MarksMapping  values(58,10,10,10)
+Insert into MarksMapping  values(59,10,10,10)
+Insert into MarksMapping  values(60,10,10,10)
+Insert into MarksMapping  values(61,10,10,10)
+Insert into MarksMapping  values(62,10,10,10)
+Insert into MarksMapping  values(63,10,10,10)
+Insert into MarksMapping  values(64,10,10,10)
+go
+
+
+create table DepartmentMapping(
+Id int primary key identity(1,1),
+DId int references Departments(Id) on delete set null,
+Type1 int,
+Type2 int,
+Type3 int)
+go
+
+
+Insert into DepartmentMapping  values(1,1,1,1)
+Insert into DepartmentMapping  values(2,1,1,1)
+Insert into DepartmentMapping  values(3,1,1,1)
+Insert into DepartmentMapping  values(4,1,1,1)
+Insert into DepartmentMapping  values(5,1,1,1)
+Insert into DepartmentMapping  values(6,1,1,1)
+Insert into DepartmentMapping  values(7,1,1,1)
+Insert into DepartmentMapping  values(8,1,1,1)
+Insert into DepartmentMapping  values(9,1,1,1)
+Insert into DepartmentMapping  values(10,1,1,1)
+go
+
+
