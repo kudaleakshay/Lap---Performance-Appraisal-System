@@ -22,7 +22,6 @@ namespace Performance_Appraisal_System.Models
             this.Sub26 = new HashSet<Sub26>();
             this.Sub27 = new HashSet<Sub27>();
             this.Sub28 = new HashSet<Sub28>();
-            this.Sub61 = new HashSet<Sub61>();
             this.Sub35 = new HashSet<Sub35>();
             this.Sub36 = new HashSet<Sub36>();
             this.Sub37 = new HashSet<Sub37>();
@@ -36,11 +35,9 @@ namespace Performance_Appraisal_System.Models
             this.Sub58 = new HashSet<Sub58>();
             this.Sub59 = new HashSet<Sub59>();
             this.Sub60 = new HashSet<Sub60>();
-            this.MasterReports = new HashSet<MasterReport>();
             this.Report62 = new HashSet<Report62>();
             this.Report63 = new HashSet<Report63>();
             this.Report64 = new HashSet<Report64>();
-            this.SubMasterReports = new HashSet<SubMasterReport>();
             this.Report17 = new HashSet<Report17>();
             this.Report18 = new HashSet<Report18>();
             this.Report23 = new HashSet<Report23>();
@@ -61,6 +58,9 @@ namespace Performance_Appraisal_System.Models
             this.Report48 = new HashSet<Report48>();
             this.Report49 = new HashSet<Report49>();
             this.Report50 = new HashSet<Report50>();
+            this.DepartmentMasterReports = new HashSet<DepartmentMasterReport>();
+            this.SubMasterReports = new HashSet<SubMasterReport>();
+            this.Sub61 = new HashSet<Sub61>();
         }
     
         public int UId { get; set; }
@@ -89,8 +89,6 @@ namespace Performance_Appraisal_System.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sub28> Sub28 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sub61> Sub61 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sub35> Sub35 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sub36> Sub36 { get; set; }
@@ -117,15 +115,11 @@ namespace Performance_Appraisal_System.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sub60> Sub60 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MasterReport> MasterReports { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report62> Report62 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report63> Report63 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report64> Report64 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SubMasterReport> SubMasterReports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report17> Report17 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -166,5 +160,11 @@ namespace Performance_Appraisal_System.Models
         public virtual ICollection<Report49> Report49 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report50> Report50 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DepartmentMasterReport> DepartmentMasterReports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubMasterReport> SubMasterReports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sub61> Sub61 { get; set; }
     }
 }

@@ -21,9 +21,9 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Last_Month_Achieved { get; set; }
         public Nullable<int> Current_Month_Achieved { get; set; }
         public Nullable<int> Total_Achieved { get; set; }
-        public Nullable<int> Current_Month_Percentage { get; set; }
-        public Nullable<int> Appraisal_Marks { get; set; }
-        public Nullable<int> Appraisal_Percentage { get; set; }
+        public Nullable<double> Current_Month_Percentage { get; set; }
+        public Nullable<double> Appraisal_Marks { get; set; }
+        public Nullable<double> Appraisal_Percentage { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public string Remarks { get; set; }

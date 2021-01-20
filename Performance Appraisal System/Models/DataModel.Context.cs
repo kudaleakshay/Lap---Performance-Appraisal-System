@@ -25,7 +25,6 @@ namespace Performance_Appraisal_System.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AppraisalTable> AppraisalTables { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Division> Divisions { get; set; }
@@ -37,7 +36,6 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Sub26> Sub26 { get; set; }
         public virtual DbSet<Sub27> Sub27 { get; set; }
         public virtual DbSet<Sub28> Sub28 { get; set; }
-        public virtual DbSet<Sub61> Sub61 { get; set; }
         public virtual DbSet<Sub35> Sub35 { get; set; }
         public virtual DbSet<Sub36> Sub36 { get; set; }
         public virtual DbSet<Sub37> Sub37 { get; set; }
@@ -51,11 +49,9 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Sub58> Sub58 { get; set; }
         public virtual DbSet<Sub59> Sub59 { get; set; }
         public virtual DbSet<Sub60> Sub60 { get; set; }
-        public virtual DbSet<MasterReport> MasterReports { get; set; }
         public virtual DbSet<Report62> Report62 { get; set; }
         public virtual DbSet<Report63> Report63 { get; set; }
         public virtual DbSet<Report64> Report64 { get; set; }
-        public virtual DbSet<SubMasterReport> SubMasterReports { get; set; }
         public virtual DbSet<Report17> Report17 { get; set; }
         public virtual DbSet<Report18> Report18 { get; set; }
         public virtual DbSet<Report23> Report23 { get; set; }
@@ -77,6 +73,10 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Report49> Report49 { get; set; }
         public virtual DbSet<Report50> Report50 { get; set; }
         public virtual DbSet<DepartmentMapping> DepartmentMappings { get; set; }
-        public virtual DbSet<MarksMapping> MarksMappings { get; set; }
+        public virtual DbSet<DepartmentMasterReport> DepartmentMasterReports { get; set; }
+        public virtual DbSet<SubMasterReport> SubMasterReports { get; set; }
+        public virtual DbSet<Sub61> Sub61 { get; set; }
+        public virtual DbSet<Departments_MarksMapping> Departments_MarksMapping { get; set; }
+        public virtual DbSet<Subjects_MarksMapping> Subjects_MarksMapping { get; set; }
     }
 }

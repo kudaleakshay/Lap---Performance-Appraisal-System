@@ -14,6 +14,7 @@ namespace Performance_Appraisal_System.Controllers
     public class O_MController : Controller
     {
         ReportController reportController = new ReportController();
+        private DocPASEntities db = new DocPASEntities();
 
         public O_MController()
         {
@@ -46,10 +47,21 @@ namespace Performance_Appraisal_System.Controllers
         // GET: O_M
         public ActionResult Index()
         {
+            var Month = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportMonth"]);
+            var Year = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportYear"]);
+
             switch (Session["ReportSubDepartment"])
             {
+                /*Here get DepartmentId, SubReportId ,Month, Year from DB
+                If Rec Present add it to Viewbag*/
+
                 case 60:
-                    return View("Subject60");
+
+                    Sub60 record = db.Sub60
+                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .FirstOrDefault();
+
+                    return View("Subject60", record);
 
                 case 61:
                     return View("Subject61");
@@ -71,17 +83,34 @@ namespace Performance_Appraisal_System.Controllers
                 db.Sub60.Add(Reports);
                 db.SaveChanges();
 
-                if (reportController.SaveSubMasterReports(PrepareSubMasterReport(Reports), user.RoleId))
+                if(Reports.NotApplicable == true)
+                {
+
+                }
+
+                SubMasterReport SubReport = new SubMasterReport
+                {
+                    UId = Reports.UId,
+                    Rid = Reports.RId,
+                    Month = Reports.Month,
+                    Year = Reports.Year,
+                    DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
+                    SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
+                    Total_Marks = Convert.ToInt32(Session["TotalMarks"]),
+                    Appraisal_Marks = Reports.Appraisal_Marks,
+                    Appraisal_Percentage = Reports.Appraisal_Percentage,
+                    Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToInt32(Session["TotalMarks"]) : 0,
+                };
+
+                if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
+                    //Add Error Handling
                     return RedirectToAction("Index", "Home");
                 }
-
-
-
             }
             else
             {
@@ -92,9 +121,47 @@ namespace Performance_Appraisal_System.Controllers
 
 
         [HttpPost]
-        public ActionResult Subject61()
+        public ActionResult Subject61(Sub61 Reports)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                DocPASEntities db = new DocPASEntities();
+
+                User user = (User)HttpContext.Session["User"];
+
+                Reports.UId = user.UId;
+
+                db.Sub61.Add(Reports);
+                db.SaveChanges();
+
+                SubMasterReport SubReport = new SubMasterReport
+                {
+                    UId = Reports.UId,
+                    Rid = Reports.RId,
+                    Month = Reports.Month,
+                    Year = Reports.Year,
+                    DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
+                    SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
+                    Total_Marks = Convert.ToInt32(Session["TotalMarks"]),
+                    Appraisal_Marks = Reports.Appraisal_Marks,
+                    Appraisal_Percentage = Reports.Appraisal_Percentage,
+                };
+
+                if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    //Add Error Handling
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("Error", "Invalid Data");
+                return View();
+            }
         }
 
         public SubMasterReport PrepareSubMasterReport(Sub60 Current_Report)
@@ -104,13 +171,14 @@ namespace Performance_Appraisal_System.Controllers
                 UId = Current_Report.UId,
                 Rid = Current_Report.RId,
                 Month = Current_Report.Month,
-                Year = Current_Report.Month,
-                DepartmentId = 9,
-                Appraisal_Marks = Current_Report.Appraisal_Marks
+                Year = Current_Report.Year,
+                DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
+                SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
+                Total_Marks = Convert.ToInt32(Session["TotalMarks"]),
+                Appraisal_Marks = Current_Report.Appraisal_Marks,
+                Appraisal_Percentage = Current_Report.Appraisal_Percentage,
             };
-
             return Report;
         }
-
     }
 }

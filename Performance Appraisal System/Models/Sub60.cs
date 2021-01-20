@@ -32,7 +32,8 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public string Remarks { get; set; }
-    
+        public bool NotApplicable { get; set; }
+
         public virtual User User { get; set; }
     }
 }

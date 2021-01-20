@@ -12,9 +12,14 @@ namespace Performance_Appraisal_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AppraisalTable
+    public partial class Departments_MarksMapping
     {
         public int Id { get; set; }
-        public string TableName { get; set; }
+        public Nullable<int> DId { get; set; }
+        public Nullable<int> Marks1 { get; set; }
+        public Nullable<int> Marks2 { get; set; }
+        public Nullable<int> Marks3 { get; set; }
+    
+        public virtual Subject Subject { get; set; }
     }
 }

@@ -32,12 +32,12 @@ namespace Performance_Appraisal_System.Controllers
                }), "Value", "Text", Current_Month);
 
 
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year-2, 10).Select(x =>
-               new SelectListItem()
-               {
-                   Text = x.ToString(),
-                   Value = x.ToString()
-               }), "Value", "Text", Current_Year);
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year - 2, 10).Select(x =>
+                 new SelectListItem()
+                 {
+                     Text = x.ToString(),
+                     Value = x.ToString()
+                 }), "Value", "Text", Current_Year);
 
         }
 
@@ -46,7 +46,6 @@ namespace Performance_Appraisal_System.Controllers
         {
             return View();
         }
-
 
 
         public ActionResult GetDepartmentReportView(int DepartmentId, int SubjectId)
@@ -534,16 +533,16 @@ namespace Performance_Appraisal_System.Controllers
         public JsonResult GetOfficeReportData(int UId, int Month, int Year)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = (from s in db.SubMasterReports
+            var reports = (from r in db.DepartmentMasterReports
                            join d in db.Departments
-                           on s.DepartmentId equals d.Id
-                           where s.Month == Month
-                                 && s.Year == Year
-                                 && s.UId == UId
-                           orderby s.DepartmentId
+                           on r.DepartmentId equals d.Id
+                           where r.Month == Month
+                                 && r.Year == Year
+                                 && r.UId == UId
+                           orderby r.DepartmentId
                            select new
                            {
-                               report = s,
+                               report = r,
                                Department = d.DepartmentName,
                            }).ToList();
 

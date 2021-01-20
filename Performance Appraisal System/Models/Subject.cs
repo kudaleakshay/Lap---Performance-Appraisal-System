@@ -17,7 +17,9 @@ namespace Performance_Appraisal_System.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Subject()
         {
-            this.MarksMappings = new HashSet<MarksMapping>();
+            this.SubMasterReports = new HashSet<SubMasterReport>();
+            this.Departments_MarksMapping = new HashSet<Departments_MarksMapping>();
+            this.Subjects_MarksMapping = new HashSet<Subjects_MarksMapping>();
         }
     
         public int SId { get; set; }
@@ -27,6 +29,10 @@ namespace Performance_Appraisal_System.Models
     
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MarksMapping> MarksMappings { get; set; }
+        public virtual ICollection<SubMasterReport> SubMasterReports { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Departments_MarksMapping> Departments_MarksMapping { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Subjects_MarksMapping> Subjects_MarksMapping { get; set; }
     }
 }

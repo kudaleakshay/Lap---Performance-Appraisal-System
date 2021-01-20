@@ -12,14 +12,19 @@ namespace Performance_Appraisal_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MarksMapping
+    public partial class DepartmentMasterReport
     {
         public int Id { get; set; }
-        public Nullable<int> SId { get; set; }
-        public Nullable<int> Marks1 { get; set; }
-        public Nullable<int> Marks2 { get; set; }
-        public Nullable<int> Marks3 { get; set; }
+        public Nullable<int> UId { get; set; }
+        public Nullable<int> Month { get; set; }
+        public Nullable<int> Year { get; set; }
+        public Nullable<int> DepartmentId { get; set; }
+        public Nullable<double> Appraisal_Marks { get; set; }
+        public Nullable<double> Appraisal_Percentage { get; set; }
+        public Nullable<double> Total_Marks { get; set; }
+        public string Remarks { get; set; }
     
-        public virtual Subject Subject { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual User User { get; set; }
     }
 }

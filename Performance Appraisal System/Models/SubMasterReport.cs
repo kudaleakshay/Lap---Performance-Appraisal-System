@@ -20,10 +20,15 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public Nullable<int> DepartmentId { get; set; }
+        public Nullable<int> SubjectId { get; set; }
         public Nullable<double> Appraisal_Marks { get; set; }
+        public Nullable<double> Appraisal_Percentage { get; set; }
+        public Nullable<double> Total_Marks { get; set; }
         public string Remarks { get; set; }
+        public Nullable<double> Not_Applicable_Marks { get; set; }
     
         public virtual Department Department { get; set; }
+        public virtual Subject Subject { get; set; }
         public virtual User User { get; set; }
     }
 }

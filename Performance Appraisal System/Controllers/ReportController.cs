@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +14,35 @@ namespace Performance_Appraisal_System.Controllers
     {
 
         private DocPASEntities db = new DocPASEntities();
+
+        public ReportController()
+        {
+            var Current_Month = Convert.ToString(DateTime.Now.Month-1);
+            var Current_Year = Convert.ToString(DateTime.Now.Year);
+            
+
+            if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
+            {
+                Current_Month = Convert.ToString(System.Web.HttpContext.Current.Session["ReportMonth"]);
+                Current_Year = Convert.ToString(System.Web.HttpContext.Current.Session["ReportYear"]);
+            }
+
+            ViewBag.Months = new SelectList(Enumerable.Range(1, 12).Select(x =>
+               new SelectListItem()
+               {
+                   Text = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames[x - 1],
+                   Value = x.ToString()
+               }), "Value", "Text", Current_Month);
+
+
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year - 2, 10).Select(x =>
+                 new SelectListItem()
+                 {
+                     Text = x.ToString(),
+                     Value = x.ToString()
+                 }), "Value", "Text", Current_Year);
+
+        }
 
         // GET: Report
         public ActionResult Index()
@@ -78,14 +108,12 @@ namespace Performance_Appraisal_System.Controllers
         }
 
      
-
         [HttpPost]
         public ActionResult GetReportForms(AppraisalReportViewModel reports)
         {
             Session["ReportSubDepartment"] = reports.SubSubjectId;
 
-
-            SetAppraisalType(reports.SubSubjectId, Convert.ToInt32(Session["AppraisalType"]));
+            SetAppraisalMarks(reports.SubSubjectId, Convert.ToInt32(Session["AppraisalType"]));
 
             switch (reports.DepartmentId)
             {
@@ -215,21 +243,21 @@ namespace Performance_Appraisal_System.Controllers
             return true;
         }
 
-        public void SetAppraisalType(int SId, int AppraisalType){
-            MarksMapping Marks = db.MarksMappings.Where(x => x.SId == SId).FirstOrDefault(); ;
+        public void SetAppraisalMarks(int SId, int AppraisalType){
+            Subjects_MarksMapping Marks = db.Subjects_MarksMapping.Where(x => x.SId == SId).FirstOrDefault(); ;
 
             switch (Session["AppraisalType"])
             {
                 case 1:
-                    Session["Marks"] = Marks.Marks1;
+                    Session["TotalMarks"] = Marks.Marks1;
                     break;
 
                 case 2:
-                    Session["Marks"] = Marks.Marks2;
+                    Session["TotalMarks"] = Marks.Marks2;
                     break;
 
                 case 3:
-                    Session["Marks"] = Marks.Marks3;
+                    Session["TotalMarks"] = Marks.Marks3;
                     break;
             }
 

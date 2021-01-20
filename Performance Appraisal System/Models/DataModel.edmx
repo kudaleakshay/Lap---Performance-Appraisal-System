@@ -5,13 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DocPASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AppraisalTables">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TableName" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="DepartmentMapping">
           <Key>
             <PropertyRef Name="Id" />
@@ -22,12 +15,36 @@
           <Property Name="Type2" Type="int" />
           <Property Name="Type3" Type="int" />
         </EntityType>
+        <EntityType Name="DepartmentMasterReports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UId" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="Appraisal_Marks" Type="float" />
+          <Property Name="Appraisal_Percentage" Type="float" />
+          <Property Name="Total_Marks" Type="float" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DepartmentName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Departments_MarksMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DId" Type="int" />
+          <Property Name="Marks1" Type="int" />
+          <Property Name="Marks2" Type="int" />
+          <Property Name="Marks3" Type="int" />
         </EntityType>
         <EntityType Name="Districts">
           <Key>
@@ -44,36 +61,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DivisionName" Type="nvarchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="MarksMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SId" Type="int" />
-          <Property Name="Marks1" Type="int" />
-          <Property Name="Marks2" Type="int" />
-          <Property Name="Marks3" Type="int" />
-        </EntityType>
-        <EntityType Name="MasterReports">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UId" Type="int" />
-          <Property Name="Month" Type="int" />
-          <Property Name="Year" Type="int" />
-          <Property Name="Establishment" Type="float" />
-          <Property Name="Krushipat" Type="float" />
-          <Property Name="IT" Type="float" />
-          <Property Name="Budget" Type="float" />
-          <Property Name="Audit" Type="float" />
-          <Property Name="Law" Type="float" />
-          <Property Name="Housing" Type="float" />
-          <Property Name="Credit_Societies" Type="float" />
-          <Property Name="O_M" Type="float" />
-          <Property Name="Money_Lending" Type="float" />
-          <Property Name="Total" Type="float" />
         </EntityType>
         <EntityType Name="Report17">
           <Key>
@@ -791,6 +778,7 @@
           <Property Name="Month" Type="int" />
           <Property Name="Year" Type="int" />
           <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="NotApplicable" Type="bit" />
         </EntityType>
         <EntityType Name="Sub61">
           <Key>
@@ -803,9 +791,9 @@
           <Property Name="Last_Month_Achieved" Type="int" />
           <Property Name="Current_Month_Achieved" Type="int" />
           <Property Name="Total_Achieved" Type="int" />
-          <Property Name="Current_Month_Percentage" Type="int" />
-          <Property Name="Appraisal_Marks" Type="int" />
-          <Property Name="Appraisal_Percentage" Type="int" />
+          <Property Name="Current_Month_Percentage" Type="float" />
+          <Property Name="Appraisal_Marks" Type="float" />
+          <Property Name="Appraisal_Percentage" Type="float" />
           <Property Name="Month" Type="int" />
           <Property Name="Year" Type="int" />
           <Property Name="Remarks" Type="varchar" MaxLength="500" />
@@ -819,6 +807,16 @@
           <Property Name="DepartmentId" Type="int" />
           <Property Name="Type" Type="int" />
         </EntityType>
+        <EntityType Name="Subjects_MarksMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SId" Type="int" />
+          <Property Name="Marks1" Type="int" />
+          <Property Name="Marks2" Type="int" />
+          <Property Name="Marks3" Type="int" />
+        </EntityType>
         <EntityType Name="SubMasterReports">
           <Key>
             <PropertyRef Name="Id" />
@@ -829,8 +827,12 @@
           <Property Name="Month" Type="int" />
           <Property Name="Year" Type="int" />
           <Property Name="DepartmentId" Type="int" />
+          <Property Name="SubjectId" Type="int" />
           <Property Name="Appraisal_Marks" Type="float" />
+          <Property Name="Appraisal_Percentage" Type="float" />
+          <Property Name="Total_Marks" Type="float" />
           <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Not_Applicable_Marks" Type="float" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -848,6 +850,18 @@
           <Property Name="AppraisalType" Type="int" />
           <Property Name="ReportTo" Type="int" />
         </EntityType>
+        <Association Name="FK__Departmen__Depar__6166761E">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="DepartmentMasterReports" Type="Self.DepartmentMasterReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentMasterReports">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DepartmentM__DId__5CA1C101">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="DepartmentMapping" Type="Self.DepartmentMapping" Multiplicity="*" />
@@ -856,6 +870,30 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="DepartmentMapping">
+              <PropertyRef Name="DId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DepartmentM__UId__607251E5">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="DepartmentMasterReports" Type="Self.DepartmentMasterReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="DepartmentMasterReports">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Departments__DId__7C1A6C5A">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+          <End Role="Departments_MarksMapping" Type="Self.Departments_MarksMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="Departments_MarksMapping">
               <PropertyRef Name="DId" />
             </Dependent>
           </ReferentialConstraint>
@@ -869,30 +907,6 @@
             </Principal>
             <Dependent Role="Districts">
               <PropertyRef Name="DivisionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MarksMappin__SId__55F4C372">
-          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
-          <End Role="MarksMapping" Type="Self.MarksMapping" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subjects">
-              <PropertyRef Name="SId" />
-            </Principal>
-            <Dependent Role="MarksMapping">
-              <PropertyRef Name="SId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MasterRepor__UId__151B244E">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="MasterReports" Type="Self.MasterReports" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="MasterReports">
-              <PropertyRef Name="UId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1388,7 +1402,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sub61__UId__5CD6CB2B">
+        <Association Name="FK__Sub61__UId__6BE40491">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Sub61" Type="Self.Sub61" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1412,7 +1426,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SubMaster__Depar__123EB7A3">
+        <Association Name="FK__Subjects_Ma__SId__793DFFAF">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+          <End Role="Subjects_MarksMapping" Type="Self.Subjects_MarksMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="Subjects_MarksMapping">
+              <PropertyRef Name="SId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubMaster__Depar__65370702">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="SubMasterReports" Type="Self.SubMasterReports" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1424,7 +1450,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SubMasterRe__UId__114A936A">
+        <Association Name="FK__SubMaster__Subje__662B2B3B">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+          <End Role="SubMasterReports" Type="Self.SubMasterReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="SubMasterReports">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubMasterRe__UId__6442E2C9">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="SubMasterReports" Type="Self.SubMasterReports" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1473,13 +1511,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DocPASModelStoreContainer">
-          <EntitySet Name="AppraisalTables" EntityType="Self.AppraisalTables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepartmentMapping" EntityType="Self.DepartmentMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentMasterReports" EntityType="Self.DepartmentMasterReports" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments_MarksMapping" EntityType="Self.Departments_MarksMapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Divisions" EntityType="Self.Divisions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MarksMapping" EntityType="Self.MarksMapping" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MasterReports" EntityType="Self.MasterReports" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Report17" EntityType="Self.Report17" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Report18" EntityType="Self.Report18" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Report23" EntityType="Self.Report23" Schema="dbo" store:Type="Tables" />
@@ -1524,23 +1561,28 @@
           <EntitySet Name="Sub60" EntityType="Self.Sub60" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sub61" EntityType="Self.Sub61" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects_MarksMapping" EntityType="Self.Subjects_MarksMapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubMasterReports" EntityType="Self.SubMasterReports" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Departmen__Depar__6166761E" Association="Self.FK__Departmen__Depar__6166761E">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="DepartmentMasterReports" EntitySet="DepartmentMasterReports" />
+          </AssociationSet>
           <AssociationSet Name="FK__DepartmentM__DId__5CA1C101" Association="Self.FK__DepartmentM__DId__5CA1C101">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="DepartmentMapping" EntitySet="DepartmentMapping" />
           </AssociationSet>
+          <AssociationSet Name="FK__DepartmentM__UId__607251E5" Association="Self.FK__DepartmentM__UId__607251E5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DepartmentMasterReports" EntitySet="DepartmentMasterReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Departments__DId__7C1A6C5A" Association="Self.FK__Departments__DId__7C1A6C5A">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Departments_MarksMapping" EntitySet="Departments_MarksMapping" />
+          </AssociationSet>
           <AssociationSet Name="FK__Districts__Divis__2C3393D0" Association="Self.FK__Districts__Divis__2C3393D0">
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Districts" EntitySet="Districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MarksMappin__SId__55F4C372" Association="Self.FK__MarksMappin__SId__55F4C372">
-            <End Role="Subjects" EntitySet="Subjects" />
-            <End Role="MarksMapping" EntitySet="MarksMapping" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MasterRepor__UId__151B244E" Association="Self.FK__MasterRepor__UId__151B244E">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="MasterReports" EntitySet="MasterReports" />
           </AssociationSet>
           <AssociationSet Name="FK__Report17__UId__2BFE89A6" Association="Self.FK__Report17__UId__2BFE89A6">
             <End Role="Users" EntitySet="Users" />
@@ -1706,7 +1748,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Sub60" EntitySet="Sub60" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sub61__UId__5CD6CB2B" Association="Self.FK__Sub61__UId__5CD6CB2B">
+          <AssociationSet Name="FK__Sub61__UId__6BE40491" Association="Self.FK__Sub61__UId__6BE40491">
             <End Role="Users" EntitySet="Users" />
             <End Role="Sub61" EntitySet="Sub61" />
           </AssociationSet>
@@ -1714,11 +1756,19 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Subjects" EntitySet="Subjects" />
           </AssociationSet>
-          <AssociationSet Name="FK__SubMaster__Depar__123EB7A3" Association="Self.FK__SubMaster__Depar__123EB7A3">
+          <AssociationSet Name="FK__Subjects_Ma__SId__793DFFAF" Association="Self.FK__Subjects_Ma__SId__793DFFAF">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Subjects_MarksMapping" EntitySet="Subjects_MarksMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubMaster__Depar__65370702" Association="Self.FK__SubMaster__Depar__65370702">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="SubMasterReports" EntitySet="SubMasterReports" />
           </AssociationSet>
-          <AssociationSet Name="FK__SubMasterRe__UId__114A936A" Association="Self.FK__SubMasterRe__UId__114A936A">
+          <AssociationSet Name="FK__SubMaster__Subje__662B2B3B" Association="Self.FK__SubMaster__Subje__662B2B3B">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="SubMasterReports" EntitySet="SubMasterReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubMasterRe__UId__6442E2C9" Association="Self.FK__SubMasterRe__UId__6442E2C9">
             <End Role="Users" EntitySet="Users" />
             <End Role="SubMasterReports" EntitySet="SubMasterReports" />
           </AssociationSet>
@@ -1739,13 +1789,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DocPASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AppraisalTable">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="Id" />
@@ -1753,8 +1796,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DepartmentName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Subjects" Relationship="Self.FK__Subjects__Depart__2F10007B" FromRole="Departments" ToRole="Subjects" />
-          <NavigationProperty Name="SubMasterReports" Relationship="DocPASModel.FK__SubMaster__Depar__123EB7A3" FromRole="Department" ToRole="SubMasterReport" />
           <NavigationProperty Name="DepartmentMappings" Relationship="DocPASModel.FK__DepartmentM__DId__5CA1C101" FromRole="Department" ToRole="DepartmentMapping" />
+          <NavigationProperty Name="DepartmentMasterReports" Relationship="DocPASModel.FK__Departmen__Depar__6166761E" FromRole="Department" ToRole="DepartmentMasterReport" />
+          <NavigationProperty Name="SubMasterReports" Relationship="DocPASModel.FK__SubMaster__Depar__65370702" FromRole="Department" ToRole="SubMasterReport" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -1793,7 +1837,9 @@
           <Property Name="DepartmentId" Type="Int32" />
           <Property Name="Type" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="Self.FK__Subjects__Depart__2F10007B" FromRole="Subjects" ToRole="Departments" />
-          <NavigationProperty Name="MarksMappings" Relationship="DocPASModel.FK__MarksMappin__SId__55F4C372" FromRole="Subject" ToRole="MarksMapping" />
+          <NavigationProperty Name="SubMasterReports" Relationship="DocPASModel.FK__SubMaster__Subje__662B2B3B" FromRole="Subject" ToRole="SubMasterReport" />
+          <NavigationProperty Name="Departments_MarksMapping" Relationship="DocPASModel.FK__Departments__DId__7C1A6C5A" FromRole="Subject" ToRole="Departments_MarksMapping" />
+          <NavigationProperty Name="Subjects_MarksMapping" Relationship="DocPASModel.FK__Subjects_Ma__SId__793DFFAF" FromRole="Subject" ToRole="Subjects_MarksMapping" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1818,7 +1864,6 @@
           <NavigationProperty Name="Sub26" Relationship="DocPASModel.FK__Sub26__UId__5441852A" FromRole="User" ToRole="Sub26" />
           <NavigationProperty Name="Sub27" Relationship="DocPASModel.FK__Sub27__UId__571DF1D5" FromRole="User" ToRole="Sub27" />
           <NavigationProperty Name="Sub28" Relationship="DocPASModel.FK__Sub28__UId__59FA5E80" FromRole="User" ToRole="Sub28" />
-          <NavigationProperty Name="Sub61" Relationship="DocPASModel.FK__Sub61__UId__5CD6CB2B" FromRole="User" ToRole="Sub61" />
           <NavigationProperty Name="Sub35" Relationship="DocPASModel.FK__Sub35__UId__70DDC3D8" FromRole="User" ToRole="Sub35" />
           <NavigationProperty Name="Sub36" Relationship="DocPASModel.FK__Sub36__UId__73BA3083" FromRole="User" ToRole="Sub36" />
           <NavigationProperty Name="Sub37" Relationship="DocPASModel.FK__Sub37__UId__76969D2E" FromRole="User" ToRole="Sub37" />
@@ -1832,11 +1877,9 @@
           <NavigationProperty Name="Sub58" Relationship="DocPASModel.FK__Sub58__UId__656C112C" FromRole="User" ToRole="Sub58" />
           <NavigationProperty Name="Sub59" Relationship="DocPASModel.FK__Sub59__UId__68487DD7" FromRole="User" ToRole="Sub59" />
           <NavigationProperty Name="Sub60" Relationship="DocPASModel.FK__Sub60__UId__4BAC3F29" FromRole="User" ToRole="Sub60" />
-          <NavigationProperty Name="MasterReports" Relationship="DocPASModel.FK__MasterRepor__UId__151B244E" FromRole="User" ToRole="MasterReport" />
           <NavigationProperty Name="Report62" Relationship="DocPASModel.FK__Report62__UId__08B54D69" FromRole="User" ToRole="Report62" />
           <NavigationProperty Name="Report63" Relationship="DocPASModel.FK__Report63__UId__0B91BA14" FromRole="User" ToRole="Report63" />
           <NavigationProperty Name="Report64" Relationship="DocPASModel.FK__Report64__UId__0E6E26BF" FromRole="User" ToRole="Report64" />
-          <NavigationProperty Name="SubMasterReports" Relationship="DocPASModel.FK__SubMasterRe__UId__114A936A" FromRole="User" ToRole="SubMasterReport" />
           <NavigationProperty Name="Report17" Relationship="DocPASModel.FK__Report17__UId__2BFE89A6" FromRole="User" ToRole="Report17" />
           <NavigationProperty Name="Report18" Relationship="DocPASModel.FK__Report18__UId__2EDAF651" FromRole="User" ToRole="Report18" />
           <NavigationProperty Name="Report23" Relationship="DocPASModel.FK__Report23__UId__31B762FC" FromRole="User" ToRole="Report23" />
@@ -1857,6 +1900,9 @@
           <NavigationProperty Name="Report48" Relationship="DocPASModel.FK__Report48__UId__4D5F7D71" FromRole="User" ToRole="Report48" />
           <NavigationProperty Name="Report49" Relationship="DocPASModel.FK__Report49__UId__503BEA1C" FromRole="User" ToRole="Report49" />
           <NavigationProperty Name="Report50" Relationship="DocPASModel.FK__Report50__UId__531856C7" FromRole="User" ToRole="Report50" />
+          <NavigationProperty Name="DepartmentMasterReports" Relationship="DocPASModel.FK__DepartmentM__UId__607251E5" FromRole="User" ToRole="DepartmentMasterReport" />
+          <NavigationProperty Name="SubMasterReports" Relationship="DocPASModel.FK__SubMasterRe__UId__6442E2C9" FromRole="User" ToRole="SubMasterReport" />
+          <NavigationProperty Name="Sub61" Relationship="DocPASModel.FK__Sub61__UId__6BE40491" FromRole="User" ToRole="Sub61" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -1919,7 +1965,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DocPASEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AppraisalTables" EntityType="Self.AppraisalTable" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="Divisions" EntityType="Self.Division" />
@@ -1970,11 +2015,6 @@
           <AssociationSet Name="FK__Sub28__UId__59FA5E80" Association="DocPASModel.FK__Sub28__UId__59FA5E80">
             <End Role="User" EntitySet="Users" />
             <End Role="Sub28" EntitySet="Sub28" />
-          </AssociationSet>
-          <EntitySet Name="Sub61" EntityType="DocPASModel.Sub61" />
-          <AssociationSet Name="FK__Sub61__UId__5CD6CB2B" Association="DocPASModel.FK__Sub61__UId__5CD6CB2B">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Sub61" EntitySet="Sub61" />
           </AssociationSet>
           <EntitySet Name="Sub35" EntityType="DocPASModel.Sub35" />
           <EntitySet Name="Sub36" EntityType="DocPASModel.Sub36" />
@@ -2041,19 +2081,9 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Sub60" EntitySet="Sub60" />
           </AssociationSet>
-          <EntitySet Name="MasterReports" EntityType="DocPASModel.MasterReport" />
           <EntitySet Name="Report62" EntityType="DocPASModel.Report62" />
           <EntitySet Name="Report63" EntityType="DocPASModel.Report63" />
           <EntitySet Name="Report64" EntityType="DocPASModel.Report64" />
-          <EntitySet Name="SubMasterReports" EntityType="DocPASModel.SubMasterReport" />
-          <AssociationSet Name="FK__SubMaster__Depar__123EB7A3" Association="DocPASModel.FK__SubMaster__Depar__123EB7A3">
-            <End Role="Department" EntitySet="Departments" />
-            <End Role="SubMasterReport" EntitySet="SubMasterReports" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MasterRepor__UId__151B244E" Association="DocPASModel.FK__MasterRepor__UId__151B244E">
-            <End Role="User" EntitySet="Users" />
-            <End Role="MasterReport" EntitySet="MasterReports" />
-          </AssociationSet>
           <AssociationSet Name="FK__Report62__UId__08B54D69" Association="DocPASModel.FK__Report62__UId__08B54D69">
             <End Role="User" EntitySet="Users" />
             <End Role="Report62" EntitySet="Report62" />
@@ -2065,10 +2095,6 @@
           <AssociationSet Name="FK__Report64__UId__0E6E26BF" Association="DocPASModel.FK__Report64__UId__0E6E26BF">
             <End Role="User" EntitySet="Users" />
             <End Role="Report64" EntitySet="Report64" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SubMasterRe__UId__114A936A" Association="DocPASModel.FK__SubMasterRe__UId__114A936A">
-            <End Role="User" EntitySet="Users" />
-            <End Role="SubMasterReport" EntitySet="SubMasterReports" />
           </AssociationSet>
           <EntitySet Name="Report17" EntityType="DocPASModel.Report17" />
           <EntitySet Name="Report18" EntityType="DocPASModel.Report18" />
@@ -2171,14 +2197,46 @@
             <End Role="Report50" EntitySet="Report50" />
           </AssociationSet>
           <EntitySet Name="DepartmentMappings" EntityType="DocPASModel.DepartmentMapping" />
-          <EntitySet Name="MarksMappings" EntityType="DocPASModel.MarksMapping" />
           <AssociationSet Name="FK__DepartmentM__DId__5CA1C101" Association="DocPASModel.FK__DepartmentM__DId__5CA1C101">
             <End Role="Department" EntitySet="Departments" />
             <End Role="DepartmentMapping" EntitySet="DepartmentMappings" />
           </AssociationSet>
-          <AssociationSet Name="FK__MarksMappin__SId__55F4C372" Association="DocPASModel.FK__MarksMappin__SId__55F4C372">
+          <EntitySet Name="DepartmentMasterReports" EntityType="DocPASModel.DepartmentMasterReport" />
+          <AssociationSet Name="FK__Departmen__Depar__6166761E" Association="DocPASModel.FK__Departmen__Depar__6166761E">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="DepartmentMasterReport" EntitySet="DepartmentMasterReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DepartmentM__UId__607251E5" Association="DocPASModel.FK__DepartmentM__UId__607251E5">
+            <End Role="User" EntitySet="Users" />
+            <End Role="DepartmentMasterReport" EntitySet="DepartmentMasterReports" />
+          </AssociationSet>
+          <EntitySet Name="SubMasterReports" EntityType="DocPASModel.SubMasterReport" />
+          <AssociationSet Name="FK__SubMaster__Depar__65370702" Association="DocPASModel.FK__SubMaster__Depar__65370702">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="SubMasterReport" EntitySet="SubMasterReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubMaster__Subje__662B2B3B" Association="DocPASModel.FK__SubMaster__Subje__662B2B3B">
             <End Role="Subject" EntitySet="Subjects" />
-            <End Role="MarksMapping" EntitySet="MarksMappings" />
+            <End Role="SubMasterReport" EntitySet="SubMasterReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubMasterRe__UId__6442E2C9" Association="DocPASModel.FK__SubMasterRe__UId__6442E2C9">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SubMasterReport" EntitySet="SubMasterReports" />
+          </AssociationSet>
+          <EntitySet Name="Sub61" EntityType="DocPASModel.Sub61" />
+          <AssociationSet Name="FK__Sub61__UId__6BE40491" Association="DocPASModel.FK__Sub61__UId__6BE40491">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sub61" EntitySet="Sub61" />
+          </AssociationSet>
+          <EntitySet Name="Departments_MarksMapping" EntityType="DocPASModel.Departments_MarksMapping" />
+          <EntitySet Name="Subjects_MarksMapping" EntityType="DocPASModel.Subjects_MarksMapping" />
+          <AssociationSet Name="FK__Departments__DId__7C1A6C5A" Association="DocPASModel.FK__Departments__DId__7C1A6C5A">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Departments_MarksMapping" EntitySet="Departments_MarksMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subjects_Ma__SId__793DFFAF" Association="DocPASModel.FK__Subjects_Ma__SId__793DFFAF">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Subjects_MarksMapping" EntitySet="Subjects_MarksMapping" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Sub24">
@@ -2312,37 +2370,6 @@
               <PropertyRef Name="UId" />
             </Principal>
             <Dependent Role="Sub28">
-              <PropertyRef Name="UId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Sub61">
-          <Key>
-            <PropertyRef Name="RId" />
-          </Key>
-          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UId" Type="Int32" />
-          <Property Name="Total_Target" Type="Int32" />
-          <Property Name="Current_Month_Aim" Type="Int32" />
-          <Property Name="Last_Month_Achieved" Type="Int32" />
-          <Property Name="Current_Month_Achieved" Type="Int32" />
-          <Property Name="Total_Achieved" Type="Int32" />
-          <Property Name="Current_Month_Percentage" Type="Int32" />
-          <Property Name="Appraisal_Marks" Type="Int32" />
-          <Property Name="Appraisal_Percentage" Type="Int32" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub61__UId__5CD6CB2B" FromRole="Sub61" ToRole="User" />
-        </EntityType>
-        <Association Name="FK__Sub61__UId__5CD6CB2B">
-          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DocPASModel.Sub61" Role="Sub61" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Sub61">
               <PropertyRef Name="UId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2746,6 +2773,7 @@
           <Property Name="Year" Type="Int32" />
           <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub60__UId__4BAC3F29" FromRole="Sub60" ToRole="User" />
+          <Property Name="NotApplicable" Type="Boolean" />
         </EntityType>
         <Association Name="FK__Sub60__UId__4BAC3F29">
           <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
@@ -2759,27 +2787,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MasterReport">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UId" Type="Int32" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Establishment" Type="Double" />
-          <Property Name="Krushipat" Type="Double" />
-          <Property Name="IT" Type="Double" />
-          <Property Name="Budget" Type="Double" />
-          <Property Name="Audit" Type="Double" />
-          <Property Name="Law" Type="Double" />
-          <Property Name="Housing" Type="Double" />
-          <Property Name="Credit_Societies" Type="Double" />
-          <Property Name="O_M" Type="Double" />
-          <Property Name="Money_Lending" Type="Double" />
-          <Property Name="Total" Type="Double" />
-          <NavigationProperty Name="User" Relationship="DocPASModel.FK__MasterRepor__UId__151B244E" FromRole="MasterReport" ToRole="User" />
-        </EntityType>
         <EntityType Name="Report62">
           <Key>
             <PropertyRef Name="RId" />
@@ -2825,45 +2832,6 @@
           <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report64__UId__0E6E26BF" FromRole="Report64" ToRole="User" />
         </EntityType>
-        <EntityType Name="SubMasterReport">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UId" Type="Int32" />
-          <Property Name="Rid" Type="Int32" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="DepartmentId" Type="Int32" />
-          <Property Name="Appraisal_Marks" Type="Double" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Department" Relationship="DocPASModel.FK__SubMaster__Depar__123EB7A3" FromRole="SubMasterReport" ToRole="Department" />
-          <NavigationProperty Name="User" Relationship="DocPASModel.FK__SubMasterRe__UId__114A936A" FromRole="SubMasterReport" ToRole="User" />
-        </EntityType>
-        <Association Name="FK__SubMaster__Depar__123EB7A3">
-          <End Type="DocPASModel.Department" Role="Department" Multiplicity="0..1" />
-          <End Type="DocPASModel.SubMasterReport" Role="SubMasterReport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Department">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="SubMasterReport">
-              <PropertyRef Name="DepartmentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MasterRepor__UId__151B244E">
-          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DocPASModel.MasterReport" Role="MasterReport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="MasterReport">
-              <PropertyRef Name="UId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Report62__UId__08B54D69">
           <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
           <End Type="DocPASModel.Report62" Role="Report62" Multiplicity="*" />
@@ -2896,18 +2864,6 @@
               <PropertyRef Name="UId" />
             </Principal>
             <Dependent Role="Report64">
-              <PropertyRef Name="UId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SubMasterRe__UId__114A936A">
-          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DocPASModel.SubMasterReport" Role="SubMasterReport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="SubMasterReport">
               <PropertyRef Name="UId" />
             </Dependent>
           </ReferentialConstraint>
@@ -3538,17 +3494,6 @@
           <Property Name="Type3" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="DocPASModel.FK__DepartmentM__DId__5CA1C101" FromRole="DepartmentMapping" ToRole="Department" />
         </EntityType>
-        <EntityType Name="MarksMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SId" Type="Int32" />
-          <Property Name="Marks1" Type="Int32" />
-          <Property Name="Marks2" Type="Int32" />
-          <Property Name="Marks3" Type="Int32" />
-          <NavigationProperty Name="Subject" Relationship="DocPASModel.FK__MarksMappin__SId__55F4C372" FromRole="MarksMapping" ToRole="Subject" />
-        </EntityType>
         <Association Name="FK__DepartmentM__DId__5CA1C101">
           <End Type="DocPASModel.Department" Role="Department" Multiplicity="0..1" />
           <End Type="DocPASModel.DepartmentMapping" Role="DepartmentMapping" Multiplicity="*" />
@@ -3561,14 +3506,175 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MarksMappin__SId__55F4C372">
+        <EntityType Name="DepartmentMasterReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Double" />
+          <Property Name="Appraisal_Percentage" Type="Double" />
+          <Property Name="Total_Marks" Type="Double" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department" Relationship="DocPASModel.FK__Departmen__Depar__6166761E" FromRole="DepartmentMasterReport" ToRole="Department" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__DepartmentM__UId__607251E5" FromRole="DepartmentMasterReport" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Departmen__Depar__6166761E">
+          <End Type="DocPASModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="DocPASModel.DepartmentMasterReport" Role="DepartmentMasterReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentMasterReport">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DepartmentM__UId__607251E5">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.DepartmentMasterReport" Role="DepartmentMasterReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="DepartmentMasterReport">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SubMasterReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Rid" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="SubjectId" Type="Int32" />
+          <Property Name="Appraisal_Marks" Type="Double" />
+          <Property Name="Appraisal_Percentage" Type="Double" />
+          <Property Name="Total_Marks" Type="Double" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department" Relationship="DocPASModel.FK__SubMaster__Depar__65370702" FromRole="SubMasterReport" ToRole="Department" />
+          <NavigationProperty Name="Subject" Relationship="DocPASModel.FK__SubMaster__Subje__662B2B3B" FromRole="SubMasterReport" ToRole="Subject" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__SubMasterRe__UId__6442E2C9" FromRole="SubMasterReport" ToRole="User" />
+          <Property Name="Not_Applicable_Marks" Type="Double" />
+        </EntityType>
+        <Association Name="FK__SubMaster__Depar__65370702">
+          <End Type="DocPASModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="DocPASModel.SubMasterReport" Role="SubMasterReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubMasterReport">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubMaster__Subje__662B2B3B">
           <End Type="DocPASModel.Subject" Role="Subject" Multiplicity="0..1" />
-          <End Type="DocPASModel.MarksMapping" Role="MarksMapping" Multiplicity="*" />
+          <End Type="DocPASModel.SubMasterReport" Role="SubMasterReport" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Subject">
               <PropertyRef Name="SId" />
             </Principal>
-            <Dependent Role="MarksMapping">
+            <Dependent Role="SubMasterReport">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubMasterRe__UId__6442E2C9">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.SubMasterReport" Role="SubMasterReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="SubMasterReport">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sub61">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Total_Target" Type="Int32" />
+          <Property Name="Current_Month_Aim" Type="Int32" />
+          <Property Name="Last_Month_Achieved" Type="Int32" />
+          <Property Name="Current_Month_Achieved" Type="Int32" />
+          <Property Name="Total_Achieved" Type="Int32" />
+          <Property Name="Current_Month_Percentage" Type="Double" />
+          <Property Name="Appraisal_Marks" Type="Double" />
+          <Property Name="Appraisal_Percentage" Type="Double" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Sub61__UId__6BE40491" FromRole="Sub61" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Sub61__UId__6BE40491">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Sub61" Role="Sub61" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Sub61">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Departments_MarksMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DId" Type="Int32" />
+          <Property Name="Marks1" Type="Int32" />
+          <Property Name="Marks2" Type="Int32" />
+          <Property Name="Marks3" Type="Int32" />
+          <NavigationProperty Name="Subject" Relationship="DocPASModel.FK__Departments__DId__7C1A6C5A" FromRole="Departments_MarksMapping" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Subjects_MarksMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SId" Type="Int32" />
+          <Property Name="Marks1" Type="Int32" />
+          <Property Name="Marks2" Type="Int32" />
+          <Property Name="Marks3" Type="Int32" />
+          <NavigationProperty Name="Subject" Relationship="DocPASModel.FK__Subjects_Ma__SId__793DFFAF" FromRole="Subjects_MarksMapping" ToRole="Subject" />
+        </EntityType>
+        <Association Name="FK__Departments__DId__7C1A6C5A">
+          <End Type="DocPASModel.Subject" Role="Subject" Multiplicity="0..1" />
+          <End Type="DocPASModel.Departments_MarksMapping" Role="Departments_MarksMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="Departments_MarksMapping">
+              <PropertyRef Name="DId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subjects_Ma__SId__793DFFAF">
+          <End Type="DocPASModel.Subject" Role="Subject" Multiplicity="0..1" />
+          <End Type="DocPASModel.Subjects_MarksMapping" Role="Subjects_MarksMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="Subjects_MarksMapping">
               <PropertyRef Name="SId" />
             </Dependent>
           </ReferentialConstraint>
@@ -3579,14 +3685,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DocPASModelStoreContainer" CdmEntityContainer="DocPASEntities">
-          <EntitySetMapping Name="AppraisalTables">
-            <EntityTypeMapping TypeName="DocPASModel.AppraisalTable">
-              <MappingFragment StoreEntitySet="AppraisalTables">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TableName" ColumnName="TableName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="DocPASModel.Department">
               <MappingFragment StoreEntitySet="Departments">
@@ -3719,25 +3817,6 @@
                 <ScalarProperty Name="Aim" ColumnName="Aim" />
                 <ScalarProperty Name="Marks" ColumnName="Marks" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="RId" ColumnName="RId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sub61">
-            <EntityTypeMapping TypeName="DocPASModel.Sub61">
-              <MappingFragment StoreEntitySet="Sub61">
-                <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
-                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
-                <ScalarProperty Name="Current_Month_Percentage" ColumnName="Current_Month_Percentage" />
-                <ScalarProperty Name="Total_Achieved" ColumnName="Total_Achieved" />
-                <ScalarProperty Name="Current_Month_Achieved" ColumnName="Current_Month_Achieved" />
-                <ScalarProperty Name="Last_Month_Achieved" ColumnName="Last_Month_Achieved" />
-                <ScalarProperty Name="Current_Month_Aim" ColumnName="Current_Month_Aim" />
-                <ScalarProperty Name="Total_Target" ColumnName="Total_Target" />
                 <ScalarProperty Name="RId" ColumnName="RId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3977,6 +4056,7 @@
           <EntitySetMapping Name="Sub60">
             <EntityTypeMapping TypeName="DocPASModel.Sub60">
               <MappingFragment StoreEntitySet="Sub60">
+                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="Month" ColumnName="Month" />
@@ -3995,27 +4075,6 @@
                 <ScalarProperty Name="Officer_Count" ColumnName="Officer_Count" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="RId" ColumnName="RId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MasterReports">
-            <EntityTypeMapping TypeName="DocPASModel.MasterReport">
-              <MappingFragment StoreEntitySet="MasterReports">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Money_Lending" ColumnName="Money_Lending" />
-                <ScalarProperty Name="O_M" ColumnName="O_M" />
-                <ScalarProperty Name="Credit_Societies" ColumnName="Credit_Societies" />
-                <ScalarProperty Name="Housing" ColumnName="Housing" />
-                <ScalarProperty Name="Law" ColumnName="Law" />
-                <ScalarProperty Name="Audit" ColumnName="Audit" />
-                <ScalarProperty Name="Budget" ColumnName="Budget" />
-                <ScalarProperty Name="IT" ColumnName="IT" />
-                <ScalarProperty Name="Krushipat" ColumnName="Krushipat" />
-                <ScalarProperty Name="Establishment" ColumnName="Establishment" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4061,20 +4120,6 @@
                 <ScalarProperty Name="Total_Appeal" ColumnName="Total_Appeal" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="RId" ColumnName="RId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SubMasterReports">
-            <EntityTypeMapping TypeName="DocPASModel.SubMasterReport">
-              <MappingFragment StoreEntitySet="SubMasterReports">
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
-                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="Rid" ColumnName="Rid" />
-                <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4464,9 +4509,72 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MarksMappings">
-            <EntityTypeMapping TypeName="DocPASModel.MarksMapping">
-              <MappingFragment StoreEntitySet="MarksMapping">
+          <EntitySetMapping Name="DepartmentMasterReports">
+            <EntityTypeMapping TypeName="DocPASModel.DepartmentMasterReport">
+              <MappingFragment StoreEntitySet="DepartmentMasterReports">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Total_Marks" ColumnName="Total_Marks" />
+                <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubMasterReports">
+            <EntityTypeMapping TypeName="DocPASModel.SubMasterReport">
+              <MappingFragment StoreEntitySet="SubMasterReports">
+                <ScalarProperty Name="Not_Applicable_Marks" ColumnName="Not_Applicable_Marks" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Total_Marks" ColumnName="Total_Marks" />
+                <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Rid" ColumnName="Rid" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sub61">
+            <EntityTypeMapping TypeName="DocPASModel.Sub61">
+              <MappingFragment StoreEntitySet="Sub61">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Current_Month_Percentage" ColumnName="Current_Month_Percentage" />
+                <ScalarProperty Name="Total_Achieved" ColumnName="Total_Achieved" />
+                <ScalarProperty Name="Current_Month_Achieved" ColumnName="Current_Month_Achieved" />
+                <ScalarProperty Name="Last_Month_Achieved" ColumnName="Last_Month_Achieved" />
+                <ScalarProperty Name="Current_Month_Aim" ColumnName="Current_Month_Aim" />
+                <ScalarProperty Name="Total_Target" ColumnName="Total_Target" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments_MarksMapping">
+            <EntityTypeMapping TypeName="DocPASModel.Departments_MarksMapping">
+              <MappingFragment StoreEntitySet="Departments_MarksMapping">
+                <ScalarProperty Name="Marks3" ColumnName="Marks3" />
+                <ScalarProperty Name="Marks2" ColumnName="Marks2" />
+                <ScalarProperty Name="Marks1" ColumnName="Marks1" />
+                <ScalarProperty Name="DId" ColumnName="DId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects_MarksMapping">
+            <EntityTypeMapping TypeName="DocPASModel.Subjects_MarksMapping">
+              <MappingFragment StoreEntitySet="Subjects_MarksMapping">
                 <ScalarProperty Name="Marks3" ColumnName="Marks3" />
                 <ScalarProperty Name="Marks2" ColumnName="Marks2" />
                 <ScalarProperty Name="Marks1" ColumnName="Marks1" />
