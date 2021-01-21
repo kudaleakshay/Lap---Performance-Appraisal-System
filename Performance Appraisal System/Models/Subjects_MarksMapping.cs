@@ -16,9 +16,8 @@ namespace Performance_Appraisal_System.Models
     {
         public int Id { get; set; }
         public Nullable<int> SId { get; set; }
-        public Nullable<int> Marks1 { get; set; }
-        public Nullable<int> Marks2 { get; set; }
-        public Nullable<int> Marks3 { get; set; }
+        public Nullable<int> AType { get; set; }
+        public Nullable<double> Marks { get; set; }
     
         public virtual Subject Subject { get; set; }
     }

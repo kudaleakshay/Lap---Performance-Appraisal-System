@@ -27,6 +27,7 @@
           <Property Name="Appraisal_Marks" Type="float" />
           <Property Name="Appraisal_Percentage" Type="float" />
           <Property Name="Total_Marks" Type="float" />
+          <Property Name="Not_Applicable_Marks" Type="float" />
           <Property Name="Remarks" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Departments">
@@ -42,9 +43,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DId" Type="int" />
-          <Property Name="Marks1" Type="int" />
-          <Property Name="Marks2" Type="int" />
-          <Property Name="Marks3" Type="int" />
+          <Property Name="AType" Type="int" />
+          <Property Name="Marks" Type="float" />
         </EntityType>
         <EntityType Name="Districts">
           <Key>
@@ -813,9 +813,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SId" Type="int" />
-          <Property Name="Marks1" Type="int" />
-          <Property Name="Marks2" Type="int" />
-          <Property Name="Marks3" Type="int" />
+          <Property Name="AType" Type="int" />
+          <Property Name="Marks" Type="float" />
         </EntityType>
         <EntityType Name="SubMasterReports">
           <Key>
@@ -831,8 +830,8 @@
           <Property Name="Appraisal_Marks" Type="float" />
           <Property Name="Appraisal_Percentage" Type="float" />
           <Property Name="Total_Marks" Type="float" />
-          <Property Name="Remarks" Type="varchar" MaxLength="500" />
           <Property Name="Not_Applicable_Marks" Type="float" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -850,7 +849,7 @@
           <Property Name="AppraisalType" Type="int" />
           <Property Name="ReportTo" Type="int" />
         </EntityType>
-        <Association Name="FK__Departmen__Depar__6166761E">
+        <Association Name="FK__Departmen__Depar__2EA5EC27">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="DepartmentMasterReports" Type="Self.DepartmentMasterReports" Multiplicity="*" />
           <ReferentialConstraint>
@@ -874,7 +873,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DepartmentM__UId__607251E5">
+        <Association Name="FK__DepartmentM__UId__2DB1C7EE">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="DepartmentMasterReports" Type="Self.DepartmentMasterReports" Multiplicity="*" />
           <ReferentialConstraint>
@@ -886,7 +885,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Departments__DId__7C1A6C5A">
+        <Association Name="FK__Departments__DId__29E1370A">
           <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
           <End Role="Departments_MarksMapping" Type="Self.Departments_MarksMapping" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1426,7 +1425,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Subjects_Ma__SId__793DFFAF">
+        <Association Name="FK__Subjects_Ma__SId__2704CA5F">
           <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
           <End Role="Subjects_MarksMapping" Type="Self.Subjects_MarksMapping" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1438,7 +1437,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SubMaster__Depar__65370702">
+        <Association Name="FK__SubMaster__Depar__078C1F06">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="SubMasterReports" Type="Self.SubMasterReports" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1450,7 +1449,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SubMaster__Subje__662B2B3B">
+        <Association Name="FK__SubMaster__Subje__0880433F">
           <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
           <End Role="SubMasterReports" Type="Self.SubMasterReports" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1462,7 +1461,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SubMasterRe__UId__6442E2C9">
+        <Association Name="FK__SubMasterRe__UId__0697FACD">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="SubMasterReports" Type="Self.SubMasterReports" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1564,7 +1563,7 @@
           <EntitySet Name="Subjects_MarksMapping" EntityType="Self.Subjects_MarksMapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubMasterReports" EntityType="Self.SubMasterReports" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Departmen__Depar__6166761E" Association="Self.FK__Departmen__Depar__6166761E">
+          <AssociationSet Name="FK__Departmen__Depar__2EA5EC27" Association="Self.FK__Departmen__Depar__2EA5EC27">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="DepartmentMasterReports" EntitySet="DepartmentMasterReports" />
           </AssociationSet>
@@ -1572,11 +1571,11 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="DepartmentMapping" EntitySet="DepartmentMapping" />
           </AssociationSet>
-          <AssociationSet Name="FK__DepartmentM__UId__607251E5" Association="Self.FK__DepartmentM__UId__607251E5">
+          <AssociationSet Name="FK__DepartmentM__UId__2DB1C7EE" Association="Self.FK__DepartmentM__UId__2DB1C7EE">
             <End Role="Users" EntitySet="Users" />
             <End Role="DepartmentMasterReports" EntitySet="DepartmentMasterReports" />
           </AssociationSet>
-          <AssociationSet Name="FK__Departments__DId__7C1A6C5A" Association="Self.FK__Departments__DId__7C1A6C5A">
+          <AssociationSet Name="FK__Departments__DId__29E1370A" Association="Self.FK__Departments__DId__29E1370A">
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="Departments_MarksMapping" EntitySet="Departments_MarksMapping" />
           </AssociationSet>
@@ -1756,19 +1755,19 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Subjects" EntitySet="Subjects" />
           </AssociationSet>
-          <AssociationSet Name="FK__Subjects_Ma__SId__793DFFAF" Association="Self.FK__Subjects_Ma__SId__793DFFAF">
+          <AssociationSet Name="FK__Subjects_Ma__SId__2704CA5F" Association="Self.FK__Subjects_Ma__SId__2704CA5F">
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="Subjects_MarksMapping" EntitySet="Subjects_MarksMapping" />
           </AssociationSet>
-          <AssociationSet Name="FK__SubMaster__Depar__65370702" Association="Self.FK__SubMaster__Depar__65370702">
+          <AssociationSet Name="FK__SubMaster__Depar__078C1F06" Association="Self.FK__SubMaster__Depar__078C1F06">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="SubMasterReports" EntitySet="SubMasterReports" />
           </AssociationSet>
-          <AssociationSet Name="FK__SubMaster__Subje__662B2B3B" Association="Self.FK__SubMaster__Subje__662B2B3B">
+          <AssociationSet Name="FK__SubMaster__Subje__0880433F" Association="Self.FK__SubMaster__Subje__0880433F">
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="SubMasterReports" EntitySet="SubMasterReports" />
           </AssociationSet>
-          <AssociationSet Name="FK__SubMasterRe__UId__6442E2C9" Association="Self.FK__SubMasterRe__UId__6442E2C9">
+          <AssociationSet Name="FK__SubMasterRe__UId__0697FACD" Association="Self.FK__SubMasterRe__UId__0697FACD">
             <End Role="Users" EntitySet="Users" />
             <End Role="SubMasterReports" EntitySet="SubMasterReports" />
           </AssociationSet>
@@ -1838,8 +1837,8 @@
           <Property Name="Type" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="Self.FK__Subjects__Depart__2F10007B" FromRole="Subjects" ToRole="Departments" />
           <NavigationProperty Name="SubMasterReports" Relationship="DocPASModel.FK__SubMaster__Subje__662B2B3B" FromRole="Subject" ToRole="SubMasterReport" />
-          <NavigationProperty Name="Departments_MarksMapping" Relationship="DocPASModel.FK__Departments__DId__7C1A6C5A" FromRole="Subject" ToRole="Departments_MarksMapping" />
-          <NavigationProperty Name="Subjects_MarksMapping" Relationship="DocPASModel.FK__Subjects_Ma__SId__793DFFAF" FromRole="Subject" ToRole="Subjects_MarksMapping" />
+          <NavigationProperty Name="Subjects_MarksMapping" Relationship="DocPASModel.FK__Subjects_Ma__SId__2704CA5F" FromRole="Subject" ToRole="Subjects_MarksMapping" />
+          <NavigationProperty Name="Departments_MarksMapping" Relationship="DocPASModel.FK__Departments__DId__29E1370A" FromRole="Subject" ToRole="Departments_MarksMapping" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -2228,15 +2227,15 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Sub61" EntitySet="Sub61" />
           </AssociationSet>
-          <EntitySet Name="Departments_MarksMapping" EntityType="DocPASModel.Departments_MarksMapping" />
           <EntitySet Name="Subjects_MarksMapping" EntityType="DocPASModel.Subjects_MarksMapping" />
-          <AssociationSet Name="FK__Departments__DId__7C1A6C5A" Association="DocPASModel.FK__Departments__DId__7C1A6C5A">
-            <End Role="Subject" EntitySet="Subjects" />
-            <End Role="Departments_MarksMapping" EntitySet="Departments_MarksMapping" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Subjects_Ma__SId__793DFFAF" Association="DocPASModel.FK__Subjects_Ma__SId__793DFFAF">
+          <AssociationSet Name="FK__Subjects_Ma__SId__2704CA5F" Association="DocPASModel.FK__Subjects_Ma__SId__2704CA5F">
             <End Role="Subject" EntitySet="Subjects" />
             <End Role="Subjects_MarksMapping" EntitySet="Subjects_MarksMapping" />
+          </AssociationSet>
+          <EntitySet Name="Departments_MarksMapping" EntityType="DocPASModel.Departments_MarksMapping" />
+          <AssociationSet Name="FK__Departments__DId__29E1370A" Association="DocPASModel.FK__Departments__DId__29E1370A">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Departments_MarksMapping" EntitySet="Departments_MarksMapping" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Sub24">
@@ -3521,6 +3520,7 @@
           <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Department" Relationship="DocPASModel.FK__Departmen__Depar__6166761E" FromRole="DepartmentMasterReport" ToRole="Department" />
           <NavigationProperty Name="User" Relationship="DocPASModel.FK__DepartmentM__UId__607251E5" FromRole="DepartmentMasterReport" ToRole="User" />
+          <Property Name="Not_Applicable_Marks" Type="Double" />
         </EntityType>
         <Association Name="FK__Departmen__Depar__6166761E">
           <End Type="DocPASModel.Department" Role="Department" Multiplicity="0..1" />
@@ -3633,41 +3633,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Departments_MarksMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DId" Type="Int32" />
-          <Property Name="Marks1" Type="Int32" />
-          <Property Name="Marks2" Type="Int32" />
-          <Property Name="Marks3" Type="Int32" />
-          <NavigationProperty Name="Subject" Relationship="DocPASModel.FK__Departments__DId__7C1A6C5A" FromRole="Departments_MarksMapping" ToRole="Subject" />
-        </EntityType>
         <EntityType Name="Subjects_MarksMapping">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SId" Type="Int32" />
-          <Property Name="Marks1" Type="Int32" />
-          <Property Name="Marks2" Type="Int32" />
-          <Property Name="Marks3" Type="Int32" />
-          <NavigationProperty Name="Subject" Relationship="DocPASModel.FK__Subjects_Ma__SId__793DFFAF" FromRole="Subjects_MarksMapping" ToRole="Subject" />
+          <Property Name="AType" Type="Int32" />
+          <Property Name="Marks" Type="Double" />
+          <NavigationProperty Name="Subject" Relationship="DocPASModel.FK__Subjects_Ma__SId__2704CA5F" FromRole="Subjects_MarksMapping" ToRole="Subject" />
         </EntityType>
-        <Association Name="FK__Departments__DId__7C1A6C5A">
-          <End Type="DocPASModel.Subject" Role="Subject" Multiplicity="0..1" />
-          <End Type="DocPASModel.Departments_MarksMapping" Role="Departments_MarksMapping" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subject">
-              <PropertyRef Name="SId" />
-            </Principal>
-            <Dependent Role="Departments_MarksMapping">
-              <PropertyRef Name="DId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Subjects_Ma__SId__793DFFAF">
+        <Association Name="FK__Subjects_Ma__SId__2704CA5F">
           <End Type="DocPASModel.Subject" Role="Subject" Multiplicity="0..1" />
           <End Type="DocPASModel.Subjects_MarksMapping" Role="Subjects_MarksMapping" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3676,6 +3652,28 @@
             </Principal>
             <Dependent Role="Subjects_MarksMapping">
               <PropertyRef Name="SId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Departments_MarksMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DId" Type="Int32" />
+          <Property Name="AType" Type="Int32" />
+          <Property Name="Marks" Type="Double" />
+          <NavigationProperty Name="Subject" Relationship="DocPASModel.FK__Departments__DId__29E1370A" FromRole="Departments_MarksMapping" ToRole="Subject" />
+        </EntityType>
+        <Association Name="FK__Departments__DId__29E1370A">
+          <End Type="DocPASModel.Subject" Role="Subject" Multiplicity="0..1" />
+          <End Type="DocPASModel.Departments_MarksMapping" Role="Departments_MarksMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SId" />
+            </Principal>
+            <Dependent Role="Departments_MarksMapping">
+              <PropertyRef Name="DId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4512,6 +4510,7 @@
           <EntitySetMapping Name="DepartmentMasterReports">
             <EntityTypeMapping TypeName="DocPASModel.DepartmentMasterReport">
               <MappingFragment StoreEntitySet="DepartmentMasterReports">
+                <ScalarProperty Name="Not_Applicable_Marks" ColumnName="Not_Applicable_Marks" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="Total_Marks" ColumnName="Total_Marks" />
                 <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
@@ -4561,24 +4560,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Departments_MarksMapping">
-            <EntityTypeMapping TypeName="DocPASModel.Departments_MarksMapping">
-              <MappingFragment StoreEntitySet="Departments_MarksMapping">
-                <ScalarProperty Name="Marks3" ColumnName="Marks3" />
-                <ScalarProperty Name="Marks2" ColumnName="Marks2" />
-                <ScalarProperty Name="Marks1" ColumnName="Marks1" />
-                <ScalarProperty Name="DId" ColumnName="DId" />
+          <EntitySetMapping Name="Subjects_MarksMapping">
+            <EntityTypeMapping TypeName="DocPASModel.Subjects_MarksMapping">
+              <MappingFragment StoreEntitySet="Subjects_MarksMapping">
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="AType" ColumnName="AType" />
+                <ScalarProperty Name="SId" ColumnName="SId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Subjects_MarksMapping">
-            <EntityTypeMapping TypeName="DocPASModel.Subjects_MarksMapping">
-              <MappingFragment StoreEntitySet="Subjects_MarksMapping">
-                <ScalarProperty Name="Marks3" ColumnName="Marks3" />
-                <ScalarProperty Name="Marks2" ColumnName="Marks2" />
-                <ScalarProperty Name="Marks1" ColumnName="Marks1" />
-                <ScalarProperty Name="SId" ColumnName="SId" />
+          <EntitySetMapping Name="Departments_MarksMapping">
+            <EntityTypeMapping TypeName="DocPASModel.Departments_MarksMapping">
+              <MappingFragment StoreEntitySet="Departments_MarksMapping">
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="AType" ColumnName="AType" />
+                <ScalarProperty Name="DId" ColumnName="DId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

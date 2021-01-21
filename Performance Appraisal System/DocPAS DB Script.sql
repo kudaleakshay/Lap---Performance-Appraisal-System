@@ -32,6 +32,28 @@ DivisionId int references Divisions(Id) on delete set null,
 AppraisalType int)
 go
 
+CREATE TRIGGER [dbo].[Copy_Appraisal_Type] ON [DocPAS].[dbo].[Districts]
+AFTER INSERT, UPDATE
+AS
+BEGIN
+
+Declare @iId as int;
+Declare @iAType as int;
+
+Select 
+  @iId = i.Id,
+  @iAType = i.AppraisalType
+
+From inserted i;
+
+Update [Users] 
+    SET [AppraisalType] = @iAType
+WHERE
+    [DistrictId] = @iId
+
+END
+go
+
 create table Subjects(
 SId int primary key identity(1,1),
 SubjectName nvarchar(500),
@@ -774,11 +796,9 @@ DepartmentId int references Departments(Id) on delete set null,
 Appraisal_Marks float,
 Appraisal_Percentage float,
 Total_Marks float,
+Not_Applicable_Marks float,
 Remarks varchar(500))
 go
-
-go
-
 
 
 Create table Sub60(
@@ -1595,9 +1615,16 @@ Where UserName = 'DDR39'
 create table Subjects_MarksMapping(
 Id int primary key identity(1,1),
 SId int references Subjects(SId) on delete set null,
-Marks1 int,
-Marks2 int,
-Marks3 int)
+AType int,
+Marks float)
+go
+
+
+create table Departments_MarksMapping(
+Id int primary key identity(1,1),
+DId int references Subjects(SId) on delete set null,
+AType int,
+Marks float)
 go
 
 
@@ -1608,45 +1635,32 @@ BEGIN
 
 Declare @iSId as int;
 Declare @iDepartmentId as int;
-Declare @iMarks1 as float;
-Declare @iMarks2 as float;
-Declare @iMarks3 as float;
+Declare @iAType as int;
+Declare @iMarks as float;
 
 Select 
   @iSId = i.SId,
-  @iMarks1 = i.Marks1,
-  @iMarks2 = i.Marks2,
-  @iMarks3 = i.Marks3,
+  @iAType = i.AType,
+  @iMarks = i.Marks,
   @iDepartmentId= (select [DepartmentId] from [DocPAS].[dbo].[Subjects] where [SId] = i.SId)
-
 
 From inserted i;
 
 
-IF EXISTS (select [Marks1],[Marks3],[Marks3] from [DocPAS].[dbo].[Departments_MarksMapping] where [DId] = @iDepartmentId) 
+IF EXISTS (select [AType],[Marks] from [DocPAS].[dbo].[Departments_MarksMapping] where [DId] = @iDepartmentId and [AType] = @iAType) 
 BEGIN
 Update [Departments_MarksMapping] 
-    SET [Marks1] = [Marks1]+ @iMarks1,
-    [Marks2] = [Marks2] + @iMarks2,
-	[Marks3] = [Marks3] + @iMarks3
+    SET [Marks] = [Marks]+ @iMarks
 WHERE
-    [DId] = @iDepartmentId
+    [DId] = @iDepartmentId AND
+    [AType] = @iAType
 END
 ELSE 
 BEGIN
-INSERT INTO [Departments_MarksMapping] ([DId],[Marks1],[Marks2],[Marks3]) Values (@iDepartmentId,@iMarks1,@iMarks2,@iMarks3)
+INSERT INTO [Departments_MarksMapping] ([DId],[AType],[Marks]) Values (@iDepartmentId,@iAType,@iMarks)
 END
 END
-
-
-
-create table DepartmentMapping(
-Id int primary key identity(1,1),
-DId int references Departments(Id) on delete set null,
-Type1 int,
-Type2 int,
-Type3 int)
-go
+go 
 
 
 Insert into DepartmentMapping  values(1,1,1,1)
@@ -1662,7 +1676,6 @@ Insert into DepartmentMapping  values(10,1,1,1)
 go
 
 
-
 CREATE TRIGGER [dbo].[DepartmentMasterReports_Entry] ON [DocPAS].[dbo].[SubMasterReports]
 AFTER INSERT
 AS
@@ -1675,15 +1688,17 @@ Declare @iUId as int;
 Declare @iMonth as int;
 Declare @iYear as int;
 Declare @iNot_Applicable_Marks as float;
+Declare @iAType as int;
 
 Select 
   @dDepartment = i.[DepartmentId],
   @iApppraisalMarks = i.[Appraisal_Marks],
-  @iTotal = i.[Total_Marks],
   @iUId = i.[UId],
   @iMonth = i.[Month],
   @iYear = i.[Year],
-  @iNot_Applicable_Marks = i.Not_Applicable_Marks
+  @iNot_Applicable_Marks = i.Not_Applicable_Marks,
+  @iAType = (select [AppraisalType] from Users where [UId] = i.[UId]),
+  @iTotal = (Select [Marks] from [Departments_MarksMapping] where [DId] = i.[DepartmentId] and [AType] = (select [AppraisalType] from Users where [UId] = i.[UId]))
 
 From inserted i;
 
@@ -1697,9 +1712,10 @@ BEGIN
   BEGIN
   Update [DepartmentMasterReports] 
     SET Appraisal_Marks = Appraisal_Marks + @iApppraisalMarks,
-    Total_Marks = Total_Marks +@iTotal
+     Not_Applicable_Marks = Not_Applicable_Marks + @iNot_Applicable_Marks,
+    Total_Marks = (@iTotal - Not_Applicable_Marks)
   WHERE
-      [DepartmentId] = @dDepartment
+    [DepartmentId] = @dDepartment
     AND [Year]= @iYear 
     AND [Month] = @iMonth
     AND [UId] = @iUId
@@ -1708,7 +1724,8 @@ BEGIN
   BEGIN
   Update [DepartmentMasterReports] 
     SET Appraisal_Marks = Appraisal_Marks + @iApppraisalMarks,
-    Total_Marks = Total_Marks - @iNot_Applicable_Marks
+	Not_Applicable_Marks = Not_Applicable_Marks + @iNot_Applicable_Marks,
+    Total_Marks = (@iTotal -Not_Applicable_Marks )
   WHERE
       [DepartmentId] = @dDepartment
     AND [Year]= @iYear 
@@ -1719,63 +1736,183 @@ BEGIN
 END
 ELSE 
 BEGIN
-INSERT INTO [DepartmentMasterReports] ([UId],[DepartmentId],[Year],[Month],[Appraisal_Marks],[Total_Marks]) Values (@iUId,@dDepartment,@iYear,@iMonth,@iApppraisalMarks,@iTotal)
+ IF (@iNot_Applicable_Marks IS NULL ) 
+  BEGIN
+		INSERT INTO [DepartmentMasterReports] ([UId],[DepartmentId],[Year],[Month],[Appraisal_Marks],[Total_Marks],[Not_Applicable_Marks]) Values (@iUId,@dDepartment,@iYear,@iMonth,@iApppraisalMarks,@iTotal,0)
+  END
+  Else
+  BEGIN
+		INSERT INTO [DepartmentMasterReports] ([UId],[DepartmentId],[Year],[Month],[Appraisal_Marks],[Total_Marks],[Not_Applicable_Marks]) Values (@iUId,@dDepartment,@iYear,@iMonth,@iApppraisalMarks,(@iTotal-@iNot_Applicable_Marks),@iNot_Applicable_Marks)
+  END
 END
 END
+go
 
 
-Insert into Subjects_MarksMapping  values(11,10,10,10)
-Insert into Subjects_MarksMapping  values(12,10,10,10)
-Insert into Subjects_MarksMapping  values(13,10,10,10)
-Insert into Subjects_MarksMapping  values(14,10,10,10)
-Insert into Subjects_MarksMapping  values(15,10,10,10)
-Insert into Subjects_MarksMapping  values(16,10,10,10)
-Insert into Subjects_MarksMapping  values(17,10,10,10)
-Insert into Subjects_MarksMapping  values(18,10,10,10)
-Insert into Subjects_MarksMapping  values(19,10,10,10)
-Insert into Subjects_MarksMapping  values(20,10,10,10)
-Insert into Subjects_MarksMapping  values(21,10,10,10)
-Insert into Subjects_MarksMapping  values(22,10,10,10)
-Insert into Subjects_MarksMapping  values(23,10,10,10)
-Insert into Subjects_MarksMapping  values(24,10,10,10)
-Insert into Subjects_MarksMapping  values(25,10,10,10)
-Insert into Subjects_MarksMapping  values(26,10,10,10)
-Insert into Subjects_MarksMapping  values(27,10,10,10)
-Insert into Subjects_MarksMapping  values(28,10,10,10)
-Insert into Subjects_MarksMapping  values(29,10,10,10)
-Insert into Subjects_MarksMapping  values(30,10,10,10)
-Insert into Subjects_MarksMapping  values(31,10,10,10)
-Insert into Subjects_MarksMapping  values(32,10,10,10)
-Insert into Subjects_MarksMapping  values(33,10,10,10)
-Insert into Subjects_MarksMapping  values(34,10,10,10)
-Insert into Subjects_MarksMapping  values(35,10,10,10)
-Insert into Subjects_MarksMapping  values(36,10,10,10)
-Insert into Subjects_MarksMapping  values(37,10,10,10)
-Insert into Subjects_MarksMapping  values(38,10,10,10)
-Insert into Subjects_MarksMapping  values(39,10,10,10)
-Insert into Subjects_MarksMapping  values(40,10,10,10)
-Insert into Subjects_MarksMapping  values(41,10,10,10)
-Insert into Subjects_MarksMapping  values(42,10,10,10)
-Insert into Subjects_MarksMapping  values(43,10,10,10)
-Insert into Subjects_MarksMapping  values(44,10,10,10)
-Insert into Subjects_MarksMapping  values(45,10,10,10)
-Insert into Subjects_MarksMapping  values(46,10,10,10)
-Insert into Subjects_MarksMapping  values(47,10,10,10)
-Insert into Subjects_MarksMapping  values(48,10,10,10)
-Insert into Subjects_MarksMapping  values(49,10,10,10)
-Insert into Subjects_MarksMapping  values(50,10,10,10)
-Insert into Subjects_MarksMapping  values(51,10,10,10)
-Insert into Subjects_MarksMapping  values(52,10,10,10)
-Insert into Subjects_MarksMapping  values(53,10,10,10)
-Insert into Subjects_MarksMapping  values(54,10,10,10)
-Insert into Subjects_MarksMapping  values(55,10,10,10)
-Insert into Subjects_MarksMapping  values(56,10,10,10)
-Insert into Subjects_MarksMapping  values(57,10,10,10)
-Insert into Subjects_MarksMapping  values(58,10,10,10)
-Insert into Subjects_MarksMapping  values(59,10,10,10)
-Insert into Subjects_MarksMapping  values(60,10,10,10)
-Insert into Subjects_MarksMapping  values(61,10,10,10)
-Insert into Subjects_MarksMapping  values(62,10,10,10)
-Insert into Subjects_MarksMapping  values(63,10,10,10)
-Insert into Subjects_MarksMapping  values(64,10,10,10)
+/* Insert Value into Subject Mapping table */
+ Insert into Subjects_MarksMapping values(11,1,10)
+ Insert into Subjects_MarksMapping values(12,1,10)
+ Insert into Subjects_MarksMapping values(13,1,10)
+ Insert into Subjects_MarksMapping values(14,1,10)
+ Insert into Subjects_MarksMapping values(15,1,10)
+ Insert into Subjects_MarksMapping values(16,1,10)
+ Insert into Subjects_MarksMapping values(17,1,10)
+ Insert into Subjects_MarksMapping values(18,1,10)
+ Insert into Subjects_MarksMapping values(19,1,10)
+ Insert into Subjects_MarksMapping values(20,1,10)
+ Insert into Subjects_MarksMapping values(21,1,10)
+ Insert into Subjects_MarksMapping values(22,1,10)
+ Insert into Subjects_MarksMapping values(23,1,10)
+ Insert into Subjects_MarksMapping values(24,1,10)
+ Insert into Subjects_MarksMapping values(25,1,10)
+ Insert into Subjects_MarksMapping values(26,1,10)
+ Insert into Subjects_MarksMapping values(27,1,10)
+ Insert into Subjects_MarksMapping values(28,1,10)
+ Insert into Subjects_MarksMapping values(29,1,10)
+ Insert into Subjects_MarksMapping values(30,1,10)
+ Insert into Subjects_MarksMapping values(31,1,10)
+ Insert into Subjects_MarksMapping values(32,1,10)
+ Insert into Subjects_MarksMapping values(33,1,10)
+ Insert into Subjects_MarksMapping values(34,1,10)
+ Insert into Subjects_MarksMapping values(35,1,10)
+ Insert into Subjects_MarksMapping values(36,1,10)
+ Insert into Subjects_MarksMapping values(37,1,10)
+ Insert into Subjects_MarksMapping values(38,1,10)
+ Insert into Subjects_MarksMapping values(39,1,10)
+ Insert into Subjects_MarksMapping values(40,1,10)
+ Insert into Subjects_MarksMapping values(41,1,10)
+ Insert into Subjects_MarksMapping values(42,1,10)
+ Insert into Subjects_MarksMapping values(43,1,10)
+ Insert into Subjects_MarksMapping values(44,1,10)
+ Insert into Subjects_MarksMapping values(45,1,10)
+ Insert into Subjects_MarksMapping values(46,1,10)
+ Insert into Subjects_MarksMapping values(47,1,10)
+ Insert into Subjects_MarksMapping values(48,1,10)
+ Insert into Subjects_MarksMapping values(49,1,10)
+ Insert into Subjects_MarksMapping values(50,1,10)
+ Insert into Subjects_MarksMapping values(51,1,10)
+ Insert into Subjects_MarksMapping values(52,1,10)
+ Insert into Subjects_MarksMapping values(53,1,10)
+ Insert into Subjects_MarksMapping values(54,1,10)
+ Insert into Subjects_MarksMapping values(55,1,10)
+ Insert into Subjects_MarksMapping values(56,1,10)
+ Insert into Subjects_MarksMapping values(57,1,10)
+ Insert into Subjects_MarksMapping values(58,1,10)
+ Insert into Subjects_MarksMapping values(59,1,10)
+ Insert into Subjects_MarksMapping values(60,1,10)
+ Insert into Subjects_MarksMapping values(61,1,10)
+ Insert into Subjects_MarksMapping values(62,1,10)
+ Insert into Subjects_MarksMapping values(63,1,10)
+
+
+
+Insert into Subjects_MarksMapping values(11,2,10)
+Insert into Subjects_MarksMapping values(12,2,10)
+Insert into Subjects_MarksMapping values(13,2,10)
+Insert into Subjects_MarksMapping values(14,2,10)
+Insert into Subjects_MarksMapping values(15,2,10)
+Insert into Subjects_MarksMapping values(16,2,10)
+Insert into Subjects_MarksMapping values(17,2,10)
+Insert into Subjects_MarksMapping values(18,2,10)
+Insert into Subjects_MarksMapping values(19,2,10)
+Insert into Subjects_MarksMapping values(20,2,10)
+Insert into Subjects_MarksMapping values(21,2,10)
+Insert into Subjects_MarksMapping values(22,2,10)
+Insert into Subjects_MarksMapping values(23,2,10)
+Insert into Subjects_MarksMapping values(24,2,10)
+Insert into Subjects_MarksMapping values(25,2,10)
+Insert into Subjects_MarksMapping values(26,2,10)
+Insert into Subjects_MarksMapping values(27,2,10)
+Insert into Subjects_MarksMapping values(28,2,10)
+Insert into Subjects_MarksMapping values(29,2,10)
+Insert into Subjects_MarksMapping values(30,2,10)
+Insert into Subjects_MarksMapping values(31,2,10)
+Insert into Subjects_MarksMapping values(32,2,10)
+Insert into Subjects_MarksMapping values(33,2,10)
+Insert into Subjects_MarksMapping values(34,2,10)
+Insert into Subjects_MarksMapping values(35,2,10)
+Insert into Subjects_MarksMapping values(36,2,10)
+Insert into Subjects_MarksMapping values(37,2,10)
+Insert into Subjects_MarksMapping values(38,2,10)
+Insert into Subjects_MarksMapping values(39,2,10)
+Insert into Subjects_MarksMapping values(40,2,10)
+Insert into Subjects_MarksMapping values(41,2,10)
+Insert into Subjects_MarksMapping values(42,2,10)
+Insert into Subjects_MarksMapping values(43,2,10)
+Insert into Subjects_MarksMapping values(44,2,10)
+Insert into Subjects_MarksMapping values(45,2,10)
+Insert into Subjects_MarksMapping values(46,2,10)
+Insert into Subjects_MarksMapping values(47,2,10)
+Insert into Subjects_MarksMapping values(48,2,10)
+Insert into Subjects_MarksMapping values(49,2,10)
+Insert into Subjects_MarksMapping values(50,2,10)
+Insert into Subjects_MarksMapping values(51,2,10)
+Insert into Subjects_MarksMapping values(52,2,10)
+Insert into Subjects_MarksMapping values(53,2,10)
+Insert into Subjects_MarksMapping values(54,2,10)
+Insert into Subjects_MarksMapping values(55,2,10)
+Insert into Subjects_MarksMapping values(56,2,10)
+Insert into Subjects_MarksMapping values(57,2,10)
+Insert into Subjects_MarksMapping values(58,2,10)
+Insert into Subjects_MarksMapping values(59,2,10)
+Insert into Subjects_MarksMapping values(60,2,10)
+Insert into Subjects_MarksMapping values(61,2,10)
+Insert into Subjects_MarksMapping values(62,2,10)
+Insert into Subjects_MarksMapping values(63,2,10)
+
+
+
+Insert into Subjects_MarksMapping values(11,3,10)
+Insert into Subjects_MarksMapping values(12,3,10)
+Insert into Subjects_MarksMapping values(13,3,10)
+Insert into Subjects_MarksMapping values(14,3,10)
+Insert into Subjects_MarksMapping values(15,3,10)
+Insert into Subjects_MarksMapping values(16,3,10)
+Insert into Subjects_MarksMapping values(17,3,10)
+Insert into Subjects_MarksMapping values(18,3,10)
+Insert into Subjects_MarksMapping values(19,3,10)
+Insert into Subjects_MarksMapping values(20,3,10)
+Insert into Subjects_MarksMapping values(21,3,10)
+Insert into Subjects_MarksMapping values(22,3,10)
+Insert into Subjects_MarksMapping values(23,3,10)
+Insert into Subjects_MarksMapping values(24,3,10)
+Insert into Subjects_MarksMapping values(25,3,10)
+Insert into Subjects_MarksMapping values(26,3,10)
+Insert into Subjects_MarksMapping values(27,3,10)
+Insert into Subjects_MarksMapping values(28,3,10)
+Insert into Subjects_MarksMapping values(29,3,10)
+Insert into Subjects_MarksMapping values(30,3,10)
+Insert into Subjects_MarksMapping values(31,3,10)
+Insert into Subjects_MarksMapping values(32,3,10)
+Insert into Subjects_MarksMapping values(33,3,10)
+Insert into Subjects_MarksMapping values(34,3,10)
+Insert into Subjects_MarksMapping values(35,3,10)
+Insert into Subjects_MarksMapping values(36,3,10)
+Insert into Subjects_MarksMapping values(37,3,10)
+Insert into Subjects_MarksMapping values(38,3,10)
+Insert into Subjects_MarksMapping values(39,3,10)
+Insert into Subjects_MarksMapping values(40,3,10)
+Insert into Subjects_MarksMapping values(41,3,10)
+Insert into Subjects_MarksMapping values(42,3,10)
+Insert into Subjects_MarksMapping values(43,3,10)
+Insert into Subjects_MarksMapping values(44,3,10)
+Insert into Subjects_MarksMapping values(45,3,10)
+Insert into Subjects_MarksMapping values(46,3,10)
+Insert into Subjects_MarksMapping values(47,3,10)
+Insert into Subjects_MarksMapping values(48,3,10)
+Insert into Subjects_MarksMapping values(49,3,10)
+Insert into Subjects_MarksMapping values(50,3,10)
+Insert into Subjects_MarksMapping values(51,3,10)
+Insert into Subjects_MarksMapping values(52,3,10)
+Insert into Subjects_MarksMapping values(53,3,10)
+Insert into Subjects_MarksMapping values(54,3,10)
+Insert into Subjects_MarksMapping values(55,3,10)
+Insert into Subjects_MarksMapping values(56,3,10)
+Insert into Subjects_MarksMapping values(57,3,10)
+Insert into Subjects_MarksMapping values(58,3,10)
+Insert into Subjects_MarksMapping values(59,3,10)
+Insert into Subjects_MarksMapping values(60,3,10)
+Insert into Subjects_MarksMapping values(61,3,10)
+Insert into Subjects_MarksMapping values(62,3,10)
+Insert into Subjects_MarksMapping values(63,3,10)
 go

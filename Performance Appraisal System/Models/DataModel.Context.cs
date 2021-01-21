@@ -76,7 +76,7 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<DepartmentMasterReport> DepartmentMasterReports { get; set; }
         public virtual DbSet<SubMasterReport> SubMasterReports { get; set; }
         public virtual DbSet<Sub61> Sub61 { get; set; }
-        public virtual DbSet<Departments_MarksMapping> Departments_MarksMapping { get; set; }
         public virtual DbSet<Subjects_MarksMapping> Subjects_MarksMapping { get; set; }
+        public virtual DbSet<Departments_MarksMapping> Departments_MarksMapping { get; set; }
     }
 }

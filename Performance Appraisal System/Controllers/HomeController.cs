@@ -13,10 +13,14 @@ namespace Performance_Appraisal_System.Controllers
     [CustomAuthenticationFilter]
     public class HomeController : Controller
     {
-        
+        private DocPASEntities db = new DocPASEntities();
+
         public ActionResult Index()
         {
             User user = (User)HttpContext.Session["User"];
+
+            List<Departments_MarksMapping> departments_MarksMapping = db.Departments_MarksMapping.ToList();
+            Session["departments_MarksMapping"] = departments_MarksMapping;
 
             ViewBag.UserRole = user.RoleId;
             return View();

@@ -17,7 +17,6 @@
             <hr>
             <div class="card-text">
                 <div class="center-group">
-
                     <div class="form-row">
                         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
                             कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> सहकारी संस्थांची तपासणी </strong>
@@ -38,15 +37,15 @@
                         </div>
                     </div>
 
-                    @*
-                        <div class="center-div">
-                            <h5>एकुण गुण: <strong> 05 </strong></h5>
-                        </div>*@
+                    <div class="center-div">
+                        <h5>एकुण गुण: <strong> @Session["TotalMarks"].ToString() </strong></h5>
+                    </div>
+
 
                     <div class="form-row">
                         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
                             @Html.LabelFor(temp => temp.NotApplicable)
-                            @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
+                            @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable", @checked = false })
                         </div>
                     </div>
 
@@ -318,7 +317,7 @@
     $("#Last_Month_Achieved").change(Appraisal_Percentage);
     $("#Current_Month_Achieved").change(Appraisal_Percentage);
 
-      
+
     $('#NotApplicable').click(function () {
         //If the checkbox is checked.
         if ($(this).is(':checked')) {
@@ -336,13 +335,14 @@
             $("#Current_Month_Aim").val("0");
             $("#Total_Achieved").val("0");
             $("#Current_Month_Percentage").val("0");
+
             $("#Appraisal_Marks").val("0");
             $("#Appraisal_Percentage").val("0");
             $("#Remarks").val("0");
             $("#NotApplicable").val(true);
 
         } else {
-            
+
             //If it is not checked, show form
             $("#WrappperDiv").css("display", "block");
         }

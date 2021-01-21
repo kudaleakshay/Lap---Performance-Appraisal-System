@@ -244,23 +244,8 @@ namespace Performance_Appraisal_System.Controllers
         }
 
         public void SetAppraisalMarks(int SId, int AppraisalType){
-            Subjects_MarksMapping Marks = db.Subjects_MarksMapping.Where(x => x.SId == SId).FirstOrDefault(); ;
-
-            switch (Session["AppraisalType"])
-            {
-                case 1:
-                    Session["TotalMarks"] = Marks.Marks1;
-                    break;
-
-                case 2:
-                    Session["TotalMarks"] = Marks.Marks2;
-                    break;
-
-                case 3:
-                    Session["TotalMarks"] = Marks.Marks3;
-                    break;
-            }
-
+            Subjects_MarksMapping Marks = db.Subjects_MarksMapping.Where(x => x.SId == SId && x.AType == AppraisalType).FirstOrDefault(); ;
+            Session["TotalMarks"] = Marks.Marks;
         }
 
     }

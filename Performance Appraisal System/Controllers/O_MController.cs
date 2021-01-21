@@ -18,10 +18,10 @@ namespace Performance_Appraisal_System.Controllers
 
         public O_MController()
         {
-            var Current_Month = Convert.ToString(DateTime.Now.Month-1);
+            var Current_Month = Convert.ToString(DateTime.Now.Month - 1);
             var Current_Year = Convert.ToString(DateTime.Now.Year);
 
-            if(System.Web.HttpContext.Current.Session["ReportMonth"] != null)
+            if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
             {
                 Current_Month = Convert.ToString(System.Web.HttpContext.Current.Session["ReportMonth"]);
                 Current_Year = Convert.ToString(System.Web.HttpContext.Current.Session["ReportYear"]);
@@ -52,19 +52,20 @@ namespace Performance_Appraisal_System.Controllers
 
             switch (Session["ReportSubDepartment"])
             {
-                /*Here get DepartmentId, SubReportId ,Month, Year from DB
-                If Rec Present add it to Viewbag*/
-
                 case 60:
-
-                    Sub60 record = db.Sub60
+                    /*Sub60 record = db.Sub60
                                           .Where(u => u.Month == Month && u.Year == Year)
                                           .FirstOrDefault();
 
-                    return View("Subject60", record);
+                    return View("Subject60", record);*/
+                    return View("Subject60");
 
                 case 61:
-                    return View("Subject61");
+                    Sub61 record61 = db.Sub61
+                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .FirstOrDefault();
+
+                    return View("Subject61", record61);
             }
             return View();
         }
@@ -83,11 +84,6 @@ namespace Performance_Appraisal_System.Controllers
                 db.Sub60.Add(Reports);
                 db.SaveChanges();
 
-                if(Reports.NotApplicable == true)
-                {
-
-                }
-
                 SubMasterReport SubReport = new SubMasterReport
                 {
                     UId = Reports.UId,
@@ -96,10 +92,10 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Convert.ToInt32(Session["TotalMarks"]),
+                    Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
-                    Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToInt32(Session["TotalMarks"]) : 0,
+                    Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
@@ -145,6 +141,7 @@ namespace Performance_Appraisal_System.Controllers
                     Total_Marks = Convert.ToInt32(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
+                    //Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToInt32(Session["TotalMarks"]) : 0,
                 };
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
@@ -162,23 +159,6 @@ namespace Performance_Appraisal_System.Controllers
                 ModelState.AddModelError("Error", "Invalid Data");
                 return View();
             }
-        }
-
-        public SubMasterReport PrepareSubMasterReport(Sub60 Current_Report)
-        {
-            SubMasterReport Report = new SubMasterReport
-            {
-                UId = Current_Report.UId,
-                Rid = Current_Report.RId,
-                Month = Current_Report.Month,
-                Year = Current_Report.Year,
-                DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
-                SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                Total_Marks = Convert.ToInt32(Session["TotalMarks"]),
-                Appraisal_Marks = Current_Report.Appraisal_Marks,
-                Appraisal_Percentage = Current_Report.Appraisal_Percentage,
-            };
-            return Report;
         }
     }
 }
