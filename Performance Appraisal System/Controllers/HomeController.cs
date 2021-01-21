@@ -13,7 +13,7 @@ namespace Performance_Appraisal_System.Controllers
     [CustomAuthenticationFilter]
     public class HomeController : Controller
     {
-        private DocPASEntities db = new DocPASEntities();
+        private readonly DocPASEntities db = new DocPASEntities();
 
         public ActionResult Index()
         {

@@ -816,7 +816,7 @@ Current_Month_Achieved int,
 Total_Achieved int,
 Current_Month_Percentage float,
 Appraisal_Marks float,
-NotApplicable Bit  DEFAULT 0,
+NotApplicable Bit  DEFAULT 0 NOT NULL,
 Appraisal_Percentage float,
 Month int,
 Year int,
@@ -834,7 +834,7 @@ Current_Month_Achieved int,
 Total_Achieved int,
 Current_Month_Percentage float,
 Appraisal_Marks float,
-NotApplicable Bit  DEFAULT 0,
+NotApplicable Bit DEFAULT 0 NOT NULL,
 Appraisal_Percentage float,
 Month int,
 Year int,
@@ -1916,3 +1916,41 @@ Insert into Subjects_MarksMapping values(61,3,10)
 Insert into Subjects_MarksMapping values(62,3,10)
 Insert into Subjects_MarksMapping values(63,3,10)
 go
+
+
+
+
+
+
+CREATE TRIGGER [dbo].[Get_Appraisal_Percentage] ON [DocPAS].[dbo].[DepartmentMasterReports]
+AFTER INSERT, UPDATE
+AS
+BEGIN
+
+Declare @iAMarks as float;
+Declare @iTotal as float;
+Declare @dDepartment as int;
+Declare @iUId as int;
+Declare @iMonth as int;
+Declare @iYear as int;
+
+Select 
+  @iAMarks = i.Appraisal_Marks,
+  @iTotal = i.Total_Marks,
+  @dDepartment = i.[DepartmentId],
+  @iUId = i.[UId],
+  @iMonth = i.[Month],
+  @iYear = i.[Year]
+  
+From inserted i;
+
+Update DepartmentMasterReports
+    SET Appraisal_Percentage = round((@iAMarks* 100) / @iTotal,2)
+Where
+	[DepartmentId] = @dDepartment
+    AND [Year]= @iYear 
+    AND [Month] = @iMonth
+    AND [UId] = @iUId
+
+END
+go 

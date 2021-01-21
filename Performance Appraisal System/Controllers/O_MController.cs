@@ -14,7 +14,7 @@ namespace Performance_Appraisal_System.Controllers
     public class O_MController : Controller
     {
         ReportController reportController = new ReportController();
-        private DocPASEntities db = new DocPASEntities();
+        private readonly DocPASEntities db = new DocPASEntities();
 
         public O_MController()
         {

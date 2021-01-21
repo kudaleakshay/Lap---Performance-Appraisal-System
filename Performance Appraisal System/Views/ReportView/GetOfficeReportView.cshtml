@@ -37,12 +37,21 @@
                             <tr>
                                 <th style="width:40%">शाखा</th>
                                 <th>एकुण गुण</th>
-                                <th >प्राप्त गुण</th>
-                                <th >प्राप्त गुणांची टक्केवारी</th>
-                                <th ></th>
+                                <th>प्राप्त गुण</th>
+                                <th>प्राप्त गुणांची टक्केवारी</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
+                        <tfoot>
+                            <tr style="background:#a8bdbd; font-size:18px">
+                                <th style="text-align:center">महाराष्ट्र राज्य</th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
                     </table>
                     <br>
                     <br>
@@ -62,10 +71,9 @@
     $(document).ready(function () {
 
         bindDataTable();
-
     });
 
-
+    
     function bindDataTable() {
 
         var UId = $("#UId").val();
@@ -87,6 +95,50 @@
             language: {
                 emptyTable: "कृपया महिना/वर्ष निवडा"
             },
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(), data;
+
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\$,]/g, '') * 1 :
+                        typeof i === 'number' ?
+                            i : 0;
+                };
+
+                // Total over all pages
+                total_Marks = api
+                    .column(1)
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                total_Appraisal = api
+                    .column(2)
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                total_Percentage = api
+                    .column(3)
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                // Update footer
+                $(api.column(1).footer()).html(
+                    total_Marks
+                );
+                $(api.column(2).footer()).html(
+                    total_Appraisal
+                );
+                $(api.column(3).footer()).html(
+                    total_Percentage + ' %'
+                );
+            },
             "ajax": {
                 "url": "/ReportView/GetOfficeReportData?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
                 "type": "GET",
@@ -94,9 +146,9 @@
             },
             "columns": [
                 { "data": "Department" },
+                { "data": "report.Total_Marks" },
                 { "data": "report.Appraisal_Marks" },
-                { "data": "report.Appraisal_Marks" },
-                { "data": "report.Appraisal_Marks" },
+                { "data": "report.Appraisal_Percentage" },
                 {
                     "render": function (data, type, full, meta) {
                         return '<button style="float:right; margin-right:20px;" class = "btn btn-info">View</button>';
@@ -123,4 +175,5 @@
         bindDataTable();
     })
 
+ 
 </script>
