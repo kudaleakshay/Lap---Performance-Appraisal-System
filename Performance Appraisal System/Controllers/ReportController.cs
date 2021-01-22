@@ -56,12 +56,7 @@ namespace Performance_Appraisal_System.Controllers
             User user = (User)HttpContext.Session["User"];
 
             AppraisalReportViewModel reports = new AppraisalReportViewModel();
-            reports.Subjects = (from s in db.Subjects
-                                join d in db.DepartmentMappings
-                                on s.DepartmentId equals d.DId
-                                where d.Type3 == 1
-                                && s.Type == 1
-                                select s).ToList();
+           
 
             switch (user.AppraisalType)
             {
@@ -79,6 +74,15 @@ namespace Performance_Appraisal_System.Controllers
                                         join d in db.DepartmentMappings
                                         on s.DepartmentId equals d.DId
                                         where d.Type2 == 1
+                                        && s.Type == 1
+                                        select s).ToList();
+                    break;
+
+                case 3:
+                    reports.Subjects = (from s in db.Subjects
+                                        join d in db.DepartmentMappings
+                                        on s.DepartmentId equals d.DId
+                                        where d.Type3 == 1
                                         && s.Type == 1
                                         select s).ToList();
                     break;

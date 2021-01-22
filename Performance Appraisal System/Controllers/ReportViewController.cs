@@ -276,7 +276,7 @@ namespace Performance_Appraisal_System.Controllers
         public JsonResult GetDepartmentReportData(int DepartmentId, int SubjectId, int Month, int Year)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = (from s in db.Sub60
+            var reports = (from s in db.Report60
                            join u in db.Users
                            on s.UId equals u.UId
                            where s.Month == Month
@@ -481,7 +481,7 @@ namespace Performance_Appraisal_System.Controllers
                     switch (SubjectId)
                     {
                         case 60:
-                            reports = (from s in db.Sub60
+                            reports = (from s in db.Report60
                                        join u in db.Users
                                        on s.UId equals u.UId
                                        where s.Month == Month

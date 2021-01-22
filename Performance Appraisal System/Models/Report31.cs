@@ -12,22 +12,15 @@ namespace Performance_Appraisal_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Sub58
+    public partial class Report31
     {
         public int RId { get; set; }
         public Nullable<int> UId { get; set; }
-        public Nullable<int> Total_Target { get; set; }
-        public Nullable<int> Current_Month_Aim { get; set; }
-        public Nullable<int> Current_Month_Aim_Rs { get; set; }
-        public Nullable<int> Last_Month_Achieved { get; set; }
-        public Nullable<int> Last_Month_Achieved_Rs { get; set; }
-        public Nullable<int> Current_Month_Achieved { get; set; }
-        public Nullable<int> Current_Month_Achieved_Rs { get; set; }
-        public Nullable<int> Total_Achieved { get; set; }
-        public Nullable<int> Total_Achieved_Rs { get; set; }
-        public Nullable<int> Current_Month_Percentage { get; set; }
-        public Nullable<int> Appraisal_Marks { get; set; }
-        public Nullable<int> Appraisal_Percentage { get; set; }
+        public Nullable<int> Aim { get; set; }
+        public Nullable<int> Last_Month_Report_Submitted { get; set; }
+        public Nullable<int> Current_Month_Report_Submitted { get; set; }
+        public Nullable<double> Appraisal_Marks { get; set; }
+        public bool NotApplicable { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public string Remarks { get; set; }

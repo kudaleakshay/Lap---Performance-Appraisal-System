@@ -1,4 +1,4 @@
-﻿@model Performance_Appraisal_System.Models.Sub24
+﻿@model Performance_Appraisal_System.Models.Report28
 @{
     ViewBag.Title = "सहकारी संस्थांची नोंदणी";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -85,13 +85,13 @@
                     <br>
                     <span style="color: #e77817 !important; font-size: 16px;">उद्दीष्टे / साध्य</span>
                     <hr>
-                    <div class="form-row">
+        @*            <div class="form-row">
                         <div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Marks)
                             @Html.TextBoxFor(temp => temp.Marks, new { id = "Marks", @class = "form-control" })
                             @Html.ValidationMessageFor(temp => temp.Marks)
                         </div>
-                    </div>
+                    </div>*@
                     <hr>
 
                     <div class="form-row">

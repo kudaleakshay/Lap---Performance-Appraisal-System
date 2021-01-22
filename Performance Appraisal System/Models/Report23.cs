@@ -22,6 +22,7 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Total_Members { get; set; }
         public Nullable<double> Appraisal_Marks { get; set; }
         public Nullable<double> Appraisal_Percentage { get; set; }
+        public bool NotApplicable { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public string Remarks { get; set; }

@@ -19,10 +19,11 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Last_Month_Received_Cases { get; set; }
         public Nullable<int> Current_Month_Received_Cases { get; set; }
         public Nullable<int> Total_Cases { get; set; }
-        public Nullable<int> Target_Cases { get; set; }
+        public Nullable<int> Target { get; set; }
         public Nullable<int> Achieved { get; set; }
         public Nullable<double> Appraisal_Marks { get; set; }
         public Nullable<double> Appraisal_Percentage { get; set; }
+        public bool NotApplicable { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public string Remarks { get; set; }

@@ -16,13 +16,15 @@ namespace Performance_Appraisal_System.Models
     {
         public int RId { get; set; }
         public Nullable<int> UId { get; set; }
-        public Nullable<int> April_To_Sept_Aim { get; set; }
-        public Nullable<int> October_To_March_Aim { get; set; }
-        public Nullable<int> Total_Annual_Achieved { get; set; }
+        public Nullable<int> Aim1 { get; set; }
+        public Nullable<int> Aim2 { get; set; }
+        public Nullable<int> Total_Annual_Aim { get; set; }
         public Nullable<int> Last_Month_Achieved { get; set; }
-        public Nullable<int> Total_Pending { get; set; }
+        public Nullable<int> Current_Month_Achieved { get; set; }
+        public Nullable<int> Total_Achieved { get; set; }
         public Nullable<double> Appraisal_Marks { get; set; }
         public Nullable<double> Appraisal_Percentage { get; set; }
+        public bool NotApplicable { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public string Remarks { get; set; }

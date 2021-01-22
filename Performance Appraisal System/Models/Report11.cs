@@ -12,27 +12,28 @@ namespace Performance_Appraisal_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Sub60
+    public partial class Report11
     {
         public int RId { get; set; }
         public Nullable<int> UId { get; set; }
-        public Nullable<int> Officer_Count { get; set; }
-        public Nullable<int> Staff_Count { get; set; }
-        public Nullable<int> Total_Staff { get; set; }
-        public Nullable<int> Officer_Target { get; set; }
-        public Nullable<int> Staff_Target { get; set; }
-        public Nullable<int> Total_Target { get; set; }
-        public Nullable<int> Current_Month_Aim { get; set; }
-        public Nullable<int> Last_Month_Achieved { get; set; }
-        public Nullable<int> Current_Month_Achieved { get; set; }
-        public Nullable<int> Total_Achieved { get; set; }
-        public Nullable<double> Current_Month_Percentage { get; set; }
+        public Nullable<int> Inquiry_C { get; set; }
+        public Nullable<int> Inquiry_D { get; set; }
+        public Nullable<int> Inquiry_Total { get; set; }
+        public Nullable<int> Inquiry_Target_C { get; set; }
+        public Nullable<int> Inquiry_Target_D { get; set; }
+        public Nullable<int> Inquiry_Total_Target { get; set; }
+        public Nullable<int> Inquiry_Achieved_C { get; set; }
+        public Nullable<int> Inquiry_Achieved_D { get; set; }
+        public Nullable<int> Inquiry_Total_Achieved { get; set; }
+        public Nullable<int> Inquiry_Remaining_C { get; set; }
+        public Nullable<int> Inquiry_Remaining_D { get; set; }
+        public Nullable<int> Inquiry_Total_Remaining { get; set; }
         public Nullable<double> Appraisal_Marks { get; set; }
         public Nullable<double> Appraisal_Percentage { get; set; }
+        public bool NotApplicable { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public string Remarks { get; set; }
-        public bool NotApplicable { get; set; }
     
         public virtual User User { get; set; }
     }

@@ -20,5 +20,6 @@ namespace Performance_Appraisal_System.Models
         public Nullable<double> Marks { get; set; }
     
         public virtual Subject Subject { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

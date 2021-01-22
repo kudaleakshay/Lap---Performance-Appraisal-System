@@ -20,6 +20,7 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Resolved_Appeal { get; set; }
         public Nullable<double> Resolved_Percentage { get; set; }
         public Nullable<double> Appraisal_Marks { get; set; }
+        public bool NotApplicable { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
         public string Remarks { get; set; }

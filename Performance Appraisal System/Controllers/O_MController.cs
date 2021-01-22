@@ -53,7 +53,7 @@ namespace Performance_Appraisal_System.Controllers
             switch (Session["ReportSubDepartment"])
             {
                 case 60:
-                    /*Sub60 record = db.Sub60
+                    /*Report60 record = db.Report60
                                           .Where(u => u.Month == Month && u.Year == Year)
                                           .FirstOrDefault();
 
@@ -61,7 +61,7 @@ namespace Performance_Appraisal_System.Controllers
                     return View("Subject60");
 
                 case 61:
-                    Sub61 record61 = db.Sub61
+                    Report61 record61 = db.Report61
                                           .Where(u => u.Month == Month && u.Year == Year)
                                           .FirstOrDefault();
 
@@ -71,7 +71,7 @@ namespace Performance_Appraisal_System.Controllers
         }
 
         [HttpPost]
-        public ActionResult Subject60(Sub60 Reports)
+        public ActionResult Subject60(Report60 Reports)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 Reports.UId = user.UId;
 
-                db.Sub60.Add(Reports);
+                db.Report60.Add(Reports);
                 db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
@@ -117,7 +117,7 @@ namespace Performance_Appraisal_System.Controllers
 
 
         [HttpPost]
-        public ActionResult Subject61(Sub61 Reports)
+        public ActionResult Subject61(Report61 Reports)
         {
             if (ModelState.IsValid)
             {
@@ -127,7 +127,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 Reports.UId = user.UId;
 
-                db.Sub61.Add(Reports);
+                db.Report61.Add(Reports);
                 db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport

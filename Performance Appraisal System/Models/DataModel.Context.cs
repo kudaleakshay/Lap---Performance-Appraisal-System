@@ -31,37 +31,35 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Sub24> Sub24 { get; set; }
-        public virtual DbSet<Sub25> Sub25 { get; set; }
-        public virtual DbSet<Sub26> Sub26 { get; set; }
-        public virtual DbSet<Sub27> Sub27 { get; set; }
-        public virtual DbSet<Sub28> Sub28 { get; set; }
-        public virtual DbSet<Sub35> Sub35 { get; set; }
-        public virtual DbSet<Sub36> Sub36 { get; set; }
-        public virtual DbSet<Sub37> Sub37 { get; set; }
-        public virtual DbSet<Sub38> Sub38 { get; set; }
-        public virtual DbSet<Sub39> Sub39 { get; set; }
-        public virtual DbSet<Sub40> Sub40 { get; set; }
-        public virtual DbSet<Sub53> Sub53 { get; set; }
-        public virtual DbSet<Sub54> Sub54 { get; set; }
-        public virtual DbSet<Sub56> Sub56 { get; set; }
-        public virtual DbSet<Sub57> Sub57 { get; set; }
-        public virtual DbSet<Sub58> Sub58 { get; set; }
-        public virtual DbSet<Sub59> Sub59 { get; set; }
-        public virtual DbSet<Sub60> Sub60 { get; set; }
-        public virtual DbSet<Report62> Report62 { get; set; }
-        public virtual DbSet<Report63> Report63 { get; set; }
-        public virtual DbSet<Report64> Report64 { get; set; }
+        public virtual DbSet<DepartmentMapping> DepartmentMappings { get; set; }
+        public virtual DbSet<DepartmentMasterReport> DepartmentMasterReports { get; set; }
+        public virtual DbSet<SubMasterReport> SubMasterReports { get; set; }
+        public virtual DbSet<Subjects_MarksMapping> Subjects_MarksMapping { get; set; }
+        public virtual DbSet<Departments_MarksMapping> Departments_MarksMapping { get; set; }
+        public virtual DbSet<Report11> Report11 { get; set; }
+        public virtual DbSet<Report12> Report12 { get; set; }
+        public virtual DbSet<Report13> Report13 { get; set; }
+        public virtual DbSet<Report14> Report14 { get; set; }
+        public virtual DbSet<Report15> Report15 { get; set; }
+        public virtual DbSet<Report16> Report16 { get; set; }
         public virtual DbSet<Report17> Report17 { get; set; }
         public virtual DbSet<Report18> Report18 { get; set; }
         public virtual DbSet<Report23> Report23 { get; set; }
-        public virtual DbSet<Report51> Report51 { get; set; }
-        public virtual DbSet<Report52> Report52 { get; set; }
-        public virtual DbSet<Report53> Report53 { get; set; }
-        public virtual DbSet<Report54> Report54 { get; set; }
-        public virtual DbSet<Report56> Report56 { get; set; }
-        public virtual DbSet<Report58> Report58 { get; set; }
-        public virtual DbSet<Report59> Report59 { get; set; }
+        public virtual DbSet<Report24> Report24 { get; set; }
+        public virtual DbSet<Report25> Report25 { get; set; }
+        public virtual DbSet<Report26> Report26 { get; set; }
+        public virtual DbSet<Report27> Report27 { get; set; }
+        public virtual DbSet<Report28> Report28 { get; set; }
+        public virtual DbSet<Report29> Report29 { get; set; }
+        public virtual DbSet<Report30> Report30 { get; set; }
+        public virtual DbSet<Report31> Report31 { get; set; }
+        public virtual DbSet<Report34> Report34 { get; set; }
+        public virtual DbSet<Report35> Report35 { get; set; }
+        public virtual DbSet<Report36> Report36 { get; set; }
+        public virtual DbSet<Report37> Report37 { get; set; }
+        public virtual DbSet<Report38> Report38 { get; set; }
+        public virtual DbSet<Report39> Report39 { get; set; }
+        public virtual DbSet<Report40> Report40 { get; set; }
         public virtual DbSet<Report41> Report41 { get; set; }
         public virtual DbSet<Report42> Report42 { get; set; }
         public virtual DbSet<Report43> Report43 { get; set; }
@@ -72,11 +70,18 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Report48> Report48 { get; set; }
         public virtual DbSet<Report49> Report49 { get; set; }
         public virtual DbSet<Report50> Report50 { get; set; }
-        public virtual DbSet<DepartmentMapping> DepartmentMappings { get; set; }
-        public virtual DbSet<DepartmentMasterReport> DepartmentMasterReports { get; set; }
-        public virtual DbSet<SubMasterReport> SubMasterReports { get; set; }
-        public virtual DbSet<Sub61> Sub61 { get; set; }
-        public virtual DbSet<Subjects_MarksMapping> Subjects_MarksMapping { get; set; }
-        public virtual DbSet<Departments_MarksMapping> Departments_MarksMapping { get; set; }
+        public virtual DbSet<Report51> Report51 { get; set; }
+        public virtual DbSet<Report52> Report52 { get; set; }
+        public virtual DbSet<Report53> Report53 { get; set; }
+        public virtual DbSet<Report54> Report54 { get; set; }
+        public virtual DbSet<Report56> Report56 { get; set; }
+        public virtual DbSet<Report57> Report57 { get; set; }
+        public virtual DbSet<Report58> Report58 { get; set; }
+        public virtual DbSet<Report59> Report59 { get; set; }
+        public virtual DbSet<Report60> Report60 { get; set; }
+        public virtual DbSet<Report61> Report61 { get; set; }
+        public virtual DbSet<Report62> Report62 { get; set; }
+        public virtual DbSet<Report63> Report63 { get; set; }
+        public virtual DbSet<Report64> Report64 { get; set; }
     }
 }

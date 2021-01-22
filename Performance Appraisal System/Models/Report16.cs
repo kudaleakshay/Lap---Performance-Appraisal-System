@@ -12,17 +12,20 @@ namespace Performance_Appraisal_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Sub24
+    public partial class Report16
     {
         public int RId { get; set; }
         public Nullable<int> UId { get; set; }
-        public Nullable<int> Marks { get; set; }
-        public Nullable<int> Aim { get; set; }
-        public Nullable<int> Achieved { get; set; }
-        public Nullable<int> Appraisal_Marks { get; set; }
-        public string Remarks { get; set; }
+        public Nullable<int> Cases_Target { get; set; }
+        public Nullable<int> Last_Month_Achieved { get; set; }
+        public Nullable<int> Current_Month_Achieved { get; set; }
+        public Nullable<int> Total_Achieved { get; set; }
+        public Nullable<double> Appraisal_Marks { get; set; }
+        public Nullable<double> Appraisal_Percentage { get; set; }
+        public bool NotApplicable { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
+        public string Remarks { get; set; }
     
         public virtual User User { get; set; }
     }
