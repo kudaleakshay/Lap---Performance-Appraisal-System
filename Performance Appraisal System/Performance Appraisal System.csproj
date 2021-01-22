@@ -341,7 +341,10 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="DocPAS DB Script - Inserted.sql" />
     <Content Include="DocPAS DB Script.sql" />
+    <Content Include="DocPAS DB Tables Script.sql" />
+    <Content Include="DocPAS DB Triggers.sql" />
     <Content Include="fevicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
