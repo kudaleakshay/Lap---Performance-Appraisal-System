@@ -90,7 +90,16 @@ go
 
 create table Departments_MarksMapping(
 Id int primary key identity(1,1),
-DId int references Subjects(SId) on delete set null,
+DId int references Departments(Id) on delete set null,
 AType int,
 Marks float)
+go
+
+
+create table DepartmentMapping(
+Id int primary key identity(1,1),
+DId int references Departments(Id) on delete set null,
+Type1 int,
+Type2 int,
+Type3 int)
 go

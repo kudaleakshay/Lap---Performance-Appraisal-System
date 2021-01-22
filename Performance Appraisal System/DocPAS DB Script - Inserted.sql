@@ -156,7 +156,7 @@ go
 
 
 
-insert into Users(UserName,Name,Password,RoleId,Status) values('comm1','सह्कार आयुक्त','comm1',2,1)
+insert into Users(UserName,Name,Password,RoleId,Status) values('comm1',N'सह्कार आयुक्त','comm1',2,1)
 go
 
 
@@ -1404,4 +1404,17 @@ Insert into Subjects_MarksMapping values(61,3,5)
 Insert into Subjects_MarksMapping values(62,3,1)
 Insert into Subjects_MarksMapping values(63,3,2)
 Insert into Subjects_MarksMapping values(64,3,2)
+go
+
+
+Insert into DepartmentMapping values(1,1,1,1)
+Insert into DepartmentMapping  values(2,0,1,1)
+Insert into DepartmentMapping  values(3,1,1,1)
+Insert into DepartmentMapping  values(4,1,1,1)
+Insert into DepartmentMapping  values(5,1,1,1)
+Insert into DepartmentMapping  values(6,1,1,1)
+Insert into DepartmentMapping  values(7,1,0,1)
+Insert into DepartmentMapping  values(8,1,1,1)
+Insert into DepartmentMapping  values(9,1,1,1)
+Insert into DepartmentMapping  values(10,1,1,1)
 go

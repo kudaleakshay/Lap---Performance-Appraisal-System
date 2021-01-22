@@ -13,9 +13,9 @@ Select
 From inserted i;
 
 Update [Users] 
-    SET [AppraisalType] = @iAType
+    SET AppraisalType = @iAType
 WHERE
-    [DistrictId] = @iId
+    DistrictId = @iId
 
 END
 go
