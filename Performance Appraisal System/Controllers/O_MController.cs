@@ -11,9 +11,10 @@ using Performance_Appraisal_System.ViewModels;
 
 namespace Performance_Appraisal_System.Controllers
 {
+    [CustomAuthenticationFilter]
     public class O_MController : Controller
     {
-        ReportController reportController = new ReportController();
+        private readonly ReportController reportController = new ReportController();
         private readonly DocPASEntities db = new DocPASEntities();
 
         public O_MController()
@@ -61,11 +62,7 @@ namespace Performance_Appraisal_System.Controllers
                     return View("Subject60");
 
                 case 61:
-                    Report61 record61 = db.Report61
-                                          .Where(u => u.Month == Month && u.Year == Year)
-                                          .FirstOrDefault();
-
-                    return View("Subject61", record61);
+                    return View("Subject61");
             }
             return View();
         }
@@ -141,7 +138,7 @@ namespace Performance_Appraisal_System.Controllers
                     Total_Marks = Convert.ToInt32(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
-                    //Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToInt32(Session["TotalMarks"]) : 0,
+                    Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToInt32(Session["TotalMarks"]) : 0,
                 };
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))

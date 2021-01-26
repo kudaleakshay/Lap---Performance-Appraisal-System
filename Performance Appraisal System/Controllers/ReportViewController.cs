@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Performance_Appraisal_System.Infrastructure;
 using Performance_Appraisal_System.Models;
 
 namespace Performance_Appraisal_System.Controllers
 {
+    [CustomAuthenticationFilter]
     public class ReportViewController : Controller
     {
-        private DocPASEntities db = new DocPASEntities();
+        private readonly DocPASEntities db = new DocPASEntities();
 
         public ReportViewController()
         {

@@ -4,22 +4,24 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Performance_Appraisal_System.Infrastructure;
 using Performance_Appraisal_System.Models;
 using Performance_Appraisal_System.ViewModels;
 
 
 namespace Performance_Appraisal_System.Controllers
 {
+    [CustomAuthenticationFilter]
     public class ReportController : Controller
     {
 
-        private DocPASEntities db = new DocPASEntities();
+        private readonly DocPASEntities db = new DocPASEntities();
 
         public ReportController()
         {
-            var Current_Month = Convert.ToString(DateTime.Now.Month-1);
+            var Current_Month = Convert.ToString(DateTime.Now.Month - 1);
             var Current_Year = Convert.ToString(DateTime.Now.Year);
-            
+
 
             if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
             {
@@ -56,7 +58,7 @@ namespace Performance_Appraisal_System.Controllers
             User user = (User)HttpContext.Session["User"];
 
             AppraisalReportViewModel reports = new AppraisalReportViewModel();
-           
+
 
             switch (user.AppraisalType)
             {
@@ -87,7 +89,7 @@ namespace Performance_Appraisal_System.Controllers
                                         select s).ToList();
                     break;
             }
-           
+
             return View(reports);
         }
 
@@ -96,8 +98,10 @@ namespace Performance_Appraisal_System.Controllers
         {
             DateTime date = new DateTime(2020, reports.Month, 1);
 
-            AppraisalReportViewModel SubReports = new AppraisalReportViewModel();
-            SubReports.DepartmentId = reports.DepartmentId;
+            AppraisalReportViewModel SubReports = new AppraisalReportViewModel
+            {
+                DepartmentId = reports.DepartmentId
+            };
 
             Session["ReportMonth"] = reports.Month;
             Session["ReportMonthName"] = date.ToString("MMMM");
@@ -111,7 +115,7 @@ namespace Performance_Appraisal_System.Controllers
             return View(SubReports);
         }
 
-     
+
         [HttpPost]
         public ActionResult GetReportForms(AppraisalReportViewModel reports)
         {
@@ -177,21 +181,69 @@ namespace Performance_Appraisal_System.Controllers
         public JsonResult GetDJROfficeData()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = db.Users.Where(x => x.RoleId == 3).ToList();
+            User user = (User)HttpContext.Session["User"];
+
+            var reports = db.Users.Where(x => x.RoleId == 3 && x.UId == user.UId).ToList();
+
+            if (user.RoleId == 1 || user.RoleId == 2)
+            {
+                reports = db.Users.Where(x => x.RoleId == 3 && x.Status == 1).ToList();
+            }
+            if (user.RoleId == 3)
+            {
+                reports = db.Users.Where(x => x.RoleId == 3 && x.UId == user.UId).ToList();
+            }
+
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetDDROfficeData()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = db.Users.Where(x => x.RoleId == 4).ToList();
+
+            User user = (User)HttpContext.Session["User"];
+            var reports = db.Users.Where(x => x.RoleId == 4 && x.Status == 1).ToList();
+
+            if (user.RoleId == 1 || user.RoleId == 2)
+            {
+                reports = db.Users.Where(x => x.RoleId == 4 && x.Status == 1).ToList();
+            }
+            if (user.RoleId == 3)
+            {
+                reports = db.Users.Where(x => x.RoleId == 4 && x.Status == 1 && x.ReportTo == user.UId).ToList();
+            }
+            if (user.RoleId == 4)
+            {
+                reports = db.Users.Where(x => x.RoleId == 4 && x.Status == 1 && x.UId == user.UId).ToList();
+            }
+
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetAROfficeData()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = db.Users.Where(x => x.RoleId == 5).ToList();
+
+            User user = (User)HttpContext.Session["User"];
+            var reports = db.Users.Where(x => x.RoleId == 5 && x.UId == user.UId).ToList();
+
+            if (user.RoleId == 1 || user.RoleId == 2)
+            {
+                reports = db.Users.Where(x => x.RoleId == 5 && x.Status == 1).ToList();
+            }
+            if (user.RoleId == 3)
+            {
+                reports = db.Users.Where(x => x.RoleId == 5 && x.Status == 1 && x.DivisionId == user.DivisionId).ToList();
+            }
+            if (user.RoleId == 4)
+            {
+                reports = db.Users.Where(x => x.RoleId == 5 && x.Status == 1 && x.ReportTo == user.UId).ToList();
+            }
+            if (user.RoleId == 5)
+            {
+                reports = db.Users.Where(x => x.RoleId == 5 && x.Status == 1 && x.UId == user.UId).ToList();
+            }
+
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
@@ -247,7 +299,8 @@ namespace Performance_Appraisal_System.Controllers
             return true;
         }
 
-        public void SetAppraisalMarks(int SId, int AppraisalType){
+        public void SetAppraisalMarks(int SId, int AppraisalType)
+        {
             Subjects_MarksMapping Marks = db.Subjects_MarksMapping.Where(x => x.SId == SId && x.AType == AppraisalType).FirstOrDefault(); ;
             Session["TotalMarks"] = Marks.Marks;
         }

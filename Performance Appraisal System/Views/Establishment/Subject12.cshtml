@@ -1,8 +1,250 @@
-﻿
+﻿@model Performance_Appraisal_System.Models.Report12
+
 @{
     ViewBag.Title = "सेवानिवृत्ती प्रकरणे";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>सेवानिवृत्ती प्रकरणे</h2>
+<br>
+<br>
+@using (Html.BeginForm("Subject12", "O_M", FormMethod.Post))
+{
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <br>
+            <br>
+            <h3 class="card-title text-center"><strong>विभागीय सहनिबंधक, जिल्हा उपनिबंधक व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता</strong></h3>
+            <hr>
+            <div class="card-text">
+                <div class="center-group">
+                    <div class="form-row">
+                        <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> कार्यालय तपासणी </strong>
+                            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<strong> गुण:  @Session["TotalMarks"].ToString() </strong>
+                        </div>
+                    </div>
 
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, "-- महिना निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Month)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, "-- वर्ष निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Year)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group col-md-12 center-div" style="font-size: 20px;">
+        @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
+        <strong>&nbsp&nbspविषय लागु नाही</strong>
+    </div>
+
+
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <div class="card-text">
+                <div class="center-group">
+                    <br>
+                    <span style="color: #e77817 !important; font-size: 16px;">सेवा निवृत्तीवेतन प्रकरणे</span>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Officer_Count)
+                            @Html.TextBoxFor(temp => temp.Officer_Count, new { id = "Officer_Count", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Officer_Count)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Retired_Officer_Count)
+                            @Html.TextBoxFor(temp => temp.Retired_Officer_Count, new { id = "Retired_Officer_Count_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Retired_Officer_Count)
+                            @Html.HiddenFor(temp => temp.Retired_Officer_Count, new { id = "Retired_Officer_Count" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <div class="card-text">
+                <div class="center-group">
+                    <br>
+                    <span style="color: #e77817 !important; font-size: 16px;">सेवानिवृत्ती विषय लाभ अदा केलेले अधिकारी / कर्मचारी</span>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Retirement_Benefits_Target)
+                            @Html.TextBoxFor(temp => temp.Retirement_Benefits_Target, new { id = "Retirement_Benefits_Target", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Retirement_Benefits_Target)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Retirement_Benefits_Achieved)
+                            @Html.TextBoxFor(temp => temp.Retirement_Benefits_Achieved, new { id = "Retirement_Benefits_Achieved", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Retirement_Benefits_Achieved)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Retirement_Benefits_Pendig)
+                            @Html.TextBoxFor(temp => temp.Retirement_Benefits_Pendig, new { id = "Retirement_Benefits_Pendig_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Retirement_Benefits_Pendig)
+                            @Html.HiddenFor(temp => temp.Retirement_Benefits_Pendig, new { id = "Retirement_Benefits_Pendig" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <div class="card-text">
+                <div class="center-group">
+                    <br>
+                    <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
+                    <hr>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Appraisal_Marks)
+                            @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
+                            @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Appraisal_Percentage)
+                            @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
+                            @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
+                        </div>
+
+                        <div class="form-group col-md-10">
+                            @Html.LabelFor(temp => temp.Remarks)
+                            @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Remarks)
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <div class="card-text">
+                <div class="center-group">
+                    <br>
+                    <span style="color: #e77817 !important; font-size: 17px;">
+                        Confirmation / पुष्टीकरण
+                    </span>
+                    <hr>
+
+                    <div style="text-align:justify; font-size: 16px; line-height:25px">
+                        I affirm that the above mentioned information submitted by me is true and correct to my knowledge and belief. / मी प्रमाणित करतो की मी वर नमूद केलेली माहिती माझ्या माहितीनुसार सत्य आणि अचूक आहे.
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" OnClick="SetValue()">Submit / माहिती भरा</button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+
+
+}
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+
+    function Retired_Officer_Count() {
+        var Total = Number($("#Officer_Count").val()) + Number($("#Retired_Officer_Count").val());
+        $("#Retired_Officer_Count").val(Total);
+        $("#Retired_Officer_Count_val").val(Total);
+        $("#Retired_Officer_Count_val").css("font-weight", "bold");
+    }
+
+    function Retirement_Benefits_Pendig() {
+        var Total = Number($("#Retirement_Benefits_Target").val()) + Number($("#Retirement_Benefits_Achieved").val());
+        $("#Retirement_Benefits_Pendig").val(Total);
+        $("#Retirement_Benefits_Pendig_val").val(Total);
+        $("#Retirement_Benefits_Pendig_val").css("font-weight", "bold");
+    }
+
+    function Retired_Officer_Count_Achieved() {
+        var Total = Number($("#Inquiry_Achieved_D").val()) + Number($("#Inquiry_Retired_Officer_Count_Achieved").val());
+        $("#Retired_Officer_Count_Achieved").val(Total);
+        $("#Retired_Officer_Count_Achieved_val").val(Total);
+        $("#Retired_Officer_Count_Achieved_val").css("font-weight", "bold");
+    }
+
+
+    function Appraisal_Marks() {
+        var Total = ((Number($("#Retired_Officer_Count_Achieved").val()) * 5) / Number($("#Retirement_Benefits_Pendig").val()));
+        Total = Total.toFixed(2);
+        $("#Appraisal_Marks").val(Number(Total));
+        $("#Appraisal_Marks_val").val(Number(Total));
+        $("#Appraisal_Marks_val").css("font-weight", "bold");
+    }
+
+    function Appraisal_Percentage() {
+        var Total = (Number($("#Appraisal_Marks").val()) * 100 / 5);
+        Total = Total.toFixed(2);
+        $("#Appraisal_Percentage").val(Number(Total));
+        $("#Appraisal_Percentage_val").val(Number(Total));
+        $("#Appraisal_Percentage_val").css("font-weight", "bold");
+    }
+
+    function SetValue() {
+        $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
+        $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
+
+    }
+
+
+    $("#Officer_Count").change(Retired_Officer_Count);
+    $("#Retired_Officer_Count").change(Retired_Officer_Count);
+
+    $("#Retirement_Benefits_Target").change(Retirement_Benefits_Pendig);
+    $("#Retirement_Benefits_Achieved").change(Retirement_Benefits_Pendig);
+
+    $("#Inquiry_Achieved_D").change(Retired_Officer_Count_Achieved);
+    $("#Inquiry_Retired_Officer_Count_Achieved").change(Retired_Officer_Count_Achieved);
+
+    $("#Retirement_Benefits_Target").change(Appraisal_Marks);
+    $("#Retirement_Benefits_Achieved").change(Appraisal_Marks);
+    $("#Inquiry_Achieved_D").change(Appraisal_Marks);
+    $("#Inquiry_Retired_Officer_Count_Achieved").change(Appraisal_Marks);
+
+
+    $("#Retirement_Benefits_Target").change(Appraisal_Percentage);
+    $("#Retirement_Benefits_Achieved").change(Appraisal_Percentage);
+    $("#Inquiry_Achieved_D").change(Appraisal_Percentage);
+    $("#Inquiry_Retired_Officer_Count_Achieved").change(Appraisal_Percentage);
+
+</script>
+Subject12.cs
+Displaying Subject11.cs.

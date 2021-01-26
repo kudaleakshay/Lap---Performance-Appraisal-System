@@ -86,7 +86,7 @@
             autoWidth: true,
             info: false,
             language: {
-                emptyTable: "माहिती उपलब्ध नाही"
+                emptyTable: "विभाग आपल्या क्षेत्रात नाहीत अथवा माहिती उपलब्ध नाही"
             },
             rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
                 console.log(aData);
@@ -115,7 +115,7 @@
             autoWidth: true,
             fixedColumns: true,
             language: {
-                emptyTable: "माहिती उपलब्ध नाही"
+                emptyTable: "जिल्हा उपनिबंधक कार्यालय आपल्या क्षेत्रात नाहीत अथवा माहिती उपलब्ध नाही"
             },
             "ajax": {
                 "url": "/Report/GetDDROfficeData",
@@ -140,7 +140,7 @@
             autoWidth: true,
             fixedColumns: true,
             language: {
-                emptyTable: "माहिती उपलब्ध नाही"
+                emptyTable: "उपनिबंधक कार्यालय आपल्या क्षेत्रात नाहीत अथवा माहिती उपलब्ध नाही"
             },
             "ajax": {
                 "url": "/Report/GetAROfficeData",
@@ -150,7 +150,7 @@
             "columns": [
                 { "data": "Name" },
                 {
-                    "render": function (data, type, full, meta) {                        
+                    "render": function (data, type, full, meta) {
                         return '<button style="float:right; margin-right:20px;" class = "btn btn-info">Show Report</button>';
                     }
                 },
@@ -169,12 +169,13 @@
         window.open(
             "/ReportView/GetOfficeReportView?UId=" + data.UId, "_blank");
     });
-    
+
     $('#ARTable tbody').on('click', 'button', function () {
         var data = ARtable.row($(this).parents('tr')).data();
         window.open(
             "/ReportView/GetOfficeReportView?UId=" + data.UId, "_blank");
     });
+
 
 
 </script>
