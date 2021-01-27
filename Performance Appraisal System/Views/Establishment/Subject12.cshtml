@@ -7,7 +7,7 @@
 
 <br>
 <br>
-@using (Html.BeginForm("Subject12", "O_M", FormMethod.Post))
+@using (Html.BeginForm("Subject12", "Establishment", FormMethod.Post))
 {
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -19,7 +19,7 @@
                 <div class="center-group">
                     <div class="form-row">
                         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
-                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> कार्यालय तपासणी </strong>
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> @ViewBag.Title </strong>
                             &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<strong> गुण:  @Session["TotalMarks"].ToString() </strong>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
 
                         <div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Retired_Officer_Count)
-                            @Html.TextBoxFor(temp => temp.Retired_Officer_Count, new { id = "Retired_Officer_Count_val", @class = "form-control", disabled = "disabled" })
+                            @Html.TextBoxFor(temp => temp.Retired_Officer_Count, new { id = "Retired_Officer_Count_val", @class = "form-control" })
                             @Html.ValidationMessageFor(temp => temp.Retired_Officer_Count)
                             @Html.HiddenFor(temp => temp.Retired_Officer_Count, new { id = "Retired_Officer_Count" })
                         </div>
@@ -108,7 +108,7 @@
             </div>
         </div>
     </div>
-    <hr>
+    
 
 
     <div class="container" style="padding: 30px;background: white;">
@@ -120,12 +120,6 @@
                     <hr>
                     <div class="form-row">
 
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Appraisal_Marks)
-                            @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
-                            @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
-                        </div>
 
                         <div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Appraisal_Percentage)
@@ -134,11 +128,28 @@
                             @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
                         </div>
 
-                        <div class="form-group col-md-10">
-                            @Html.LabelFor(temp => temp.Remarks)
-                            @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Remarks)
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Appraisal_Marks)
+                            @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
+                            @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
                         </div>
+
+
+                        @*
+        <div class="form-group col-md-6">
+            @Html.LabelFor(temp => temp.Appraisal_Marks)
+            @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
+            @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
+            @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
+        </div>
+
+        <div class="form-group col-md-10">
+            @Html.LabelFor(temp => temp.Remarks)
+            @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Remarks)
+        </div>*@
 
                     </div>
                 </div>
@@ -246,5 +257,3 @@
     $("#Inquiry_Retired_Officer_Count_Achieved").change(Appraisal_Percentage);
 
 </script>
-Subject12.cs
-Displaying Subject11.cs.

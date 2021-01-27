@@ -541,7 +541,6 @@
     <Content Include="Views\Home\ViewAppraisalReport.cshtml" />
     <Content Include="Views\Report\DepartmentWiseReport.cshtml" />
     <Content Include="Views\Report\SubReports.cshtml" />
-    <Content Include="Views\O_M\Index.cshtml" />
     <Content Include="Views\Establishment\Subject11.cshtml" />
     <Content Include="Views\Establishment\Subject12.cshtml" />
     <Content Include="Views\Establishment\Subject13.cshtml" />
@@ -551,10 +550,6 @@
     <Content Include="Views\Krushipat\Subject17.cshtml" />
     <Content Include="Views\Krushipat\Subject18.cshtml" />
     <Content Include="Views\Krushipat\Subject23.cshtml" />
-    <Content Include="Views\Krushipat\Subject22.cshtml" />
-    <Content Include="Views\Krushipat\Subject21.cshtml" />
-    <Content Include="Views\Krushipat\Subject20.cshtml" />
-    <Content Include="Views\Krushipat\Subject19.cshtml" />
     <Content Include="Views\IT\Subject24.cshtml" />
     <Content Include="Views\IT\Subject25.cshtml" />
     <Content Include="Views\IT\Subject26.cshtml" />
@@ -578,7 +573,6 @@
     <Content Include="Views\Housing\Subject52.cshtml" />
     <Content Include="Views\Credit_Societies\Subject53.cshtml" />
     <Content Include="Views\Credit_Societies\Subject54.cshtml" />
-    <Content Include="Views\Credit_Societies\Subject55.cshtml" />
     <Content Include="Views\Credit_Societies\Subject56.cshtml" />
     <Content Include="Views\Credit_Societies\Subject57.cshtml" />
     <Content Include="Views\Credit_Societies\Subject58.cshtml" />

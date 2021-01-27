@@ -7,9 +7,8 @@
 
 <br>
 <br>
-@using (Html.BeginForm("Subject36", "O_M", FormMethod.Post))
+@using (Html.BeginForm("Subject36", "Audit", FormMethod.Post))
 {
-
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
             <br>
@@ -20,7 +19,7 @@
                 <div class="center-group">
                     <div class="form-row">
                         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
-                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> कार्यालय तपासणी </strong>
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> @ViewBag.Title </strong>
                             &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<strong> गुण:  @Session["TotalMarks"].ToString() </strong>
                         </div>
                     </div>
@@ -44,11 +43,11 @@
         </div>
     </div>
 
-
     <div class="form-group col-md-12 center-div" style="font-size: 20px;">
         @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
         <strong>&nbsp&nbspविषय लागु नाही</strong>
     </div>
+
 
 
     <div class="container" style="padding: 30px;background: white;">
@@ -74,11 +73,11 @@
                             @Html.ValidationMessageFor(temp => temp.Current_Month_Audit)
                         </div>
 
-                        @*<div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Current_Month_Remaining_for_Audit)
                             @Html.TextBoxFor(temp => temp.Current_Month_Remaining_for_Audit, new { id = "Current_Month_Remaining_for_Audit", @class = "form-control" })
                             @Html.ValidationMessageFor(temp => temp.Current_Month_Remaining_for_Audit)
-                        </div>*@
+                        </div>
 
                         <div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Remaining_for_Audit)
@@ -106,13 +105,12 @@
                     <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
                     <hr>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        @*<div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Action_Taken)
                             @Html.TextBoxFor(temp => temp.Action_Taken, new { id = "Action_Taken_val", @class = "form-control", disabled = "disabled" })
                             @Html.ValidationMessageFor(temp => temp.Action_Taken)
                             @Html.HiddenFor(temp => temp.Action_Taken, new { id = "Action_Taken" })
-
-                        </div>
+                        </div>*@
 
                         <div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Appraisal_Marks)

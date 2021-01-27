@@ -7,7 +7,7 @@
 
 <br>
 <br>
-@using (Html.BeginForm("Subject40", "O_M", FormMethod.Post))
+@using (Html.BeginForm("Subject40", "Audit", FormMethod.Post))
 {
 
     <div class="container" style="padding: 30px;background: white;">
@@ -20,7 +20,7 @@
                 <div class="center-group">
                     <div class="form-row">
                         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
-                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> कार्यालय तपासणी </strong>
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> @ViewBag.Title </strong>
                             &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<strong> गुण:  @Session["TotalMarks"].ToString() </strong>
                         </div>
                     </div>
@@ -44,12 +44,10 @@
         </div>
     </div>
 
-
     <div class="form-group col-md-12 center-div" style="font-size: 20px;">
         @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
         <strong>&nbsp&nbspविषय लागु नाही</strong>
     </div>
-
 
 
     <div class="container" style="padding: 30px;background: white;">

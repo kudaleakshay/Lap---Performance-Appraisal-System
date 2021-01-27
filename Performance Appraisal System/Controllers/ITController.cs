@@ -98,7 +98,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    Appraisal_Percentage = Reports.Appraisal_Percentage,
+                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -144,7 +144,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    Appraisal_Percentage = Reports.Appraisal_Percentage,
+                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -191,7 +191,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    Appraisal_Percentage = Reports.Appraisal_Percentage,
+                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -238,7 +238,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    Appraisal_Percentage = Reports.Appraisal_Percentage,
+                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -285,7 +285,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    Appraisal_Percentage = Reports.Appraisal_Percentage,
+                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 

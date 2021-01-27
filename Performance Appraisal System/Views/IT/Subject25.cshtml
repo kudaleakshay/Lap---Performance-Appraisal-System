@@ -19,7 +19,7 @@
                 <div class="center-group">
                     <div class="form-row">
                         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
-                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> कार्यालय तपासणी </strong>
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> @ViewBag.Title </strong>
                             &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<strong> गुण:  @Session["TotalMarks"].ToString() </strong>
                         </div>
                     </div>
@@ -95,12 +95,12 @@
                             @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
                         </div>
 
-                        <div class="form-group col-md-6">
+                        @*<div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Appraisal_Percentage)
                             @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
                             @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
                             @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
-                        </div>
+                        </div>*@
 
                         <div class="form-group col-md-10">
                             @Html.LabelFor(temp => temp.Remarks)
