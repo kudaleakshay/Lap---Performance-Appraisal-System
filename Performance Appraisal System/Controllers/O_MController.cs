@@ -81,6 +81,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+                Reports.CreatedTime = DateTime.Now;
 
                 db.Report60.Add(Reports);
                 db.SaveChanges();
@@ -127,6 +128,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+                Reports.CreatedTime = DateTime.Now;
 
                 db.Report61.Add(Reports);
                 db.SaveChanges();

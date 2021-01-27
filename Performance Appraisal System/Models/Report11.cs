@@ -22,91 +22,90 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी (गट-क) सुरु असलेल्या प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("गट-क प्रकरणांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_C { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी (गट-ड) सुरु असलेल्या प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("गट-ड प्रकरणांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_D { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी सुरु असलेल्या प्रकरणांची एकूण संख्या आवश्यक आहे")]
         [DisplayName("एकूण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Total { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी (गट-क) पुर्ण करावयाचे प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("गट-क प्रकरणांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Target_C { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी (गट-ड) पुर्ण करावयाचे प्रकरणांची संख्या  आवश्यक आहे")]
         [DisplayName("गट-ड प्रकरणांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Target_D { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी पुर्ण करावयाचे प्रकरणांची एकूण संख्या आवश्यक आहे")]
         [DisplayName("एकूण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Total_Target { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी (गट-क) पुर्ण झालेल्या प्रकरणांची संख्‍या आवश्यक आहे")]
         [DisplayName("गट-क प्रकरणांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Achieved_C { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी (गट-ड) पुर्ण झालेल्या प्रकरणांची संख्‍या आवश्यक आहे")]
         [DisplayName("गट-ड प्रकरणांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Achieved_D { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशी पुर्ण झालेल्या प्रकरणांची एकूण संख्‍या आवश्यक आहे")]
         [DisplayName("एकूण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Total_Achieved { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशीच्या (गट-क) शिल्लक प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("गट-क प्रकरणांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Remaining_C { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशीच्या (गट-ड) शिल्लक प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("गट-ड प्रकरणांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Remaining_D { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया विभागीय चौकशीच्या शिल्लक प्रकरणांची एकूण संख्या आवश्यक आहे")]
         [DisplayName("एकूण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Inquiry_Total_Remaining { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -123,7 +122,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

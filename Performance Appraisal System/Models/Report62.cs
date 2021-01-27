@@ -23,25 +23,23 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया तक्रारीची संख्या आवश्यक आहे")]
         [DisplayName("एकूण प्राप्त तक्रारीची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Complaint { get; set; }
 
 
         [Required(ErrorMessage = "कृपया निकाली काढलेल्या तक्रारींची संख्या आवश्यक आहे")]
         [DisplayName("एकूण प्राप्त तक्रारींपैकी एक महिन्याच्या आत निकाली काढलेल्या तक्रारींची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Resolved_Complaint { get; set; }
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Resolved_Percentage { get; set; }
 
 
         [Required(ErrorMessage = "कृपया प्राप्त गुणांची टक्केवारी आवश्यक आहे")]
         [DisplayName("तक्रारी निकाली काढलेल्याची टक्केवारी")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
         public bool NotApplicable { get; set; }
@@ -52,7 +50,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

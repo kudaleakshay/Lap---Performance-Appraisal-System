@@ -24,14 +24,14 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया लेखापरीक्षणास पात्र असणाऱ्या संस्थांपैकी लेखापरीक्षण न झालेल्या एकुण संस्थांची संख्या  आवश्यक आहे")]
         [DisplayName("लेखापरीक्षणास पात्र असणाऱ्या संस्थांपैकी मागील महिनाअखेर सन 2019-20 चे लेखापरीक्षण न झालेल्या एकुण संस्थांची संख्या ")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Eligible_for_Audit { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया चालु महिन्यात लेखापरीक्षण पुर्ण झालेल्या संस्थांची संख्या आवश्यक आहे")]
         [DisplayName("चालु महिन्यात लेखापरीक्षण पुर्ण झालेल्या संस्थांची संख्या ")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Audit { get; set; }
 
 
@@ -39,14 +39,14 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया चालु महिनाअखेर लेखापरीक्षण पुर्ण न झालेल्या संस्थांची संख्या आवश्यक आहे")]
         [DisplayName("चालु महिनाअखेर लेखापरीक्षण पुर्ण न झालेल्या संस्थांची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Remaining_for_Audit { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया कारवाई केल्याची संख्या आवश्यक आहे")]
         [DisplayName("लेखापरीक्षण न होण्यास कारणीभुत असलेल्या संस्था/लेखापरीक्षक यांचेवर कारवाई केल्याची संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Remaining_for_Audit { get; set; }
 
 
@@ -59,7 +59,7 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया गुणांची संख्या आवश्यक आहे")]
         [DisplayName("कारवाईच्या प्रमाणात मिळालेले गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Marks_Action_Taken { get; set; }
 
 
@@ -72,7 +72,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -90,7 +89,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

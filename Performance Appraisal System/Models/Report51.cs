@@ -22,62 +22,61 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया मागील महा अखेर प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("दि.1.4.2020 रोजीची / मागील महा अखेर प्रकरणे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Pending_Cases { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया चालु महिन्यातील प्राप्त प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("चालु महिन्यातील प्राप्त प्रकरणे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Received_Cases { get; set; }
 
 
         [Required(ErrorMessage = "कृपया एकुण प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("एकुण प्रकरणे(3+4)")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Cases { get; set; }
 
 
         [Required(ErrorMessage = "कृपया उद्दिष्टाप्रमाणे प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("उद्दिष्टाप्रमाणे मागील महा अखेरील प्रकरणे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Cases_Aim { get; set; }
 
 
         [Required(ErrorMessage = "कृपया उद्दिष्टाप्रमाणे प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("उद्दिष्टाप्रमाणे चालु महिन्यातील प्रकरणे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Cases_Aim { get; set; }
 
 
         [Required(ErrorMessage = "कृपया उद्दिष्टाप्रमाणे एकुण प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("उद्दिष्टाप्रमाणे एकुण प्रकरणे (7+8)")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Cases_Aim { get; set; }
 
 
         [Required(ErrorMessage = "कृपया उद्दिष्ट पूर्तता केलेल्या प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("मागील महा अखेरीस उद्दिष्ट पुर्तता केलेली प्रकरणे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Disposed_Cases { get; set; }
 
 
         [Required(ErrorMessage = "कृपया उद्दिष्ट पूर्तता केलेल्या प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("चालु महातील उद्दिष्ट पूर्तता केलेली प्रकरणे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Disposed_Cases { get; set; }
 
 
         [Required(ErrorMessage = "कृपया एकुण निपटारा केलेल्या प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("उद्दिष्टातील एकुण निपटारा केलेली प्रकरणे(10+11)")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Disposed_Cases { get; set; }
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -94,7 +93,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

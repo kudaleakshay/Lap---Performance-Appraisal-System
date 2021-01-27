@@ -22,34 +22,33 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया पात्र खातेदार लक्षांक संख्या आवश्यक आहे")]
         [DisplayName("सन 2020-21 पात्र खातेदार लक्षांक ")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Eligible_Members_Aim { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया मागील महिना अखेर सभासद वाढ संख्या आवश्यक आहे")]
         [DisplayName("मागील महिना अखेर सभासद वाढ")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Members_Increase { get; set; }
 
 
         [Required(ErrorMessage = "कृपया चालू महिना अखेर सभासद वाढ संख्या आवश्यक आहे")]
         [DisplayName("चालू महिना अखेर सभासद वाढ")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Members_Increase { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया एकुण सभासद वाढ संख्या आवश्यक आहे")]
         [DisplayName("एकुण सभासद वाढ")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Members { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -65,7 +64,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

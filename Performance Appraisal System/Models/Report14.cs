@@ -23,14 +23,14 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया कार्यालयातील वर्गीकरणानुसार अभिलेखामध्ये पाठविण्यास उपलब्ध असलेल्या प्रकरणांची संख्या आवश्यक आहे")]
         [DisplayName("कार्यालयातील वर्गीकरणानुसार अभिलेखामध्ये पाठविण्यास उपलब्ध असलेल्या प्रकरणे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Available_Applications { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया चालु महिना अखेर उद्दीष्टे संख्या आवश्यक आहे")]
         [DisplayName("चालु महिना अखेर उद्दीष्टे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Aim { get; set; }
 
 
@@ -38,7 +38,7 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया कार्यालय अभिलेख वर्गीकरण (मागील महिना अखेर) संख्या आवश्यक आहे")]
         [DisplayName("मागील महिना अखेर")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Classification_Achieved { get; set; }
 
 
@@ -46,14 +46,14 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया कार्यालय अभिलेख वर्गीकरण (चालू महिना अखेर) संख्या आवश्यक आहे")]
         [DisplayName("चालू महिना अखेर")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Classification_Achieved { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया कार्यालय अभिलेख वर्गीकरण (एकुण) संख्या आवश्यक आहे")]
         [DisplayName("एकुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Classification_Achieved { get; set; }
 
 
@@ -66,7 +66,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -85,7 +84,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

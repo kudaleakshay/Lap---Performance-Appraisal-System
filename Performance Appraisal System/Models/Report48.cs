@@ -21,34 +21,33 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
         [DisplayName("मागील महिना अखेर प्राप्त")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Received_Cases { get; set; }
 
         [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
         [DisplayName("चालु महिन्यातील प्राप्त")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Received_Cases { get; set; }
 
         [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
         [DisplayName("एकूण प्रकरणे")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Cases { get; set; }
 
         [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
         [DisplayName("निकाली काढावायाची एकूण प्रकरणांपैकी लक्षांक")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Target { get; set; }
 
         [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
         [DisplayName("लक्षांक पूर्तता")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Achieved { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -58,7 +57,9 @@ namespace Performance_Appraisal_System.Models
         public bool NotApplicable { get; set; }
         public Nullable<int> Month { get; set; }
         public Nullable<int> Year { get; set; }
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

@@ -23,61 +23,61 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया प्रलंबित निरीक्षण/परिच्छेद संख्या आवश्यक आहे")]
         [DisplayName("प्रलंबित निरीक्षण/परिच्छेद संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Pending_Inspection_Count { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया महालेखापाल यांना अनुपालन सादर संख्या आवश्यक आहे")]
         [DisplayName("महालेखापाल यांना अनुपालन सादर संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Submitted_Compliance { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया प्रलंबीत परीच्छेद लक्षांक संख्या आवश्यक आहे")]
         [DisplayName("प्रलंबीत परीच्छेद लक्षांक")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Accepted_Compliance { get; set; }
 
 
         [Required(ErrorMessage = "कृपया संबंधित कार्यालयाकडे प्रलंबित परिच्छेद संख्या आवश्यक आहे")]
         [DisplayName("संबंधित कार्यालयाकडे प्रलंबित परिच्छेद संख्या")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Target { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया चालू महिनाअखेर उद्दिष्टये संख्या आवश्यक आहे")]
         [DisplayName("चालू महिनाअखेर उद्दिष्टये")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Pending_Paragraph_Count { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
         [DisplayName("एकुण कर्जवाटप")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Aim { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
         [DisplayName("एकुण कर्जवाटप")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Achieved { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
         [DisplayName("एकुण कर्जवाटप")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Achieved { get; set; }
 
 
         [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
         [DisplayName("एकुण कर्जवाटप")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Achieved { get; set; }
 
 
@@ -88,7 +88,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -108,7 +107,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

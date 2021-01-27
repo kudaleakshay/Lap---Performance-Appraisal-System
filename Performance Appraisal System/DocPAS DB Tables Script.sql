@@ -23,6 +23,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -42,6 +43,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -60,6 +62,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -80,6 +83,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -103,6 +107,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -121,6 +126,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -142,6 +148,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -161,6 +168,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -178,6 +186,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -277,6 +286,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -297,6 +307,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -312,6 +323,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 
 
@@ -329,6 +341,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 
 
@@ -347,6 +360,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -365,6 +379,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -384,6 +399,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -402,6 +418,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -419,6 +436,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -436,6 +454,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -455,6 +474,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -471,6 +491,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -487,6 +508,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -505,6 +527,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -522,6 +545,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 
 
@@ -539,6 +563,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -556,6 +581,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -573,6 +599,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -591,6 +618,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -609,6 +637,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -634,6 +663,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -656,6 +686,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -674,6 +705,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -690,6 +722,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -713,6 +746,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -735,6 +769,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -758,6 +793,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -780,6 +816,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -805,6 +842,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -823,6 +861,7 @@ Appraisal_Percentage float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -840,6 +879,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -854,6 +894,7 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go
 
@@ -869,5 +910,6 @@ Appraisal_Marks float,
 NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
+CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Remarks varchar(500))
 go

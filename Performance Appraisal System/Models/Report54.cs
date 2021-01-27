@@ -22,13 +22,13 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया उद्दीष्टाप्रमाणे संस्था बळकटीकरण संख्या आवश्यक आहे")]
         [DisplayName("सन 2020-21 साठी निश्चित केलेला लक्षांक")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Annual_Target { get; set; }
 
 
         [Required(ErrorMessage = "कृपया साध्यतेप्रमाणे संस्था बळकटीकरण संख्या आवश्यक आहे")]
         [DisplayName("एकुण साध्य")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Achieved { get; set; }
 
 
@@ -39,7 +39,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -55,7 +54,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }

@@ -23,33 +23,32 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया रब्बी कर्ज वाटपाचे लक्षांक संख्या आवश्यक आहे")]
         [DisplayName("सन 2020-21 रब्बी कर्ज वाटपाचे लक्षांक")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Loan_Allocation_Target { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया मागील महिना अखेर कर्जवाटप संख्या आवश्यक आहे")]
         [DisplayName("मागील महिना अखेर कर्जवाटप")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Last_Month_Loan_Allocation { get; set; }
 
 
         [Required(ErrorMessage = "कृपया चालु महिना अखेर कर्जवाटप आवश्यक आहे")]
         [DisplayName("चालु महिना अखेर कर्जवाटप")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Current_Month_Loan_Allocation { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
         [DisplayName("एकुण कर्जवाटप")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Total_Loan_Allocation { get; set; }
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
-        [RegularExpression("([0-9][0-9]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
@@ -65,7 +64,9 @@ namespace Performance_Appraisal_System.Models
 
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; }
+        public string Remarks { get; set; } 
+
+		public System.DateTime CreatedTime { get; set; }
 
         public virtual User User { get; set; }
     }
