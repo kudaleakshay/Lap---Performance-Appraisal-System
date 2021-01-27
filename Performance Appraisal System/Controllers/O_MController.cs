@@ -36,7 +36,7 @@ namespace Performance_Appraisal_System.Controllers
                }), "Value", "Text", Current_Month);
 
 
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 10).Select(x =>
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year -2, 10).Select(x =>
                new SelectListItem()
                {
                    Text = x.ToString(),
@@ -54,11 +54,15 @@ namespace Performance_Appraisal_System.Controllers
             switch (Session["ReportSubDepartment"])
             {
                 case 60:
-                    /*Report60 record = db.Report60
+                    Report60 record = db.Report60
                                           .Where(u => u.Month == Month && u.Year == Year)
                                           .FirstOrDefault();
 
-                    return View("Subject60", record);*/
+                    if(record != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+                                        
                     return View("Subject60");
 
                 case 61:
@@ -157,5 +161,7 @@ namespace Performance_Appraisal_System.Controllers
                 return View();
             }
         }
+
+
     }
 }

@@ -19,8 +19,16 @@ namespace Performance_Appraisal_System.Controllers
 
         public ReportController()
         {
-            var Current_Month = Convert.ToString(DateTime.Now.Month - 1);
+
+            var Current_Month = Convert.ToString(DateTime.Now.Month -1);
             var Current_Year = Convert.ToString(DateTime.Now.Year);
+
+            if (DateTime.Now.Month == 1)
+            {
+                Current_Month = Convert.ToString(12);
+                Current_Year = Convert.ToString(DateTime.Now.Year -1);
+            }           
+            
 
 
             if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
@@ -56,9 +64,42 @@ namespace Performance_Appraisal_System.Controllers
         public ActionResult DepartmentWiseReport()
         {
             User user = (User)HttpContext.Session["User"];
-
             AppraisalReportViewModel reports = new AppraisalReportViewModel();
 
+
+            reports.Month = DateTime.Now.Month - 1;
+            reports.Year = DateTime.Now.Year;
+
+            if (DateTime.Now.Month == 1)
+            {
+                reports.Month = 12;
+                reports.Year = (DateTime.Now.Year - 1);
+            }
+
+
+            if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
+            {
+                reports.Month = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportMonth"]);
+                reports.Year = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportYear"]);
+            }
+
+            ViewBag.Months = new SelectList(Enumerable.Range(1, 12).Select(x =>
+               new SelectListItem()
+               {
+                   Text = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames[x - 1],
+                   Value = x.ToString()
+               }), "Value", "Text", reports.Month);
+
+
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year - 2, 10).Select(x =>
+                 new SelectListItem()
+                 {
+                     Text = x.ToString(),
+                     Value = x.ToString()
+                 }), "Value", "Text", reports.Year);
+
+            Session["ReportMonth"] = reports.Month;
+            Session["ReportYear"] = reports.Year;
 
             switch (user.AppraisalType)
             {
@@ -89,6 +130,7 @@ namespace Performance_Appraisal_System.Controllers
                                         select s).ToList();
                     break;
             }
+
 
             return View(reports);
         }

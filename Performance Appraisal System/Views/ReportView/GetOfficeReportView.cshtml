@@ -45,7 +45,7 @@
                         <tbody style="text-align: center;"></tbody>
                         <tfoot>
                             <tr style="background:#a8bdbd; font-size:18px">
-                                <th style="text-align:center">महाराष्ट्र राज्य</th>
+                                <th style="text-align:center">एकुण</th>
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
@@ -73,7 +73,7 @@
         bindDataTable();
     });
 
-    
+
     function bindDataTable() {
 
         var UId = $("#UId").val();
@@ -121,12 +121,12 @@
                         return intVal(a) + intVal(b);
                     }, 0);
 
-                total_Percentage = api
-                    .column(3)
-                    .data()
-                    .reduce(function (a, b) {
-                        return intVal(a) + intVal(b);
-                    }, 0);
+                if (total_Appraisal > 0 && total_Marks > 0) {
+                    total_Percentage = total_Appraisal * 100 / total_Marks;
+                }
+                else {
+                    total_Percentage = 0;
+                }
 
                 // Update footer
                 $(api.column(1).footer()).html(
@@ -158,11 +158,12 @@
         });
     }
 
-    @*$('#BranchTable tbody').on('click', 'button', function () {
+    $('#BranchTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
+        console.log(data.report);
         window.open(
-            "/ReportView/GetReportView?DepartmentId=" + data.DepartmentId + "&SubjectId=" + data.SId, "_blank");
-    });*@
+            "/ReportView/GetSubReportView?DepartmentId=" + data.report.DepartmentId + "&UId=" + data.report.UId, "_self");
+    });
 
 
     $("#Month").change(function () {
@@ -175,5 +176,5 @@
         bindDataTable();
     })
 
- 
+
 </script>

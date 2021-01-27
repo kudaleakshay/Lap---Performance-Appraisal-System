@@ -161,19 +161,19 @@
     $('#DJRTable tbody').on('click', 'button', function () {
         var data = DJRtable.row($(this).parents('tr')).data();
         window.open(
-            "/ReportView/GetOfficeReportView?UId=" + data.UId, "_blank");
+            "/ReportView/GetOfficeReportView?UId=" + data.UId, "_self");
     });
 
     $('#DDRTable tbody').on('click', 'button', function () {
         var data = DDRtable.row($(this).parents('tr')).data();
         window.open(
-            "/ReportView/GetOfficeReportView?UId=" + data.UId, "_blank");
+            "/ReportView/GetOfficeReportView?UId=" + data.UId, "_self");
     });
 
     $('#ARTable tbody').on('click', 'button', function () {
         var data = ARtable.row($(this).parents('tr')).data();
         window.open(
-            "/ReportView/GetOfficeReportView?UId=" + data.UId, "_blank");
+            "/ReportView/GetOfficeReportView?UId=" + data.UId, "_self");
     });
 
 

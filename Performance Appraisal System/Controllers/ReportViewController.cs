@@ -531,6 +531,17 @@ namespace Performance_Appraisal_System.Controllers
             return View();
         }
 
+        public ActionResult GetSubReportView(int UId,int DepartmentId)
+        {
+            Department department = db.Departments.Where(u => u.Id == DepartmentId)
+                                       .FirstOrDefault();
+
+            ViewBag.DepartmentName = department.DepartmentName;
+
+            ViewBag.UId = UId;
+            ViewBag.DepartmentId = DepartmentId;
+            return View();
+        }
 
         public JsonResult GetOfficeReportData(int UId, int Month, int Year)
         {
@@ -546,6 +557,27 @@ namespace Performance_Appraisal_System.Controllers
                            {
                                report = r,
                                Department = d.DepartmentName,
+                           }).ToList();
+
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetSubReportData(int UId, int Month, int Year, int DepartmentId)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = (from r in db.SubMasterReports
+                           join s in db.Subjects
+                           on r.SubjectId equals s.SId
+                           where r.Month == Month
+                                 && r.Year == Year
+                                 && r.UId == UId
+                                 && r.DepartmentId == DepartmentId
+                                 && s.Type == 2
+                           orderby r.DepartmentId
+                           select new
+                           {
+                               report = r,
+                               Subject = s.SubjectName,
                            }).ToList();
 
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
