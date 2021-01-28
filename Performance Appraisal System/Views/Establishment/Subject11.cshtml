@@ -49,182 +49,182 @@
         <strong>&nbsp&nbspविषय लागु नाही</strong>
     </div>
 
+    <div id="WrappperDiv">
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">विभागीय चौकशी सुरु असलेली प्रकरणे</span>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_C)
+                                @Html.TextBoxFor(temp => temp.Inquiry_C, new { id = "Inquiry_C", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_C)
+                            </div>
 
-    <div class="container" style="padding: 30px;background: white;">
-        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-            <div class="card-text">
-                <div class="center-group">
-                    <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">विभागीय चौकशी सुरु असलेली प्रकरणे</span>
-                    <hr>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_C)
-                            @Html.TextBoxFor(temp => temp.Inquiry_C, new { id = "Inquiry_C", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_C)
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_D)
+                                @Html.TextBoxFor(temp => temp.Inquiry_D, new { id = "Inquiry_D", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_D)
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Total)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Total, new { id = "Inquiry_Total_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Total)
+                                @Html.HiddenFor(temp => temp.Inquiry_Total, new { id = "Inquiry_Total" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">विभागीय चौकशी पुर्ण करावयाचे प्रकरणे (उद्दिष्ट्ये)</span>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Target_C)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Target_C, new { id = "Inquiry_Target_C", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Target_C)
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Target_D)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Target_D, new { id = "Inquiry_Target_D", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Target_D)
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Total_Target)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Total_Target, new { id = "Inquiry_Total_Target_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Total_Target)
+                                @Html.HiddenFor(temp => temp.Inquiry_Total_Target, new { id = "Inquiry_Total_Target" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">विभागीय चौकशी पुर्ण झालेली प्रकरणे (साध्य)</span>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Achieved_C)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Achieved_C, new { id = "Inquiry_Achieved_C", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Achieved_C)
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Achieved_D)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Achieved_D, new { id = "Inquiry_Achieved_D", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Achieved_D)
+                            </div>
                         </div>
 
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_D)
-                            @Html.TextBoxFor(temp => temp.Inquiry_D, new { id = "Inquiry_D", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_D)
+                        <div class="form-row">
+
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Total_Achieved)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Total_Achieved, new { id = "Inquiry_Total_Achieved_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Total_Achieved)
+                                @Html.HiddenFor(temp => temp.Inquiry_Total_Achieved, new { id = "Inquiry_Total_Achieved" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">विभागीय चौकशीची शिल्लक प्रकरणे</span>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Remaining_C)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Remaining_C, new { id = "Inquiry_Remaining_C", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Remaining_C)
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Remaining_D)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Remaining_D, new { id = "Inquiry_Remaining_D", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Remaining_D)
+                            </div>
                         </div>
 
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Total)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Total, new { id = "Inquiry_Total_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Total)
-                            @Html.HiddenFor(temp => temp.Inquiry_Total, new { id = "Inquiry_Total" })
+                        <div class="form-row">
+
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Inquiry_Total_Remaining)
+                                @Html.TextBoxFor(temp => temp.Inquiry_Total_Remaining, new { id = "Inquiry_Total_Remaining_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Inquiry_Total_Remaining)
+                                @Html.HiddenFor(temp => temp.Inquiry_Total_Remaining, new { id = "Inquiry_Total_Remaining" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
+                        <hr>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Appraisal_Percentage)
+                                @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
+                                @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Appraisal_Marks)
+                                @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
+                                @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
+                            </div>
+@*
+                            <div class="form-group col-md-10">
+                                @Html.LabelFor(temp => temp.Remarks)
+                                @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Remarks)
+                            </div>*@
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <div class="container" style="padding: 30px;background: white;">
-        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-            <div class="card-text">
-                <div class="center-group">
-                    <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">विभागीय चौकशी पुर्ण करावयाचे प्रकरणे (उद्दिष्ट्ये)</span>
-                    <hr>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Target_C)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Target_C, new { id = "Inquiry_Target_C", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Target_C)
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Target_D)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Target_D, new { id = "Inquiry_Target_D", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Target_D)
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Total_Target)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Total_Target, new { id = "Inquiry_Total_Target_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Total_Target)
-                            @Html.HiddenFor(temp => temp.Inquiry_Total_Target, new { id = "Inquiry_Total_Target" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container" style="padding: 30px;background: white;">
-        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-            <div class="card-text">
-                <div class="center-group">
-                    <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">विभागीय चौकशी पुर्ण झालेली प्रकरणे (साध्य)</span>
-                    <hr>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Achieved_C)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Achieved_C, new { id = "Inquiry_Achieved_C", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Achieved_C)
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Achieved_D)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Achieved_D, new { id = "Inquiry_Achieved_D", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Achieved_D)
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Total_Achieved)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Total_Achieved, new { id = "Inquiry_Total_Achieved_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Total_Achieved)
-                            @Html.HiddenFor(temp => temp.Inquiry_Total_Achieved, new { id = "Inquiry_Total_Achieved" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container" style="padding: 30px;background: white;">
-        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-            <div class="card-text">
-                <div class="center-group">
-                    <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">विभागीय चौकशीची शिल्लक प्रकरणे</span>
-                    <hr>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Remaining_C)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Remaining_C, new { id = "Inquiry_Remaining_C", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Remaining_C)
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Remaining_D)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Remaining_D, new { id = "Inquiry_Remaining_D", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Remaining_D)
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Inquiry_Total_Remaining)
-                            @Html.TextBoxFor(temp => temp.Inquiry_Total_Remaining, new { id = "Inquiry_Total_Remaining_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Inquiry_Total_Remaining)
-                            @Html.HiddenFor(temp => temp.Inquiry_Total_Remaining, new { id = "Inquiry_Total_Remaining" })
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container" style="padding: 30px;background: white;">
-        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-            <div class="card-text">
-                <div class="center-group">
-                    <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
-                    <hr>
-                    <div class="form-row">
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Appraisal_Percentage)
-                            @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
-                            @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Appraisal_Marks)
-                            @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
-                            @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
-                        </div>
-
-                        <div class="form-group col-md-10">
-                            @Html.LabelFor(temp => temp.Remarks)
-                            @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Remarks)
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -258,6 +258,139 @@
 
 <script src="~/Scripts/jquery-3.5.1.min.js"></script>
 <script>
+      $(document).ready()
+    {
+        var isReportSubmitted = @Html.Raw(Json.Encode(ViewBag.isReportSubmitted));
+        if (isReportSubmitted == true) {
+            if (window.confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर केला आहे.'))
+                window.open("/Report/DepartmentWiseReport", "_self");
+            else
+                window.open("/Report/DepartmentWiseReport", "_self");
+        }
 
+        var Total_Marks = Number(@Session["TotalMarks"].ToString());
+    }
     
+    function Inquiry_Total() {
+        var Total = Number($("#Inquiry_C").val()) + Number($("#Inquiry_D").val());
+        $("#Inquiry_Total").val(Total);
+        $("#Inquiry_Total_val").val(Total);
+        $("#Inquiry_Total_val").css("font-weight", "bold");
+    }
+
+    function Inquiry_Total_Target() {
+        var Total = Number($("#Inquiry_Target_C").val()) + Number($("#Inquiry_Target_D").val());
+        $("#Inquiry_Total_Target").val(Total);
+        $("#Inquiry_Total_Target_val").val(Total);
+        $("#Inquiry_Total_Target_val").css("font-weight", "bold");
+    }
+
+    function Inquiry_Total_Achieved() {
+        var Total = Number($("#Inquiry_Achieved_C").val()) + Number($("#Inquiry_Achieved_D").val());
+        $("#Inquiry_Total_Achieved").val(Total);
+        $("#Inquiry_Total_Achieved_val").val(Total);
+        $("#Inquiry_Total_Achieved_val").css("font-weight", "bold");
+    }
+
+    function Inquiry_Total_Remaining() {
+        var Total = Number($("#Inquiry_Remaining_C").val()) + Number($("#Inquiry_Remaining_D").val());
+        $("#Inquiry_Total_Remaining").val(Total);
+        $("#Inquiry_Total_Remaining_val").val(Total);
+        $("#Inquiry_Total_Remaining_val").css("font-weight", "bold");
+    }
+
+
+
+    function Appraisal_Marks() {
+
+        var Appraisal_Marks = (Number($("#Inquiry_Total_Achieved").val()) * Total_Marks / Number($("#Inquiry_Total_Target").val()));
+        Appraisal_Marks = Appraisal_Marks.toFixed(2);
+
+        $("#Appraisal_Marks").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").css("font-weight", "bold");
+    }
+
+    function Appraisal_Percentage() {
+        var Total = (Number($("#Inquiry_Total_Achieved").val()) * 100/ Number($("#Inquiry_Total_Target").val()));
+        Total = Total.toFixed(2);
+
+        if (Appraisal_Marks > Total_Marks) {
+            Appraisal_Marks = Total_Marks
+        }
+
+        $("#Appraisal_Percentage").val(Number(Total));
+        $("#Appraisal_Percentage_val").val(Number(Total));
+        $("#Appraisal_Percentage_val").css("font-weight", "bold");
+    }
+
+    function SetValue() {
+        $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
+        $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
+    }
+
+
+    $("#Inquiry_C").change(Inquiry_Total);
+    $("#Inquiry_D").change(Inquiry_Total);
+
+    $("#Inquiry_Target_C").change(Inquiry_Total_Target);
+    $("#Inquiry_Target_D").change(Inquiry_Total_Target);
+
+    $("#Inquiry_Achieved_C").change(Inquiry_Total_Achieved);
+    $("#Inquiry_Achieved_D").change(Inquiry_Total_Achieved);
+
+    $("#Inquiry_Remaining_C").change(Inquiry_Total_Remaining);
+    $("#Inquiry_Remaining_D").change(Inquiry_Total_Remaining);
+
+
+    $("#Inquiry_Achieved_C").change(Appraisal_Percentage);
+    $("#Inquiry_Achieved_D").change(Appraisal_Percentage);
+    $("#Inquiry_Target_C").change(Appraisal_Percentage);
+    $("#Inquiry_Target_D").change(Appraisal_Percentage);
+
+    $("#Inquiry_Achieved_C").change(Appraisal_Marks);
+    $("#Inquiry_Achieved_D").change(Appraisal_Marks);
+    $("#Inquiry_Target_C").change(Appraisal_Marks);
+    $("#Inquiry_Target_D").change(Appraisal_Marks);
+    $("#Appraisal_Percentage").change(Appraisal_Marks);
+
+
+    $('#NotApplicable').prop('checked', false); // Unchecks Not Applicaable by default
+
+    $('#NotApplicable').click(function () {
+        //If the checkbox is checked.
+        if ($(this).is(':checked')) {
+            //If it is checked, hide form
+            $("#WrappperDiv").css("display", "none");
+
+            $("#Inquiry_D").val("0");
+            $("#Inquiry_C").val("0");
+            $("#Inquiry_Total").val("0");
+
+            $("#Inquiry_Target_C").val("0");
+            $("#Inquiry_Target_D").val("0");
+            $("#Inquiry_Total_Target").val("0");
+
+            $("#Inquiry_Achieved_C").val("0");
+            $("#Inquiry_Achieved_D").val("0");
+            $("#Inquiry_Total_Achieved").val("0");
+
+            $("#Inquiry_Remaining_C").val("0");
+            $("#Inquiry_Remaining_D").val("0");
+            $("#Inquiry_Total_Remaining").val("0");
+
+            $("#Appraisal_Marks").val("0");
+            $("#Appraisal_Percentage").val("0");
+            $("#Appraisal_Marks_val").val("0");
+            $("#Appraisal_Percentage_val").val("0");
+            $("#NotApplicable").val(true);
+
+        } else {
+
+            //If it is not checked, show form
+            $("#WrappperDiv").css("display", "block");
+        }
+    });
+
+
 </script>

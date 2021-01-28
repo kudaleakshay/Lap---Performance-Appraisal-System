@@ -35,7 +35,7 @@ namespace Performance_Appraisal_System.Controllers
                }), "Value", "Text", Current_Month);
 
 
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 10).Select(x =>
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year -2 , 10).Select(x =>
                new SelectListItem()
                {
                    Text = x.ToString(),
@@ -52,21 +52,75 @@ namespace Performance_Appraisal_System.Controllers
             switch (Session["ReportSubDepartment"])
             {
                 case 24:
+                    Report24 record24 = db.Report24
+                                     .Where(u => u.Month == Month && u.Year == Year)
+                                     .FirstOrDefault();
+
+                    if (record24 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject24");
 
                 case 25:
+                    Report25 record25 = db.Report25
+                                     .Where(u => u.Month == Month && u.Year == Year)
+                                     .FirstOrDefault();
+
+                    if (record25 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject25");
 
                 case 26:
+                    Report26 record26 = db.Report26
+                                     .Where(u => u.Month == Month && u.Year == Year)
+                                     .FirstOrDefault();
+
+                    if (record26 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject26");
 
                 case 27:
+                    Report27 record27 = db.Report27
+                                     .Where(u => u.Month == Month && u.Year == Year)
+                                     .FirstOrDefault();
+
+                    if (record27 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject27");
 
                 case 28:
+                    Report28 record28 = db.Report28
+                                     .Where(u => u.Month == Month && u.Year == Year)
+                                     .FirstOrDefault();
+
+                    if (record28 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject28");
 
                 case 29:
+                    Report29 record29 = db.Report29
+                                     .Where(u => u.Month == Month && u.Year == Year)
+                                     .FirstOrDefault();
+
+                    if (record29 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject29");
             }
             return View();
@@ -84,6 +138,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report24.Add(Reports);
                 db.SaveChanges();
@@ -98,7 +153,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
+                    Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -130,6 +185,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report25.Add(Reports);
                 db.SaveChanges();
@@ -144,7 +200,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
+                    Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -177,6 +233,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report26.Add(Reports);
                 db.SaveChanges();
@@ -191,7 +248,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
+                    Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -224,6 +281,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report27.Add(Reports);
                 db.SaveChanges();
@@ -238,7 +296,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
+                    Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -271,6 +329,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report28.Add(Reports);
                 db.SaveChanges();
@@ -285,7 +344,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
+                    Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -318,6 +377,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report29.Add(Reports);
                 db.SaveChanges();

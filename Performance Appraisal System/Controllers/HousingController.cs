@@ -35,7 +35,7 @@ namespace Performance_Appraisal_System.Controllers
                }), "Value", "Text", Current_Month);
 
 
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 10).Select(x =>
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year -2, 10).Select(x =>
                new SelectListItem()
                {
                    Text = x.ToString(),
@@ -46,12 +46,33 @@ namespace Performance_Appraisal_System.Controllers
 
         public ActionResult Index()
         {
+            var Month = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportMonth"]);
+            var Year = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportYear"]);
+
             switch (Session["ReportSubDepartment"])
             {
                 case 51:
+                    Report51 record51 = db.Report51
+                                         .Where(u => u.Month == Month && u.Year == Year)
+                                         .FirstOrDefault();
+
+                    if (record51 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject51");
 
                 case 52:
+                    Report52 record52 = db.Report52
+                                     .Where(u => u.Month == Month && u.Year == Year)
+                                     .FirstOrDefault();
+
+                    if (record52 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject52");
             }
             return View();
@@ -67,6 +88,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report51.Add(Reports);
                 db.SaveChanges();
@@ -104,7 +126,7 @@ namespace Performance_Appraisal_System.Controllers
 
 
         [HttpPost]
-        public ActionResult Subject532(Report52 Reports)
+        public ActionResult Subject52(Report52 Reports)
         {
             if (ModelState.IsValid)
             {
@@ -113,6 +135,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report52.Add(Reports);
                 db.SaveChanges();

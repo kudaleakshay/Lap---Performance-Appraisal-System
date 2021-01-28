@@ -21,7 +21,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया पात्र खातेदार लक्षांक संख्या आवश्यक आहे")]
-        [DisplayName("सन 2020-21 पात्र खातेदार लक्षांक ")]
+        [DisplayName("वार्षिक पात्र खातेदार लक्षांक ")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Eligible_Members_Aim { get; set; }
 

@@ -151,12 +151,14 @@
                         return intVal(a) + intVal(b);
                     }, 0);
 
-                if (total_Appraisal > 0 && total_Marks > 0) {
-                    total_Percentage = total_Appraisal * 100 / total_Marks;
+                total_Percentage = 0;
+
+                @*if (total_Appraisal > 0 && total_M_Percentage > 0) {
+                    total_Percentage = total_Appraisal * 100 / total_M_Percentage;
                 }
                 else {
                     total_Percentage = 0;
-                }
+                }*@
 
                 // Update footer
                 $(api.column(11).footer()).html(

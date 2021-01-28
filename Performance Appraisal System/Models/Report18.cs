@@ -22,7 +22,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया रब्बी कर्ज वाटपाचे लक्षांक संख्या आवश्यक आहे")]
-        [DisplayName("सन 2020-21 रब्बी कर्ज वाटपाचे लक्षांक")]
+        [DisplayName("वार्षिक रब्बी कर्ज वाटपाचे लक्षांक")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Loan_Allocation_Target { get; set; }
 

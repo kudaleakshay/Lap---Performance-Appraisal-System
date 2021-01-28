@@ -54,11 +54,11 @@ namespace Performance_Appraisal_System.Controllers
             switch (Session["ReportSubDepartment"])
             {
                 case 60:
-                    Report60 record = db.Report60
+                    Report60 record60 = db.Report60
                                           .Where(u => u.Month == Month && u.Year == Year)
                                           .FirstOrDefault();
 
-                    if(record != null)
+                    if(record60 != null)
                     {
                         ViewBag.isReportSubmitted = true;
                     }
@@ -66,6 +66,14 @@ namespace Performance_Appraisal_System.Controllers
                     return View("Subject60");
 
                 case 61:
+                    Report61 record61 = db.Report61
+                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .FirstOrDefault();
+
+                    if (record61 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
                     return View("Subject61");
             }
             return View();
@@ -81,7 +89,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
-                Reports.CreatedTime = DateTime.Now;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report60.Add(Reports);
                 db.SaveChanges();
@@ -128,8 +136,8 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
-                Reports.CreatedTime = DateTime.Now;
-
+				Reports.CreatedTime = DateTime.Now;
+				
                 db.Report61.Add(Reports);
                 db.SaveChanges();
 

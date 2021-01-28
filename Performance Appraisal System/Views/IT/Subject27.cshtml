@@ -7,7 +7,7 @@
 
 <br>
 <br>
-@using (Html.BeginForm("Subject27", "O_M", FormMethod.Post))
+@using (Html.BeginForm("Subject27", "IT", FormMethod.Post))
 {
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -49,70 +49,71 @@
         <strong>&nbsp&nbspविषय लागु नाही</strong>
     </div>
 
-    <div class="container" style="padding: 30px;background: white;">
-        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-            <div class="card-text">
-                <div class="center-group">
-                    <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">सावकारी व्यवसायासाठी परवाना नुतनीकरणाचे उद्दीष्टे / साध्य</span>
-                    <hr>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Aim)
-                            @Html.TextBoxFor(temp => temp.Aim, new { id = "Aim", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Aim)
+    <div id="WrappperDiv">
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">सावकारी व्यवसायासाठी परवाना नुतनीकरणाचे उद्दीष्टे / साध्य</span>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Aim)
+                                @Html.TextBoxFor(temp => temp.Aim, new { id = "Aim", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Aim)
+                            </div>
                         </div>
-                    </div>
-                    <hr>
+                        <hr>
 
-
-                    <div class="form-group col-md-6">
-                        @Html.LabelFor(temp => temp.Achieved)
-                        @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved_val", @class = "form-control", disabled = "disabled" })
-                        @Html.ValidationMessageFor(temp => temp.Achieved)
-                        @Html.HiddenFor(temp => temp.Achieved, new { id = "Achieved" })
-                    </div>
-                    <br>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container" style="padding: 30px;background: white;">
-        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-            <div class="card-text">
-                <div class="center-group">
-                    <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
-                    <hr>
-                    <div class="form-row">
-
-                        <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Appraisal_Marks)
-                            @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
-                            @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Achieved)
+                                @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Achieved)
+                            </div>
                         </div>
-
-                        @*<div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Appraisal_Percentage)
-                            @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
-                            @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
-                        </div>*@
-
-                        <div class="form-group col-md-10">
-                            @Html.LabelFor(temp => temp.Remarks)
-                            @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Remarks)
-                        </div>
-
+                        <br>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
+                        <hr>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Appraisal_Marks)
+                                @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
+                                @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Appraisal_Percentage)
+                                @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
+                                @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
+                            </div>
+
+                            @*<div class="form-group col-md-10">
+                                    @Html.LabelFor(temp => temp.Remarks)
+                                    @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                                    @Html.ValidationMessageFor(temp => temp.Remarks)
+                                </div>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -146,68 +147,82 @@
 
 <script src="~/Scripts/jquery-3.5.1.min.js"></script>
 <script>
+      $(document).ready()
+    {
+        var isReportSubmitted = @Html.Raw(Json.Encode(ViewBag.isReportSubmitted));
+        if (isReportSubmitted == true) {
+            if (window.confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर केला आहे.'))
+                window.open("/Report/DepartmentWiseReport", "_self");
+            else
+                window.open("/Report/DepartmentWiseReport", "_self");
+        }
 
-
-
-    function Total_Target() {
-        var Total = Number($("#Officer_Target").val()) + Number($("#Staff_Target").val());
-        $("#Total_Target").val(Total);
-        $("#Total_Target_val").val(Total);
-        $("#Total_Target_val").css("font-weight", "bold");
+        var Total_Marks = Number(@Session["TotalMarks"].ToString());
     }
 
-    function Total_Achieved() {
-        var Total = Number($("#Last_Month_Achieved").val()) + Number($("#Current_Month_Achieved").val());
-        $("#Total_Achieved").val(Total);
-        $("#Total_Achieved_val").val(Total);
-        $("#Total_Achieved_val").css("font-weight", "bold");
-    }
-
-
-
-    function Appraisal_Marks() {
-        var Total = ((Number($("#Total_Achieved").val()) * 5) / Number($("#Total_Target").val()));
-        Total = Total.toFixed(2);
-        $("#Appraisal_Marks").val(Number(Total));
-        $("#Appraisal_Marks_val").val(Number(Total));
-        $("#Appraisal_Marks_val").css("font-weight", "bold");
-    }
 
     function Appraisal_Percentage() {
-        var Total = (Number($("#Appraisal_Marks").val()) * 100 / 5);
+        var Total = (Number($("#Achieved").val()) * 100 / Number($("#Aim").val()));
         Total = Total.toFixed(2);
+
         $("#Appraisal_Percentage").val(Number(Total));
         $("#Appraisal_Percentage_val").val(Number(Total));
         $("#Appraisal_Percentage_val").css("font-weight", "bold");
     }
 
-    function SetValue() {
-        $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
-        $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
-        $("#Current_Month_Percentage").val(Number($("#Current_Month_Percentage_val").val()));
+    function Appraisal_Marks() {
+
+        var Appraisal_Marks = (Number($("#Achieved").val()) * Total_Marks / Number($("#Aim").val()));
+        Appraisal_Marks = Appraisal_Marks.toFixed(2);
+
+        if (Appraisal_Marks > Total_Marks) {
+            Appraisal_Marks = Total_Marks
+        }
+
+        $("#Appraisal_Marks").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").css("font-weight", "bold");
     }
 
 
-    $("#Officer_Count").change(Total_Staff);
-    $("#Staff_Count").change(Total_Staff);
-
-    $("#Officer_Target").change(Total_Target);
-    $("#Staff_Target").change(Total_Target);
-
-    $("#Last_Month_Achieved").change(Total_Achieved);
-    $("#Current_Month_Achieved").change(Total_Achieved);
+    function SetValue() {
+        $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
+        $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
+    }
 
 
-
-    $("#Officer_Target").change(Appraisal_Marks);
-    $("#Staff_Target").change(Appraisal_Marks);
-    $("#Last_Month_Achieved").change(Appraisal_Marks);
-    $("#Current_Month_Achieved").change(Appraisal_Marks);
+    $("#Aim").change(Appraisal_Percentage);
+    $("#Achieved").change(Appraisal_Percentage);
 
 
-    $("#Officer_Target").change(Appraisal_Percentage);
-    $("#Staff_Target").change(Appraisal_Percentage);
-    $("#Last_Month_Achieved").change(Appraisal_Percentage);
-    $("#Current_Month_Achieved").change(Appraisal_Percentage);
+    $("#Aim").change(Appraisal_Marks);
+    $("#Achieved").change(Appraisal_Marks);
+    $("#Appraisal_Percentage").change(Appraisal_Marks);
+
+
+    $('#NotApplicable').prop('checked', false); // Unchecks Not Applicable by default
+
+    $('#NotApplicable').click(function () {
+        //If the checkbox is checked.
+        if ($(this).is(':checked')) {
+            //If it is checked, hide form
+            $("#WrappperDiv").css("display", "none");
+
+            $("#Aim").val("0");
+            $("#Achieved").val("0");
+
+            $("#Appraisal_Marks").val("0");
+            $("#Appraisal_Percentage").val("0");
+            $("#Appraisal_Marks_val").val("0");
+            $("#Appraisal_Percentage_val").val("0");
+            $("#NotApplicable").val(true);
+
+        } else {
+
+            //If it is not checked, show form
+            $("#WrappperDiv").css("display", "block");
+        }
+    });
+
 
 </script>

@@ -35,53 +35,54 @@ namespace Performance_Appraisal_System.Models
 
 
 
-        [Required(ErrorMessage = "कृपया प्रलंबीत परीच्छेद लक्षांक संख्या आवश्यक आहे")]
-        [DisplayName("प्रलंबीत परीच्छेद लक्षांक")]
+        [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
+        [DisplayName("महालेखापालची स्विकृती")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Accepted_Compliance { get; set; }
 
 
-        [Required(ErrorMessage = "कृपया संबंधित कार्यालयाकडे प्रलंबित परिच्छेद संख्या आवश्यक आहे")]
-        [DisplayName("संबंधित कार्यालयाकडे प्रलंबित परिच्छेद संख्या")]
+        [Required(ErrorMessage = "कृपया लक्षांक संख्या आवश्यक आहे")]
+        [DisplayName("प्रलंबीत परीच्छेद लक्षांक")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Target { get; set; }
 
 
 
-        [Required(ErrorMessage = "कृपया चालू महिनाअखेर उद्दिष्टये संख्या आवश्यक आहे")]
-        [DisplayName("चालू महिनाअखेर उद्दिष्टये")]
+        [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
+        [DisplayName("संबंधित कार्यालयाकडे प्रलंबित परिच्छेद संख्या")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Pending_Paragraph_Count { get; set; }
 
 
 
-        [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
-        [DisplayName("एकुण कर्जवाटप")]
+        [Required(ErrorMessage = "कृपया उद्दिष्टये आवश्यक आहे")]
+        [DisplayName("चालू महिनाअखेर उद्दिष्टये")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Aim { get; set; }
 
 
 
-        [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
-        [DisplayName("एकुण कर्जवाटप")]
+        [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
+        [DisplayName("मागील महिना अखेर साध्य")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Achieved { get; set; }
 
 
 
-        [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
-        [DisplayName("एकुण कर्जवाटप")]
+        [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
+        [DisplayName("चालू महिना अखेर साध्य")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Achieved { get; set; }
 
 
-        [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
-        [DisplayName("एकुण कर्जवाटप")]
+        [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
+        [DisplayName("एकूण साध्य")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Achieved { get; set; }
 
 
-
+        [Required(ErrorMessage = "कृपया चालु महिना अखेर उद्दीष्टांच्या साध्यतेनुसार टक्केवारी आवश्यक आहे")]
+        [DisplayName("चालु महिना अखेर उद्दीष्टांच्या साध्यतेनुसार टक्केवारी")]
         public Nullable<double> Current_Month_Percentage { get; set; }
 
 

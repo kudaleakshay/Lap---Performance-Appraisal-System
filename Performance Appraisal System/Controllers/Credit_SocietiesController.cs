@@ -35,7 +35,7 @@ namespace Performance_Appraisal_System.Controllers
                }), "Value", "Text", Current_Month);
 
 
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 10).Select(x =>
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year -2, 10).Select(x =>
                new SelectListItem()
                {
                    Text = x.ToString(),
@@ -46,27 +46,82 @@ namespace Performance_Appraisal_System.Controllers
 
         public ActionResult Index()
         {
+            var Month = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportMonth"]);
+            var Year = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportYear"]);
+
             switch (Session["ReportSubDepartment"])
             {
                 case 53:
+                    Report53 record53 = db.Report53
+                                         .Where(u => u.Month == Month && u.Year == Year)
+                                         .FirstOrDefault();
+
+                    if (record53 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject53");
 
                 case 54:
+                    Report54 record54 = db.Report54
+                                     .Where(u => u.Month == Month && u.Year == Year)
+                                     .FirstOrDefault();
+
+                    if (record54 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject54");
 
-                case 55:
-                    return View("Subject55");
 
                 case 56:
+                    Report56 record56 = db.Report56
+                                         .Where(u => u.Month == Month && u.Year == Year)
+                                         .FirstOrDefault();
+
+                    if (record56 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject56");
 
                 case 57:
+                    Report57 record57 = db.Report57
+                                         .Where(u => u.Month == Month && u.Year == Year)
+                                         .FirstOrDefault();
+
+                    if (record57 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject57");
 
                 case 58:
+                    Report58 record58 = db.Report58
+                                         .Where(u => u.Month == Month && u.Year == Year)
+                                         .FirstOrDefault();
+
+                    if (record58 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject58");
 
                 case 59:
+                    Report59 record59 = db.Report59
+                                         .Where(u => u.Month == Month && u.Year == Year)
+                                         .FirstOrDefault();
+
+                    if (record59 != null)
+                    {
+                        ViewBag.isReportSubmitted = true;
+                    }
+
                     return View("Subject59");
                
             }
@@ -84,6 +139,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report53.Add(Reports);
                 db.SaveChanges();
@@ -129,6 +185,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report54.Add(Reports);
                 db.SaveChanges();
@@ -175,6 +232,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report56.Add(Reports);
                 db.SaveChanges();
@@ -220,6 +278,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report57.Add(Reports);
                 db.SaveChanges();
@@ -265,6 +324,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report58.Add(Reports);
                 db.SaveChanges();
@@ -310,6 +370,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
+				Reports.CreatedTime = DateTime.Now;
 
                 db.Report59.Add(Reports);
                 db.SaveChanges();

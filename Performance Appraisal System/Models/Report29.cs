@@ -35,7 +35,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया एकुण तक्रारींची संख्या आवश्यक आहे")]
         [DisplayName("एकुण तक्रारी")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> CM_Total_Complaints { get; set; }
 
 
@@ -59,7 +58,7 @@ namespace Performance_Appraisal_System.Models
         [DisplayName("मागील महिन्यातील शिल्लक तक्रारी")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> PM_Last_Month_Pending_Complaints { get; set; }
-
+        
 
 
         [Required(ErrorMessage = "कृपया चालू महिन्यात प्राप्त तक्रारींची संख्या आवश्यक आहे")]
@@ -70,7 +69,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया एकुण तक्रारींची संख्या आवश्यक आहे")]
         [DisplayName("एकुण तक्रारी")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> PM_Total_Complaints { get; set; }
 
 

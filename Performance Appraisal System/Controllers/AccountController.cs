@@ -40,7 +40,7 @@ namespace Performance_Appraisal_System.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Invalid User Name or Password");
+                        ModelState.AddModelError("Error", "Invalid User Name or Password");
                         return View(model);
                     }
                 }

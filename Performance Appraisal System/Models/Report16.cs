@@ -21,29 +21,29 @@ namespace Performance_Appraisal_System.Models
 
 
 
-        [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
-        [DisplayName("एकुण कर्जवाटप")]
+        [Required(ErrorMessage = "कृपया प्रकरण संख्या आवश्यक आहे")]
+        [DisplayName("मा. सर्वोच्च / उच्च न्यायालयातील प्रकरणे शपथपत्र दाखल केलेली प्रकरण संख्या (उदिष्ट)")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Cases_Target { get; set; }
 
 
 
-        [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
-        [DisplayName("एकुण कर्जवाटप")]
+        [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
+        [DisplayName("मागील महिना अखेर साध्य")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Achieved { get; set; }
 
 
 
-        [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
-        [DisplayName("एकुण कर्जवाटप")]
+        [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
+        [DisplayName("चालू महिना अखेर साध्य")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Achieved { get; set; }
 
 
 
-        [Required(ErrorMessage = "कृपया एकुण कर्जवाटप संख्या आवश्यक आहे")]
-        [DisplayName("एकुण कर्जवाटप")]
+        [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
+        [DisplayName("एकूण साध्य")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Achieved { get; set; }
 
