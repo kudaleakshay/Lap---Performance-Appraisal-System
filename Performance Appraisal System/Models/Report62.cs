@@ -34,12 +34,12 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
-        [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
+        [DisplayName("तक्रारी निकाली काढलेल्याची टक्केवारी")]
         public Nullable<double> Resolved_Percentage { get; set; }
 
 
         [Required(ErrorMessage = "कृपया प्राप्त गुणांची टक्केवारी आवश्यक आहे")]
-        [DisplayName("तक्रारी निकाली काढलेल्याची टक्केवारी")]
+        [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
         public bool NotApplicable { get; set; }

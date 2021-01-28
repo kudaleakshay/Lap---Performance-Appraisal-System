@@ -23,12 +23,12 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया अहवाल जमा केल्याची तारीख आवश्यक आहे")]
         [DisplayName("मागील महिन्यात अहवाल जमा केल्याची तारीख")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त तारीख प्रविष्ट करा")]
         public Nullable<int> Last_Month_Report_Submitted { get; set; }
 
         [Required(ErrorMessage = "कृपया अहवाल जमा केल्याची तारीख आवश्यक आहे")]
         [DisplayName("चालु महिन्यात अहवाल जमा केल्याची तारीख")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त तारीख प्रविष्ट करा")]
         public Nullable<int> Current_Month_Report_Submitted { get; set; }
 
 

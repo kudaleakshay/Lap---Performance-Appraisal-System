@@ -21,28 +21,27 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया निधी आवश्यक आहे")]
         [DisplayName("बीडीस वर उपलब्ध करून देण्यात आलेला निधी (उद्दिष्ट)")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> BDS_Funds_Aim { get; set; }
 
         [Required(ErrorMessage = "कृपया खर्च आवश्यक आहे")]
         [DisplayName("मागील महिन्यात झालेला खर्च")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        
         public Nullable<double> Last_Month_Achieved_Expenses { get; set; }
 
         [Required(ErrorMessage = "कृपया खर्च आवश्यक आहे")]
         [DisplayName("चालु महिन्यात झालेला खर्च")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        
         public Nullable<double> Current_Month_Achieved_Expenses { get; set; }
 
         [Required(ErrorMessage = "कृपया खर्च आवश्यक आहे")]
         [DisplayName("एकुण झालेला खर्च")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        
         public Nullable<double> Total_Expenses { get; set; }
 
 
         [Required(ErrorMessage = "कृपया शिल्लक निधी आवश्यक आहे")]
         [DisplayName("शिल्लक निधी")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        
         public Nullable<double> Balance_Amount { get; set; }
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]

@@ -21,7 +21,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया मागील महा अखेर प्रकरणांची संख्या आवश्यक आहे")]
-        [DisplayName("दि.1.4.2020 रोजीची / मागील महा अखेर प्रकरणे")]
+        [DisplayName("मागील महा अखेर प्रकरणे")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Pending_Cases { get; set; }
 
@@ -34,7 +34,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया एकुण प्रकरणांची संख्या आवश्यक आहे")]
-        [DisplayName("एकुण प्रकरणे(3+4)")]
+        [DisplayName("एकुण प्रकरणे")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Cases { get; set; }
 
@@ -52,7 +52,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया उद्दिष्टाप्रमाणे एकुण प्रकरणांची संख्या आवश्यक आहे")]
-        [DisplayName("उद्दिष्टाप्रमाणे एकुण प्रकरणे (7+8)")]
+        [DisplayName("उद्दिष्टाप्रमाणे एकुण प्रकरणे")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Cases_Aim { get; set; }
 
@@ -70,7 +70,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया एकुण निपटारा केलेल्या प्रकरणांची संख्या आवश्यक आहे")]
-        [DisplayName("उद्दिष्टातील एकुण निपटारा केलेली प्रकरणे(10+11)")]
+        [DisplayName("उद्दिष्टातील एकुण निपटारा केलेली प्रकरणे")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Disposed_Cases { get; set; }
 
