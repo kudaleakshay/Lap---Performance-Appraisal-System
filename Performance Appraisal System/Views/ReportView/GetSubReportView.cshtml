@@ -9,7 +9,7 @@
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
         <br>
         <br>
-        <h5 class="card-title text-center"><strong>@ViewBag.DepartmentName</strong></h5>
+        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.DepartmentName - मुल्यांकन प्रणाली अहवाल</strong></h5>
         <hr>
         <div class="card-text">
 
@@ -42,7 +42,6 @@
                                 <th>प्राप्त गुण</th>
                                 <th>प्राप्त गुणांची टक्केवारी</th>
                                 <th>शेरा</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
@@ -53,7 +52,6 @@
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
-                                <th></th>
                             </tr>
                         </tfoot>
                     </table>
@@ -146,10 +144,10 @@
                     total_Marks
                 );
                 $(api.column(2).footer()).html(
-                    total_Appraisal
+                    total_Appraisal.toFixed(2)
                 );
                 $(api.column(3).footer()).html(
-                    total_Percentage + ' %'
+                    total_Percentage.toFixed(2) + ' %'
                 );
             },
             "ajax": {
@@ -163,20 +161,16 @@
                 { "data": "report.Appraisal_Marks" },
                 { "data": "report.Appraisal_Percentage" },
                 { "data": "report.Remarks" },
-                {
-                    "render": function (data, type, full, meta) {
-                        return '<button style="float:right; margin-right:20px;" class = "btn btn-info">View</button>';
-                    }
-                },
+                
             ]
         });
     }
 
-    $('#BranchTable tbody').on('click', 'button', function () {
+    @*$('#BranchTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
         window.open(
             "/ReportView/GetReportView?DepartmentId=" + data.DepartmentId + "&SubjectId=" + data.SId, "_self");
-    });
+    });*@
 
 
     $("#Month").change(function () {

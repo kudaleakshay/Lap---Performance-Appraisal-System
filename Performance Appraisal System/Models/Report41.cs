@@ -38,7 +38,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
-        [DisplayName("एकूण")]
+        [DisplayName("एकूण साध्य")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Achieved { get; set; }
 

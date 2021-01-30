@@ -21,21 +21,21 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> UId { get; set; }
 
         [Required(ErrorMessage = "कृपया मागील आर्थिक वर्षातील दुरुस्ती अहवाल संख्या आवश्यक आहे")]
-        [DisplayName("मागील आर्थिक वर्षातील दुरुस्ती अहवाल संख्या")]
+        [DisplayName("मागील आर्थिक वर्षातील दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Year_Remaining { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया चालु आर्थिक वर्षातील दुरुस्ती अहवाल संख्या आवश्यक आहे")]
-        [DisplayName("चालु आर्थिक वर्षातील दुरुस्ती अहवाल संख्या")]
+        [DisplayName("चालु आर्थिक वर्षातील दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Year_Remaining { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया एकुण दुरुस्ती अहवाल संख्या आवश्यक आहे")]
-        [DisplayName("एकुण दुरुस्ती अहवाल संख्या")]
+        [DisplayName("एकुण सादर न केलेल्या संस्थांची संख्या")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Remaining { get; set; }
 

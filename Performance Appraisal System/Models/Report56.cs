@@ -36,7 +36,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया उद्दीष्टाप्रमाणे चालु महिना अखेर उद्दीष्ट रक्कम आवश्यक आहे")]
         [DisplayName("चालु महिना अखेर उद्दीष्ट रक्कम")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Current_Month_Aim_Amount { get; set; }
 
 
@@ -48,7 +47,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया साध्यतेप्रमाणे मागील महिना अखेर कार्यालय साध्य रक्कम आवश्यक आहे")]
         [DisplayName("मागील महिना अखेर कार्यालय साध्य रक्कम")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Last_Month_Achieved_Amount { get; set; }
 
 
@@ -62,7 +60,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया साध्यतेप्रमाणे चालू महिना अखेर साध्य रक्कम आवश्यक आहे")]
         [DisplayName("चालू महिना अखेर साध्य रक्कम")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Current_Month_Achieved_Amount { get; set; }
 
 
@@ -76,7 +73,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया साध्यतेप्रमाणे एकुण रक्कम आवश्यक आहे")]
         [DisplayName("एकुण रक्कम")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Total_Amount { get; set; }
 
 

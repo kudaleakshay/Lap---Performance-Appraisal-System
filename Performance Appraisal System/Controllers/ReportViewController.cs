@@ -277,6 +277,9 @@ namespace Performance_Appraisal_System.Controllers
 
         public JsonResult GetDepartmentReportData(int DepartmentId, int SubjectId, int Month, int Year)
         {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
             db.Configuration.ProxyCreationEnabled = false;
             var reports = (from s in db.Report60
                            join u in db.Users
@@ -531,7 +534,13 @@ namespace Performance_Appraisal_System.Controllers
             return View();
         }
 
-        public ActionResult GetSubReportView(int UId,int DepartmentId)
+
+        public ActionResult GetStateReportView()
+        {
+            return View();
+        }
+
+        public ActionResult GetSubReportView(int UId, int DepartmentId)
         {
             Department department = db.Departments.Where(u => u.Id == DepartmentId)
                                        .FirstOrDefault();
@@ -545,6 +554,9 @@ namespace Performance_Appraisal_System.Controllers
 
         public JsonResult GetOfficeReportData(int UId, int Month, int Year)
         {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
             db.Configuration.ProxyCreationEnabled = false;
             var reports = (from r in db.DepartmentMasterReports
                            join d in db.Departments
@@ -564,6 +576,9 @@ namespace Performance_Appraisal_System.Controllers
 
         public JsonResult GetSubReportData(int UId, int Month, int Year, int DepartmentId)
         {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
             db.Configuration.ProxyCreationEnabled = false;
             var reports = (from r in db.SubMasterReports
                            join s in db.Subjects
@@ -582,5 +597,32 @@ namespace Performance_Appraisal_System.Controllers
 
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetStateReportData(int Month, int Year)
+        {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = (from r in db.DepartmentMasterReports
+                           where r.Month == Month
+                                && r.Year == Year
+                           group r by r.UId into GroupReport
+                           join u in db.Users
+                           on GroupReport.FirstOrDefault().UId equals u.UId
+                           select new
+                           {
+                               Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
+                               Appraisal_Percentage = (GroupReport.Sum(x => x.Appraisal_Marks) / GroupReport.Sum(x => x.Total_Marks)).ToString().Trim(),
+                               Total_Marks = GroupReport.Sum(x => x.Total_Marks).ToString().Trim(),
+                               Name = u.Name.Trim(),
+                               UId = u.UId,
+
+                           }).ToList();
+
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

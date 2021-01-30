@@ -7,8 +7,9 @@
 
 <br>
 <br>
-@using (Html.BeginForm("Subject46", "O_M", FormMethod.Post))
+@using (Html.BeginForm("Subject46", "Law", FormMethod.Post))
 {
+
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
             <br>
@@ -17,10 +18,10 @@
             <hr>
             <div class="card-text">
                 <div class="center-group">
-                    <div class="form-row">
+                    <div class="form-row" style="line-height:40px">
                         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
-                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> @ViewBag.Title </strong>
-                            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<strong> गुण:  @Session["TotalMarks"].ToString() </strong>
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> <br> विषय: <strong> @ViewBag.Title </strong>
+                            <br><strong> गुण:  @Session["TotalMarks"].ToString() </strong>
                         </div>
                     </div>
 
@@ -99,10 +100,11 @@
 
                         <div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Achieved)
-                            @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved_val", @class = "form-control", disabled = "disabled" })
+                            @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved", @class = "form-control"})
                             @Html.ValidationMessageFor(temp => temp.Achieved)
                             @Html.HiddenFor(temp => temp.Achieved, new { id = "Achieved" })
                         </div>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -132,116 +134,146 @@
                                 @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
                             </div>
 
-                            <div class="form-group col-md-10">
+                            @*<div class="form-group col-md-10">
                                 @Html.LabelFor(temp => temp.Remarks)
                                 @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
                                 @Html.ValidationMessageFor(temp => temp.Remarks)
-                            </div>
+                            </div>*@
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
-        <div class="container" style="padding: 30px;background: white;">
-            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-                <div class="card-text">
-                    <div class="center-group">
-                        <br>
-                        <span style="color: #e77817 !important; font-size: 17px;">
-                            Confirmation / पुष्टीकरण
-                        </span>
-                        <hr>
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <div class="card-text">
+                <div class="center-group">
+                    <br>
+                    <span style="color: #e77817 !important; font-size: 17px;">
+                        Confirmation / पुष्टीकरण
+                    </span>
+                    <hr>
 
-                        <div style="text-align:justify; font-size: 16px; line-height:25px">
-                            I affirm that the above mentioned information submitted by me is true and correct to my knowledge and belief. / मी प्रमाणित करतो की मी वर नमूद केलेली माहिती माझ्या माहितीनुसार सत्य आणि अचूक आहे.
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success" OnClick="SetValue()">Submit / माहिती भरा</button>
-                        </div>
-                        <br>
+                    <div style="text-align:justify; font-size: 16px; line-height:25px">
+                        I affirm that the above mentioned information submitted by me is true and correct to my knowledge and belief. / मी प्रमाणित करतो की मी वर नमूद केलेली माहिती माझ्या माहितीनुसार सत्य आणि अचूक आहे.
                     </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" OnClick="SetValue()">Submit / माहिती भरा</button>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <br>
-        <br>
+    <br>
+    <br>
 
+}
 
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+      $(document).ready()
+    {
+        var isReportSubmitted = @Html.Raw(Json.Encode(ViewBag.isReportSubmitted));
+        if (isReportSubmitted == true) {
+            if (window.confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर केला आहे.'))
+                window.open("/Report/DepartmentWiseReport", "_self");
+            else
+                window.open("/Report/DepartmentWiseReport", "_self");
         }
 
-        <script src="~/Scripts/jquery-3.5.1.min.js"></script>
-        <script>
-
-            function Total_Staff() {
-                var Total = Number($("#Officer_Count").val()) + Number($("#Staff_Count").val());
-                $("#Total_Staff").val(Total);
-                $("#Total_Staff_val").val(Total);
-                $("#Total_Staff_val").css("font-weight", "bold");
-            }
-
-            function Total_Cases() {
-                var Total = Number($("#Last_Month_Received_Cases").val()) + Number($("#Current_Month_Received_Cases").val());
-                $("#Total_Cases").val(Total);
-                $("#Total_Cases_val").val(Total);
-                $("#Total_Cases_val").css("font-weight", "bold");
-            }
-
-            function Total_Achieved() {
-                var Total = Number($("#Last_Month_Achieved").val()) + Number($("#Current_Month_Achieved").val());
-                $("#Total_Achieved").val(Total);
-                $("#Total_Achieved_val").val(Total);
-                $("#Total_Achieved_val").css("font-weight", "bold");
-            }
+        var Total_Marks = Number(@Session["TotalMarks"].ToString());
+    }
 
 
-
-            function Appraisal_Marks() {
-                var Total = ((Number($("#Total_Achieved").val()) * 5) / Number($("#Total_Cases").val()));
-                Total = Total.toFixed(2);
-                $("#Appraisal_Marks").val(Number(Total));
-                $("#Appraisal_Marks_val").val(Number(Total));
-                $("#Appraisal_Marks_val").css("font-weight", "bold");
-            }
-
-            function Appraisal_Percentage() {
-                var Total = (Number($("#Appraisal_Marks").val()) * 100 / 5);
-                Total = Total.toFixed(2);
-                $("#Appraisal_Percentage").val(Number(Total));
-                $("#Appraisal_Percentage_val").val(Number(Total));
-                $("#Appraisal_Percentage_val").css("font-weight", "bold");
-            }
-
-            function SetValue() {
-                $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
-                $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
-                $("#Current_Month_Percentage").val(Number($("#Current_Month_Percentage_val").val()));
-            }
+    function Total_Cases() {
+        var Total = Number($("#Last_Month_Received_Cases").val()) + Number($("#Current_Month_Received_Cases").val());
+        $("#Total_Cases").val(Total);
+        $("#Total_Cases_val").val(Total);
+        $("#Total_Cases_val").css("font-weight", "bold");
+    }
 
 
-            $("#Officer_Count").change(Total_Staff);
-            $("#Staff_Count").change(Total_Staff);
+    function Appraisal_Percentage() {
+        var Total = (Number($("#Achieved").val()) * 100 / Number($("#Target").val()));
+        Total = Total.toFixed(2);
 
-            $("#Last_Month_Received_Cases").change(Total_Cases);
-            $("#Current_Month_Received_Cases").change(Total_Cases);
+        $("#Appraisal_Percentage").val(Number(Total));
+        $("#Appraisal_Percentage_val").val(Number(Total));
+        $("#Appraisal_Percentage_val").css("font-weight", "bold");
+    }
 
-            $("#Last_Month_Achieved").change(Total_Achieved);
-            $("#Current_Month_Achieved").change(Total_Achieved);
+    function Appraisal_Marks() {
 
-            $("#Last_Month_Received_Cases").change(Appraisal_Marks);
-            $("#Current_Month_Received_Cases").change(Appraisal_Marks);
-            $("#Last_Month_Achieved").change(Appraisal_Marks);
-            $("#Current_Month_Achieved").change(Appraisal_Marks);
+        var Appraisal_Marks = (Number($("#Achieved").val()) * Total_Marks / Number($("#Target").val()));
+        Appraisal_Marks = Appraisal_Marks.toFixed(2);
+
+        if (Appraisal_Marks > Total_Marks) {
+            Appraisal_Marks = Total_Marks
+        }
+
+        $("#Appraisal_Marks").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").css("font-weight", "bold");
+    }
 
 
-            $("#Last_Month_Received_Cases").change(Appraisal_Percentage);
-            $("#Current_Month_Received_Cases").change(Appraisal_Percentage);
-            $("#Last_Month_Achieved").change(Appraisal_Percentage);
-            $("#Current_Month_Achieved").change(Appraisal_Percentage);
+    function SetValue() {
+        $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
+        $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
+    }
 
-        </script>
+
+
+    $("#Last_Month_Received_Cases").change(Total_Cases);
+    $("#Current_Month_Received_Cases").change(Total_Cases);
+
+    $("#Target").change(Appraisal_Percentage);
+    $("#Achieved").change(Appraisal_Percentage);
+    $("#Last_Month_Received_Cases").change(Appraisal_Percentage);
+    $("#Current_Month_Received_Cases").change(Appraisal_Percentage);
+
+    $("#Target").change(Appraisal_Marks);
+    $("#Achieved").change(Appraisal_Marks);
+    $("#Last_Month_Received_Cases").change(Appraisal_Marks);
+    $("#Current_Month_Received_Cases").change(Appraisal_Marks);
+    $("#Appraisal_Percentage").change(Appraisal_Marks);
+
+
+    $('#NotApplicable').prop('checked', false); // Unchecks Not Applicable by default
+
+    $('#NotApplicable').click(function () {
+        //If the checkbox is checked.
+        if ($(this).is(':checked')) {
+            //If it is checked, hide form
+            $("#WrappperDiv").css("display", "none");
+
+            $("#Last_Month_Received_Cases").val("0");
+            $("#Current_Month_Received_Cases").val("0");
+            $("#Current_Month_Achieved").val("0");
+            $("#Total_Cases").val("0");
+            $("#Target").val("0");
+            $("#Achieved").val("0");
+
+            $("#Appraisal_Marks").val("0");
+            $("#Appraisal_Percentage").val("0");
+            $("#Appraisal_Marks_val").val("0");
+            $("#Appraisal_Percentage_val").val("0");
+            $("#NotApplicable").val(true);
+
+        } else {
+
+            //If it is not checked, show form
+            $("#WrappperDiv").css("display", "block");
+        }
+    });
+
+
+</script>
+

@@ -22,6 +22,7 @@ namespace Performance_Appraisal_System.Controllers
             var Current_Month = Convert.ToString(DateTime.Now.Month - 1);
             var Current_Year = Convert.ToString(DateTime.Now.Year);
 
+
             if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
             {
                 Current_Month = Convert.ToString(System.Web.HttpContext.Current.Session["ReportMonth"]);
@@ -51,11 +52,13 @@ namespace Performance_Appraisal_System.Controllers
             var Month = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportMonth"]);
             var Year = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportYear"]);
 
+            User user = (User)HttpContext.Session["User"];
+
             switch (Session["ReportSubDepartment"])
             {
                 case 60:
                     Report60 record60 = db.Report60
-                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
                                           .FirstOrDefault();
 
                     if(record60 != null)
@@ -67,7 +70,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 case 61:
                     Report61 record61 = db.Report61
-                                          .Where(u => u.Month == Month && u.Year == Year)
+                                           .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
                                           .FirstOrDefault();
 
                     if (record61 != null)
@@ -103,6 +106,7 @@ namespace Performance_Appraisal_System.Controllers
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
+                    /*Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),*/
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,

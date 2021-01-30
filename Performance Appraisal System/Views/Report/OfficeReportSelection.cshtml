@@ -43,7 +43,7 @@
                 <br>
 
 
-
+@*
                 <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>उपनिबंधक कार्यालये यांचा मुल्यांकन प्रणाली अहवाल</strong></h5>
                 <table id="ARTable" class="table table-striped branchtable">
                     <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
@@ -55,7 +55,7 @@
                     <tbody></tbody>
                 </table>
                 <hr>
-                <hr>
+                <hr>*@
                 <br>
                 <br>
 
@@ -73,7 +73,7 @@
 
         bindDJRTable();
         bindDDRTable();
-        bindARTable();
+        @*bindARTable();*@
 
     });
 
@@ -133,7 +133,8 @@
         });
     }
 
-    function bindARTable() {
+    @*
+        function bindARTable() {
         ARtable = $("#ARTable").DataTable({
             responsive: true,
             processing: true,
@@ -157,7 +158,7 @@
             ]
         });
     }
-
+*@
     $('#DJRTable tbody').on('click', 'button', function () {
         var data = DJRtable.row($(this).parents('tr')).data();
         window.open(
@@ -169,12 +170,12 @@
         window.open(
             "/ReportView/GetOfficeReportView?UId=" + data.UId, "_self");
     });
-
+@*
     $('#ARTable tbody').on('click', 'button', function () {
         var data = ARtable.row($(this).parents('tr')).data();
         window.open(
             "/ReportView/GetOfficeReportView?UId=" + data.UId, "_self");
-    });
+    });*@
 
 
 

@@ -8,7 +8,7 @@
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
         <br>
         <br>
-        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.UserName - मुल्यांकन प्रणाली अहवाल</strong></h5>
+        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>महाराष्ट्र राज्य जिल्हा-निहाय मुल्यांकन प्रणाली अहवाल</strong></h5>
         <hr>
         <div class="card-text">
 
@@ -35,7 +35,7 @@
                     <table id="BranchTable" class="table table-striped branchtable">
                         <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
                             <tr>
-                                <th style="width:40%">शाखा</th>
+                                <th style="width:40%">विभाग  / जिल्हे </th>
                                 <th>एकुण गुण</th>
                                 <th>प्राप्त गुण</th>
                                 <th>प्राप्त गुणांची टक्केवारी</th>
@@ -43,15 +43,6 @@
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
-                        <tfoot>
-                            <tr style="background:#a8bdbd; font-size:18px">
-                                <th style="text-align:center">एकुण</th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                     </table>
                     <br>
                     <br>
@@ -95,75 +86,24 @@
             language: {
                 emptyTable: "कृपया महिना/वर्ष निवडा"
             },
-            "footerCallback": function (row, data, start, end, display) {
-                var api = this.api(), data;
-
-                // Remove the formatting to get integer data for summation
-                var intVal = function (i) {
-                    return typeof i === 'string' ?
-                        i.replace(/[\$,]/g, '') * 1 :
-                        typeof i === 'number' ?
-                            i : 0;
-                };
-
-                // Total over all pages
-                total_Marks = api
-                    .column(1)
-                    .data()
-                    .reduce(function (a, b) {
-                        return intVal(a) + intVal(b);
-                    }, 0);
-
-                total_Appraisal = api
-                    .column(2)
-                    .data()
-                    .reduce(function (a, b) {
-                        return intVal(a) + intVal(b);
-                    }, 0);
-
-                if (total_Appraisal > 0 && total_Marks > 0) {
-                    total_Percentage = total_Appraisal * 100 / total_Marks;
-                }
-                else {
-                    total_Percentage = 0;
-                }
-
-                // Update footer
-                $(api.column(1).footer()).html(
-                    total_Marks
-                );
-                $(api.column(2).footer()).html(
-                    total_Appraisal.toFixed(2)
-                );
-                $(api.column(3).footer()).html(
-                    total_Percentage.toFixed(2) + ' %'
-                );
-            },
             "ajax": {
-                "url": "/ReportView/GetOfficeReportData?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
+                "url": "/ReportView/GetStateReportData?Month=" + Month + "&Year=" + Year,
                 "type": "GET",
                 "datatype": "json"
             },
             "columns": [
-                { "data": "Department" },
-                { "data": "report.Total_Marks" },
-                { "data": "report.Appraisal_Marks" },
-                { "data": "report.Appraisal_Percentage" },
+                { "data": "Name" },
+                { "data": "Total_Marks" },
+                { "data": "Appraisal_Marks" },
+                { "data": "Appraisal_Percentage" },
                 {
                     "render": function (data, type, full, meta) {
-                        return '<button style="float:right; margin-right:20px;" class = "btn btn-info">View</button>';
+                        return '<button style="float:right; margin-right:20px;" class = "btn btn-info">Show Report</button>';
                     }
                 },
             ]
         });
     }
-
-    $('#BranchTable tbody').on('click', 'button', function () {
-        var data = table.row($(this).parents('tr')).data();
-        console.log(data.report);
-        window.open(
-            "/ReportView/GetSubReportView?DepartmentId=" + data.report.DepartmentId + "&UId=" + data.report.UId, "_self");
-    });
 
 
     $("#Month").change(function () {
@@ -175,6 +115,12 @@
         table.destroy();
         bindDataTable();
     })
+
+    $('#BranchTable tbody').on('click', 'button', function () {
+        var data = table.row($(this).parents('tr')).data();
+        window.open(
+            "/ReportView/GetOfficeReportView?UId=" + data.UId, "_self");
+    });
 
 
 </script>

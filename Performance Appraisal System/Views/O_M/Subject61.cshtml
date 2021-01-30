@@ -206,16 +206,16 @@
             }
 
     function Appraisal_Marks() {
-        var Total = ((Number($("#Total_Achieved").val()) * Total_Marks) / Number($("#Total_Target").val()));
-        Total = Total.toFixed(2);
+        var Appraisal_Marks = ((Number($("#Total_Achieved").val()) * Total_Marks) / Number($("#Total_Target").val()));
+        Appraisal_Marks = Appraisal_Marks.toFixed(2);
 
 
         if (Appraisal_Marks > Total_Marks) {
             Appraisal_Marks = Total_Marks
         }
 
-                $("#Appraisal_Marks").val(Number(Total));
-                $("#Appraisal_Marks_val").val(Number(Total));
+        $("#Appraisal_Marks").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").val(Number(Appraisal_Marks));
                 $("#Appraisal_Marks_val").css("font-weight", "bold");
             }
 

@@ -49,12 +49,14 @@ namespace Performance_Appraisal_System.Controllers
             var Month = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportMonth"]);
             var Year = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportYear"]);
 
+            User user = (User)HttpContext.Session["User"];
+
             switch (Session["ReportSubDepartment"])
             {
                 case 62:
                     Report62 record62 = db.Report62
-                                     .Where(u => u.Month == Month && u.Year == Year)
-                                     .FirstOrDefault();
+                                      .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
+                                          .FirstOrDefault();
 
                     if (record62 != null)
                     {
@@ -65,8 +67,8 @@ namespace Performance_Appraisal_System.Controllers
 
                 case 63:
                     Report63 record63 = db.Report63
-                                         .Where(u => u.Month == Month && u.Year == Year)
-                                         .FirstOrDefault();
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
+                                          .FirstOrDefault();
 
                     if (record63 != null)
                     {
@@ -77,8 +79,8 @@ namespace Performance_Appraisal_System.Controllers
 
                 case 64:
                     Report64 record64 = db.Report64
-                                         .Where(u => u.Month == Month && u.Year == Year)
-                                         .FirstOrDefault();
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
+                                          .FirstOrDefault();
 
                     if (record64 != null)
                     {

@@ -594,6 +594,7 @@
     <Content Include="Views\Audit\Subject38.cshtml" />
     <Content Include="Views\Audit\Subject39.cshtml" />
     <Content Include="Views\ReportView\GetSubReportView.cshtml" />
+    <Content Include="Views\ReportView\GetStateReportView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

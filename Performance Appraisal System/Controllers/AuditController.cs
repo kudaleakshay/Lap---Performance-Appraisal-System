@@ -49,11 +49,13 @@ namespace Performance_Appraisal_System.Controllers
             var Month = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportMonth"]);
             var Year = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportYear"]);
 
+            User user = (User)HttpContext.Session["User"];
+
             switch (Session["ReportSubDepartment"])
             {
                 case 35:
                     Report35 record35 = db.Report35
-                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
                                           .FirstOrDefault();
 
                     if (record35 != null)
@@ -64,7 +66,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 case 36:
                     Report36 record36 = db.Report36
-                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
                                           .FirstOrDefault();
 
                     if (record36 != null)
@@ -75,7 +77,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 case 37:
                     Report37 record37 = db.Report37
-                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
                                           .FirstOrDefault();
 
                     if (record37 != null)
@@ -86,7 +88,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 case 38:
                     Report38 record38 = db.Report38
-                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
                                           .FirstOrDefault();
 
                     if (record38 != null)
@@ -97,7 +99,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 case 39:
                     Report39 record39 = db.Report39
-                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
                                           .FirstOrDefault();
 
                     if (record39 != null)
@@ -108,7 +110,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 case 40:
                     Report40 record40 = db.Report40
-                                          .Where(u => u.Month == Month && u.Year == Year)
+                                          .Where(u => u.Month == Month && u.Year == Year && u.UId == user.UId)
                                           .FirstOrDefault();
 
                     if (record40 != null)
@@ -237,7 +239,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
+                    Appraisal_Percentage = Reports.Percentage_Action_Taken,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -283,9 +285,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-
-                    //Calculated percentage here
-                    Appraisal_Percentage = Reports.Appraisal_Marks / Convert.ToDouble(Session["TotalMarks"]),
+                    Appraisal_Percentage = Reports.Percentage_Action_Taken,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -331,9 +331,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-
-                    //Calculated percentage here
-                    Appraisal_Percentage = Reports.Appraisal_Marks / Convert.ToDouble(Session["TotalMarks"]),
+                    Appraisal_Percentage = Reports.Percentage_Action_Taken,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 
@@ -379,9 +377,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-
-                    //Calculated percentage here
-                    Appraisal_Percentage = Reports.Appraisal_Marks / Convert.ToDouble(Session["TotalMarks"]),
+                    Appraisal_Percentage = Reports.Percentage_Action_Taken,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 

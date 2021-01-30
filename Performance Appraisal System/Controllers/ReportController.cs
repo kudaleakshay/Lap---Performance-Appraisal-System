@@ -23,18 +23,15 @@ namespace Performance_Appraisal_System.Controllers
             var Current_Month = Convert.ToString(DateTime.Now.Month -1);
             var Current_Year = Convert.ToString(DateTime.Now.Year);
 
-            if (DateTime.Now.Month == 1)
-            {
-                Current_Month = Convert.ToString(12);
-                Current_Year = Convert.ToString(DateTime.Now.Year -1);
-            }           
-            
-
-
             if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
             {
                 Current_Month = Convert.ToString(System.Web.HttpContext.Current.Session["ReportMonth"]);
                 Current_Year = Convert.ToString(System.Web.HttpContext.Current.Session["ReportYear"]);
+            }
+            else if (DateTime.Now.Month == 1)
+            {
+                Current_Month = Convert.ToString(12);
+                Current_Year = Convert.ToString(DateTime.Now.Year - 1);
             }
 
             ViewBag.Months = new SelectList(Enumerable.Range(1, 12).Select(x =>
@@ -70,33 +67,16 @@ namespace Performance_Appraisal_System.Controllers
             reports.Month = DateTime.Now.Month - 1;
             reports.Year = DateTime.Now.Year;
 
-            if (DateTime.Now.Month == 1)
-            {
-                reports.Month = 12;
-                reports.Year = (DateTime.Now.Year - 1);
-            }
-
-
             if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
             {
                 reports.Month = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportMonth"]);
                 reports.Year = Convert.ToInt32(System.Web.HttpContext.Current.Session["ReportYear"]);
             }
-
-            ViewBag.Months = new SelectList(Enumerable.Range(1, 12).Select(x =>
-               new SelectListItem()
-               {
-                   Text = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames[x - 1],
-                   Value = x.ToString()
-               }), "Value", "Text", reports.Month);
-
-
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year - 2, 10).Select(x =>
-                 new SelectListItem()
-                 {
-                     Text = x.ToString(),
-                     Value = x.ToString()
-                 }), "Value", "Text", reports.Year);
+            else if (DateTime.Now.Month == 1)
+            {
+                reports.Month = 12;
+                reports.Year = (DateTime.Now.Year - 1);
+            }
 
             Session["ReportMonth"] = reports.Month;
             Session["ReportYear"] = reports.Year;
@@ -138,15 +118,12 @@ namespace Performance_Appraisal_System.Controllers
         [HttpPost]
         public ActionResult SubReports(AppraisalReportViewModel reports)
         {
-            DateTime date = new DateTime(2020, reports.Month, 1);
-
             AppraisalReportViewModel SubReports = new AppraisalReportViewModel
             {
                 DepartmentId = reports.DepartmentId
             };
 
             Session["ReportMonth"] = reports.Month;
-            Session["ReportMonthName"] = date.ToString("MMMM");
             Session["ReportYear"] = reports.Year;
             Session["ReportDepartment"] = reports.DepartmentId;
 

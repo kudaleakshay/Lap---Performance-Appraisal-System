@@ -53,13 +53,17 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया कारवाईचे केल्याचे प्रमाण टक्केवारी आवश्यक आहे")]
         [DisplayName("कारवाईचे केल्याचे प्रमाण")]
+        public Nullable<double> Percentage_Action_Taken { get; set; }
+
+
+        [Required(ErrorMessage = "कृपया कारवाईचे केल्याचे प्रमाण टक्केवारी आवश्यक आहे")]
+        [DisplayName("कारवाईचे केल्याचे प्रमाण")]
         public Nullable<double> Action_Taken { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया गुणांची संख्या आवश्यक आहे")]
         [DisplayName("कारवाईच्या प्रमाणात मिळालेले गुण")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Marks_Action_Taken { get; set; }
 
 
@@ -75,9 +79,6 @@ namespace Performance_Appraisal_System.Models
         public Nullable<double> Appraisal_Marks { get; set; }
 
 
-        [Required(ErrorMessage = "कृपया कारवाईचे केल्याचे प्रमाण टक्केवारी आवश्यक आहे")]
-        [DisplayName("कारवाईचे केल्याचे प्रमाण")]
-        public Nullable<double> Percentage_Action_Taken { get; set; }
 
 
 
