@@ -152,7 +152,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -160,12 +160,12 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }
             else
@@ -198,7 +198,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -206,12 +206,12 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }
             else
@@ -245,7 +245,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -253,12 +253,12 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }
             else
@@ -292,7 +292,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -300,12 +300,12 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }
             else
@@ -339,7 +339,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -347,12 +347,12 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }
             else
@@ -386,7 +386,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -394,12 +394,12 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }
             else
