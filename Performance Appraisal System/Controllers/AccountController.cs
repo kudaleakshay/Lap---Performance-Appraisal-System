@@ -36,7 +36,7 @@ namespace Performance_Appraisal_System.Controllers
                         Session["User"] = user;
                         Session["AppraisalType"] = user.AppraisalType;
                         Session["UserName"] = user.UserName;
-                        return RedirectToAction("DepartmentWiseReport", "Report");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
@@ -76,7 +76,7 @@ namespace Performance_Appraisal_System.Controllers
 
                 Session["User"] = user;
                 Session["UserName"] = user.UserName;
-                return RedirectToAction("DepartmentWiseReport", "Report");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -117,7 +117,7 @@ namespace Performance_Appraisal_System.Controllers
         public ActionResult Logout()
         {
             Session.Contents.RemoveAll();
-            return RedirectToAction("DepartmentWiseReport", "Report");
+            return RedirectToAction("Index", "Home");
         }
 
     }

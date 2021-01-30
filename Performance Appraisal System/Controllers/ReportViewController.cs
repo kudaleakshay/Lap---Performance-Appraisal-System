@@ -586,6 +586,7 @@ namespace Performance_Appraisal_System.Controllers
                            where r.Month == Month
                                  && r.Year == Year
                                  && r.UId == UId
+                                 && r.Not_Applicable_Marks == 0
                                  && r.DepartmentId == DepartmentId
                                  && s.Type == 2
                            orderby r.DepartmentId
