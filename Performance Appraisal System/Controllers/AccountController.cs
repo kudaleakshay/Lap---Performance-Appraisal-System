@@ -7,6 +7,9 @@ using Performance_Appraisal_System.Infrastructure;
 using Performance_Appraisal_System.Models;
 using Performance_Appraisal_System.ViewModels;
 using System.Web.Security;
+using System.Text;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace Performance_Appraisal_System.Controllers
 {
@@ -23,12 +26,14 @@ namespace Performance_Appraisal_System.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
+            var Password = Encrypt(model.Password.ToLower());
+
             if (ModelState.IsValid)
             {
                 using (var context = new DocPASEntities())
                 {
                     User user = context.Users
-                                       .Where(u => u.UserName == model.UserName && u.Password == model.Password)
+                                       .Where(u => u.UserName == model.UserName && u.Password == Password)
                                        .FirstOrDefault();
 
                     if (user != null)
@@ -66,6 +71,8 @@ namespace Performance_Appraisal_System.Controllers
         [HttpPost]
         public ActionResult Register(User user)
         {
+            user.Password = Encrypt(user.Password.ToLower());
+
             if (ModelState.IsValid)
             {
                 DocPASEntities db = new DocPASEntities();
@@ -119,6 +126,62 @@ namespace Performance_Appraisal_System.Controllers
             Session.Contents.RemoveAll();
             return RedirectToAction("Index", "Home");
         }
+
+
+        public string Encrypt(string clearText)
+        {
+            Console.WriteLine("Normal" + clearText);
+
+            string EncryptionKey = "MAKV2SPBNI99212";
+            byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    clearText = Convert.ToBase64String(ms.ToArray());
+                }
+            }
+            Console.WriteLine("Encrypted"+ clearText);
+            return clearText;
+        }
+
+
+        public string Decrypt(string cipherText)
+        {
+
+            Console.WriteLine("Normal" + cipherText);
+
+            string EncryptionKey = "MAKV2SPBNI99212";
+            byte[] cipherBytes = Convert.FromBase64String(cipherText);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(cipherBytes, 0, cipherBytes.Length);
+                        cs.Close();
+                    }
+                    cipherText = Encoding.Unicode.GetString(ms.ToArray());
+                }
+            }
+
+            Console.WriteLine("Decrpt" + cipherText);
+
+            return cipherText;
+        }
+
 
     }
 }

@@ -31,6 +31,11 @@
                         @Html.ValidationMessageFor(temp => temp.Password)
                     </div>
                     <br>
+                                  
+                    <div class="form-group col-3 center-group">
+                        @Html.ValidationSummary()
+                    </div>
+                          
                                    
                     <button type="submit" class="btn btn-primary btn-block col-3 center-group">लॉग इन</button>
                 }
