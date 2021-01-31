@@ -38,7 +38,6 @@
                                 <th style="width:40%">विभाग  / जिल्हे </th>
                                 <th>एकुण गुण</th>
                                 <th>प्राप्त गुण</th>
-                                <th>प्राप्त गुणांची टक्केवारी</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -84,7 +83,7 @@
             info: false,
             fixedColumns: true,
             language: {
-                emptyTable: "कृपया महिना/वर्ष निवडा"
+                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
             },
             "ajax": {
                 "url": "/ReportView/GetStateReportData?Month=" + Month + "&Year=" + Year,
@@ -95,10 +94,9 @@
                 { "data": "Name" },
                 { "data": "Total_Marks" },
                 { "data": "Appraisal_Marks" },
-                { "data": "Appraisal_Percentage" },
                 {
                     "render": function (data, type, full, meta) {
-                        return '<button style="float:right; margin-right:20px;" class = "btn btn-info">Show Report</button>';
+                        return '<button style="float:center;" class = "btn btn-info">Report</button>';
                     }
                 },
             ]

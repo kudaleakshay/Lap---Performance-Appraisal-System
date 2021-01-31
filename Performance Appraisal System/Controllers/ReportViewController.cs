@@ -620,7 +620,7 @@ namespace Performance_Appraisal_System.Controllers
                            select new
                            {
                                Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
-                               Appraisal_Percentage = (GroupReport.Sum(x => x.Appraisal_Marks) / GroupReport.Sum(x => x.Total_Marks)).ToString().Trim(),
+                               Appraisal_Percentage = ((GroupReport.Sum(x => x.Appraisal_Marks)*100) / GroupReport.Sum(x => x.Total_Marks)),
                                Total_Marks = (GroupReport.Sum(x => x.Total_Marks) - GroupReport.Sum(x => x.Not_Applicable_Marks)),
                                Name = u.Name.Trim(),
                                UId = u.UId,

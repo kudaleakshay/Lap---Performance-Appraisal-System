@@ -56,6 +56,7 @@ END
 go 
 
 
+
 CREATE TRIGGER [dbo].[DepartmentMasterReports_Entry] ON [DocPAS].[dbo].[SubMasterReports]
 AFTER INSERT
 AS
@@ -92,8 +93,8 @@ BEGIN
   BEGIN
   Update [DepartmentMasterReports] 
     SET Appraisal_Marks = Appraisal_Marks + @iApppraisalMarks,
-     Not_Applicable_Marks = Not_Applicable_Marks + @iNot_Applicable_Marks,
-    Total_Marks = (@iTotal - Not_Applicable_Marks)
+    Not_Applicable_Marks = Not_Applicable_Marks,
+    Total_Marks = (@iTotal)
   WHERE
     [DepartmentId] = @dDepartment
     AND [Year]= @iYear 
@@ -105,7 +106,7 @@ BEGIN
   Update [DepartmentMasterReports] 
     SET Appraisal_Marks = Appraisal_Marks + @iApppraisalMarks,
 	Not_Applicable_Marks = Not_Applicable_Marks + @iNot_Applicable_Marks,
-    Total_Marks = (@iTotal -Not_Applicable_Marks )
+    Total_Marks = (@iTotal)
   WHERE
       [DepartmentId] = @dDepartment
     AND [Year]= @iYear 
@@ -122,11 +123,12 @@ BEGIN
   END
   Else
   BEGIN
-		INSERT INTO [DepartmentMasterReports] ([UId],[DepartmentId],[Year],[Month],[Appraisal_Marks],[Total_Marks],[Not_Applicable_Marks]) Values (@iUId,@dDepartment,@iYear,@iMonth,@iApppraisalMarks,(@iTotal-@iNot_Applicable_Marks),@iNot_Applicable_Marks)
+		INSERT INTO [DepartmentMasterReports] ([UId],[DepartmentId],[Year],[Month],[Appraisal_Marks],[Total_Marks],[Not_Applicable_Marks]) Values (@iUId,@dDepartment,@iYear,@iMonth,@iApppraisalMarks,@iTotal,@iNot_Applicable_Marks)
   END
 END
 END
 go
+
 
 
 CREATE TRIGGER [dbo].[Get_Appraisal_Percentage] ON [DocPAS].[dbo].[DepartmentMasterReports]
@@ -140,10 +142,12 @@ Declare @dDepartment as int;
 Declare @iUId as int;
 Declare @iMonth as int;
 Declare @iYear as int;
+Declare @iNotApplicable as float;
 
 Select 
   @iAMarks = i.Appraisal_Marks,
   @iTotal = i.Total_Marks,
+  @iNotApplicable = i.Not_Applicable_Marks,
   @dDepartment = i.[DepartmentId],
   @iUId = i.[UId],
   @iMonth = i.[Month],
@@ -152,7 +156,7 @@ Select
 From inserted i;
 
 Update DepartmentMasterReports
-    SET Appraisal_Percentage = round((@iAMarks* 100) / @iTotal,2)
+    SET Appraisal_Percentage = round((@iAMarks* 100) / (@iTotal-@iNotApplicable),2)
 Where
 	[DepartmentId] = @dDepartment
     AND [Year]= @iYear 

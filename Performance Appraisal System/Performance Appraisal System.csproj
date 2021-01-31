@@ -366,6 +366,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\bodybg2.jpg" />
     <Content Include="Images\emblem.png" />
+    <Content Include="Images\error.png" />
     <Content Include="Images\headerBg.png" />
     <Content Include="Images\India_Government_logo.png" />
     <Content Include="Images\logoIndia.jpg" />
