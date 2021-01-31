@@ -101,6 +101,7 @@
                                 @Html.TextBoxFor(temp => temp.Remaining_for_Audit, new { id = "Remaining_for_Audit", @class = "form-control" })
                                 @Html.ValidationMessageFor(temp => temp.Remaining_for_Audit)
                             </div>
+
                         </div>
 
 
@@ -210,7 +211,7 @@
 
     function Current_Month_Remaining_for_Audit() {
         var Total = Number($("#Eligible_for_Audit").val()) - Number($("#Current_Month_Audit").val());
-        
+
         $("#Current_Month_Remaining_for_Audit").val(Total);
         $("#Current_Month_Remaining_for_Audit_val").val(Total);
         $("#Current_Month_Remaining_for_Audit_val").css("font-weight", "bold");
@@ -220,7 +221,7 @@
     function Percentage_Action_Taken() {
         var Total = Number($("#Remaining_for_Audit").val()) * 100 / Number($("#Current_Month_Remaining_for_Audit").val());
         Total = Total.toFixed(2);
-        
+
         $("#Percentage_Action_Taken").val(Total);
         $("#Percentage_Action_Taken_val").val(Total);
         $("#Percentage_Action_Taken_val").css("font-weight", "bold");
@@ -260,10 +261,10 @@
         $("#Appraisal_Marks_val").css("font-weight", "bold");
     }
 
-
     function SetValue() {
         $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
         $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
+        $("#Current_Month_Remaining_for_Audit").val(Number($("#Current_Month_Remaining_for_Audit_val").val()));
     }
 
 

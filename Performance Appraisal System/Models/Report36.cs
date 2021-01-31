@@ -56,8 +56,6 @@ namespace Performance_Appraisal_System.Models
         public Nullable<double> Percentage_Action_Taken { get; set; }
 
 
-        [Required(ErrorMessage = "कृपया कारवाईचे केल्याचे प्रमाण टक्केवारी आवश्यक आहे")]
-        [DisplayName("कारवाईचे केल्याचे प्रमाण")]
         public Nullable<double> Action_Taken { get; set; }
 
 

@@ -14,18 +14,29 @@
         <h3 class="card-title text-center">मुल्यांकन प्रणाली</h3>
 
 
-            <div class="center-div">
+        <div class="center-div">
 
-                @if (UserRole != 5 && UserRole != 6)
+            @if (UserRole != 5 && UserRole != 6)
+            {
+
+                if (UserRole == 3 || UserRole == 4)
                 {
-                    <a href="/Report/ViewAppraisalReports" title="Performance Appraisal Reports( मुल्यांकन अहवाल पहा )" class="extra-btn">
-                        मुल्यांकन अहवाल पहा<br>( View Reports )
+                    <a href="/Report/OfficeReportSelection" title="Performance Appraisal Reports( मुल्यांकन अहवाल पहा )" class="extra-btn">
+                        मुल्यांकन अहवाल पहा<br>(View Reports )
                     </a>
                 }
-                    <a href="/Report/DepartmentWiseReport" title="Performance Appraisal Reports( मुल्यांकन अहवाल भरा )" class="extra-btn">
-                        मुल्यांकन अहवाल भरा<br>( Submit Reports )
+                else
+                {
+                    <a href="/Report/ViewAppraisalReports" title="Performance Appraisal Reports( मुल्यांकन अहवाल पहा )" class="extra-btn">
+                        मुल्यांकन अहवाल पहा<br>(View Reports )
                     </a>
-                </div>
-            </div>
+                }
+
+            }
+            <a href="/Report/DepartmentWiseReport" title="Performance Appraisal Reports( मुल्यांकन अहवाल भरा )" class="extra-btn">
+                मुल्यांकन अहवाल भरा<br>( Submit Reports )
+            </a>
+        </div>
+    </div>
 
 </div>

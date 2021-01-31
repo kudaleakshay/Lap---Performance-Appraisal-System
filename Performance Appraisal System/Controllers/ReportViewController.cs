@@ -558,7 +558,9 @@ namespace Performance_Appraisal_System.Controllers
             Session["ReportYear"] = Year;
 
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = (from r in db.DepartmentMasterReports
+
+           
+             var reports = (from r in db.DepartmentMasterReports
                            join d in db.Departments
                            on r.DepartmentId equals d.Id
                            where r.Month == Month
@@ -567,7 +569,11 @@ namespace Performance_Appraisal_System.Controllers
                            orderby r.DepartmentId
                            select new
                            {
-                               report = r,
+                               Total_Marks = r.Total_Marks - r.Not_Applicable_Marks,
+                               Appraisal_Marks = r.Appraisal_Marks,
+                               Appraisal_Percentage = r.Appraisal_Percentage,
+                               DepartmentId = r.DepartmentId,
+                               UId = r.UId,
                                Department = d.DepartmentName,
                            }).ToList();
 
@@ -615,7 +621,7 @@ namespace Performance_Appraisal_System.Controllers
                            {
                                Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
                                Appraisal_Percentage = (GroupReport.Sum(x => x.Appraisal_Marks) / GroupReport.Sum(x => x.Total_Marks)).ToString().Trim(),
-                               Total_Marks = GroupReport.Sum(x => x.Total_Marks).ToString().Trim(),
+                               Total_Marks = (GroupReport.Sum(x => x.Total_Marks) - GroupReport.Sum(x => x.Not_Applicable_Marks)),
                                Name = u.Name.Trim(),
                                UId = u.UId,
 

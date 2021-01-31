@@ -473,6 +473,7 @@ Where UserName = 'DDR39'
 
 
 /* Insert Value into Subject Mapping table */
+
 Insert into Subjects_MarksMapping values(11,1,2)
 Insert into Subjects_MarksMapping values(12,1,2)
 Insert into Subjects_MarksMapping values(13,1,1)

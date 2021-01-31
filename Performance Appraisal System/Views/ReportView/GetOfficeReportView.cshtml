@@ -146,9 +146,9 @@
             },
             "columns": [
                 { "data": "Department" },
-                { "data": "report.Total_Marks" },
-                { "data": "report.Appraisal_Marks" },
-                { "data": "report.Appraisal_Percentage" },
+                { "data": "Total_Marks"},
+                { "data": "Appraisal_Marks" },
+                { "data": "Appraisal_Percentage" },
                 {
                     "render": function (data, type, full, meta) {
                         return '<button style="float:right; margin-right:20px;" class = "btn btn-info">View</button>';
@@ -162,7 +162,7 @@
         var data = table.row($(this).parents('tr')).data();
         console.log(data.report);
         window.open(
-            "/ReportView/GetSubReportView?DepartmentId=" + data.report.DepartmentId + "&UId=" + data.report.UId, "_self");
+            "/ReportView/GetSubReportView?DepartmentId=" + data.DepartmentId + "&UId=" + data.UId, "_self");
     });
 
 

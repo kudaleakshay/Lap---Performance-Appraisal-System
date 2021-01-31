@@ -33,7 +33,7 @@ namespace Performance_Appraisal_System.Controllers
                 using (var context = new DocPASEntities())
                 {
                     User user = context.Users
-                                       .Where(u => u.UserName == model.UserName && u.Password == Password)
+                                       .Where(u => u.UserName == model.UserName && u.Password == Password && u.Status ==1)
                                        .FirstOrDefault();
 
                     if (user != null)
