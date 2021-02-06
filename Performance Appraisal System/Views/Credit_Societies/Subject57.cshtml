@@ -45,7 +45,7 @@
 
     <div class="form-group col-md-12 center-div" style="font-size: 20px;">
         @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
-        <strong>&nbsp&nbspविषय लागु नाही</strong>
+        <strong>&nbsp&nbspविषय लागु नाही / या महिन्यासाठी उद्दिष्ठे लागु नाही </strong>
     </div>
 
 
@@ -259,6 +259,10 @@
         var Total = (Number($("#Total_Count").val()) * 100 / Number($("#Current_Month_Aim_Count").val()));
         Total = Total.toFixed(2);
 
+        if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
+            Total = 0;
+        }
+
         $("#Current_Month_Percentage").val(Number(Total));
         $("#Current_Month_Percentage_val").val(Number(Total));
         $("#Current_Month_Percentage_val").css("font-weight", "bold");
@@ -267,6 +271,15 @@
     function Appraisal_Percentage() {
         var Total = (Number($("#Total_Count").val()) * 100 / Number($("#Annual_Target").val()));
         Total = Total.toFixed(2);
+
+        if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
+            Total = 0;
+        }
+
+
+        if (Appraisal_Marks > Total_Marks) {
+            Appraisal_Marks = Total_Marks
+        }
 
         $("#Appraisal_Percentage").val(Number(Total));
         $("#Appraisal_Percentage_val").val(Number(Total));
@@ -280,6 +293,11 @@
 
         if (Appraisal_Marks > Total_Marks) {
             Appraisal_Marks = Total_Marks
+        }
+
+
+        if (isNaN(Appraisal_Marks)) {  // Matches +0, -0, NaN
+            Appraisal_Marks = 0;
         }
 
         $("#Appraisal_Marks").val(Number(Appraisal_Marks));

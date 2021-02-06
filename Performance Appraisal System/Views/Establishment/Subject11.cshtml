@@ -46,7 +46,7 @@
 
     <div class="form-group col-md-12 center-div" style="font-size: 20px;">
         @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
-        <strong>&nbsp&nbspविषय लागु नाही</strong>
+        <strong>&nbsp&nbspविषय लागु नाही / या महिन्यासाठी उद्दिष्ट व साध्य लागु नाही</strong>
     </div>
 
     <div id="WrappperDiv">
@@ -212,12 +212,12 @@
                                 @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
                                 @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
                             </div>
-@*
-                            <div class="form-group col-md-10">
-                                @Html.LabelFor(temp => temp.Remarks)
-                                @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
-                                @Html.ValidationMessageFor(temp => temp.Remarks)
-                            </div>*@
+                            @*
+                                <div class="form-group col-md-10">
+                                    @Html.LabelFor(temp => temp.Remarks)
+                                    @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                                    @Html.ValidationMessageFor(temp => temp.Remarks)
+                                </div>*@
 
                         </div>
                     </div>
@@ -270,9 +270,12 @@
 
         var Total_Marks = Number(@Session["TotalMarks"].ToString());
     }
-    
+
     function Inquiry_Total() {
         var Total = Number($("#Inquiry_C").val()) + Number($("#Inquiry_D").val());
+
+        console.log("Inquiry_Total" + Total);
+
         $("#Inquiry_Total").val(Total);
         $("#Inquiry_Total_val").val(Total);
         $("#Inquiry_Total_val").css("font-weight", "bold");
@@ -280,6 +283,9 @@
 
     function Inquiry_Total_Target() {
         var Total = Number($("#Inquiry_Target_C").val()) + Number($("#Inquiry_Target_D").val());
+
+        console.log("Inquiry_Total_Target" + Total);
+
         $("#Inquiry_Total_Target").val(Total);
         $("#Inquiry_Total_Target_val").val(Total);
         $("#Inquiry_Total_Target_val").css("font-weight", "bold");
@@ -287,6 +293,9 @@
 
     function Inquiry_Total_Achieved() {
         var Total = Number($("#Inquiry_Achieved_C").val()) + Number($("#Inquiry_Achieved_D").val());
+
+        console.log("Inquiry_Total_Achieved" + Total);
+
         $("#Inquiry_Total_Achieved").val(Total);
         $("#Inquiry_Total_Achieved_val").val(Total);
         $("#Inquiry_Total_Achieved_val").css("font-weight", "bold");
@@ -294,6 +303,9 @@
 
     function Inquiry_Total_Remaining() {
         var Total = Number($("#Inquiry_Remaining_C").val()) + Number($("#Inquiry_Remaining_D").val());
+
+        console.log("Inquiry_Total_Remaining" + Total);
+
         $("#Inquiry_Total_Remaining").val(Total);
         $("#Inquiry_Total_Remaining_val").val(Total);
         $("#Inquiry_Total_Remaining_val").css("font-weight", "bold");
@@ -306,18 +318,31 @@
         var Appraisal_Marks = (Number($("#Inquiry_Total_Achieved").val()) * Total_Marks / Number($("#Inquiry_Total_Target").val()));
         Appraisal_Marks = Appraisal_Marks.toFixed(2);
 
+        if (Appraisal_Marks > Total_Marks) {
+            Appraisal_Marks = Total_Marks
+        }
+
+        if (isNaN(Appraisal_Marks)) {  // Matches +0, -0, NaN
+            Appraisal_Marks = 0;
+        }
+
+        console.log("Appraisal_Marks" + Appraisal_Marks);
+
         $("#Appraisal_Marks").val(Number(Appraisal_Marks));
         $("#Appraisal_Marks_val").val(Number(Appraisal_Marks));
         $("#Appraisal_Marks_val").css("font-weight", "bold");
     }
 
     function Appraisal_Percentage() {
-        var Total = (Number($("#Inquiry_Total_Achieved").val()) * 100/ Number($("#Inquiry_Total_Target").val()));
+
+        var Total = (Number($("#Inquiry_Total_Achieved").val()) * 100 / Number($("#Inquiry_Total_Target").val()));
         Total = Total.toFixed(2);
 
-        if (Appraisal_Marks > Total_Marks) {
-            Appraisal_Marks = Total_Marks
+        if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
+            Total = 0;
         }
+
+        console.log("Appraisal_Percentage" + Total);
 
         $("#Appraisal_Percentage").val(Number(Total));
         $("#Appraisal_Percentage_val").val(Number(Total));

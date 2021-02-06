@@ -53,8 +53,7 @@ BEGIN
 INSERT INTO [Departments_MarksMapping] ([DId],[AType],[Marks]) Values (@iDepartmentId,@iAType,@iMarks)
 END
 END
-go 
-
+go
 
 
 CREATE TRIGGER [dbo].[DepartmentMasterReports_Entry] ON [DocPAS].[dbo].[SubMasterReports]
@@ -130,7 +129,6 @@ END
 go
 
 
-
 CREATE TRIGGER [dbo].[Get_Appraisal_Percentage] ON [DocPAS].[dbo].[DepartmentMasterReports]
 AFTER INSERT, UPDATE
 AS
@@ -164,4 +162,4 @@ Where
     AND [UId] = @iUId
 
 END
-go 
+go

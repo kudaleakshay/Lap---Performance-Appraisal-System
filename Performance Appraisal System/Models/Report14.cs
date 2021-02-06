@@ -29,7 +29,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया चालु महिना अखेर उद्दीष्टे संख्या आवश्यक आहे")]
-        [DisplayName("चालु महिना अखेर उद्दीष्टे")]
+        [DisplayName("कार्यालय अभिलेख वर्गीकरण उद्दीष्टे")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Aim { get; set; }
 

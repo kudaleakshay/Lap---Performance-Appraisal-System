@@ -45,7 +45,7 @@
 
     <div class="form-group col-md-12 center-div" style="font-size: 20px;">
         @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
-        <strong>&nbsp&nbspविषय लागु नाही</strong>
+        <strong>&nbsp&nbspविषय लागु नाही / या महिन्यासाठी उद्दिष्ट व साध्य लागु नाही</strong>
     </div>
 
 
@@ -55,7 +55,8 @@
                 <div class="card-text">
                     <div class="center-group">
                         <br>
-                        <span style="color: #e77817 !important; font-size: 16px;">लक्षांक / पूर्तता</span>
+                        <span style="color: #e77817 !important; font-size: 16px;">लक्षांक / पूर्तता - </span>
+                        <span style="font-size: 16px;">लेखापरिक्षणासाठी पात्र सर्व संस्था </span>
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -185,6 +186,10 @@
         var Total = (Number($("#Total_Achieved").val()) * 100 / Number($("#Total_Target").val()));
         Total = Total.toFixed(2);
 
+        if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
+            Total = 0;
+        }
+
         $("#Appraisal_Percentage").val(Number(Total));
         $("#Appraisal_Percentage_val").val(Number(Total));
         $("#Appraisal_Percentage_val").css("font-weight", "bold");
@@ -197,6 +202,10 @@
 
         if (Appraisal_Marks > Total_Marks) {
             Appraisal_Marks = Total_Marks
+        }
+
+        if (isNaN(Appraisal_Marks)) {  // Matches +0, -0, NaN
+            Appraisal_Marks = 0;
         }
 
         $("#Appraisal_Marks").val(Number(Appraisal_Marks));

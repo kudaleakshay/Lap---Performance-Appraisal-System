@@ -24,12 +24,10 @@
                 <ul>
                     @if (Session["UserName"] != null)
                     {
-        <li><a class="dropdown-toggle" href="/Account/Logout" id="loginLink">लॉग ऑऊट</a></li>
- }
-    else
-    {
-<li><a class="dropdown-toggle" href="/Account/Login" id="loginLink">लॉग इन</a></li>
-}
+        <li><a class="dropdown-toggle" href="/Account/Logout" id="loginLink">लॉग ऑऊट</a></li> }
+                    else
+                    {
+        <li><a class="dropdown-toggle" href="/Account/Login" id="loginLink">लॉग इन</a></li>}
 
                     <li><a href="/">मुख्य पृष्ठ</a></li>
                     <li>संपर्क</li>
@@ -195,6 +193,7 @@
             </ul>
         </div>
 
+
         <div class="page-container" style="margin-top: 1px !important;">
             <div class="page-content">
                 @RenderBody()
@@ -214,11 +213,6 @@
                             <li>पत्ता</li>
                             <li>अटी आणि शर्ती</li>
                         </ul>
-                        <div class="footer-right">
-                            <p>शेवटचे पुनरावलोकन: ०२-०९-२०२०</p>
-                            <p>एकूण दर्शक: १५८५७१८६</p>
-                            <p>आजचे दर्शक: १२२६१</p>
-                        </div>
                     </div>
 
                 </div>

@@ -47,7 +47,7 @@
 
     <div class="form-group col-md-12 center-div" style="font-size: 20px;">
         @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
-        <strong>&nbsp&nbspविषय लागु नाही</strong>
+        <strong>&nbsp&nbspविषय लागु नाही / या महिन्यासाठी उद्दिष्ट व साध्य लागु नाही</strong>
     </div>
 
     <div id="WrappperDiv">
@@ -165,10 +165,12 @@
 
     function Appraisal_Marks() {
 
-        if (Number($("#Current_Month_Report_Submitted").val()) <= 10) {
+        var ReportDate = Number($("#Current_Month_Report_Submitted").val());
+
+        if (ReportDate <= 10 && ReportDate >= 1) {
             Appraisal_Marks = Total_Marks;
         }
-        else if (Number($("#Current_Month_Report_Submitted").val()) > 10 && Number($("#Current_Month_Report_Submitted").val() <= 31)) {
+        else if (ReportDate > 10 && ReportDate <= 31) {
             Appraisal_Marks = Total_Marks / 2;
         }
         else

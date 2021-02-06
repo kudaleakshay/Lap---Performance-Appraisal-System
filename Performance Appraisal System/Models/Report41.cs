@@ -21,7 +21,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया संख्या आवश्यक आहे")]
-        [DisplayName("अवसायनातील 10 वर्षावरील संस्था रद्द करणे.(उद्दिष्ट)")]
+        [DisplayName("अवसायनातील 10 वर्षावरील संस्था रद्द करणे.(वार्षिक लक्षांक)")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Society_Cancellation { get; set; }
 

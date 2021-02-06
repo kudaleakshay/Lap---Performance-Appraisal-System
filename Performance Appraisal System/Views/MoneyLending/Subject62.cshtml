@@ -9,44 +9,45 @@
 <br>
 @using (Html.BeginForm("Subject62", "MoneyLending", FormMethod.Post))
 {
-<div class="container" style="padding: 30px;background: white;">
-    <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
-        <br>
-        <br>
-        <h3 class="card-title text-center"><strong>विभागीय सहनिबंधक, जिल्हा उपनिबंधक व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता</strong></h3>
-        <hr>
-        <div class="card-text">
-            <div class="center-group">
-                <div class="form-row" style="line-height:40px">
-                    <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
-                        कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> <br> विषय: <strong> @ViewBag.Title </strong>
-                        <br><strong> गुण:  @Session["TotalMarks"].ToString() </strong>
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <br>
+            <br>
+            <h3 class="card-title text-center"><strong>विभागीय सहनिबंधक, जिल्हा उपनिबंधक व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता</strong></h3>
+            <hr>
+            <div class="card-text">
+                <div class="center-group">
+                    <div class="form-row" style="line-height:40px">
+                        <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> <br> विषय: <strong> @ViewBag.Title </strong>
+                            <br><strong> गुण:  @Session["TotalMarks"].ToString() </strong>
+                        </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, "-- महिना निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Month)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, "-- वर्ष निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Year)
+                        </div>
+                    </div>
+
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, "-- महिना निवडा --", new { @class = "form-control" })
-                        <br>
-                        @Html.ValidationMessageFor(temp => temp.Month)
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, "-- वर्ष निवडा --", new { @class = "form-control" })
-                        <br>
-                        @Html.ValidationMessageFor(temp => temp.Year)
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
-</div>
+
 
 
     <div class="form-group col-md-12 center-div" style="font-size: 20px;">
         @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
-        <strong>&nbsp&nbspविषय लागु नाही</strong>
+        <strong>&nbsp&nbspविषय लागु नाही / या महिन्यासाठी उद्दिष्ट व साध्य लागु नाही</strong>
     </div>
 
     <div id="WrappperDiv">
@@ -79,7 +80,7 @@
             </div>
         </div>
 
-        
+
         <div class="container" style="padding: 30px;background: white;">
             <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
                 <div class="card-text">
@@ -105,10 +106,10 @@
 
 
                             @*<div class="form-group col-md-10">
-                                @Html.LabelFor(temp => temp.Remarks)
-                                @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
-                                @Html.ValidationMessageFor(temp => temp.Remarks)
-                            </div>*@
+                                    @Html.LabelFor(temp => temp.Remarks)
+                                    @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                                    @Html.ValidationMessageFor(temp => temp.Remarks)
+                                </div>*@
 
                         </div>
                     </div>
@@ -167,6 +168,10 @@
         var Total = (Number($("#Resolved_Complaint").val()) * 100 / Number($("#Total_Complaint").val()));
         Total = Total.toFixed(2);
 
+        if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
+            Total = 0;
+        }
+
         $("#Resolved_Percentage").val(Number(Total));
         $("#Resolved_Percentage_val").val(Number(Total));
         $("#Resolved_Percentage_val").css("font-weight", "bold");
@@ -179,6 +184,11 @@
 
         if (Appraisal_Marks > Total_Marks) {
             Appraisal_Marks = Total_Marks
+        }
+
+
+        if (isNaN(Appraisal_Marks)) {  // Matches +0, -0, NaN
+            Appraisal_Marks = 0;
         }
 
         $("#Appraisal_Marks").val(Number(Appraisal_Marks));
@@ -209,7 +219,7 @@
 
             $("#Total_Complaint").val("0");
             $("#Resolved_Complaint").val("0");
-            
+
             $("#Appraisal_Marks").val("0");
             $("#Resolved_Percentage").val("0");
             $("#Appraisal_Marks_val").val("0");
