@@ -34,6 +34,18 @@ namespace Performance_Appraisal_System.Controllers
         }
 
 
+        public ActionResult Downloads()
+        {
+            return View();
+        }
+
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+
         public ActionResult UnAuthorized()
         {
             ViewBag.Message = "Un Authorized Page!";
