@@ -53,12 +53,11 @@
     float: right;
 }
 
-
 .top-header {
-    background: #000;
+    background: #333;
     display: flex;
     flex-wrap: wrap;
-    /*height: 27px;*/
+    height: 27px;
 }
 
     .top-header .left-top-header,
@@ -108,6 +107,8 @@
                     .top-header .right-top-header ul li a:hover {
                         color: Yellow;
                     }
+
+
 /**** New Home Page ****/
 .home-page {
     padding: 10px 0;
@@ -290,24 +291,32 @@
 .footer-content {
     display: flex;
     flex-wrap: wrap;
-    padding: 15px;
+    padding: 10px;
+    text-decoration:none;
 }
 
     .footer-content .footer-left {
         display: flex;
         align-items: center;
-        margin: 0;
+        margin: auto;
         margin-right: auto;
         padding: 0;
         list-style: none;
         flex-wrap: wrap;
     }
 
+        
         .footer-content .footer-left li {
             padding: 5px;
             color: #fff;
             border-right: 1px solid #fff;
         }
+
+            .footer-content .footer-left li a {
+                color: #f2f2f2;
+                text-decoration: none;
+            }
+
 
     .footer-content .footer-right {
         display: flex;
@@ -324,6 +333,30 @@
     text-align: center !important;
     padding: 8px
 }
+
+
+.navb {
+    background-color: #1576cb;
+    overflow: hidden;
+}
+
+    /* Style the links inside the navigation bar */
+    .navb a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 14px;
+        border-right: 1px dotted #cccccc;
+    }
+
+        /* Change the color of links on hover */
+        .navb a:hover {
+            background-color:lightblue ;
+            color: black;
+        }
+
 
 /***** Responsive *****/
 @media(max-width:610px) {
@@ -343,11 +376,10 @@
 
 .page-content {
     background: rgb(247, 247, 247);
-    min-height: 694px;
+    /*min-height: 694px;*/
     margin-left: 0px !important;
     padding: 0px !important;
 }
-
 
 
 .center-group {
