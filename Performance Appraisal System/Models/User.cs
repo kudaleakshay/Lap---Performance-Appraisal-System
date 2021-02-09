@@ -38,7 +38,6 @@ namespace Performance_Appraisal_System.Models
             this.Report31 = new HashSet<Report31>();
             this.Report34 = new HashSet<Report34>();
             this.Report35 = new HashSet<Report35>();
-            this.Report36 = new HashSet<Report36>();
             this.Report37 = new HashSet<Report37>();
             this.Report38 = new HashSet<Report38>();
             this.Report39 = new HashSet<Report39>();
@@ -66,6 +65,7 @@ namespace Performance_Appraisal_System.Models
             this.Report62 = new HashSet<Report62>();
             this.Report63 = new HashSet<Report63>();
             this.Report64 = new HashSet<Report64>();
+            this.Report36 = new HashSet<Report36>();
         }
     
         public int UId { get; set; }
@@ -126,8 +126,6 @@ namespace Performance_Appraisal_System.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report35> Report35 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report36> Report36 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report37> Report37 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report38> Report38 { get; set; }
@@ -181,5 +179,7 @@ namespace Performance_Appraisal_System.Models
         public virtual ICollection<Report63> Report63 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report64> Report64 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report36> Report36 { get; set; }
     }
 }

@@ -155,7 +155,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 35:
                             return View("Report35");
 
-                        case 26:
+                        case 36:
                             return View("Report36");
 
                         case 37:
@@ -281,16 +281,6 @@ namespace Performance_Appraisal_System.Controllers
             Session["ReportYear"] = Year;
 
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = (from s in db.Report60
-                           join u in db.Users
-                           on s.UId equals u.UId
-                           where s.Month == Month
-                           select new
-                           {
-                               report = s,
-                               UserName = u.Name,
-                           }).ToList();
-
 
 
             switch (DepartmentId)
@@ -299,228 +289,864 @@ namespace Performance_Appraisal_System.Controllers
                     switch (SubjectId)
                     {
                         case 11:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report11
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
 
                         case 12:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report12
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
 
                         case 13:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report13
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
 
                         case 14:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report14
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
 
                         case 15:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report15
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
 
                         case 16:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report16
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 2:
                     switch (SubjectId)
                     {
                         case 17:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report17
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 18:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report18
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
 
-                        case 19:
-                            break;
-
-                        case 20:
-                            break;
-
-                        case 21:
-                            break;
-
-                        case 22:
-                            break;
 
                         case 23:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report23
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 3:
                     switch (SubjectId)
                     {
                         case 24:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report24
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 25:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report25
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 26:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report26
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 27:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report27
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 28:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report28
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 29:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report29
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 4:
                     switch (SubjectId)
                     {
                         case 30:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report30
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 31:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report31
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
 
-                        case 32:
-                            break;
 
-                        case 33:
-                            break;
 
                         case 34:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report34
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 5:
                     switch (SubjectId)
                     {
                         case 35:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report35
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
 
-                        case 26:
-                            break;
+
+                        case 36:
+                            return Json(new
+                            {
+                                data = (from s in db.Report36
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 37:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report37
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 38:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report38
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 39:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report39
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 40:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report40
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 6:
                     switch (SubjectId)
                     {
                         case 41:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report41
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 42:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report42
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 43:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report43
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 44:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report44
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 45:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report45
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 46:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report46
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 47:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report47
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 48:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report48
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 49:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report49
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 50:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report50
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 7:
                     switch (SubjectId)
                     {
                         case 51:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report51
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 52:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report52
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 8:
                     switch (SubjectId)
                     {
                         case 53:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report53
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 54:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report54
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
 
-                        case 55:
-                            break;
+
 
                         case 56:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report56
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 57:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report57
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 58:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report58
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 59:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report59
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 9:
                     switch (SubjectId)
                     {
                         case 60:
-                            reports = (from s in db.Report60
-                                       join u in db.Users
-                                       on s.UId equals u.UId
-                                       where s.Month == Month
-                                             && s.Year == Year
-                                       orderby s.UId
-                                       select new
-                                       {
-                                           report = s,
-                                           UserName = u.Name,
-                                       }).ToList();
+                            return Json(new
+                            {
+                                data = (from s in db.Report60
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
 
-                            break;
+
 
                         case 61:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report61
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
 
                 case 10:
                     switch (SubjectId)
+
                     {
                         case 62:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report62
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 63:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report63
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
 
                         case 64:
-                            break;
+                            return Json(new
+                            {
+                                data = (from s in db.Report64
+                                        join u in db.Users
+                                        on s.UId equals u.UId
+                                        where s.Month == Month
+                                              && s.Year == Year
+                                        orderby s.UId
+                                        select new
+                                        {
+                                            report = s,
+                                            UserName = u.Name,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
                     }
-                    return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+                    break;
             }
 
-            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = "" }, JsonRequestBehavior.AllowGet);
+
         }
 
 
@@ -559,8 +1185,8 @@ namespace Performance_Appraisal_System.Controllers
 
             db.Configuration.ProxyCreationEnabled = false;
 
-           
-             var reports = (from r in db.DepartmentMasterReports
+
+            var reports = (from r in db.DepartmentMasterReports
                            join d in db.Departments
                            on r.DepartmentId equals d.Id
                            where r.Month == Month
@@ -620,7 +1246,7 @@ namespace Performance_Appraisal_System.Controllers
                            select new
                            {
                                Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
-                               Appraisal_Percentage = ((GroupReport.Sum(x => x.Appraisal_Marks)*100) / GroupReport.Sum(x => x.Total_Marks)),
+                               Appraisal_Percentage = ((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / GroupReport.Sum(x => x.Total_Marks)),
                                Total_Marks = (GroupReport.Sum(x => x.Total_Marks) - GroupReport.Sum(x => x.Not_Applicable_Marks)),
                                Name = u.Name.Trim(),
                                UId = u.UId,

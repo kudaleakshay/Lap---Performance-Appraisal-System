@@ -22,8 +22,7 @@ namespace Performance_Appraisal_System.Models
         public Nullable<double> Appraisal_Marks { get; set; }
         public Nullable<double> Appraisal_Percentage { get; set; }
         public Nullable<double> Total_Marks { get; set; }
-        public string Remarks { get; set; } 
-
+        public string Remarks { get; set; }
         public Nullable<double> Not_Applicable_Marks { get; set; }
     
         public virtual Department Department { get; set; }

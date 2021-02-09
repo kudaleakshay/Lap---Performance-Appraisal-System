@@ -365,14 +365,14 @@ Remarks varchar(500))
 go
 
 
+
 Create table Report36(
 RId int primary key identity(1,1),
 UId int references Users(UId) on delete set null,
 Eligible_for_Audit int,
 Current_Month_Audit int,
 Current_Month_Remaining_for_Audit int,
-Remaining_for_Audit int,
-Action_Taken float,
+Action_Taken int,
 Percentage_Action_Taken float,
 Marks_Action_Taken float,
 Appraisal_Percentage float,

@@ -38,31 +38,27 @@
                         <thead style="text-align: center;
         vertical-align: middle !important;">
                             <tr>
-                                <th rowspan="2">विभाग</th>
-                                <th colspan="3">कार्यरत अधिकारी / कर्मचारी संख्या</th>
-                                <th colspan="3">तपासणीसाठी एकुण वाटप केलेले सहकारी संस्थांचे उद्दीष्टे (दरमहा प्रत्येकी अधिकारी/कर्मचारी 02 सहकारी संस्था याप्रमाणे)</th>
-                                <th rowspan="2">चालु महिना अखेर उद्दीष्टे</th>
-                                <th colspan="3">सहकारी संस्था तपासणी साध्य</th>
-                                <th rowspan="2">चालु महिना अखेर उद्दीष्टांच्या  साध्यतेनुसार टक्केवारी</th>
+                                <th rowspan="2">जिल्हयाचे नावे</th>
+                                <th rowspan="2">मागील महा अखेर  प्रकरणे</th>
+                                <th rowspan="2">चालु महिन्यातील प्राप्त प्रकरणे</th>
+                                <th rowspan="2">एकुण प्रकरणे</th>
+                                <th colspan="3">उद्दिष्ट(चालु महिन्यात 45 दिवस पूर्ण होत असलेल्या तक्रारींची संख्या.)</th>
+                                <th colspan="3">साध्य(उद्दिष्टातील प्रकरणांचा निर्णय देऊन निपटारा केलेली प्रकरणे)</th>
                                 <th rowspan="2">मुल्यांकनानुसार एकुण प्राप्त गुण</th>
                                 <th rowspan="2">प्राप्त गुणांची टक्केवारी</th>
                             </tr>
 
                             <tr>
-                                <th>अधिकारी</th>
-                                <th>कर्मचारी</th>
+                                <th>मागील महिन्यातील </th>
+                                <th>चालु महिन्यातील </th>
                                 <th>एकुण</th>
-                                <th>अधिकारी लक्षांक</th>
-                                <th>कर्मचारी लक्षांक</th>
-                                <th>एकुण</th>
-                                <th>मागील महिना अखेर</th>
-                                <th>चालू महिना अखेर</th>
+                                <th>मागील महिन्यातील </th>
+                                <th>चालु महिन्यातील </th>
                                 <th>एकुण</th>
                             </tr>
-
                         </thead>
                         <tbody style="text-align: center;"></tbody>
-                      @*  <tfoot>
+                       @* <tfoot>
                             <tr style="background:#a8bdbd; font-size:18px">
                                 <th style="text-align:center">महाराष्ट्र</th>
                                 <th style="text-align:center"></th>
@@ -77,8 +73,6 @@
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-
 
                             </tr>
                         </tfoot>*@
@@ -134,19 +128,17 @@
             },
             "columns": [
                 { "data": "UserName" },
-                { "data": "report.Officer_Count" },
-                { "data": "report.Staff_Count" },
-                { "data": "report.Total_Staff" },
-                { "data": "report.Officer_Target" },
-                { "data": "report.Staff_Target" },
-                { "data": "report.Total_Target" },
-                { "data": "report.Current_Month_Aim" },
+                { "data": "report.Last_Month_Pending_Cases" },
+                { "data": "report.Current_Month_Received_Cases" },
+                { "data": "report.Total_Cases" },
+                { "data": "report.Last_Month_Cases_Aim" },
+                { "data": "report.Current_Month_Cases_Aim" },
+                { "data": "report.Total_Cases_Aim" },
                 { "data": "report.Last_Month_Achieved" },
                 { "data": "report.Current_Month_Achieved" },
                 { "data": "report.Total_Achieved" },
-                { "data": "report.Current_Month_Percentage" },
                 { "data": "report.Appraisal_Marks" },
-                { "data": "report.Appraisal_Percentage" }
+                { "data": "report.Appraisal_Percentage" },
             ]
         });
     }

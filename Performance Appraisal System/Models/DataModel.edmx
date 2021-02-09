@@ -419,8 +419,8 @@
           <Property Name="UId" Type="int" />
           <Property Name="Eligible_for_Audit" Type="int" />
           <Property Name="Current_Month_Audit" Type="int" />
-          <Property Name="Remaining_for_Audit" Type="int" />
-          <Property Name="Action_Taken" Type="float" />
+          <Property Name="Current_Month_Remaining_for_Audit" Type="int" />
+          <Property Name="Action_Taken" Type="int" />
           <Property Name="Percentage_Action_Taken" Type="float" />
           <Property Name="Marks_Action_Taken" Type="float" />
           <Property Name="Appraisal_Percentage" Type="float" />
@@ -1033,7 +1033,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DepartmentM__DId__7E02B4CC">
+        <Association Name="FK__DepartmentM__DId__440B1D61">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="DepartmentMapping" Type="Self.DepartmentMapping" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1081,7 +1081,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report11__UId__0697FACD">
+        <Association Name="FK__Report11__UId__46E78A0C">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report11" Type="Self.Report11" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1093,7 +1093,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report12__UId__0B5CAFEA">
+        <Association Name="FK__Report12__UId__4BAC3F29">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report12" Type="Self.Report12" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1105,7 +1105,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report13__UId__10216507">
+        <Association Name="FK__Report13__UId__5070F446">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report13" Type="Self.Report13" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1117,7 +1117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report14__UId__14E61A24">
+        <Association Name="FK__Report14__UId__5535A963">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report14" Type="Self.Report14" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1129,7 +1129,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report15__UId__19AACF41">
+        <Association Name="FK__Report15__UId__59FA5E80">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report15" Type="Self.Report15" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1141,7 +1141,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report16__UId__1E6F845E">
+        <Association Name="FK__Report16__UId__5EBF139D">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report16" Type="Self.Report16" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1153,7 +1153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report17__UId__2334397B">
+        <Association Name="FK__Report17__UId__6383C8BA">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report17" Type="Self.Report17" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1165,7 +1165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report18__UId__27F8EE98">
+        <Association Name="FK__Report18__UId__68487DD7">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report18" Type="Self.Report18" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1177,7 +1177,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report23__UId__2CBDA3B5">
+        <Association Name="FK__Report23__UId__6D0D32F4">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report23" Type="Self.Report23" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1189,7 +1189,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report24__UId__318258D2">
+        <Association Name="FK__Report24__UId__71D1E811">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report24" Type="Self.Report24" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1201,7 +1201,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report25__UId__3552E9B6">
+        <Association Name="FK__Report25__UId__75A278F5">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report25" Type="Self.Report25" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1213,7 +1213,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report26__UId__39237A9A">
+        <Association Name="FK__Report26__UId__797309D9">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report26" Type="Self.Report26" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1225,7 +1225,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report27__UId__3CF40B7E">
+        <Association Name="FK__Report27__UId__7D439ABD">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report27" Type="Self.Report27" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1237,7 +1237,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report28__UId__40C49C62">
+        <Association Name="FK__Report28__UId__01142BA1">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report28" Type="Self.Report28" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1249,7 +1249,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report29__UId__44952D46">
+        <Association Name="FK__Report29__UId__04E4BC85">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report29" Type="Self.Report29" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1261,7 +1261,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report30__UId__4959E263">
+        <Association Name="FK__Report30__UId__09A971A2">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report30" Type="Self.Report30" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1273,7 +1273,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report31__UId__4E1E9780">
+        <Association Name="FK__Report31__UId__0E6E26BF">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report31" Type="Self.Report31" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1285,7 +1285,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report34__UId__52E34C9D">
+        <Association Name="FK__Report34__UId__1332DBDC">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report34" Type="Self.Report34" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1297,7 +1297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report35__UId__57A801BA">
+        <Association Name="FK__Report35__UId__17F790F9">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report35" Type="Self.Report35" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1309,7 +1309,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report36__UId__5C6CB6D7">
+        <Association Name="FK__Report36__UId__2EA5EC27">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report36" Type="Self.Report36" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1321,7 +1321,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report37__UId__61316BF4">
+        <Association Name="FK__Report37__UId__2180FB33">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report37" Type="Self.Report37" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1333,7 +1333,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report38__UId__65F62111">
+        <Association Name="FK__Report38__UId__2645B050">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report38" Type="Self.Report38" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1345,7 +1345,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report39__UId__6ABAD62E">
+        <Association Name="FK__Report39__UId__2B0A656D">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report39" Type="Self.Report39" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1357,7 +1357,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report40__UId__6F7F8B4B">
+        <Association Name="FK__Report40__UId__2FCF1A8A">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report40" Type="Self.Report40" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1369,7 +1369,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report41__UId__74444068">
+        <Association Name="FK__Report41__UId__3493CFA7">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report41" Type="Self.Report41" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1381,7 +1381,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report42__UId__7908F585">
+        <Association Name="FK__Report42__UId__395884C4">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report42" Type="Self.Report42" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1393,7 +1393,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report43__UId__7DCDAAA2">
+        <Association Name="FK__Report43__UId__3E1D39E1">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report43" Type="Self.Report43" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1405,7 +1405,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report44__UId__02925FBF">
+        <Association Name="FK__Report44__UId__42E1EEFE">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report44" Type="Self.Report44" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1417,7 +1417,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report45__UId__075714DC">
+        <Association Name="FK__Report45__UId__47A6A41B">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report45" Type="Self.Report45" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1429,7 +1429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report46__UId__0C1BC9F9">
+        <Association Name="FK__Report46__UId__4C6B5938">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report46" Type="Self.Report46" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1441,7 +1441,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report47__UId__10E07F16">
+        <Association Name="FK__Report47__UId__51300E55">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report47" Type="Self.Report47" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1453,7 +1453,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report48__UId__15A53433">
+        <Association Name="FK__Report48__UId__55F4C372">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report48" Type="Self.Report48" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1465,7 +1465,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report49__UId__1A69E950">
+        <Association Name="FK__Report49__UId__5AB9788F">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report49" Type="Self.Report49" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1477,7 +1477,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report50__UId__1F2E9E6D">
+        <Association Name="FK__Report50__UId__5F7E2DAC">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report50" Type="Self.Report50" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1489,7 +1489,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report51__UId__23F3538A">
+        <Association Name="FK__Report51__UId__6442E2C9">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report51" Type="Self.Report51" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1501,7 +1501,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report52__UId__28B808A7">
+        <Association Name="FK__Report52__UId__690797E6">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report52" Type="Self.Report52" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1513,7 +1513,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report53__UId__2D7CBDC4">
+        <Association Name="FK__Report53__UId__6DCC4D03">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report53" Type="Self.Report53" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1525,7 +1525,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report54__UId__324172E1">
+        <Association Name="FK__Report54__UId__72910220">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report54" Type="Self.Report54" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1537,7 +1537,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report56__UId__370627FE">
+        <Association Name="FK__Report56__UId__7755B73D">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report56" Type="Self.Report56" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1549,7 +1549,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report57__UId__3BCADD1B">
+        <Association Name="FK__Report57__UId__7C1A6C5A">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report57" Type="Self.Report57" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1561,7 +1561,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report58__UId__408F9238">
+        <Association Name="FK__Report58__UId__00DF2177">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report58" Type="Self.Report58" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1573,7 +1573,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report59__UId__45544755">
+        <Association Name="FK__Report59__UId__05A3D694">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report59" Type="Self.Report59" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1585,7 +1585,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report60__UId__0BE6BFCF">
+        <Association Name="FK__Report60__UId__0A688BB1">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report60" Type="Self.Report60" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1597,7 +1597,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report61__UId__4EDDB18F">
+        <Association Name="FK__Report61__UId__0F2D40CE">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report61" Type="Self.Report61" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1609,7 +1609,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report62__UId__53A266AC">
+        <Association Name="FK__Report62__UId__13F1F5EB">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report62" Type="Self.Report62" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1621,7 +1621,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report63__UId__58671BC9">
+        <Association Name="FK__Report63__UId__18B6AB08">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report63" Type="Self.Report63" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1633,7 +1633,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report64__UId__01D345B0">
+        <Association Name="FK__Report64__UId__1D7B6025">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report64" Type="Self.Report64" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1804,7 +1804,7 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="DepartmentMasterReports" EntitySet="DepartmentMasterReports" />
           </AssociationSet>
-          <AssociationSet Name="FK__DepartmentM__DId__7E02B4CC" Association="Self.FK__DepartmentM__DId__7E02B4CC">
+          <AssociationSet Name="FK__DepartmentM__DId__440B1D61" Association="Self.FK__DepartmentM__DId__440B1D61">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="DepartmentMapping" EntitySet="DepartmentMapping" />
           </AssociationSet>
@@ -1820,191 +1820,191 @@
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Districts" EntitySet="Districts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report11__UId__0697FACD" Association="Self.FK__Report11__UId__0697FACD">
+          <AssociationSet Name="FK__Report11__UId__46E78A0C" Association="Self.FK__Report11__UId__46E78A0C">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report11" EntitySet="Report11" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report12__UId__0B5CAFEA" Association="Self.FK__Report12__UId__0B5CAFEA">
+          <AssociationSet Name="FK__Report12__UId__4BAC3F29" Association="Self.FK__Report12__UId__4BAC3F29">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report12" EntitySet="Report12" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report13__UId__10216507" Association="Self.FK__Report13__UId__10216507">
+          <AssociationSet Name="FK__Report13__UId__5070F446" Association="Self.FK__Report13__UId__5070F446">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report13" EntitySet="Report13" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report14__UId__14E61A24" Association="Self.FK__Report14__UId__14E61A24">
+          <AssociationSet Name="FK__Report14__UId__5535A963" Association="Self.FK__Report14__UId__5535A963">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report14" EntitySet="Report14" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report15__UId__19AACF41" Association="Self.FK__Report15__UId__19AACF41">
+          <AssociationSet Name="FK__Report15__UId__59FA5E80" Association="Self.FK__Report15__UId__59FA5E80">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report15" EntitySet="Report15" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report16__UId__1E6F845E" Association="Self.FK__Report16__UId__1E6F845E">
+          <AssociationSet Name="FK__Report16__UId__5EBF139D" Association="Self.FK__Report16__UId__5EBF139D">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report16" EntitySet="Report16" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report17__UId__2334397B" Association="Self.FK__Report17__UId__2334397B">
+          <AssociationSet Name="FK__Report17__UId__6383C8BA" Association="Self.FK__Report17__UId__6383C8BA">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report17" EntitySet="Report17" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report18__UId__27F8EE98" Association="Self.FK__Report18__UId__27F8EE98">
+          <AssociationSet Name="FK__Report18__UId__68487DD7" Association="Self.FK__Report18__UId__68487DD7">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report18" EntitySet="Report18" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report23__UId__2CBDA3B5" Association="Self.FK__Report23__UId__2CBDA3B5">
+          <AssociationSet Name="FK__Report23__UId__6D0D32F4" Association="Self.FK__Report23__UId__6D0D32F4">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report23" EntitySet="Report23" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report24__UId__318258D2" Association="Self.FK__Report24__UId__318258D2">
+          <AssociationSet Name="FK__Report24__UId__71D1E811" Association="Self.FK__Report24__UId__71D1E811">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report24" EntitySet="Report24" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report25__UId__3552E9B6" Association="Self.FK__Report25__UId__3552E9B6">
+          <AssociationSet Name="FK__Report25__UId__75A278F5" Association="Self.FK__Report25__UId__75A278F5">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report25" EntitySet="Report25" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report26__UId__39237A9A" Association="Self.FK__Report26__UId__39237A9A">
+          <AssociationSet Name="FK__Report26__UId__797309D9" Association="Self.FK__Report26__UId__797309D9">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report26" EntitySet="Report26" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report27__UId__3CF40B7E" Association="Self.FK__Report27__UId__3CF40B7E">
+          <AssociationSet Name="FK__Report27__UId__7D439ABD" Association="Self.FK__Report27__UId__7D439ABD">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report27" EntitySet="Report27" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report28__UId__40C49C62" Association="Self.FK__Report28__UId__40C49C62">
+          <AssociationSet Name="FK__Report28__UId__01142BA1" Association="Self.FK__Report28__UId__01142BA1">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report28" EntitySet="Report28" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report29__UId__44952D46" Association="Self.FK__Report29__UId__44952D46">
+          <AssociationSet Name="FK__Report29__UId__04E4BC85" Association="Self.FK__Report29__UId__04E4BC85">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report29" EntitySet="Report29" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report30__UId__4959E263" Association="Self.FK__Report30__UId__4959E263">
+          <AssociationSet Name="FK__Report30__UId__09A971A2" Association="Self.FK__Report30__UId__09A971A2">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report30" EntitySet="Report30" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report31__UId__4E1E9780" Association="Self.FK__Report31__UId__4E1E9780">
+          <AssociationSet Name="FK__Report31__UId__0E6E26BF" Association="Self.FK__Report31__UId__0E6E26BF">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report31" EntitySet="Report31" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report34__UId__52E34C9D" Association="Self.FK__Report34__UId__52E34C9D">
+          <AssociationSet Name="FK__Report34__UId__1332DBDC" Association="Self.FK__Report34__UId__1332DBDC">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report34" EntitySet="Report34" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report35__UId__57A801BA" Association="Self.FK__Report35__UId__57A801BA">
+          <AssociationSet Name="FK__Report35__UId__17F790F9" Association="Self.FK__Report35__UId__17F790F9">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report35" EntitySet="Report35" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report36__UId__5C6CB6D7" Association="Self.FK__Report36__UId__5C6CB6D7">
+          <AssociationSet Name="FK__Report36__UId__2EA5EC27" Association="Self.FK__Report36__UId__2EA5EC27">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report36" EntitySet="Report36" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report37__UId__61316BF4" Association="Self.FK__Report37__UId__61316BF4">
+          <AssociationSet Name="FK__Report37__UId__2180FB33" Association="Self.FK__Report37__UId__2180FB33">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report37" EntitySet="Report37" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report38__UId__65F62111" Association="Self.FK__Report38__UId__65F62111">
+          <AssociationSet Name="FK__Report38__UId__2645B050" Association="Self.FK__Report38__UId__2645B050">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report38" EntitySet="Report38" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report39__UId__6ABAD62E" Association="Self.FK__Report39__UId__6ABAD62E">
+          <AssociationSet Name="FK__Report39__UId__2B0A656D" Association="Self.FK__Report39__UId__2B0A656D">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report39" EntitySet="Report39" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report40__UId__6F7F8B4B" Association="Self.FK__Report40__UId__6F7F8B4B">
+          <AssociationSet Name="FK__Report40__UId__2FCF1A8A" Association="Self.FK__Report40__UId__2FCF1A8A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report40" EntitySet="Report40" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report41__UId__74444068" Association="Self.FK__Report41__UId__74444068">
+          <AssociationSet Name="FK__Report41__UId__3493CFA7" Association="Self.FK__Report41__UId__3493CFA7">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report41" EntitySet="Report41" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report42__UId__7908F585" Association="Self.FK__Report42__UId__7908F585">
+          <AssociationSet Name="FK__Report42__UId__395884C4" Association="Self.FK__Report42__UId__395884C4">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report42" EntitySet="Report42" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report43__UId__7DCDAAA2" Association="Self.FK__Report43__UId__7DCDAAA2">
+          <AssociationSet Name="FK__Report43__UId__3E1D39E1" Association="Self.FK__Report43__UId__3E1D39E1">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report43" EntitySet="Report43" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report44__UId__02925FBF" Association="Self.FK__Report44__UId__02925FBF">
+          <AssociationSet Name="FK__Report44__UId__42E1EEFE" Association="Self.FK__Report44__UId__42E1EEFE">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report44" EntitySet="Report44" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report45__UId__075714DC" Association="Self.FK__Report45__UId__075714DC">
+          <AssociationSet Name="FK__Report45__UId__47A6A41B" Association="Self.FK__Report45__UId__47A6A41B">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report45" EntitySet="Report45" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report46__UId__0C1BC9F9" Association="Self.FK__Report46__UId__0C1BC9F9">
+          <AssociationSet Name="FK__Report46__UId__4C6B5938" Association="Self.FK__Report46__UId__4C6B5938">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report46" EntitySet="Report46" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report47__UId__10E07F16" Association="Self.FK__Report47__UId__10E07F16">
+          <AssociationSet Name="FK__Report47__UId__51300E55" Association="Self.FK__Report47__UId__51300E55">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report47" EntitySet="Report47" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report48__UId__15A53433" Association="Self.FK__Report48__UId__15A53433">
+          <AssociationSet Name="FK__Report48__UId__55F4C372" Association="Self.FK__Report48__UId__55F4C372">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report48" EntitySet="Report48" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report49__UId__1A69E950" Association="Self.FK__Report49__UId__1A69E950">
+          <AssociationSet Name="FK__Report49__UId__5AB9788F" Association="Self.FK__Report49__UId__5AB9788F">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report49" EntitySet="Report49" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report50__UId__1F2E9E6D" Association="Self.FK__Report50__UId__1F2E9E6D">
+          <AssociationSet Name="FK__Report50__UId__5F7E2DAC" Association="Self.FK__Report50__UId__5F7E2DAC">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report50" EntitySet="Report50" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report51__UId__23F3538A" Association="Self.FK__Report51__UId__23F3538A">
+          <AssociationSet Name="FK__Report51__UId__6442E2C9" Association="Self.FK__Report51__UId__6442E2C9">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report51" EntitySet="Report51" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report52__UId__28B808A7" Association="Self.FK__Report52__UId__28B808A7">
+          <AssociationSet Name="FK__Report52__UId__690797E6" Association="Self.FK__Report52__UId__690797E6">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report52" EntitySet="Report52" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report53__UId__2D7CBDC4" Association="Self.FK__Report53__UId__2D7CBDC4">
+          <AssociationSet Name="FK__Report53__UId__6DCC4D03" Association="Self.FK__Report53__UId__6DCC4D03">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report53" EntitySet="Report53" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report54__UId__324172E1" Association="Self.FK__Report54__UId__324172E1">
+          <AssociationSet Name="FK__Report54__UId__72910220" Association="Self.FK__Report54__UId__72910220">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report54" EntitySet="Report54" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report56__UId__370627FE" Association="Self.FK__Report56__UId__370627FE">
+          <AssociationSet Name="FK__Report56__UId__7755B73D" Association="Self.FK__Report56__UId__7755B73D">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report56" EntitySet="Report56" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report57__UId__3BCADD1B" Association="Self.FK__Report57__UId__3BCADD1B">
+          <AssociationSet Name="FK__Report57__UId__7C1A6C5A" Association="Self.FK__Report57__UId__7C1A6C5A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report57" EntitySet="Report57" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report58__UId__408F9238" Association="Self.FK__Report58__UId__408F9238">
+          <AssociationSet Name="FK__Report58__UId__00DF2177" Association="Self.FK__Report58__UId__00DF2177">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report58" EntitySet="Report58" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report59__UId__45544755" Association="Self.FK__Report59__UId__45544755">
+          <AssociationSet Name="FK__Report59__UId__05A3D694" Association="Self.FK__Report59__UId__05A3D694">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report59" EntitySet="Report59" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report60__UId__0BE6BFCF" Association="Self.FK__Report60__UId__0BE6BFCF">
+          <AssociationSet Name="FK__Report60__UId__0A688BB1" Association="Self.FK__Report60__UId__0A688BB1">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report60" EntitySet="Report60" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report61__UId__4EDDB18F" Association="Self.FK__Report61__UId__4EDDB18F">
+          <AssociationSet Name="FK__Report61__UId__0F2D40CE" Association="Self.FK__Report61__UId__0F2D40CE">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report61" EntitySet="Report61" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report62__UId__53A266AC" Association="Self.FK__Report62__UId__53A266AC">
+          <AssociationSet Name="FK__Report62__UId__13F1F5EB" Association="Self.FK__Report62__UId__13F1F5EB">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report62" EntitySet="Report62" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report63__UId__58671BC9" Association="Self.FK__Report63__UId__58671BC9">
+          <AssociationSet Name="FK__Report63__UId__18B6AB08" Association="Self.FK__Report63__UId__18B6AB08">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report63" EntitySet="Report63" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report64__UId__01D345B0" Association="Self.FK__Report64__UId__01D345B0">
+          <AssociationSet Name="FK__Report64__UId__1D7B6025" Association="Self.FK__Report64__UId__1D7B6025">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report64" EntitySet="Report64" />
           </AssociationSet>
@@ -2137,7 +2137,6 @@
           <NavigationProperty Name="Report31" Relationship="DocPASModel.FK__Report31__UId__03F0984C" FromRole="User" ToRole="Report31" />
           <NavigationProperty Name="Report34" Relationship="DocPASModel.FK__Report34__UId__07C12930" FromRole="User" ToRole="Report34" />
           <NavigationProperty Name="Report35" Relationship="DocPASModel.FK__Report35__UId__0B91BA14" FromRole="User" ToRole="Report35" />
-          <NavigationProperty Name="Report36" Relationship="DocPASModel.FK__Report36__UId__0F624AF8" FromRole="User" ToRole="Report36" />
           <NavigationProperty Name="Report37" Relationship="DocPASModel.FK__Report37__UId__1332DBDC" FromRole="User" ToRole="Report37" />
           <NavigationProperty Name="Report38" Relationship="DocPASModel.FK__Report38__UId__17036CC0" FromRole="User" ToRole="Report38" />
           <NavigationProperty Name="Report39" Relationship="DocPASModel.FK__Report39__UId__1AD3FDA4" FromRole="User" ToRole="Report39" />
@@ -2165,6 +2164,7 @@
           <NavigationProperty Name="Report62" Relationship="DocPASModel.FK__Report62__UId__6EC0713C" FromRole="User" ToRole="Report62" />
           <NavigationProperty Name="Report63" Relationship="DocPASModel.FK__Report63__UId__72910220" FromRole="User" ToRole="Report63" />
           <NavigationProperty Name="Report64" Relationship="DocPASModel.FK__Report64__UId__76619304" FromRole="User" ToRole="Report64" />
+          <NavigationProperty Name="Report36" Relationship="DocPASModel.FK__Report36__UId__2EA5EC27" FromRole="User" ToRole="Report36" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -2313,7 +2313,6 @@
           <EntitySet Name="Report31" EntityType="DocPASModel.Report31" />
           <EntitySet Name="Report34" EntityType="DocPASModel.Report34" />
           <EntitySet Name="Report35" EntityType="DocPASModel.Report35" />
-          <EntitySet Name="Report36" EntityType="DocPASModel.Report36" />
           <EntitySet Name="Report37" EntityType="DocPASModel.Report37" />
           <EntitySet Name="Report38" EntityType="DocPASModel.Report38" />
           <EntitySet Name="Report39" EntityType="DocPASModel.Report39" />
@@ -2416,10 +2415,6 @@
           <AssociationSet Name="FK__Report35__UId__0B91BA14" Association="DocPASModel.FK__Report35__UId__0B91BA14">
             <End Role="User" EntitySet="Users" />
             <End Role="Report35" EntitySet="Report35" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Report36__UId__0F624AF8" Association="DocPASModel.FK__Report36__UId__0F624AF8">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Report36" EntitySet="Report36" />
           </AssociationSet>
           <AssociationSet Name="FK__Report37__UId__1332DBDC" Association="DocPASModel.FK__Report37__UId__1332DBDC">
             <End Role="User" EntitySet="Users" />
@@ -2528,6 +2523,11 @@
           <AssociationSet Name="FK__Report64__UId__76619304" Association="DocPASModel.FK__Report64__UId__76619304">
             <End Role="User" EntitySet="Users" />
             <End Role="Report64" EntitySet="Report64" />
+          </AssociationSet>
+          <EntitySet Name="Report36" EntityType="DocPASModel.Report36" />
+          <AssociationSet Name="FK__Report36__UId__2EA5EC27" Association="DocPASModel.FK__Report36__UId__2EA5EC27">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Report36" EntitySet="Report36" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="DepartmentMapping">
@@ -3073,27 +3073,6 @@
           <Property Name="Year" Type="Int32" />
           <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report35__UId__0B91BA14" FromRole="Report35" ToRole="User" />
-          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Report36">
-          <Key>
-            <PropertyRef Name="RId" />
-          </Key>
-          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UId" Type="Int32" />
-          <Property Name="Eligible_for_Audit" Type="Int32" />
-          <Property Name="Current_Month_Audit" Type="Int32" />
-          <Property Name="Remaining_for_Audit" Type="Int32" />
-          <Property Name="Action_Taken" Type="Double" />
-          <Property Name="Percentage_Action_Taken" Type="Double" />
-          <Property Name="Marks_Action_Taken" Type="Double" />
-          <Property Name="Appraisal_Percentage" Type="Double" />
-          <Property Name="Appraisal_Marks" Type="Double" />
-          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report36__UId__0F624AF8" FromRole="Report36" ToRole="User" />
           <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Report37">
@@ -3883,18 +3862,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report36__UId__0F624AF8">
-          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DocPASModel.Report36" Role="Report36" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Report36">
-              <PropertyRef Name="UId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Report37__UId__1332DBDC">
           <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
           <End Type="DocPASModel.Report37" Role="Report37" Multiplicity="*" />
@@ -4215,6 +4182,39 @@
               <PropertyRef Name="UId" />
             </Principal>
             <Dependent Role="Report64">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Report36">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Eligible_for_Audit" Type="Int32" />
+          <Property Name="Current_Month_Audit" Type="Int32" />
+          <Property Name="Current_Month_Remaining_for_Audit" Type="Int32" />
+          <Property Name="Action_Taken" Type="Int32" />
+          <Property Name="Percentage_Action_Taken" Type="Double" />
+          <Property Name="Marks_Action_Taken" Type="Double" />
+          <Property Name="Appraisal_Percentage" Type="Double" />
+          <Property Name="Appraisal_Marks" Type="Double" />
+          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report36__UId__2EA5EC27" FromRole="Report36" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Report36__UId__2EA5EC27">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Report36" Role="Report36" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Report36">
               <PropertyRef Name="UId" />
             </Dependent>
           </ReferentialConstraint>
@@ -4714,27 +4714,6 @@
                 <ScalarProperty Name="Current_Month_Achieved" ColumnName="Current_Month_Achieved" />
                 <ScalarProperty Name="Last_Month_Achieved" ColumnName="Last_Month_Achieved" />
                 <ScalarProperty Name="Total_Target" ColumnName="Total_Target" />
-                <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="RId" ColumnName="RId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Report36">
-            <EntityTypeMapping TypeName="DocPASModel.Report36">
-              <MappingFragment StoreEntitySet="Report36">
-                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
-                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
-                <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
-                <ScalarProperty Name="Marks_Action_Taken" ColumnName="Marks_Action_Taken" />
-                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
-                <ScalarProperty Name="Action_Taken" ColumnName="Action_Taken" />
-                <ScalarProperty Name="Remaining_for_Audit" ColumnName="Remaining_for_Audit" />
-                <ScalarProperty Name="Current_Month_Audit" ColumnName="Current_Month_Audit" />
-                <ScalarProperty Name="Eligible_for_Audit" ColumnName="Eligible_for_Audit" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="RId" ColumnName="RId" />
               </MappingFragment>
@@ -5294,6 +5273,27 @@
                 <ScalarProperty Name="Resolved_Percentage" ColumnName="Resolved_Percentage" />
                 <ScalarProperty Name="Resolved_Appeal" ColumnName="Resolved_Appeal" />
                 <ScalarProperty Name="Total_Appeal" ColumnName="Total_Appeal" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report36">
+            <EntityTypeMapping TypeName="DocPASModel.Report36">
+              <MappingFragment StoreEntitySet="Report36">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Appraisal_Percentage" ColumnName="Appraisal_Percentage" />
+                <ScalarProperty Name="Marks_Action_Taken" ColumnName="Marks_Action_Taken" />
+                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
+                <ScalarProperty Name="Action_Taken" ColumnName="Action_Taken" />
+                <ScalarProperty Name="Current_Month_Remaining_for_Audit" ColumnName="Current_Month_Remaining_for_Audit" />
+                <ScalarProperty Name="Current_Month_Audit" ColumnName="Current_Month_Audit" />
+                <ScalarProperty Name="Eligible_for_Audit" ColumnName="Eligible_for_Audit" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="RId" ColumnName="RId" />
               </MappingFragment>

@@ -22,14 +22,14 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया कार्यालयातील वर्गीकरणानुसार अभिलेखामध्ये पाठविण्यास उपलब्ध असलेल्या प्रकरणांची संख्या आवश्यक आहे")]
-        [DisplayName("कार्यालयातील वर्गीकरणानुसार अभिलेखामध्ये पाठविण्यास उपलब्ध असलेल्या प्रकरणे")]
+        [DisplayName("कार्यालयातील वर्गीकरणानुसार अभिलेखामध्ये पाठविण्यास उपलब्ध असलेल्या प्रकरणे ( तिमाही लक्षांक )")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Available_Applications { get; set; }
 
 
 
         [Required(ErrorMessage = "कृपया चालु महिना अखेर उद्दीष्टे संख्या आवश्यक आहे")]
-        [DisplayName("कार्यालय अभिलेख वर्गीकरण उद्दीष्टे")]
+        [DisplayName(" चालु महिना अखेर कार्यालय अभिलेख वर्गीकरण उद्दीष्टे")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Aim { get; set; }
 

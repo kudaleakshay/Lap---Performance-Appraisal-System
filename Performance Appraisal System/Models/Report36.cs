@@ -43,11 +43,9 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Current_Month_Remaining_for_Audit { get; set; }
 
 
-
         [Required(ErrorMessage = "कृपया कारवाई केल्याची संख्या आवश्यक आहे")]
         [DisplayName("लेखापरीक्षण न होण्यास कारणीभुत असलेल्या संस्था/लेखापरीक्षक यांचेवर कारवाई केल्याची संख्या")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
-        public Nullable<int> Remaining_for_Audit { get; set; }
+        public Nullable<int> Action_Taken { get; set; }
 
 
 
@@ -56,9 +54,7 @@ namespace Performance_Appraisal_System.Models
         public Nullable<double> Percentage_Action_Taken { get; set; }
 
 
-        public Nullable<double> Action_Taken { get; set; }
-
-
+        
 
         [Required(ErrorMessage = "कृपया गुणांची संख्या आवश्यक आहे")]
         [DisplayName("कारवाईच्या प्रमाणात मिळालेले गुण")]

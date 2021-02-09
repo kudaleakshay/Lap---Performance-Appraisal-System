@@ -177,9 +177,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 User user = (User)HttpContext.Session["User"];
 
-                Reports.UId = user.UId;
+                Reports.UId = user.UId;/*
                 Reports.Action_Taken = Reports.Remaining_for_Audit;
-                Reports.Current_Month_Remaining_for_Audit = Reports.Eligible_for_Audit - Reports.Current_Month_Audit;
+                Reports.Current_Month_Remaining_for_Audit = Reports.Eligible_for_Audit - Reports.Current_Month_Audit;*/
                 Reports.CreatedTime = DateTime.Now;
 
                 db.Report36.Add(Reports);

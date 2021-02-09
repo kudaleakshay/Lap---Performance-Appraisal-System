@@ -38,50 +38,51 @@
                         <thead style="text-align: center;
         vertical-align: middle !important;">
                             <tr>
-                                <th rowspan="2">विभाग</th>
-                                <th colspan="3">कार्यरत अधिकारी / कर्मचारी संख्या</th>
-                                <th colspan="3">तपासणीसाठी एकुण वाटप केलेले सहकारी संस्थांचे उद्दीष्टे (दरमहा प्रत्येकी अधिकारी/कर्मचारी 02 सहकारी संस्था याप्रमाणे)</th>
-                                <th rowspan="2">चालु महिना अखेर उद्दीष्टे</th>
-                                <th colspan="3">सहकारी संस्था तपासणी साध्य</th>
-                                <th rowspan="2">चालु महिना अखेर उद्दीष्टांच्या  साध्यतेनुसार टक्केवारी</th>
-                                <th rowspan="2">मुल्यांकनानुसार एकुण प्राप्त गुण</th>
-                                <th rowspan="2">प्राप्त गुणांची टक्केवारी</th>
+                                <th rowspan="3">विभाग</th>
+                                <th rowspan="3">निश्चित केलेला लक्षांक</th>
+                                <th colspan="2" rowspan="2">चालु महिना अखेर उद्दीष्ट</th>
+                                <th colspan="6">साध्य</th>
+                                <th rowspan="3">चालु महिना अखेर उद्दीष्टांच्या साध्यतेनुसार टक्केवारी</th>
+                                <th rowspan="3">मुल्यांकनानुसार एकुण प्राप्त गुण</th>
+                                <th rowspan="3">प्राप्त गुणांची टक्केवारी</th>
+
                             </tr>
 
                             <tr>
-                                <th>अधिकारी</th>
-                                <th>कर्मचारी</th>
-                                <th>एकुण</th>
-                                <th>अधिकारी लक्षांक</th>
-                                <th>कर्मचारी लक्षांक</th>
-                                <th>एकुण</th>
-                                <th>मागील महिना अखेर</th>
-                                <th>चालू महिना अखेर</th>
-                                <th>एकुण</th>
+                                <th colspan="2">मागील महिना अखेर</th>
+                                <th colspan="2">चालू महिना अखेर</th>
+                                <th colspan="2">एकुण</th>
+                            </tr>
+                            <tr>
+                                <th>संख्या</th>
+                                <th>रक्कम</th>
+                                <th>संख्या</th>
+                                <th>रक्कम</th>
+                                <th>संख्या</th>
+                                <th>रक्कम</th>
+                                <th>संख्या</th>
+                                <th>रक्कम</th>
                             </tr>
 
                         </thead>
                         <tbody style="text-align: center;"></tbody>
-                      @*  <tfoot>
-                            <tr style="background:#a8bdbd; font-size:18px">
-                                <th style="text-align:center">महाराष्ट्र</th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-
-
-                            </tr>
-                        </tfoot>*@
+                        @* <tfoot>
+                <tr style="background:#a8bdbd; font-size:18px">
+                    <th style="text-align:center">महाराष्ट्र</th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                </tr>
+            </tfoot>*@
                     </table>
                     <br>
                     <br>
@@ -134,19 +135,18 @@
             },
             "columns": [
                 { "data": "UserName" },
-                { "data": "report.Officer_Count" },
-                { "data": "report.Staff_Count" },
-                { "data": "report.Total_Staff" },
-                { "data": "report.Officer_Target" },
-                { "data": "report.Staff_Target" },
-                { "data": "report.Total_Target" },
-                { "data": "report.Current_Month_Aim" },
-                { "data": "report.Last_Month_Achieved" },
-                { "data": "report.Current_Month_Achieved" },
-                { "data": "report.Total_Achieved" },
+                { "data": "report.Annual_Target" },
+                { "data": "report.Current_Month_Aim_Count" },
+                { "data": "report.Current_Month_Aim_Amount" },
+                { "data": "report.Last_Month_Achieved_Count" },
+                { "data": "report.Last_Month_Achieved_Amount" },
+                { "data": "report.Current_Month_Achieved_Count" },
+                { "data": "report.Current_Month_Achieved_Amount" },
+                { "data": "report.Total_Count" },
+                { "data": "report.Total_Amount" },
                 { "data": "report.Current_Month_Percentage" },
                 { "data": "report.Appraisal_Marks" },
-                { "data": "report.Appraisal_Percentage" }
+                { "data": "report.Appraisal_Percentage" },
             ]
         });
     }
