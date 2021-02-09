@@ -28,7 +28,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया निकाली काढलेल्या अपिलांची संख्या आवश्यक आहे")]
-        [DisplayName("एकूण प्राप्त अपिलांपैकी चार महिन्याच्या आत निकाली काढलेल्या अपिलांची संख्या")]
+        [DisplayName("एकूण प्राप्त अपिलांपैकी तीन महिन्याच्या आत निकाली काढलेल्या अपिलांची संख्या")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Resolved_Appeal { get; set; }
 
