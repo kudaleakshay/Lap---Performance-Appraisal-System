@@ -1,7 +1,7 @@
 ﻿@model Performance_Appraisal_System.ViewModels.DepartmentsReportViewModel
 
 @{
-    ViewBag.Title = "Report11";
+    ViewBag.Title = "विभागीय चौकशी";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,6 +14,12 @@
         <div class="card-text">
 
             <div class="center-group">
+
+                <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
+                    विषय: <strong> @ViewBag.Title </strong>
+                </div>
+
+
                 <div class="form-row">
                     <div class="form-group col-md-6 center-div">
                         @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, new { @class = "form-control" })
@@ -64,25 +70,25 @@
 
                         </thead>
                         <tbody style="text-align: center;"></tbody>
-                       @* <tfoot>
-                            <tr style="background:#a8bdbd; font-size:18px">
-                                <th style="text-align:center">महाराष्ट्र</th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                            </tr>
-                        </tfoot>*@
+                        @* <tfoot>
+                                <tr style="background:#a8bdbd; font-size:18px">
+                                    <th style="text-align:center">महाराष्ट्र</th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                </tr>
+                            </tfoot>*@
                     </table>
                     <br>
                     <br>

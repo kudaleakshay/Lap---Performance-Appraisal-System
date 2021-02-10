@@ -70,12 +70,12 @@ insert into Subjects values(N'(ब) प्राप्त दोष दुरु
 
 insert into Subjects values(N'अवसायनातील 10 वर्षावरील संस्था रद्द करणे',6,2)
 insert into Subjects values(N'अवसायनातील स्थावर जंगम  मालमत्ता नसलेल्या संस्था नोंदणी रद्द करणे',6,2)
-insert into Subjects values(N'कलम 24 नुसार आयोजित केलेल्या  प्रशिक्षणाचा आढावा',6,2)
+insert into Subjects values(N'कलम 24 नुसार आयोजित केलेल्या प्रशिक्षणाचा आढावा',6,2)
 insert into Subjects values(N'कलम 83 अन्वये चौकशीची एकूण प्रकरणांवरील कार्यवाही',6,2)
 insert into Subjects values(N'कलम 88 अन्वये चौकशीची एकूण प्रकरणांवरील कार्यवाही',6,2)
-insert into Subjects values(N'कलम 78अ अन्वये चौकशीची एकूण प्रकरणांवरील कार्यवाही',6,2)
+insert into Subjects values(N'कलम 78 (अ) अन्वये चौकशीची एकूण प्रकरणांवरील कार्यवाही',6,2)
 insert into Subjects values(N'कलम 77 (अ) अन्वये चौकशीची एकूण प्रकरणांवरील कार्यवाही',6,2)
-insert into Subjects values(N'कलम 101 अन्वये चौकशीची एकूण प्रकरणांवरील कार्यवाही',6,2)
+insert into Subjects values(N'कलम 101 अन्वये वसुली दाखले देणे',6,2)
 insert into Subjects values(N'कलम 152 प्रकरणांचा निपटारा',6,2)
 insert into Subjects values(N'कलम 154 प्रकरणांचा निपटारा',6,2)
 
