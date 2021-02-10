@@ -1,4 +1,4 @@
-﻿@model Performance_Appraisal_System.ViewModels.DepartmentsReportViewModel
+@model Performance_Appraisal_System.ViewModels.DepartmentsReportViewModel
 
 @{
     ViewBag.Title = "महाराष्ट्र सहकारी संस्था अधिनियम 1960 चे कलम 101 अन्वये  वसुली दाखले देणे";
@@ -99,7 +99,7 @@
             responsive: true,
             processing: true,
             autoWidth: true,
-            filter: false,
+            filter: true,
             info: false,
             fixedColumns: true,
             language: {
@@ -130,7 +130,7 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', className: 'btn btn-primary glyphicon glyphicon-save-file' }
+                { extend: 'excelHtml5', text: 'Download Report'}
             ]
         });
     }
