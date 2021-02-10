@@ -108,6 +108,7 @@
         bindDataTable();
     });
 
+
     function bindDataTable() {
 
         var Month = $("#Month").val();
@@ -155,9 +156,14 @@
                 { "data": "report.Inquiry_Total_Remaining" },
                 { "data": "report.Appraisal_Marks" },
                 { "data": "report.Appraisal_Percentage" }
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report'}
             ]
         });
     }
+
 
 
     $("#Month").change(function () {

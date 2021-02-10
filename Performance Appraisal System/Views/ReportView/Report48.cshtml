@@ -126,7 +126,11 @@
                 { "data": "report.Target" },
                 { "data": "report.Achieved" },
                 { "data": "report.Appraisal_Marks" },
-                { "data": "report.Appraisal_Percentage" },
+                { "data": "report.Appraisal_Percentage" }
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', className: 'btn btn-primary glyphicon glyphicon-save-file' }
             ]
         });
     }

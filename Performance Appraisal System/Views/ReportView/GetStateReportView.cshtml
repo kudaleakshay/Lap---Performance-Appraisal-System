@@ -1,6 +1,6 @@
 ﻿@model Performance_Appraisal_System.Models.DepartmentMasterReport
 @{
-    ViewBag.Title = "GetOfficeReportView";
+    ViewBag.Title = "महाराष्ट्र राज्य जिल्हा-निहाय मुल्यांकन प्रणाली अहवाल";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -99,6 +99,10 @@
                         return '<button style="float:center;" class = "btn btn-info">Report</button>';
                     }
                 },
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report'}
             ]
         });
     }

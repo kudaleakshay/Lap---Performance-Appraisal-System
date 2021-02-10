@@ -1,6 +1,6 @@
 ﻿@model Performance_Appraisal_System.Models.DepartmentMasterReport
 @{
-    ViewBag.Title = "GetOfficeReportView";
+    ViewBag.Title = "मुल्यांकन प्रणाली अहवाल";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -154,6 +154,10 @@
                         return '<button style="float:right; margin-right:20px;" class = "btn btn-info">View</button>';
                     }
                 },
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: '@ViewBag.UserName - मुल्यांकन प्रणाली अहवाल' }
             ]
         });
     }

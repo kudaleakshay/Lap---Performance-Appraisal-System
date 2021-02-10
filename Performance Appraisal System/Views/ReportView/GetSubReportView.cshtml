@@ -1,6 +1,6 @@
 ﻿@model Performance_Appraisal_System.Models.SubMasterReport
 @{
-    ViewBag.Title = "GetSubReportView";
+    ViewBag.Title = "मुल्यांकन प्रणाली अहवाल";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -80,6 +80,7 @@
 
         var UId = $("#UId").val();
         var DepartmentId = $("#DepartmentId").val();
+        
 
         var Month = $("#Month").val();
         $("#Month").blur();
@@ -161,7 +162,10 @@
                 { "data": "report.Appraisal_Marks" },
                 { "data": "report.Appraisal_Percentage" },
                 { "data": "report.Remarks" },
-                
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: '@ViewBag.DepartmentName - मुल्यांकन प्रणाली अहवाल' }
             ]
         });
     }
