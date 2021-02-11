@@ -160,115 +160,114 @@ insert into Users(UserName,Name,Password,RoleId,Status,AppraisalType) values('co
 go
 
 
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR1',N'मुंबई विभाग','8NK/rO1law9dY4gP44tgzg==',1,3,1,1,3)
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR2',N'पुणे विभाग','8NK/rO1law9dY4gP44tgzg==',2,3,1,1,3)
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR3',N'कोल्हापूर विभाग','8NK/rO1law9dY4gP44tgzg==',3,3,1,1,3)
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR4',N'नाशिक विभाग','8NK/rO1law9dY4gP44tgzg==',4,3,1,1,3)
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR5',N'औरंगाबाद विभाग','8NK/rO1law9dY4gP44tgzg==',5,3,1,1,3)
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR6',N'लातूर विभाग','8NK/rO1law9dY4gP44tgzg==',6,3,1,1,3)
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR7',N'अमरावती विभाग','8NK/rO1law9dY4gP44tgzg==',7,3,1,1,3)
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR8',N'नागपूर विभाग','8NK/rO1law9dY4gP44tgzg==',8,3,1,1,3)
-insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('DJR9',N'कोकण विभाग','8NK/rO1law9dY4gP44tgzg==',9,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_mum',N'मुंबई विभाग','8NK/rO1law9dY4gP44tgzg==',1,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_pna',N'पुणे विभाग','8NK/rO1law9dY4gP44tgzg==',2,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_khpr',N'कोल्हापूर विभाग','8NK/rO1law9dY4gP44tgzg==',3,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_nsk',N'नाशिक विभाग','8NK/rO1law9dY4gP44tgzg==',4,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_agd',N'औरंगाबाद विभाग','8NK/rO1law9dY4gP44tgzg==',5,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_ltr',N'लातूर विभाग','8NK/rO1law9dY4gP44tgzg==',6,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_amr',N'अमरावती विभाग','8NK/rO1law9dY4gP44tgzg==',7,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_ngp',N'नागपूर विभाग','8NK/rO1law9dY4gP44tgzg==',8,3,1,1,3)
+insert into Users(UserName,Name,Password,DivisionId,RoleId,Status,ReportTo,AppraisalType) values('djr_kkn',N'कोकण विभाग','8NK/rO1law9dY4gP44tgzg==',9,3,1,1,3)
 go
 
 
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR1',N'मुंबई शहर - 1','9PAG6f8yPnTuEpyNtiE8sw==',1,1,4,1,2,1)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR2',N'मुंबई शहर - 2','9PAG6f8yPnTuEpyNtiE8sw==',1,2,4,1,2,1)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR3',N'मुंबई शहर - 3','9PAG6f8yPnTuEpyNtiE8sw==',1,3,4,1,2,1)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR4',N'मुंबई शहर - 4','9PAG6f8yPnTuEpyNtiE8sw==',1,4,4,1,2,1)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_mum1',N'मुंबई शहर - 1','9PAG6f8yPnTuEpyNtiE8sw==',1,1,4,1,2,1)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_mum2',N'मुंबई शहर - 2','9PAG6f8yPnTuEpyNtiE8sw==',1,2,4,1,2,1)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_mum3',N'मुंबई शहर - 3','9PAG6f8yPnTuEpyNtiE8sw==',1,3,4,1,2,1)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_mum4',N'मुंबई शहर - 4','9PAG6f8yPnTuEpyNtiE8sw==',1,4,4,1,2,1)
 
 insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR5',N'पुणे शहर','9PAG6f8yPnTuEpyNtiE8sw==',2,5,4,1,3,1)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR6',N'पुणे ग्रामिण','9PAG6f8yPnTuEpyNtiE8sw==',2,6,4,1,3,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR7',N'सोलापूर','9PAG6f8yPnTuEpyNtiE8sw==',2,7,4,1,3,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_puneg',N'पुणे ग्रामिण','9PAG6f8yPnTuEpyNtiE8sw==',2,6,4,1,3,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_spr',N'सोलापूर','9PAG6f8yPnTuEpyNtiE8sw==',2,7,4,1,3,2)
 
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR8',N'कोल्हापूर','9PAG6f8yPnTuEpyNtiE8sw==',3,8,4,1,4,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR9',N'सातारा','9PAG6f8yPnTuEpyNtiE8sw==',3,9,4,1,4,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR10',N'सांगली','9PAG6f8yPnTuEpyNtiE8sw==',3,10,4,1,4,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_khp',N'कोल्हापूर','9PAG6f8yPnTuEpyNtiE8sw==',3,8,4,1,4,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_sat',N'सातारा','9PAG6f8yPnTuEpyNtiE8sw==',3,9,4,1,4,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_sangli',N'सांगली','9PAG6f8yPnTuEpyNtiE8sw==',3,10,4,1,4,2)
 
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR11',N'नाशिक','9PAG6f8yPnTuEpyNtiE8sw==',4,11,4,1,5,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR12',N'धुळे','9PAG6f8yPnTuEpyNtiE8sw==',4,12,4,1,5,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR13',N'नंदुरबार','9PAG6f8yPnTuEpyNtiE8sw==',4,13,4,1,5,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR14',N'जळगाव','9PAG6f8yPnTuEpyNtiE8sw==',4,14,4,1,5,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR15',N'अहमदनगर','9PAG6f8yPnTuEpyNtiE8sw==',4,15,4,1,5,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_nsk',N'नाशिक','9PAG6f8yPnTuEpyNtiE8sw==',4,11,4,1,5,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_dhule',N'धुळे','9PAG6f8yPnTuEpyNtiE8sw==',4,12,4,1,5,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_nbr',N'नंदुरबार','9PAG6f8yPnTuEpyNtiE8sw==',4,13,4,1,5,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_jlgv',N'जळगाव','9PAG6f8yPnTuEpyNtiE8sw==',4,14,4,1,5,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_ahngr',N'अहमदनगर','9PAG6f8yPnTuEpyNtiE8sw==',4,15,4,1,5,2)
 
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR16',N'औरंगाबाद','9PAG6f8yPnTuEpyNtiE8sw==',5,16,4,1,6,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR17',N'जालना','9PAG6f8yPnTuEpyNtiE8sw==',5,17,4,1,6,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR18',N'परभणी','9PAG6f8yPnTuEpyNtiE8sw==',5,18,4,1,6,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR19',N'हिंगोली','9PAG6f8yPnTuEpyNtiE8sw==',5,19,4,1,6,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_argd',N'औरंगाबाद','9PAG6f8yPnTuEpyNtiE8sw==',5,16,4,1,6,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_jaln',N'जालना','9PAG6f8yPnTuEpyNtiE8sw==',5,17,4,1,6,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_prbn',N'परभणी','9PAG6f8yPnTuEpyNtiE8sw==',5,18,4,1,6,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_hng',N'हिंगोली','9PAG6f8yPnTuEpyNtiE8sw==',5,19,4,1,6,2)
 
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR20',N'लातूर','9PAG6f8yPnTuEpyNtiE8sw==',6,20,4,1,7,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR21',N'उस्मानाबाद','9PAG6f8yPnTuEpyNtiE8sw==',6,21,4,1,7,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR22',N'नांदेड','9PAG6f8yPnTuEpyNtiE8sw==',6,22,4,1,7,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR23',N'बीड','9PAG6f8yPnTuEpyNtiE8sw==',6,23,4,1,7,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_latur',N'लातूर','9PAG6f8yPnTuEpyNtiE8sw==',6,20,4,1,7,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_osm',N'उस्मानाबाद','9PAG6f8yPnTuEpyNtiE8sw==',6,21,4,1,7,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_nnd',N'नांदेड','9PAG6f8yPnTuEpyNtiE8sw==',6,22,4,1,7,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_bid',N'बीड','9PAG6f8yPnTuEpyNtiE8sw==',6,23,4,1,7,2)
 
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR24',N'अमरावती','9PAG6f8yPnTuEpyNtiE8sw==',7,24,4,1,8,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR25',N'अकोला','9PAG6f8yPnTuEpyNtiE8sw==',7,25,4,1,8,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR26',N'वाशिम','9PAG6f8yPnTuEpyNtiE8sw==',7,26,4,1,8,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR27',N'यवतमाळ','9PAG6f8yPnTuEpyNtiE8sw==',7,27,4,1,8,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR28',N'बुलढाणा','9PAG6f8yPnTuEpyNtiE8sw==',7,28,4,1,8,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_amr',N'अमरावती','9PAG6f8yPnTuEpyNtiE8sw==',7,24,4,1,8,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_akola',N'अकोला','9PAG6f8yPnTuEpyNtiE8sw==',7,25,4,1,8,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_wsm',N'वाशिम','9PAG6f8yPnTuEpyNtiE8sw==',7,26,4,1,8,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_ym',N'यवतमाळ','9PAG6f8yPnTuEpyNtiE8sw==',7,27,4,1,8,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_bud',N'बुलढाणा','9PAG6f8yPnTuEpyNtiE8sw==',7,28,4,1,8,2)
 
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR29',N'नागपूर','9PAG6f8yPnTuEpyNtiE8sw==',8,29,4,1,9,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR30',N'वर्धा','9PAG6f8yPnTuEpyNtiE8sw==',8,30,4,1,9,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR31',N'चंद्रपूर','9PAG6f8yPnTuEpyNtiE8sw==',8,31,4,1,9,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR32',N'भंडारा','9PAG6f8yPnTuEpyNtiE8sw==',8,32,4,1,9,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR33',N'गोंदीया','9PAG6f8yPnTuEpyNtiE8sw==',8,33,4,1,9,2)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR34',N'गडचिरोली','9PAG6f8yPnTuEpyNtiE8sw==',8,34,4,1,9,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_nagpur',N'नागपूर','9PAG6f8yPnTuEpyNtiE8sw==',8,29,4,1,9,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_wrdh',N'वर्धा','9PAG6f8yPnTuEpyNtiE8sw==',8,30,4,1,9,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_chdr',N'चंद्रपूर','9PAG6f8yPnTuEpyNtiE8sw==',8,31,4,1,9,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_bhan',N'भंडारा','9PAG6f8yPnTuEpyNtiE8sw==',8,32,4,1,9,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_gond',N'गोंदीया','9PAG6f8yPnTuEpyNtiE8sw==',8,33,4,1,9,2)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_gad',N'गडचिरोली','9PAG6f8yPnTuEpyNtiE8sw==',8,34,4,1,9,2)
 
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR35',N'पालघर','9PAG6f8yPnTuEpyNtiE8sw==',9,35,4,1,10,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR36',N'ठाणे','9PAG6f8yPnTuEpyNtiE8sw==',9,36,4,1,10,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR37',N'रत्नागिरी','9PAG6f8yPnTuEpyNtiE8sw==',9,37,4,1,10,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR38',N'रायगड','9PAG6f8yPnTuEpyNtiE8sw==',9,38,4,1,10,3)
-insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('DDR39',N'सिंधुदुर्ग','9PAG6f8yPnTuEpyNtiE8sw==',9,39,4,1,10,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_palghar',N'पालघर','9PAG6f8yPnTuEpyNtiE8sw==',9,35,4,1,10,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_thn',N'ठाणे','9PAG6f8yPnTuEpyNtiE8sw==',9,36,4,1,10,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_rtg',N'रत्नागिरी','9PAG6f8yPnTuEpyNtiE8sw==',9,37,4,1,10,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_rgd',N'रायगड','9PAG6f8yPnTuEpyNtiE8sw==',9,38,4,1,10,3)
+insert into Users(UserName,Name,Password,DivisionId,DistrictId,RoleId,Status,ReportTo,AppraisalType) values('ddr_sin',N'सिंधुदुर्ग','9PAG6f8yPnTuEpyNtiE8sw==',9,39,4,1,10,3)
 go
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djr_mum@rediffmail.com'
-Where UserName = 'DJR1'
+Where UserName = 'djr_mum'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djr_pna@rediffmail.com'
-Where UserName = 'DJR2'
+Where UserName = 'djr_pna'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djrkolhapur@gmail.com'
-Where UserName = 'DJR3'
-
+Where UserName = 'djr_khpr'	
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djr_nsk@rediffmail.com'
-Where UserName = 'DJR4'
+Where UserName = 'djr_nsk'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djr_agd@rediffmail.com'
-Where UserName = 'DJR5'
+Where UserName = 'djr_agd'
 
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djr_ltr@rediffmail.com'
-Where UserName = 'DJR6'
+Where UserName = 'djr_ltr'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djr_amravati@rediffmail.com'
-Where UserName = 'DJR7'
+Where UserName = 'djr_amr'
 
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djrngp2011@gmail.com'
-Where UserName = 'DJR8'
+Where UserName = 'djr_ngp'
 
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'djrkkn@gmail.com'
-Where UserName = 'DJR9'
+Where UserName = 'djr_kkn'
 
 
 
@@ -276,22 +275,22 @@ Where UserName = 'DJR9'
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr1mumbai@gmail.com'
-Where UserName = 'DDR1'
+Where UserName = 'ddr_mum1'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr2mumbai@gmail.com'
-Where UserName = 'DDR2'
+Where UserName = 'ddr_mum2'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_mum3@rediffmail.com'
-Where UserName = 'DDR3'
+Where UserName = 'ddr_mum3'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_mum4@rediffmail.com'
-Where UserName = 'DDR4'
+Where UserName = 'ddr_mum4'
 
 
 Update [DocPAS].[dbo].[Users]
@@ -301,174 +300,172 @@ Where UserName = 'DDR5'
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddrpunegramin@gmail.com'
-Where UserName = 'DDR6'
+Where UserName = 'ddr_puneg'
 
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_spr@rediffmail.com'
-Where UserName = 'DDR7'
+Where UserName = 'ddr_spr'
 
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddrkolhapur@gmail.com'
-Where UserName = 'DDR8'
+Where UserName = 'ddr_khp'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_sat@rediffmail.com'
-Where UserName = 'DDR9'
+Where UserName = 'ddr_sat'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'sangliddr@gmail.com'
-Where UserName = 'DDR10'
+Where UserName = 'ddr_sangli'
 
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_nsk@rediffmail.com'
-Where UserName = 'DDR11'
+Where UserName = 'ddr_nsk'
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_dhule2017@gmail.com'
-Where UserName = 'DDR12'
+Where UserName = 'ddr_dhule'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_nbr@rediffmail.com'
-Where UserName = 'DDR13'
+Where UserName = 'ddr_nbr'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_jla@rediffmail.com'
-Where UserName = 'DDR14'
+Where UserName = 'ddr_jlgv'
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_anr@rediffmail.com'
-Where UserName = 'DDR15'
+Where UserName = 'ddr_ahngr'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_agd@rediffmail.com'
-Where UserName = 'DDR16'
+Where UserName = 'ddr_argd'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_jal@rediffmail.com'
-Where UserName = 'DDR17'
+Where UserName = 'ddr_jaln'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_pbn@rediffmail.com'
-Where UserName = 'DDR18'
-
-
+Where UserName = 'ddr_prbn'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_hli@rediffmail.com'
-Where UserName = 'DDR19'
+Where UserName = 'ddr_hng'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_ltr@rediffmail.com'
-Where UserName = 'DDR20'
+Where UserName = 'ddr_latur'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_osm@rediffmail.com'
-Where UserName = 'DDR21'
+Where UserName = 'ddr_osm'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr.nnd@rediffmail.com'
-Where UserName = 'DDR22'
+Where UserName = 'ddr_nnd'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_bid@rediffmail.com'
-Where UserName = 'DDR23'
+Where UserName = 'ddr_bid'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_amr@rediffmail.com'
-Where UserName = 'DDR24'
+Where UserName = 'ddr_amr'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_akl@rediffmail.com'
-Where UserName = 'DDR25'
+Where UserName = 'ddr_akola'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_wsm@rediffmail.com'
-Where UserName = 'DDR26'
+Where UserName = 'ddr_wsm'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_yml@rediffmail.com'
-Where UserName = 'DDR27'
+Where UserName = 'ddr_ym'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_bud@rediffmail.com'
-Where UserName = 'DDR28'
+Where UserName = 'ddr_bud'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddrnagpur_2008@rediffmail.com'
-Where UserName = 'DDR29'
+Where UserName = 'ddr_nagpur'
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_wda@rediffmail.com'
-Where UserName = 'DDR30'
+Where UserName = 'ddr_wrdh'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddrchandrapur@gmail.com'
-Where UserName = 'DDR31'
+Where UserName = 'ddr_chdr'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddrbhan_2010@rediffmail.com'
-Where UserName = 'DDR32'
+Where UserName = 'ddr_bhan'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_gnd@rediffmail.com'
-Where UserName = 'DDR33'
+Where UserName = 'ddr_gond'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_gad@rediffmail.com'
-Where UserName = 'DDR34'
+Where UserName = 'ddr_gad'
 
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr.palghar@gmail.com'
-Where UserName = 'DDR35'
+Where UserName = 'ddr_palghar'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr.tna@gmail.com'
-Where UserName = 'DDR36'
+Where UserName = 'ddr_thn'
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_rtg@rediffmail.com'
-Where UserName = 'DDR37'
+Where UserName = 'ddr_rtg'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr_rgd@rediffmail.com'
-Where UserName = 'DDR38'
+Where UserName = 'ddr_rgd'
 
 
 Update [DocPAS].[dbo].[Users]
 SET Email = 'ddr.sin@gmail.com'
-Where UserName = 'DDR39'
+Where UserName = 'ddr_sin'
 
 
 
