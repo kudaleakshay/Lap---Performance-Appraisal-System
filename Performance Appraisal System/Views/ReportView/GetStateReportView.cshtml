@@ -1,6 +1,6 @@
 ﻿@model Performance_Appraisal_System.Models.DepartmentMasterReport
 @{
-    ViewBag.Title = "महाराष्ट्र राज्य जिल्हा-निहाय मुल्यांकन प्रणाली अहवाल";
+    ViewBag.Title = "महाराष्ट्र राज्य जिल्हानिहाय मुल्यांकन अहवाल";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,7 +8,7 @@
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
         <br>
         <br>
-        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>महाराष्ट्र राज्य जिल्हा-निहाय मुल्यांकन प्रणाली अहवाल</strong></h5>
+        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>महाराष्ट्र राज्य जिल्हानिहाय मुल्यांकन प्रणाली अहवाल</strong></h5>
         <hr>
         <div class="card-text">
 
@@ -38,13 +38,17 @@
                                 <th style="width:40%">विभाग  / जिल्हे </th>
                                 <th>एकुण गुण</th>
                                 <th>प्राप्त गुण</th>
+                                <th>प्राप्त गुणांची टक्केवारी</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
-                    </table>
+                     </table>
                     <br>
                     <br>
+
+                    <hr>
+                    <div id="chart"></div>
                 </div>
                 <br>
                 <br>
@@ -94,9 +98,10 @@
                 { "data": "Name" },
                 { "data": "Total_Marks" },
                 { "data": "Appraisal_Marks" },
+                { "data": "Appraisal_Percentage" },
                 {
                     "render": function (data, type, full, meta) {
-                        return '<button style="float:center;" class = "btn btn-info">Report</button>';
+                        return '<button style="margin-bottom: 0 !important;" class = "btn btn-info">Report</button>';
                     }
                 },
             ],
@@ -105,7 +110,109 @@
                 { extend: 'excelHtml5', text: 'Download Report'}
             ]
         });
+
+
+
+        const tableData = getTableData(table);
+        createHighcharts(tableData);
+        setTableEvents(table);
     }
+
+
+
+    function getTableData(table) {
+        const dataArray = [],
+            BranchArray = [],
+            PercentageArray = []
+
+        // loop table rows
+        table.rows({ search: "applied" }).every(function () {
+            const data = this.data();
+            BranchArray.push(data.Name);
+            PercentageArray.push(parseInt(data.Appraisal_Percentage));
+        });
+
+        // store all data in dataArray
+        dataArray.push(BranchArray, PercentageArray);
+
+        return dataArray;
+    }
+
+    function createHighcharts(data) {
+        Highcharts.setOptions({
+            lang: {
+                thousandsSep: ","
+            }
+        });
+
+        Highcharts.chart("chart", {
+            title: {
+                text: "महाराष्ट्र राज्य जिल्हानिहाय मुल्यांकन अहवाल"
+            },
+            xAxis: [
+                {
+                    categories: data[0],
+                    labels: {
+                        rotation: 0
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    title: {
+                        text: "मूल्यांकन टक्केवारी"
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: "मूल्यांकन टक्केवारी",
+                    color: "#ffc107",
+                    type: "column",
+                    data: data[1],
+                    tooltip: {
+                        valueSuffix: " %"
+                    }
+                }
+            ],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                backgroundColor: "#ececec",
+                shadow: true,
+            },
+            credits: {
+                enabled: false
+            },
+            noData: {
+                style: {
+                    fontSize: "16px"
+                }
+            }
+        });
+    }
+
+    let draw = false;
+
+    function setTableEvents(table) {
+        // listen for page clicks
+        table.on("page", () => {
+            draw = true;
+        });
+
+        // listen for updates and adjust the chart accordingly
+        table.on("draw", () => {
+            if (draw) {
+                draw = false;
+            } else {
+                const tableData = getTableData(table);
+                createHighcharts(tableData);
+            }
+        });
+    }
+
+
 
 
     $("#Month").change(function () {

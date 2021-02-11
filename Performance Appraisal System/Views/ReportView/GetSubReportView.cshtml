@@ -1,6 +1,6 @@
 ﻿@model Performance_Appraisal_System.Models.SubMasterReport
 @{
-    ViewBag.Title = "मुल्यांकन प्रणाली अहवाल";
+    ViewBag.Title = "मुल्यांकन अहवाल";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +9,7 @@
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
         <br>
         <br>
-        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.DepartmentName - मुल्यांकन प्रणाली अहवाल</strong></h5>
+        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.DepartmentName - मुल्यांकन अहवाल</strong></h5>
         <hr>
         <div class="card-text">
 
@@ -54,9 +54,11 @@
                                 <th style="text-align:center"></th>
                             </tr>
                         </tfoot>
-                    </table>
+                     </table>
                     <br>
                     <br>
+                    <hr>
+                    <div id="chart"></div>
                 </div>
                 <br>
                 <br>
@@ -80,7 +82,7 @@
 
         var UId = $("#UId").val();
         var DepartmentId = $("#DepartmentId").val();
-        
+
 
         var Month = $("#Month").val();
         $("#Month").blur();
@@ -168,6 +170,12 @@
                 { extend: 'excelHtml5', text: 'Download Report', title: '@ViewBag.DepartmentName - मुल्यांकन प्रणाली अहवाल' }
             ]
         });
+
+
+
+        const tableData = getTableData(table);
+        createHighcharts(tableData);
+        setTableEvents(table);
     }
 
     @*$('#BranchTable tbody').on('click', 'button', function () {
@@ -175,6 +183,107 @@
         window.open(
             "/ReportView/GetReportView?DepartmentId=" + data.DepartmentId + "&SubjectId=" + data.SId, "_self");
     });*@
+
+
+
+
+
+    function getTableData(table) {
+        const dataArray = [],
+            BranchArray = [],
+            PercentageArray = []
+
+        // loop table rows
+        table.rows({ search: "applied" }).every(function () {
+            const data = this.data();
+            BranchArray.push(data.Subject);
+            PercentageArray.push(parseInt(data.report.Appraisal_Percentage));
+        });
+
+        // store all data in dataArray
+        dataArray.push(BranchArray, PercentageArray);
+
+        return dataArray;
+    }
+
+    function createHighcharts(data) {
+        Highcharts.setOptions({
+            lang: {
+                thousandsSep: ","
+            }
+        });
+
+        Highcharts.chart("chart", {
+            title: {
+                text: "@ViewBag.DepartmentName - मुल्यांकन प्रणाली अहवाल"
+            },
+            xAxis: [
+                {
+                    categories: data[0],
+                    labels: {
+                        rotation: 0
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    title: {
+                        text: "मूल्यांकन टक्केवारी"
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: "मूल्यांकन टक्केवारी",
+                    color: "#ffc107",
+                    type: "column",
+                    data: data[1],
+                    tooltip: {
+                        valueSuffix: " %"
+                    }
+                }
+            ],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                backgroundColor: "#ececec",
+                shadow: true,
+            },
+            credits: {
+                enabled: false
+            },
+            noData: {
+                style: {
+                    fontSize: "16px"
+                }
+            }
+        });
+    }
+
+    let draw = false;
+
+    function setTableEvents(table) {
+        // listen for page clicks
+        table.on("page", () => {
+            draw = true;
+        });
+
+        // listen for updates and adjust the chart accordingly
+        table.on("draw", () => {
+            if (draw) {
+                draw = false;
+            } else {
+                const tableData = getTableData(table);
+                createHighcharts(tableData);
+            }
+        });
+    }
+
+
+
+
+
 
 
     $("#Month").change(function () {

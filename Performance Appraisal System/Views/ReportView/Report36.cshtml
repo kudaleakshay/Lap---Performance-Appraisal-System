@@ -55,9 +55,12 @@
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
-                    </table>
+                     </table>
                     <br>
                     <br>
+
+                    <hr>
+                    <div id="chart"></div>
                 </div>
                 <br>
                 <br>
@@ -121,7 +124,105 @@
                 { extend: 'excelHtml5', text: 'Download Report'}
             ]
         });
+    
+        const tableData = getTableData(table);
+        createHighcharts(tableData);
+        setTableEvents(table);
     }
+
+    function getTableData(table) {
+        const dataArray = [],
+            BranchArray = [],
+            PercentageArray = []
+
+        // loop table rows
+        table.rows({ search: "applied" }).every(function () {
+            const data = this.data();
+            BranchArray.push(data.UserName);
+            PercentageArray.push(parseInt(data.report.Appraisal_Percentage));
+        });
+
+        // store all data in dataArray
+        dataArray.push(BranchArray, PercentageArray);
+
+        return dataArray;
+    }
+
+    function createHighcharts(data) {
+        Highcharts.setOptions({
+            lang: {
+                thousandsSep: ","
+            }
+        });
+
+        Highcharts.chart("chart", {
+            title: {
+                text: "@ViewBag.Title"
+            },
+            xAxis: [
+                {
+                    categories: data[0],
+                    labels: {
+                        rotation: 0
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    title: {
+                        text: "मूल्यांकन टक्केवारी"
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: "मूल्यांकन टक्केवारी",
+                    color: "#ffc107",
+                    type: "column",
+                    data: data[1],
+                    tooltip: {
+                        valueSuffix: " %"
+                    }
+                }
+            ],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                backgroundColor: "#ececec",
+                shadow: true,
+            },
+            credits: {
+                enabled: false
+            },
+            noData: {
+                style: {
+                    fontSize: "16px"
+                }
+            }
+        });
+    }
+
+    let draw = false;
+
+    function setTableEvents(table) {
+        // listen for page clicks
+        table.on("page", () => {
+            draw = true;
+        });
+
+        // listen for updates and adjust the chart accordingly
+        table.on("draw", () => {
+            if (draw) {
+                draw = false;
+            } else {
+                const tableData = getTableData(table);
+                createHighcharts(tableData);
+            }
+        });
+    }
+
+
 
 
     $("#Month").change(function () {
