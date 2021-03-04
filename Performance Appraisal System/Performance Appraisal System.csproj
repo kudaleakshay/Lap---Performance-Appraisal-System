@@ -424,6 +424,12 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Content>
     <Content Include="Content\PDF\UserManual.pdf" />
+    <Content Include="Content\PDF\Law.pdf" />
+    <Content Include="Content\PDF\MoneyLending.pdf" />
+    <Content Include="Content\PDF\OM.pdf" />
+    <Content Include="Content\PDF\Bhuvikas.pdf" />
+    <Content Include="Content\PDF\Establishment.pdf" />
+    <Content Include="Content\PDF\IT.pdf" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />

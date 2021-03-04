@@ -468,6 +468,9 @@ SET Email = 'ddr.sin@gmail.com'
 Where UserName = 'ddr_sin'
 
 
+insert into Users(UserName,Name,Password,RoleId,Status,AppraisalType) values('admin',N'सह्कार आयुक्त','ev1t/osfpMghRuzlR7XZ1g==',2,1,3)
+
+
 
 /* Insert Value into Subject Mapping table */
 
