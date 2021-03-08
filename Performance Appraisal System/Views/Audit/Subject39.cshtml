@@ -64,13 +64,27 @@
                                 @Html.TextBoxFor(temp => temp.Last_Year_Remaining, new { id = "Last_Year_Remaining", @class = "form-control" })
                                 @Html.ValidationMessageFor(temp => temp.Last_Year_Remaining)
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-6">
-                                @Html.LabelFor(temp => temp.Current_Year_Remaining)
-                                @Html.TextBoxFor(temp => temp.Current_Year_Remaining, new { id = "Current_Year_Remaining", @class = "form-control" })
-                                @Html.ValidationMessageFor(temp => temp.Current_Year_Remaining)
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                @Html.LabelFor(temp => temp.Last_Month_Remaining)
+                                @Html.TextBoxFor(temp => temp.Last_Month_Remaining, new { id = "Last_Month_Remaining", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Last_Month_Remaining)
                             </div>
+                        </div>
 
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                @Html.LabelFor(temp => temp.Current_Month_Remaining)
+                                @Html.TextBoxFor(temp => temp.Current_Month_Remaining, new { id = "Current_Month_Remaining", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Current_Month_Remaining)
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="form-row">
                             <div class="form-group col-md-6">
                                 @Html.LabelFor(temp => temp.Total_Remaining)
                                 @Html.TextBoxFor(temp => temp.Total_Remaining, new { id = "Total_Remaining_val", @class = "form-control", disabled = "disabled" })
@@ -79,16 +93,48 @@
                             </div>
 
                         </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;"> कारवाईची माहिती</span>
                         <hr>
 
                         <div class="form-row">
 
                             <div class="form-group col-md-6">
-                                @Html.LabelFor(temp => temp.Action_Taken)
-                                @Html.TextBoxFor(temp => temp.Action_Taken, new { id = "Action_Taken", @class = "form-control" })
-                                @Html.ValidationMessageFor(temp => temp.Action_Taken)
-
+                                @Html.LabelFor(temp => temp.Last_Month_Action_Taken)
+                                @Html.TextBoxFor(temp => temp.Last_Month_Action_Taken, new { id = "Last_Month_Action_Taken", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Last_Month_Action_Taken)
                             </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Current_Month_Action_Taken)
+                                @Html.TextBoxFor(temp => temp.Current_Month_Action_Taken, new { id = "Current_Month_Action_Taken", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Current_Month_Action_Taken)
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Total_Action_Taken)
+                                @Html.TextBoxFor(temp => temp.Total_Action_Taken, new { id = "Total_Action_Taken_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Total_Action_Taken)
+                                @Html.HiddenFor(temp => temp.Total_Action_Taken, new { id = "Total_Action_Taken" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Action_Pending_Reports)
+                                @Html.TextBoxFor(temp => temp.Action_Pending_Reports, new { id = "Action_Pending_Reports_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Action_Pending_Reports)
+                                @Html.HiddenFor(temp => temp.Action_Pending_Reports, new { id = "Action_Pending_Reports" })
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -131,6 +177,8 @@
             </div>
         </div>
     </div>
+
+
 
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -179,15 +227,32 @@
 
 
     function Total_Remaining() {
-        var Total = Number($("#Last_Year_Remaining").val()) + Number($("#Current_Year_Remaining").val());
+        var Total = Number($("#Last_Year_Remaining").val()) + Number($("#Last_Month_Remaining").val()) + Number($("#Current_Month_Remaining").val());
         $("#Total_Remaining").val(Total);
         $("#Total_Remaining_val").val(Total);
         $("#Total_Remaining_val").css("font-weight", "bold");
     }
 
 
+
+    function Total_Action_Taken() {
+        var Total = Number($("#Last_Month_Action_Taken").val()) + Number($("#Current_Month_Action_Taken").val());
+        $("#Total_Action_Taken").val(Total);
+        $("#Total_Action_Taken_val").val(Total);
+        $("#Total_Action_Taken_val").css("font-weight", "bold");
+    }
+
+
+    function Action_Pending_Reports() {
+        var Total = Number($("#Total_Remaining").val()) - Number($("#Total_Action_Taken").val());
+        $("#Action_Pending_Reports").val(Total);
+        $("#Action_Pending_Reports_val").val(Total);
+        $("#Action_Pending_Reports_val").css("font-weight", "bold");
+    }
+
+
     function Percentage_Action_Taken() {
-        var Total = (Number($("#Action_Taken").val()) * 100 / Number($("#Total_Remaining").val()));
+        var Total = (Number($("#Total_Action_Taken").val()) * 100 / Number($("#Total_Remaining").val()));
         Total = Total.toFixed(2);
 
         if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
@@ -201,7 +266,7 @@
 
     function Appraisal_Marks() {
 
-        var Appraisal_Marks = (Number($("#Action_Taken").val()) * Total_Marks / Number($("#Total_Remaining").val()));
+        var Appraisal_Marks = (Number($("#Total_Action_Taken").val()) * Total_Marks / Number($("#Total_Remaining").val()));
         Appraisal_Marks = Appraisal_Marks.toFixed(2);
 
         if (Appraisal_Marks > Total_Marks) {
@@ -224,19 +289,31 @@
     }
 
     $("#Last_Year_Remaining").change(Total_Remaining);
-    $("#Current_Year_Remaining").change(Total_Remaining);
+    $("#Last_Month_Remaining").change(Total_Remaining);
+    $("#Current_Month_Remaining").change(Total_Remaining);
+
+    $("#Last_Month_Action_Taken").change(Total_Action_Taken);
+    $("#Current_Month_Action_Taken").change(Total_Action_Taken);
 
     $("#Last_Year_Remaining").change(Percentage_Action_Taken);
-    $("#Current_Year_Remaining").change(Percentage_Action_Taken);
-    $("#Current_Month_Reports").change(Percentage_Action_Taken);
-    $("#Action_Taken").change(Percentage_Action_Taken);
+    $("#Last_Month_Remaining").change(Percentage_Action_Taken);
+    $("#Current_Month_Remaining").change(Percentage_Action_Taken);
+    $("#Last_Month_Action_Taken").change(Percentage_Action_Taken);
+    $("#Current_Month_Action_Taken").change(Percentage_Action_Taken);
+
+
+    $("#Last_Year_Remaining").change(Action_Pending_Reports);
+    $("#Last_Month_Remaining").change(Action_Pending_Reports);
+    $("#Current_Month_Remaining").change(Action_Pending_Reports);
+    $("#Last_Month_Action_Taken").change(Action_Pending_Reports);
+    $("#Current_Month_Action_Taken").change(Action_Pending_Reports);
+
 
     $("#Last_Year_Remaining").change(Appraisal_Marks);
-    $("#Current_Year_Remaining").change(Appraisal_Marks);
-    $("#Current_Month_Reports").change(Appraisal_Marks);
-    $("#Action_Taken").change(Appraisal_Marks);
-    $("#Percentage_Action_Taken").change(Appraisal_Marks);
-
+    $("#Last_Month_Remaining").change(Appraisal_Marks);
+    $("#Current_Month_Remaining").change(Appraisal_Marks);
+    $("#Last_Month_Action_Taken").change(Appraisal_Marks);
+    $("#Current_Month_Action_Taken").change(Appraisal_Marks);
 
     $('#NotApplicable').prop('checked', false); // Unchecks Not Applicable by default
 
@@ -247,15 +324,15 @@
             $("#WrappperDiv").css("display", "none");
 
             $("#Last_Year_Remaining").val("0");
-            $("#Current_Year_Remaining").val("0");
+            $("#Last_Month_Remaining").val("0");
+            $("#Current_Month_Remaining").val("0");
             $("#Total_Remaining").val("0");
-            $("#Action_Taken").val("0");
+            $("#Last_Month_Action_Taken").val("0");
+            $("#Current_Month_Action_Taken").val("0");
+            $("#Total_Action_Taken").val("0");
+            $("#Action_Pending_Reports").val("0");
             $("#Percentage_Action_Taken").val("0");
-
             $("#Appraisal_Marks").val("0");
-            $("#Appraisal_Percentage").val("0");
-            $("#Appraisal_Marks_val").val("0");
-            $("#Appraisal_Percentage_val").val("0");
             $("#NotApplicable").val(true);
 
         } else {

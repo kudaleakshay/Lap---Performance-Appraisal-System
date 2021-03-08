@@ -9,46 +9,61 @@
 
 namespace Performance_Appraisal_System.Models
 {
+
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel;
-
 
     public partial class Report39
     {
         public int RId { get; set; }
         public Nullable<int> UId { get; set; }
 
-        [Required(ErrorMessage = "कृपया मागील आर्थिक वर्षातील दुरुस्ती अहवाल संख्या आवश्यक आहे")]
-        [DisplayName("मागील आर्थिक वर्षातील दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या")]
+        [Required(ErrorMessage = "कृपया अहवाल संख्या आवश्यक आहे")]
+        [DisplayName("मागील आर्थिक वर्षात दोष दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या ")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Year_Remaining { get; set; }
 
-
-
-        [Required(ErrorMessage = "कृपया चालु आर्थिक वर्षातील दुरुस्ती अहवाल संख्या आवश्यक आहे")]
-        [DisplayName("चालु आर्थिक वर्षातील दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या")]
+        [Required(ErrorMessage = "कृपया अहवाल संख्या आवश्यक आहे")]
+        [DisplayName("चालु आर्थिक वर्षात मागील महिनाअखेर दोष दुरुस्ती अहवाल प्राप्त होण्यास पात्र असुनही दोष दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
-        public Nullable<int> Current_Year_Remaining { get; set; }
+        public Nullable<int> Last_Month_Remaining { get; set; }
 
+        [Required(ErrorMessage = "कृपया अहवाल संख्या आवश्यक आहे")]
+        [DisplayName("चालु महिनाअखेर दोष दुरुस्ती अहवाल प्राप्त होण्यास पात्र असुनही दोष दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        public Nullable<int> Current_Month_Remaining { get; set; }
 
-
-        [Required(ErrorMessage = "कृपया एकुण दुरुस्ती अहवाल संख्या आवश्यक आहे")]
-        [DisplayName("एकुण सादर न केलेल्या संस्थांची संख्या")]
+        [Required(ErrorMessage = "कृपया अहवाल संख्या आवश्यक आहे")]
+        [DisplayName("एकुण अप्राप्त दोष दुरुस्ती अहवाल संख्या")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Remaining { get; set; }
 
-
-
-        [Required(ErrorMessage = "कृपया निबंधकाने कारवाई केलेली संख्या आवश्यक आहे")]
-        [DisplayName("निबंधकाने कारवाई केलेली संख्या")]
+        [Required(ErrorMessage = "कृपया अहवाल संख्या आवश्यक आहे")]
+        [DisplayName("मागील महिनाअखेर निबंधकाने कारवाई केलेली अहवाल संख्या")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
-        public Nullable<int> Action_Taken { get; set; }
+        public Nullable<int> Last_Month_Action_Taken { get; set; }
 
 
-        [Required(ErrorMessage = "कृपया कारवाईचे प्रमाण टक्केवारी आवश्यक आहे")]
-        [DisplayName("कारवाईचे प्रमाण")]
+        [Required(ErrorMessage = "कृपया अहवाल संख्या आवश्यक आहे")]
+        [DisplayName("चालु महिन्यात निबंधकाने कारवाई केलेली अहवाल संख्या")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        public Nullable<int> Current_Month_Action_Taken { get; set; }
+
+        [Required(ErrorMessage = "कृपया अहवाल संख्या आवश्यक आहे")]
+        [DisplayName("कारवाई केलेली एकुण अहवाल संख्या")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        public Nullable<int> Total_Action_Taken { get; set; }
+
+        [Required(ErrorMessage = "कृपया अहवाल संख्या आवश्यक आहे")]
+        [DisplayName("चालु महिनाअखेर कारवाई प्रलंबित अहवाल संख्या")]
+        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
+        public Nullable<int> Action_Pending_Reports { get; set; }
+
+
+        [Required(ErrorMessage = "कृपया  प्राप्त गुणांची टक्केवारी आवश्यक आहे")]
+        [DisplayName("प्राप्त गुणांची टक्केवारी")]
         public Nullable<double> Percentage_Action_Taken { get; set; }
 
 
@@ -56,18 +71,13 @@ namespace Performance_Appraisal_System.Models
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
         [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
         public Nullable<double> Appraisal_Marks { get; set; }
-
         public bool NotApplicable { get; set; }
-
         public Nullable<int> Month { get; set; }
-
         public Nullable<int> Year { get; set; }
-
+        public System.DateTime CreatedTime { get; set; }
 
         [DisplayName("शेरा")]
-        public string Remarks { get; set; } 
-
-		public System.DateTime CreatedTime { get; set; }
+        public string Remarks { get; set; }
 
         public virtual User User { get; set; }
     }

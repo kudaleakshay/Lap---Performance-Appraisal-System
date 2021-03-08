@@ -438,11 +438,13 @@
           <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UId" Type="int" />
           <Property Name="Last_Year_Pending" Type="int" />
-          <Property Name="Current_Year_Pending" Type="int" />
-          <Property Name="Total_Pending" Type="int" />
+          <Property Name="Last_Month_Reports" Type="int" />
           <Property Name="Current_Month_Reports" Type="int" />
           <Property Name="Total_Reports" Type="int" />
-          <Property Name="Action_Taken" Type="int" />
+          <Property Name="Last_Month_Action_Taken" Type="int" />
+          <Property Name="Current_Month_Action_Taken" Type="int" />
+          <Property Name="Total_Action_Taken" Type="int" />
+          <Property Name="Action_Pending_Reports" Type="int" />
           <Property Name="Percentage_Action_Taken" Type="float" />
           <Property Name="Appraisal_Marks" Type="float" />
           <Property Name="NotApplicable" Type="bit" Nullable="false" />
@@ -458,11 +460,13 @@
           <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UId" Type="int" />
           <Property Name="Last_Year_Pending" Type="int" />
-          <Property Name="Current_Year_Pending" Type="int" />
-          <Property Name="Total_Pending" Type="int" />
+          <Property Name="Last_Month_Reports" Type="int" />
           <Property Name="Current_Month_Reports" Type="int" />
           <Property Name="Total_Reports" Type="int" />
-          <Property Name="Action_Taken" Type="int" />
+          <Property Name="Last_Month_Action_Taken" Type="int" />
+          <Property Name="Current_Month_Action_Taken" Type="int" />
+          <Property Name="Total_Action_Taken" Type="int" />
+          <Property Name="Action_Pending_Reports" Type="int" />
           <Property Name="Percentage_Action_Taken" Type="float" />
           <Property Name="Appraisal_Marks" Type="float" />
           <Property Name="NotApplicable" Type="bit" Nullable="false" />
@@ -478,9 +482,13 @@
           <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UId" Type="int" />
           <Property Name="Last_Year_Remaining" Type="int" />
-          <Property Name="Current_Year_Remaining" Type="int" />
+          <Property Name="Last_Month_Remaining" Type="int" />
+          <Property Name="Current_Month_Remaining" Type="int" />
           <Property Name="Total_Remaining" Type="int" />
-          <Property Name="Action_Taken" Type="int" />
+          <Property Name="Last_Month_Action_Taken" Type="int" />
+          <Property Name="Current_Month_Action_Taken" Type="int" />
+          <Property Name="Total_Action_Taken" Type="int" />
+          <Property Name="Action_Pending_Reports" Type="int" />
           <Property Name="Percentage_Action_Taken" Type="float" />
           <Property Name="Appraisal_Marks" Type="float" />
           <Property Name="NotApplicable" Type="bit" Nullable="false" />
@@ -496,9 +504,13 @@
           <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UId" Type="int" />
           <Property Name="Last_Year_Received" Type="int" />
-          <Property Name="Current_Year_Received" Type="int" />
+          <Property Name="Last_Month_Received" Type="int" />
+          <Property Name="Current_Month_Received" Type="int" />
           <Property Name="Total_Received" Type="int" />
-          <Property Name="Action_Taken" Type="int" />
+          <Property Name="Last_Month_Action_Taken" Type="int" />
+          <Property Name="Current_Month_Action_Taken" Type="int" />
+          <Property Name="Total_Action_Taken" Type="int" />
+          <Property Name="Action_Pending_Reports" Type="int" />
           <Property Name="Percentage_Action_Taken" Type="float" />
           <Property Name="Appraisal_Marks" Type="float" />
           <Property Name="NotApplicable" Type="bit" Nullable="false" />
@@ -1321,7 +1333,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report37__UId__2180FB33">
+        <Association Name="FK__Report37__UId__41B8C09B">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report37" Type="Self.Report37" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1333,7 +1345,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report38__UId__2645B050">
+        <Association Name="FK__Report38__UId__467D75B8">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report38" Type="Self.Report38" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1345,7 +1357,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report39__UId__2B0A656D">
+        <Association Name="FK__Report39__UId__4B422AD5">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report39" Type="Self.Report39" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1357,7 +1369,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report40__UId__2FCF1A8A">
+        <Association Name="FK__Report40__UId__5006DFF2">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report40" Type="Self.Report40" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1900,19 +1912,19 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Report36" EntitySet="Report36" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report37__UId__2180FB33" Association="Self.FK__Report37__UId__2180FB33">
+          <AssociationSet Name="FK__Report37__UId__41B8C09B" Association="Self.FK__Report37__UId__41B8C09B">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report37" EntitySet="Report37" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report38__UId__2645B050" Association="Self.FK__Report38__UId__2645B050">
+          <AssociationSet Name="FK__Report38__UId__467D75B8" Association="Self.FK__Report38__UId__467D75B8">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report38" EntitySet="Report38" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report39__UId__2B0A656D" Association="Self.FK__Report39__UId__2B0A656D">
+          <AssociationSet Name="FK__Report39__UId__4B422AD5" Association="Self.FK__Report39__UId__4B422AD5">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report39" EntitySet="Report39" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report40__UId__2FCF1A8A" Association="Self.FK__Report40__UId__2FCF1A8A">
+          <AssociationSet Name="FK__Report40__UId__5006DFF2" Association="Self.FK__Report40__UId__5006DFF2">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report40" EntitySet="Report40" />
           </AssociationSet>
@@ -2137,10 +2149,6 @@
           <NavigationProperty Name="Report31" Relationship="DocPASModel.FK__Report31__UId__03F0984C" FromRole="User" ToRole="Report31" />
           <NavigationProperty Name="Report34" Relationship="DocPASModel.FK__Report34__UId__07C12930" FromRole="User" ToRole="Report34" />
           <NavigationProperty Name="Report35" Relationship="DocPASModel.FK__Report35__UId__0B91BA14" FromRole="User" ToRole="Report35" />
-          <NavigationProperty Name="Report37" Relationship="DocPASModel.FK__Report37__UId__1332DBDC" FromRole="User" ToRole="Report37" />
-          <NavigationProperty Name="Report38" Relationship="DocPASModel.FK__Report38__UId__17036CC0" FromRole="User" ToRole="Report38" />
-          <NavigationProperty Name="Report39" Relationship="DocPASModel.FK__Report39__UId__1AD3FDA4" FromRole="User" ToRole="Report39" />
-          <NavigationProperty Name="Report40" Relationship="DocPASModel.FK__Report40__UId__1EA48E88" FromRole="User" ToRole="Report40" />
           <NavigationProperty Name="Report41" Relationship="DocPASModel.FK__Report41__UId__22751F6C" FromRole="User" ToRole="Report41" />
           <NavigationProperty Name="Report42" Relationship="DocPASModel.FK__Report42__UId__2645B050" FromRole="User" ToRole="Report42" />
           <NavigationProperty Name="Report43" Relationship="DocPASModel.FK__Report43__UId__2A164134" FromRole="User" ToRole="Report43" />
@@ -2165,6 +2173,10 @@
           <NavigationProperty Name="Report63" Relationship="DocPASModel.FK__Report63__UId__72910220" FromRole="User" ToRole="Report63" />
           <NavigationProperty Name="Report64" Relationship="DocPASModel.FK__Report64__UId__76619304" FromRole="User" ToRole="Report64" />
           <NavigationProperty Name="Report36" Relationship="DocPASModel.FK__Report36__UId__2EA5EC27" FromRole="User" ToRole="Report36" />
+          <NavigationProperty Name="Report37" Relationship="DocPASModel.FK__Report37__UId__41B8C09B" FromRole="User" ToRole="Report37" />
+          <NavigationProperty Name="Report38" Relationship="DocPASModel.FK__Report38__UId__467D75B8" FromRole="User" ToRole="Report38" />
+          <NavigationProperty Name="Report39" Relationship="DocPASModel.FK__Report39__UId__4B422AD5" FromRole="User" ToRole="Report39" />
+          <NavigationProperty Name="Report40" Relationship="DocPASModel.FK__Report40__UId__5006DFF2" FromRole="User" ToRole="Report40" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -2313,10 +2325,6 @@
           <EntitySet Name="Report31" EntityType="DocPASModel.Report31" />
           <EntitySet Name="Report34" EntityType="DocPASModel.Report34" />
           <EntitySet Name="Report35" EntityType="DocPASModel.Report35" />
-          <EntitySet Name="Report37" EntityType="DocPASModel.Report37" />
-          <EntitySet Name="Report38" EntityType="DocPASModel.Report38" />
-          <EntitySet Name="Report39" EntityType="DocPASModel.Report39" />
-          <EntitySet Name="Report40" EntityType="DocPASModel.Report40" />
           <EntitySet Name="Report41" EntityType="DocPASModel.Report41" />
           <EntitySet Name="Report42" EntityType="DocPASModel.Report42" />
           <EntitySet Name="Report43" EntityType="DocPASModel.Report43" />
@@ -2416,22 +2424,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Report35" EntitySet="Report35" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report37__UId__1332DBDC" Association="DocPASModel.FK__Report37__UId__1332DBDC">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Report37" EntitySet="Report37" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Report38__UId__17036CC0" Association="DocPASModel.FK__Report38__UId__17036CC0">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Report38" EntitySet="Report38" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Report39__UId__1AD3FDA4" Association="DocPASModel.FK__Report39__UId__1AD3FDA4">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Report39" EntitySet="Report39" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Report40__UId__1EA48E88" Association="DocPASModel.FK__Report40__UId__1EA48E88">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Report40" EntitySet="Report40" />
-          </AssociationSet>
           <AssociationSet Name="FK__Report41__UId__22751F6C" Association="DocPASModel.FK__Report41__UId__22751F6C">
             <End Role="User" EntitySet="Users" />
             <End Role="Report41" EntitySet="Report41" />
@@ -2528,6 +2520,26 @@
           <AssociationSet Name="FK__Report36__UId__2EA5EC27" Association="DocPASModel.FK__Report36__UId__2EA5EC27">
             <End Role="User" EntitySet="Users" />
             <End Role="Report36" EntitySet="Report36" />
+          </AssociationSet>
+          <EntitySet Name="Report37" EntityType="DocPASModel.Report37" />
+          <EntitySet Name="Report38" EntityType="DocPASModel.Report38" />
+          <EntitySet Name="Report39" EntityType="DocPASModel.Report39" />
+          <EntitySet Name="Report40" EntityType="DocPASModel.Report40" />
+          <AssociationSet Name="FK__Report37__UId__41B8C09B" Association="DocPASModel.FK__Report37__UId__41B8C09B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Report37" EntitySet="Report37" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Report38__UId__467D75B8" Association="DocPASModel.FK__Report38__UId__467D75B8">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Report38" EntitySet="Report38" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Report39__UId__4B422AD5" Association="DocPASModel.FK__Report39__UId__4B422AD5">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Report39" EntitySet="Report39" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Report40__UId__5006DFF2" Association="DocPASModel.FK__Report40__UId__5006DFF2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Report40" EntitySet="Report40" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="DepartmentMapping">
@@ -3073,86 +3085,6 @@
           <Property Name="Year" Type="Int32" />
           <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report35__UId__0B91BA14" FromRole="Report35" ToRole="User" />
-          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Report37">
-          <Key>
-            <PropertyRef Name="RId" />
-          </Key>
-          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UId" Type="Int32" />
-          <Property Name="Last_Year_Pending" Type="Int32" />
-          <Property Name="Current_Year_Pending" Type="Int32" />
-          <Property Name="Total_Pending" Type="Int32" />
-          <Property Name="Current_Month_Reports" Type="Int32" />
-          <Property Name="Total_Reports" Type="Int32" />
-          <Property Name="Action_Taken" Type="Int32" />
-          <Property Name="Percentage_Action_Taken" Type="Double" />
-          <Property Name="Appraisal_Marks" Type="Double" />
-          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report37__UId__1332DBDC" FromRole="Report37" ToRole="User" />
-          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Report38">
-          <Key>
-            <PropertyRef Name="RId" />
-          </Key>
-          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UId" Type="Int32" />
-          <Property Name="Last_Year_Pending" Type="Int32" />
-          <Property Name="Current_Year_Pending" Type="Int32" />
-          <Property Name="Total_Pending" Type="Int32" />
-          <Property Name="Current_Month_Reports" Type="Int32" />
-          <Property Name="Total_Reports" Type="Int32" />
-          <Property Name="Action_Taken" Type="Int32" />
-          <Property Name="Percentage_Action_Taken" Type="Double" />
-          <Property Name="Appraisal_Marks" Type="Double" />
-          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report38__UId__17036CC0" FromRole="Report38" ToRole="User" />
-          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Report39">
-          <Key>
-            <PropertyRef Name="RId" />
-          </Key>
-          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UId" Type="Int32" />
-          <Property Name="Last_Year_Remaining" Type="Int32" />
-          <Property Name="Current_Year_Remaining" Type="Int32" />
-          <Property Name="Total_Remaining" Type="Int32" />
-          <Property Name="Action_Taken" Type="Int32" />
-          <Property Name="Percentage_Action_Taken" Type="Double" />
-          <Property Name="Appraisal_Marks" Type="Double" />
-          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report39__UId__1AD3FDA4" FromRole="Report39" ToRole="User" />
-          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Report40">
-          <Key>
-            <PropertyRef Name="RId" />
-          </Key>
-          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UId" Type="Int32" />
-          <Property Name="Last_Year_Received" Type="Int32" />
-          <Property Name="Current_Year_Received" Type="Int32" />
-          <Property Name="Total_Received" Type="Int32" />
-          <Property Name="Action_Taken" Type="Int32" />
-          <Property Name="Percentage_Action_Taken" Type="Double" />
-          <Property Name="Appraisal_Marks" Type="Double" />
-          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report40__UId__1EA48E88" FromRole="Report40" ToRole="User" />
           <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Report41">
@@ -3862,54 +3794,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report37__UId__1332DBDC">
-          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DocPASModel.Report37" Role="Report37" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Report37">
-              <PropertyRef Name="UId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Report38__UId__17036CC0">
-          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DocPASModel.Report38" Role="Report38" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Report38">
-              <PropertyRef Name="UId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Report39__UId__1AD3FDA4">
-          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DocPASModel.Report39" Role="Report39" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Report39">
-              <PropertyRef Name="UId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Report40__UId__1EA48E88">
-          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DocPASModel.Report40" Role="Report40" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Report40">
-              <PropertyRef Name="UId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Report41__UId__22751F6C">
           <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
           <End Type="DocPASModel.Report41" Role="Report41" Multiplicity="*" />
@@ -4215,6 +4099,146 @@
               <PropertyRef Name="UId" />
             </Principal>
             <Dependent Role="Report36">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Report37">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Last_Year_Pending" Type="Int32" />
+          <Property Name="Last_Month_Reports" Type="Int32" />
+          <Property Name="Current_Month_Reports" Type="Int32" />
+          <Property Name="Total_Reports" Type="Int32" />
+          <Property Name="Last_Month_Action_Taken" Type="Int32" />
+          <Property Name="Current_Month_Action_Taken" Type="Int32" />
+          <Property Name="Total_Action_Taken" Type="Int32" />
+          <Property Name="Action_Pending_Reports" Type="Int32" />
+          <Property Name="Percentage_Action_Taken" Type="Double" />
+          <Property Name="Appraisal_Marks" Type="Double" />
+          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report37__UId__41B8C09B" FromRole="Report37" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Report38">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Last_Year_Pending" Type="Int32" />
+          <Property Name="Last_Month_Reports" Type="Int32" />
+          <Property Name="Current_Month_Reports" Type="Int32" />
+          <Property Name="Total_Reports" Type="Int32" />
+          <Property Name="Last_Month_Action_Taken" Type="Int32" />
+          <Property Name="Current_Month_Action_Taken" Type="Int32" />
+          <Property Name="Total_Action_Taken" Type="Int32" />
+          <Property Name="Action_Pending_Reports" Type="Int32" />
+          <Property Name="Percentage_Action_Taken" Type="Double" />
+          <Property Name="Appraisal_Marks" Type="Double" />
+          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report38__UId__467D75B8" FromRole="Report38" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Report39">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Last_Year_Remaining" Type="Int32" />
+          <Property Name="Last_Month_Remaining" Type="Int32" />
+          <Property Name="Current_Month_Remaining" Type="Int32" />
+          <Property Name="Total_Remaining" Type="Int32" />
+          <Property Name="Last_Month_Action_Taken" Type="Int32" />
+          <Property Name="Current_Month_Action_Taken" Type="Int32" />
+          <Property Name="Total_Action_Taken" Type="Int32" />
+          <Property Name="Action_Pending_Reports" Type="Int32" />
+          <Property Name="Percentage_Action_Taken" Type="Double" />
+          <Property Name="Appraisal_Marks" Type="Double" />
+          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report39__UId__4B422AD5" FromRole="Report39" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Report40">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UId" Type="Int32" />
+          <Property Name="Last_Year_Received" Type="Int32" />
+          <Property Name="Last_Month_Received" Type="Int32" />
+          <Property Name="Current_Month_Received" Type="Int32" />
+          <Property Name="Total_Received" Type="Int32" />
+          <Property Name="Last_Month_Action_Taken" Type="Int32" />
+          <Property Name="Current_Month_Action_Taken" Type="Int32" />
+          <Property Name="Total_Action_Taken" Type="Int32" />
+          <Property Name="Action_Pending_Reports" Type="Int32" />
+          <Property Name="Percentage_Action_Taken" Type="Double" />
+          <Property Name="Appraisal_Marks" Type="Double" />
+          <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report40__UId__5006DFF2" FromRole="Report40" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Report37__UId__41B8C09B">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Report37" Role="Report37" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Report37">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Report38__UId__467D75B8">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Report38" Role="Report38" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Report38">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Report39__UId__4B422AD5">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Report39" Role="Report39" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Report39">
+              <PropertyRef Name="UId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Report40__UId__5006DFF2">
+          <End Type="DocPASModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DocPASModel.Report40" Role="Report40" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Report40">
               <PropertyRef Name="UId" />
             </Dependent>
           </ReferentialConstraint>
@@ -4719,86 +4743,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Report37">
-            <EntityTypeMapping TypeName="DocPASModel.Report37">
-              <MappingFragment StoreEntitySet="Report37">
-                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
-                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
-                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
-                <ScalarProperty Name="Action_Taken" ColumnName="Action_Taken" />
-                <ScalarProperty Name="Total_Reports" ColumnName="Total_Reports" />
-                <ScalarProperty Name="Current_Month_Reports" ColumnName="Current_Month_Reports" />
-                <ScalarProperty Name="Total_Pending" ColumnName="Total_Pending" />
-                <ScalarProperty Name="Current_Year_Pending" ColumnName="Current_Year_Pending" />
-                <ScalarProperty Name="Last_Year_Pending" ColumnName="Last_Year_Pending" />
-                <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="RId" ColumnName="RId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Report38">
-            <EntityTypeMapping TypeName="DocPASModel.Report38">
-              <MappingFragment StoreEntitySet="Report38">
-                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
-                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
-                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
-                <ScalarProperty Name="Action_Taken" ColumnName="Action_Taken" />
-                <ScalarProperty Name="Total_Reports" ColumnName="Total_Reports" />
-                <ScalarProperty Name="Current_Month_Reports" ColumnName="Current_Month_Reports" />
-                <ScalarProperty Name="Total_Pending" ColumnName="Total_Pending" />
-                <ScalarProperty Name="Current_Year_Pending" ColumnName="Current_Year_Pending" />
-                <ScalarProperty Name="Last_Year_Pending" ColumnName="Last_Year_Pending" />
-                <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="RId" ColumnName="RId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Report39">
-            <EntityTypeMapping TypeName="DocPASModel.Report39">
-              <MappingFragment StoreEntitySet="Report39">
-                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
-                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
-                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
-                <ScalarProperty Name="Action_Taken" ColumnName="Action_Taken" />
-                <ScalarProperty Name="Total_Remaining" ColumnName="Total_Remaining" />
-                <ScalarProperty Name="Current_Year_Remaining" ColumnName="Current_Year_Remaining" />
-                <ScalarProperty Name="Last_Year_Remaining" ColumnName="Last_Year_Remaining" />
-                <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="RId" ColumnName="RId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Report40">
-            <EntityTypeMapping TypeName="DocPASModel.Report40">
-              <MappingFragment StoreEntitySet="Report40">
-                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
-                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
-                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
-                <ScalarProperty Name="Action_Taken" ColumnName="Action_Taken" />
-                <ScalarProperty Name="Total_Received" ColumnName="Total_Received" />
-                <ScalarProperty Name="Current_Year_Received" ColumnName="Current_Year_Received" />
-                <ScalarProperty Name="Last_Year_Received" ColumnName="Last_Year_Received" />
-                <ScalarProperty Name="UId" ColumnName="UId" />
-                <ScalarProperty Name="RId" ColumnName="RId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Report41">
             <EntityTypeMapping TypeName="DocPASModel.Report41">
               <MappingFragment StoreEntitySet="Report41">
@@ -5294,6 +5238,98 @@
                 <ScalarProperty Name="Current_Month_Remaining_for_Audit" ColumnName="Current_Month_Remaining_for_Audit" />
                 <ScalarProperty Name="Current_Month_Audit" ColumnName="Current_Month_Audit" />
                 <ScalarProperty Name="Eligible_for_Audit" ColumnName="Eligible_for_Audit" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report37">
+            <EntityTypeMapping TypeName="DocPASModel.Report37">
+              <MappingFragment StoreEntitySet="Report37">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
+                <ScalarProperty Name="Action_Pending_Reports" ColumnName="Action_Pending_Reports" />
+                <ScalarProperty Name="Total_Action_Taken" ColumnName="Total_Action_Taken" />
+                <ScalarProperty Name="Current_Month_Action_Taken" ColumnName="Current_Month_Action_Taken" />
+                <ScalarProperty Name="Last_Month_Action_Taken" ColumnName="Last_Month_Action_Taken" />
+                <ScalarProperty Name="Total_Reports" ColumnName="Total_Reports" />
+                <ScalarProperty Name="Current_Month_Reports" ColumnName="Current_Month_Reports" />
+                <ScalarProperty Name="Last_Month_Reports" ColumnName="Last_Month_Reports" />
+                <ScalarProperty Name="Last_Year_Pending" ColumnName="Last_Year_Pending" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report38">
+            <EntityTypeMapping TypeName="DocPASModel.Report38">
+              <MappingFragment StoreEntitySet="Report38">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
+                <ScalarProperty Name="Action_Pending_Reports" ColumnName="Action_Pending_Reports" />
+                <ScalarProperty Name="Total_Action_Taken" ColumnName="Total_Action_Taken" />
+                <ScalarProperty Name="Current_Month_Action_Taken" ColumnName="Current_Month_Action_Taken" />
+                <ScalarProperty Name="Last_Month_Action_Taken" ColumnName="Last_Month_Action_Taken" />
+                <ScalarProperty Name="Total_Reports" ColumnName="Total_Reports" />
+                <ScalarProperty Name="Current_Month_Reports" ColumnName="Current_Month_Reports" />
+                <ScalarProperty Name="Last_Month_Reports" ColumnName="Last_Month_Reports" />
+                <ScalarProperty Name="Last_Year_Pending" ColumnName="Last_Year_Pending" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report39">
+            <EntityTypeMapping TypeName="DocPASModel.Report39">
+              <MappingFragment StoreEntitySet="Report39">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
+                <ScalarProperty Name="Action_Pending_Reports" ColumnName="Action_Pending_Reports" />
+                <ScalarProperty Name="Total_Action_Taken" ColumnName="Total_Action_Taken" />
+                <ScalarProperty Name="Current_Month_Action_Taken" ColumnName="Current_Month_Action_Taken" />
+                <ScalarProperty Name="Last_Month_Action_Taken" ColumnName="Last_Month_Action_Taken" />
+                <ScalarProperty Name="Total_Remaining" ColumnName="Total_Remaining" />
+                <ScalarProperty Name="Current_Month_Remaining" ColumnName="Current_Month_Remaining" />
+                <ScalarProperty Name="Last_Month_Remaining" ColumnName="Last_Month_Remaining" />
+                <ScalarProperty Name="Last_Year_Remaining" ColumnName="Last_Year_Remaining" />
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report40">
+            <EntityTypeMapping TypeName="DocPASModel.Report40">
+              <MappingFragment StoreEntitySet="Report40">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="NotApplicable" ColumnName="NotApplicable" />
+                <ScalarProperty Name="Appraisal_Marks" ColumnName="Appraisal_Marks" />
+                <ScalarProperty Name="Percentage_Action_Taken" ColumnName="Percentage_Action_Taken" />
+                <ScalarProperty Name="Action_Pending_Reports" ColumnName="Action_Pending_Reports" />
+                <ScalarProperty Name="Total_Action_Taken" ColumnName="Total_Action_Taken" />
+                <ScalarProperty Name="Current_Month_Action_Taken" ColumnName="Current_Month_Action_Taken" />
+                <ScalarProperty Name="Last_Month_Action_Taken" ColumnName="Last_Month_Action_Taken" />
+                <ScalarProperty Name="Total_Received" ColumnName="Total_Received" />
+                <ScalarProperty Name="Current_Month_Received" ColumnName="Current_Month_Received" />
+                <ScalarProperty Name="Last_Month_Received" ColumnName="Last_Month_Received" />
+                <ScalarProperty Name="Last_Year_Received" ColumnName="Last_Year_Received" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="RId" ColumnName="RId" />
               </MappingFragment>

@@ -55,10 +55,6 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Report31> Report31 { get; set; }
         public virtual DbSet<Report34> Report34 { get; set; }
         public virtual DbSet<Report35> Report35 { get; set; }
-        public virtual DbSet<Report37> Report37 { get; set; }
-        public virtual DbSet<Report38> Report38 { get; set; }
-        public virtual DbSet<Report39> Report39 { get; set; }
-        public virtual DbSet<Report40> Report40 { get; set; }
         public virtual DbSet<Report41> Report41 { get; set; }
         public virtual DbSet<Report42> Report42 { get; set; }
         public virtual DbSet<Report43> Report43 { get; set; }
@@ -83,5 +79,9 @@ namespace Performance_Appraisal_System.Models
         public virtual DbSet<Report63> Report63 { get; set; }
         public virtual DbSet<Report64> Report64 { get; set; }
         public virtual DbSet<Report36> Report36 { get; set; }
+        public virtual DbSet<Report37> Report37 { get; set; }
+        public virtual DbSet<Report38> Report38 { get; set; }
+        public virtual DbSet<Report39> Report39 { get; set; }
+        public virtual DbSet<Report40> Report40 { get; set; }
     }
 }

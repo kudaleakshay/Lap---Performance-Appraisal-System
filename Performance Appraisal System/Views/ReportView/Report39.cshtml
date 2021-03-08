@@ -44,15 +44,20 @@
         vertical-align: middle !important;">
                             <tr>
                                 <th rowspan="2">जिल्हा</th>
-                                <th colspan="3">निबंधकाकडे दोष दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या</th>
-                                <th rowspan="2">निबंधकाने कारवाई कारवाई केलेली संख्या</th>
+                                <th colspan="4">निबंधकाकडे दोष दुरुस्ती अहवाल प्राप्त होण्यास पात्र असुनही दोष दुरुस्ती अहवाल सादर न केलेल्या संस्थांची संख्या</th>
+                                <th colspan="3">निबंधकाने कारवाई केलेल्या अहवालांची संख्या</th>
+                                <th rowspan="2">कारवाई प्रलंबित अहवालांची संख्या </th>
                                 <th rowspan="2">कारवाईचे प्रमाण </th>
                                 <th rowspan="2">मुल्यांकनानुसार एकुण प्राप्त गुण</th>
                             </tr>
 
                             <tr>
                                 <th>मागील आर्थिक वर्षातील </th>
-                                <th>चालु आर्थिक वर्षातील </th>
+                                <th>चालु आर्थिक वर्षातील मागील महिनाअखेर </th>
+                                <th>चालु महिन्यातील</th>
+                                <th>एकुण अप्राप्त</th>
+                                <th>मागील महिनाअखेर</th>
+                                <th>चालु महिन्यातील</th>
                                 <th>एकुण</th>
                             </tr>
                         </thead>
@@ -113,9 +118,13 @@
             "columns": [
                 { "data": "UserName" },
                 { "data": "report.Last_Year_Remaining" },
-                { "data": "report.Current_Year_Remaining" },
+                { "data": "report.Last_Month_Remaining" },
+                { "data": "report.Current_Month_Remaining" },
                 { "data": "report.Total_Remaining" },
-                { "data": "report.Action_Taken" },
+                { "data": "report.Last_Month_Action_Taken" },
+                { "data": "report.Current_Month_Action_Taken" },
+                { "data": "report.Total_Action_Taken" },
+                { "data": "report.Action_Pending_Reports" },
                 { "data": "report.Percentage_Action_Taken" },
                 { "data": "report.Appraisal_Marks" }
             ],
@@ -139,7 +148,7 @@
         table.rows({ search: "applied" }).every(function () {
             const data = this.data();
             BranchArray.push(data.UserName);
-            PercentageArray.push(parseInt(data.report.Appraisal_Percentage));
+            PercentageArray.push(parseInt(data.report.Percentage_Action_Taken));
         });
 
         // store all data in dataArray

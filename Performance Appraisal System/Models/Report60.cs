@@ -39,25 +39,25 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया अधिकारी लक्षांक संख्या आवश्यक आहे")]
-        [DisplayName("अधिकारी लक्षांक")]
+        [DisplayName("अधिकारी लक्षांक (वार्षिक)")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Officer_Target { get; set; }
 
 
         [Required(ErrorMessage = "कृपया कर्मचारी लक्षांक संख्या आवश्यक आहे")]
-        [DisplayName("कर्मचारी लक्षांक")]
+        [DisplayName("कर्मचारी लक्षांक (वार्षिक)")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Staff_Target { get; set; }
 
 
         [Required(ErrorMessage = "कृपया एकुण अधिकारी / कर्मचारी लक्षांक संख्या आवश्यक आहे")]
-        [DisplayName("एकुण अधिकारी / कर्मचारी लक्षांक")]
+        [DisplayName("एकुण अधिकारी / कर्मचारी वार्षिक लक्षांक")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Total_Target { get; set; }
 
 
         [Required(ErrorMessage = "कृपया चालु महिना अखेर उद्दीष्टे आवश्यक आहे")]
-        [DisplayName("चालु महिना अखेर उद्दीष्टे")]
+        [DisplayName("उद्दीष्टे (मागील महिना + चालु महिना)")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Current_Month_Aim { get; set; }
 
@@ -84,12 +84,12 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया टक्केवारी आवश्यक आहे")]
-        [DisplayName("चालु महिना अखेर उद्दीष्टांच्या  साध्यतेनुसार टक्केवारी")]
+        [DisplayName("चालु महिना अखेर उद्दीष्टांच्या साध्यतेनुसार टक्केवारी")]
         public Nullable<double> Current_Month_Percentage { get; set; }
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]
-        [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण")]
+        [DisplayName("मुल्यांकनानुसार एकुण प्राप्त गुण (वार्षिक लक्षांकावर आधारित)")]
         public Nullable<double> Appraisal_Marks { get; set; }
 
 

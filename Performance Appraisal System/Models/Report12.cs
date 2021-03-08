@@ -75,7 +75,7 @@ namespace Performance_Appraisal_System.Models
 
 
 
-        [DisplayName("शेरा")]
+        [DisplayName("संवर्ग")]
         public string Remarks { get; set; } 
 
 		public System.DateTime CreatedTime { get; set; }

@@ -70,7 +70,7 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Year { get; set; }
 
 
-        [DisplayName("शेरा")]
+        [DisplayName("संवर्ग")]
         public string Remarks { get; set; } 
 
 		public System.DateTime CreatedTime { get; set; }
