@@ -435,6 +435,8 @@
     <Content Include="Content\PDF\Housing.pdf" />
     <Content Include="Content\PDF\Krushi.pdf" />
     <Content Include="Content\PDF\Patsanstha.pdf" />
+    <Content Include="Content\PDF\Audit.pdf" />
+    <Content Include="Content\PDF\Dakshta.pdf" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
