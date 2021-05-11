@@ -105,7 +105,7 @@
           <Property Name="Month" Type="int" />
           <Property Name="Year" Type="int" />
           <Property Name="CreatedTime" Type="datetime" Nullable="false" />
-          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Report13">
           <Key>
@@ -1321,7 +1321,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report36__UId__2EA5EC27">
+        <Association Name="FK__Report36__UId__1CBC4616">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report36" Type="Self.Report36" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1333,7 +1333,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report37__UId__41B8C09B">
+        <Association Name="FK__Report37__UId__2180FB33">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report37" Type="Self.Report37" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1345,7 +1345,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report38__UId__467D75B8">
+        <Association Name="FK__Report38__UId__2645B050">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report38" Type="Self.Report38" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1357,7 +1357,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report39__UId__4B422AD5">
+        <Association Name="FK__Report39__UId__2B0A656D">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report39" Type="Self.Report39" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1369,7 +1369,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Report40__UId__5006DFF2">
+        <Association Name="FK__Report40__UId__2FCF1A8A">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Report40" Type="Self.Report40" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1908,23 +1908,23 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Report35" EntitySet="Report35" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report36__UId__2EA5EC27" Association="Self.FK__Report36__UId__2EA5EC27">
+          <AssociationSet Name="FK__Report36__UId__1CBC4616" Association="Self.FK__Report36__UId__1CBC4616">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report36" EntitySet="Report36" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report37__UId__41B8C09B" Association="Self.FK__Report37__UId__41B8C09B">
+          <AssociationSet Name="FK__Report37__UId__2180FB33" Association="Self.FK__Report37__UId__2180FB33">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report37" EntitySet="Report37" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report38__UId__467D75B8" Association="Self.FK__Report38__UId__467D75B8">
+          <AssociationSet Name="FK__Report38__UId__2645B050" Association="Self.FK__Report38__UId__2645B050">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report38" EntitySet="Report38" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report39__UId__4B422AD5" Association="Self.FK__Report39__UId__4B422AD5">
+          <AssociationSet Name="FK__Report39__UId__2B0A656D" Association="Self.FK__Report39__UId__2B0A656D">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report39" EntitySet="Report39" />
           </AssociationSet>
-          <AssociationSet Name="FK__Report40__UId__5006DFF2" Association="Self.FK__Report40__UId__5006DFF2">
+          <AssociationSet Name="FK__Report40__UId__2FCF1A8A" Association="Self.FK__Report40__UId__2FCF1A8A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Report40" EntitySet="Report40" />
           </AssociationSet>
@@ -2762,7 +2762,7 @@
           <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
           <Property Name="Month" Type="Int32" />
           <Property Name="Year" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report12__UId__4AB81AF0" FromRole="Report12" ToRole="User" />
           <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
