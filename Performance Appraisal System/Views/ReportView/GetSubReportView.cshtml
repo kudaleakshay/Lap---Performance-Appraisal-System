@@ -42,12 +42,14 @@
                                 <th>प्राप्त गुण</th>
                                 <th>प्राप्त गुणांची टक्केवारी</th>
                                 <th>शेरा</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
                         <tfoot>
                             <tr style="background:#a8bdbd; font-size:18px">
                                 <th style="text-align:center">एकुण</th>
+                                <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
@@ -164,6 +166,11 @@
                 { "data": "report.Appraisal_Marks" },
                 { "data": "report.Appraisal_Percentage" },
                 { "data": "report.Remarks" },
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<button style="margin-bottom: 0 !important;" class = "btn btn-outline-dark">Report</button>';
+                    }
+                },
             ],
             dom: 'Bfrtip',
             buttons: [
@@ -178,11 +185,11 @@
         setTableEvents(table);
     }
 
-    @*$('#BranchTable tbody').on('click', 'button', function () {
+    $('#ReportTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
         window.open(
-            "/ReportView/GetReportView?DepartmentId=" + data.DepartmentId + "&SubjectId=" + data.SId, "_self");
-    });*@
+            "/ReportView/GetDepartmentReportView?DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId, "_self");
+    });
 
 
 

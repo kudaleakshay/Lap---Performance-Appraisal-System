@@ -6,8 +6,9 @@
     <title>@ViewBag.Title -सहकार आयुक्त व निबंधक</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/fevicon.ico" />
     @Styles.Render("~/Content/css")
-<link href="~/Content/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -121,6 +122,35 @@
     @Scripts.Render("https://code.highcharts.com/highcharts.js")
     @Scripts.Render("https://code.highcharts.com/modules/no-data-to-display.js")
 
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+
+        var Message = @Html.Raw(Json.Encode(TempData["Message"]));
+        var Error = @Html.Raw(Json.Encode(TempData["Error"]));
+
+        toastr.options = {
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "fadeIn": 300,
+            "fadeOut": 1000,
+            "timeOut": 7000,            
+            "closeButton": true,
+            "extendedTimeOut": 1000
+        }
+
+        if (Message != null) {
+            toastr.success(Message, 'Success');
+        }
+        if (Error != null) {
+            toastr.error(Error);
+        }
+    });
+
+</script>
