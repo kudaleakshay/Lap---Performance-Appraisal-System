@@ -61,6 +61,8 @@ namespace Performance_Appraisal_System.Controllers
                     if (record62 != null)
                     {
                         ViewBag.isReportSubmitted = true;
+                        TempData["Error"] = "You already submitted report for this month- " + Month + "/" + Year;
+                        return RedirectToAction("DepartmentWiseReport", "Report");
                     }
 
                     return View("Subject62");
@@ -73,6 +75,8 @@ namespace Performance_Appraisal_System.Controllers
                     if (record63 != null)
                     {
                         ViewBag.isReportSubmitted = true;
+                        TempData["Error"] = "You already submitted report for this month- " + Month + "/" + Year;
+                        return RedirectToAction("DepartmentWiseReport", "Report");
                     }
 
                     return View("Subject63");
@@ -85,6 +89,8 @@ namespace Performance_Appraisal_System.Controllers
                     if (record64 != null)
                     {
                         ViewBag.isReportSubmitted = true;
+                        TempData["Error"] = "You already submitted report for this month- " + Month + "/" + Year;
+                        return RedirectToAction("DepartmentWiseReport", "Report");
                     }
 
                     return View("Subject64");
@@ -123,11 +129,13 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+                    TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
+                    TempData["Error"] = "Something went wrong, Please try again later";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }
@@ -169,11 +177,13 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+                    TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
+                    TempData["Error"] = "Something went wrong, Please try again later";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }
@@ -215,11 +225,13 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+                    TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
                 else
                 {
                     //Add Error Handling
+                    TempData["Error"] = "Something went wrong, Please try again later";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
             }

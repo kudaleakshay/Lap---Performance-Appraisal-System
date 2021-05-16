@@ -216,7 +216,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success" OnClick="SetValue()">Submit / माहिती भरा</button>
+                        <button type="submit" class="btn btn-success" onclick="return confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर करु इच्छिता?')">Submit / माहिती भरा</button>
                     </div>
                     <br>
                 </div>
@@ -292,11 +292,6 @@
             Appraisal_Marks = 0;
         }
 
-@*
-        console.log("Total_Achieved" + (Number($("#Total_Achieved").val()));
-        console.log("Total_Target" + (Number($("#Total_Target").val()));
-        console.log("Appraisal_Marks" + Appraisal_Marks );
-*@
         $("#Appraisal_Marks").val(Number(Appraisal_Marks));
         $("#Appraisal_Marks_val").val(Number(Appraisal_Marks));
         $("#Appraisal_Marks_val").css("font-weight", "bold");

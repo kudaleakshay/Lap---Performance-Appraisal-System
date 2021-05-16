@@ -113,8 +113,11 @@
             },
             "ajax": {
                 "url": "/ReportView/GetDepartmentReportData?DepartmentId=" + DepartmentId + "&SubjectId=" + SubjectId + "&Month=" + Month + "&Year=" + Year,
-                "type": "GET",
-                "datatype": "json"
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
             },
             "columns": [
                 { "data": "UserName" },
@@ -124,8 +127,9 @@
                 { "data": "report.Appraisal_Marks"}
             ],
             dom: 'Bfrtip',
-            buttons: [
-                { extend: 'excelHtml5', text: 'Download Report'}
+             buttons: [
+                { extend: 'excelHtml5', text: 'Download Report' },
+                { extend: 'print', text: 'Print' }
             ]
         });
     

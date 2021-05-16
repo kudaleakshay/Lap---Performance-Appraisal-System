@@ -119,7 +119,7 @@
         var DepartmentId = $("#DepartmentId").val();
         var SubjectId = $("#SubjectId").val();
 
-        table = $("#ReportTable").DataTable({
+        table = $('#ReportTable').DataTable({
             paging: false,
             responsive: true,
             processing: true,
@@ -141,7 +141,10 @@
             "ajax": {
                 "url": "/ReportView/GetDepartmentReportData?DepartmentId=" + DepartmentId + "&SubjectId=" + SubjectId + "&Month=" + Month + "&Year=" + Year,
                 "type": "GET",
-                "datatype": "json"
+                "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
             },
             "columns": [
                 { "data": "UserName" },
@@ -162,7 +165,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report' }
+                { extend: 'excelHtml5', text: 'Download Report' },
+                { extend: 'print', text: 'Print' }
             ]
         });
 
@@ -171,6 +175,7 @@
         createHighcharts(tableData);
         setTableEvents(table);
     }
+
 
     function getTableData(table) {
         const dataArray = [],

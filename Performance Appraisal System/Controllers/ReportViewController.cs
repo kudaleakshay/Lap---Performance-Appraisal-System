@@ -305,6 +305,24 @@ namespace Performance_Appraisal_System.Controllers
                             }, JsonRequestBehavior.AllowGet);
 
 
+                        /*
+                                                    return Json(new
+                                                    {
+                                                        data = (from u in db.Users
+                                                                join s in db.Report11
+                                                                on u.UId equals s.UId into data
+                                                                from s in data.DefaultIfEmpty()
+                                                               *//* where s.Month == Month
+                                                                      && s.Year == Year*//*
+                                                                orderby s.UId
+                                                                select new
+                                                                {
+                                                                    report = s,
+                                                                    UserName = u.Name,
+                                                                }).ToList()
+                                                    }, JsonRequestBehavior.AllowGet);*/
+
+
 
                         case 12:
                             return Json(new

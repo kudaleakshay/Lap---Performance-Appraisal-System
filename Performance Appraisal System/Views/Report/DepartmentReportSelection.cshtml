@@ -69,8 +69,11 @@
             },
             "ajax": {
                 "url": "/Report/GetDepartmentWiseSubjects?DepartmentId=" + DepartmentId,
-                "type": "GET",
-                "datatype": "json"
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
             },
             "columns": [
                 { "data": "SubjectName" },

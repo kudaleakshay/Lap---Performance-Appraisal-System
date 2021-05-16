@@ -94,8 +94,11 @@
             },
             "ajax": {
                 "url": "/Report/GetDJROfficeData",
-                "type": "GET",
-                "datatype": "json"
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
             },
             "columns": [
                 { "data": "Name" },
@@ -119,8 +122,11 @@
             },
             "ajax": {
                 "url": "/Report/GetDDROfficeData",
-                "type": "GET",
-                "datatype": "json"
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
             },
             "columns": [
                 { "data": "Name" },
@@ -145,8 +151,11 @@
             },
             "ajax": {
                 "url": "/Report/GetAROfficeData",
-                "type": "GET",
-                "datatype": "json"
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
             },
             "columns": [
                 { "data": "Name" },

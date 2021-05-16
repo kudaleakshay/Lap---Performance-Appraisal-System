@@ -91,8 +91,11 @@
             },
             "ajax": {
                 "url": "/ReportView/GetStateReportData?Month=" + Month + "&Year=" + Year,
-                "type": "GET",
-                "datatype": "json"
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
             },
             "columns": [
                 { "data": "Name" },
@@ -106,8 +109,9 @@
                 },
             ],
             dom: 'Bfrtip',
-            buttons: [
-                { extend: 'excelHtml5', text: 'Download Report'}
+             buttons: [
+                { extend: 'excelHtml5', text: 'Download Report' },
+                { extend: 'print', text: 'Print' }
             ]
         });
 

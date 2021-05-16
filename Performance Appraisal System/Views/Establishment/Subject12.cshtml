@@ -171,7 +171,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success" OnClick="SetValue()">Submit / माहिती भरा</button>
+                        <button type="submit" class="btn btn-success" onclick="return confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर करु इच्छिता?')">Submit / माहिती भरा</button>
                     </div>
                     <br>
                 </div>
@@ -243,10 +243,17 @@
     }
 
 
-    function SetValue() {
-        $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
-        $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
-    }
+   @* function SetValue() {
+        if (window.confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर केला आहे.')) {
+            $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
+            $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
+            return true;
+        }
+        else {
+            return false;
+        }
+        
+    }*@
 
 
     $("#Retirement_Benefits_Target").change(Retirement_Benefits_Pendig);

@@ -241,7 +241,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success" OnClick="SetValue()">Submit / माहिती भरा</button>
+                        <button type="submit" class="btn btn-success" onclick="return confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर करु इच्छिता?')">Submit / माहिती भरा</button>
                     </div>
                     <br>
                 </div>
@@ -274,8 +274,6 @@
     function Inquiry_Total() {
         var Total = Number($("#Inquiry_C").val()) + Number($("#Inquiry_D").val());
 
-        console.log("Inquiry_Total" + Total);
-
         $("#Inquiry_Total").val(Total);
         $("#Inquiry_Total_val").val(Total);
         $("#Inquiry_Total_val").css("font-weight", "bold");
@@ -284,8 +282,6 @@
     function Inquiry_Total_Target() {
         var Total = Number($("#Inquiry_Target_C").val()) + Number($("#Inquiry_Target_D").val());
 
-        console.log("Inquiry_Total_Target" + Total);
-
         $("#Inquiry_Total_Target").val(Total);
         $("#Inquiry_Total_Target_val").val(Total);
         $("#Inquiry_Total_Target_val").css("font-weight", "bold");
@@ -293,8 +289,6 @@
 
     function Inquiry_Total_Achieved() {
         var Total = Number($("#Inquiry_Achieved_C").val()) + Number($("#Inquiry_Achieved_D").val());
-
-        console.log("Inquiry_Total_Achieved" + Total);
 
         $("#Inquiry_Total_Achieved").val(Total);
         $("#Inquiry_Total_Achieved_val").val(Total);
@@ -326,8 +320,6 @@
             Appraisal_Marks = 0;
         }
 
-        console.log("Appraisal_Marks" + Appraisal_Marks);
-
         $("#Appraisal_Marks").val(Number(Appraisal_Marks));
         $("#Appraisal_Marks_val").val(Number(Appraisal_Marks));
         $("#Appraisal_Marks_val").css("font-weight", "bold");
@@ -341,8 +333,6 @@
         if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
             Total = 0;
         }
-
-        console.log("Appraisal_Percentage" + Total);
 
         $("#Appraisal_Percentage").val(Number(Total));
         $("#Appraisal_Percentage_val").val(Number(Total));

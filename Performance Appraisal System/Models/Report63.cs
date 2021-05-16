@@ -34,9 +34,7 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया अर्ज निकाली काढलेल्याची टक्केवारी आवश्यक आहे")]
         [DisplayName("अर्ज निकाली काढलेल्याची टक्केवारी")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<double> Resolved_Percentage { get; set; }
-
 
 
         [Required(ErrorMessage = "अर्ज निकाली काढलेल्याची टक्केवारी")]

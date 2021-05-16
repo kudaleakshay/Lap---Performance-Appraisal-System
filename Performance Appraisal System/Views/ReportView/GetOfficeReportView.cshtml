@@ -143,8 +143,11 @@
             },
             "ajax": {
                 "url": "/ReportView/GetOfficeReportData?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
-                "type": "GET",
-                "datatype": "json"
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
             },
             "columns": [
                 { "data": "Department" },
