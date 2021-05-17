@@ -90,8 +90,14 @@
             filter: true,
             info: false,
             fixedColumns: true,
+            order: [],
             language: {
                 emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                if (aData.RoleId == 3) {
+                    $('td', nRow).css('background-color', '#a7bbc7');
+                }
             },
             "ajax": {
                 "url": "/ReportView/GetStateReportData?Month=" + Month + "&Year=" + Year,

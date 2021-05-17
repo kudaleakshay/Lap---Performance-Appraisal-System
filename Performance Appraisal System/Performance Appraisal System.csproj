@@ -659,6 +659,7 @@
     <Content Include="Views\ReportView\Report63.cshtml" />
     <Content Include="Views\ReportView\Report64.cshtml" />
     <Content Include="Views\ReportView\Report48.cshtml" />
+    <Content Include="Views\ReportView\PendingReportListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

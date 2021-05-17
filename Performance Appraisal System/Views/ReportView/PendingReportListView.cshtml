@@ -1,0 +1,197 @@
+﻿@using Performance_Appraisal_System.Models
+@model Performance_Appraisal_System.Models.User
+@{
+    ViewBag.Title = "मूल्यांकन अहवाल न भरलेल्या कार्यालयांची यादी";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding: 30px;background: white;">
+    <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+        <br>
+        <br>
+        <div class="card-text">
+
+            <div class="center-group">
+
+            </div>
+
+
+            <div class="center-group">
+                <br>
+                <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.SubjectName - मूल्यांकन अहवाल न भरलेल्या कार्यालयांची यादी</strong></h5>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6 center-div">
+                        @Html.DropDownList("Month", ViewBag.Months as SelectList, "-- Select Month --", new { @style = "font-size:14px; text-indent: 40%;", @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-6 center-div">
+                        @Html.DropDownList("Year", ViewBag.Years as SelectList, "-- Select Year --", new { @style = "font-size:14px; text-indent: 40%;", @class = "form-control" })
+                    </div>
+                </div>
+                <hr>
+                <table id="ListTable" class="table table-striped branchtable">
+                    <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
+                        <tr>
+                            <th> कार्यालय </th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <br>
+                <br>
+
+                <hr>
+                
+                <br>
+                <br>
+
+
+                <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.SubjectName - विषय लागु नसलेल्या कार्यालयांची यादी</strong></h5>
+                <table id="NotApplicableTable" class="table table-striped branchtable">
+                    <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
+                        <tr>
+                            <th> कार्यालय </th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        bindTable();
+        bindNATable();
+
+    });
+
+
+    function bindTable() {
+
+        var Month = $("#Month").val();
+        var Year = $("#Year").val();
+
+        var DepartmentId = @Html.Raw(Json.Encode(ViewBag.DepartmentId));
+        var SubjectId = @Html.Raw(Json.Encode(ViewBag.SubjectId));
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
+
+        table = $("#ListTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: true,
+            info: false,
+            fixedColumns: true,
+            order: [],
+            language: {
+                emptyTable: "माहिती उपलब्ध नाही "
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                console.log(aData);
+
+                if (aData.RoleId == 3) {
+                    $('td', nRow).css('background-color', '#a7bbc7');
+                }
+            },
+            "ajax": {
+                "url": "/ReportView/GetPendingReportData?DepartmentId=" + DepartmentId + "&SubjectId=" + SubjectId + "&Month=" + Month + "&Year=" + Year,
+                "type": "GET",
+                "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
+            },
+            "columns": [
+                { "data": "UserName" }
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.SubjectName - Pending Report List" + " - " + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.SubjectName - Pending Report List" + " - " + SelectedMonth + " " + SelectedYear }
+            ]
+          });
+    }
+
+    function bindNATable() {
+
+        var Month = $("#Month").val();
+        var Year = $("#Year").val();
+
+        var DepartmentId = @Html.Raw(Json.Encode(ViewBag.DepartmentId));
+        var SubjectId = @Html.Raw(Json.Encode(ViewBag.SubjectId));
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
+
+        table1 = $("#NotApplicableTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: true,
+            info: false,
+            fixedColumns: true,
+            order: [],
+            language: {
+                emptyTable: "माहिती उपलब्ध नाही "
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                console.log(aData);
+
+                if (aData.RoleId == 3) {
+                    $('td', nRow).css('background-color', '#a7bbc7');
+                }
+            },
+            "ajax": {
+                "url": "/ReportView/GetNotApplicableReportData?DepartmentId=" + DepartmentId + "&SubjectId=" + SubjectId + "&Month=" + Month + "&Year=" + Year,
+                "type": "GET",
+                "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
+            },
+            "columns": [
+                { "data": "UserName" }
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.SubjectName - Pending Report List" + " - " + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.SubjectName - Pending Report List" + " - " + SelectedMonth + " " + SelectedYear }
+            ]
+          });
+    }
+
+    $("#Month").change(function () {
+        table.destroy();
+        table1.destroy();
+        bindTable();
+        bindNATable();
+        $("#Month").blur();
+    })
+
+    $("#Year").change(function () {
+        table.destroy();
+        table1.destroy();
+        bindTable();
+        bindNATable();
+        $("#Year").blur();
+    })
+
+
+</script>

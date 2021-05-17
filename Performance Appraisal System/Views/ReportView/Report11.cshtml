@@ -119,6 +119,10 @@
         var DepartmentId = $("#DepartmentId").val();
         var SubjectId = $("#SubjectId").val();
 
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
         table = $('#ReportTable').DataTable({
             paging: false,
             responsive: true,
@@ -127,6 +131,7 @@
             filter: true,
             info: false,
             fixedColumns: true,
+            order: [],
             language: {
                 emptyTable: "माहिती उपलब्ध नाही "
             },
@@ -136,6 +141,9 @@
                 }
                 else {
                     $('td', nRow).css('background-color', '#e6ffe6');
+                }
+                if (aData.RoleId == 3) {
+                    $('td', nRow).css('background-color', '#a7bbc7');
                 }
             },
             "ajax": {

@@ -1032,6 +1032,7 @@
           <Property Name="Status" Type="int" />
           <Property Name="AppraisalType" Type="int" />
           <Property Name="ReportTo" Type="int" />
+          <Property Name="SortKey" Type="int" />
         </EntityType>
         <Association Name="FK__Departmen__Depar__3B75D760">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
@@ -2177,6 +2178,7 @@
           <NavigationProperty Name="Report38" Relationship="DocPASModel.FK__Report38__UId__467D75B8" FromRole="User" ToRole="Report38" />
           <NavigationProperty Name="Report39" Relationship="DocPASModel.FK__Report39__UId__4B422AD5" FromRole="User" ToRole="Report39" />
           <NavigationProperty Name="Report40" Relationship="DocPASModel.FK__Report40__UId__5006DFF2" FromRole="User" ToRole="Report40" />
+          <Property Name="SortKey" Type="Int32" />
         </EntityType>
         <Association Name="FK__Subjects__Depart__2F10007B">
           <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
@@ -4296,6 +4298,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DocPASModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="SortKey" ColumnName="SortKey" />
                 <ScalarProperty Name="UId" ColumnName="UId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

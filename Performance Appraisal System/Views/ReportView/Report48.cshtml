@@ -105,6 +105,7 @@
             filter: true,
             info: false,
             fixedColumns: true,
+            order: [],
             language: {
                 emptyTable: "माहिती उपलब्ध नाही "
             },
@@ -114,6 +115,9 @@
                 }
                 else {
                     $('td', nRow).css('background-color', '#e6ffe6');
+                }
+                if (aData.RoleId == 3) {
+                    $('td', nRow).css('background-color', '#a7bbc7');
                 }
             },
             "ajax": {

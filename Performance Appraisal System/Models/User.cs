@@ -38,10 +38,6 @@ namespace Performance_Appraisal_System.Models
             this.Report31 = new HashSet<Report31>();
             this.Report34 = new HashSet<Report34>();
             this.Report35 = new HashSet<Report35>();
-            this.Report37 = new HashSet<Report37>();
-            this.Report38 = new HashSet<Report38>();
-            this.Report39 = new HashSet<Report39>();
-            this.Report40 = new HashSet<Report40>();
             this.Report41 = new HashSet<Report41>();
             this.Report42 = new HashSet<Report42>();
             this.Report43 = new HashSet<Report43>();
@@ -66,6 +62,10 @@ namespace Performance_Appraisal_System.Models
             this.Report63 = new HashSet<Report63>();
             this.Report64 = new HashSet<Report64>();
             this.Report36 = new HashSet<Report36>();
+            this.Report37 = new HashSet<Report37>();
+            this.Report38 = new HashSet<Report38>();
+            this.Report39 = new HashSet<Report39>();
+            this.Report40 = new HashSet<Report40>();
         }
     
         public int UId { get; set; }
@@ -79,6 +79,7 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Status { get; set; }
         public Nullable<int> AppraisalType { get; set; }
         public Nullable<int> ReportTo { get; set; }
+        public Nullable<int> SortKey { get; set; }
     
         public virtual District District { get; set; }
         public virtual Division Division { get; set; }
@@ -125,14 +126,6 @@ namespace Performance_Appraisal_System.Models
         public virtual ICollection<Report34> Report34 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report35> Report35 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report37> Report37 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report38> Report38 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report39> Report39 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report40> Report40 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report41> Report41 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -181,5 +174,13 @@ namespace Performance_Appraisal_System.Models
         public virtual ICollection<Report64> Report64 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report36> Report36 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report37> Report37 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report38> Report38 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report39> Report39 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report40> Report40 { get; set; }
     }
 }

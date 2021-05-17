@@ -273,8 +273,6 @@ namespace Performance_Appraisal_System.Controllers
             return View();
         }
 
-
-
         public JsonResult GetDepartmentReportData(int DepartmentId, int SubjectId, int Month, int Year)
         {
             Session["ReportMonth"] = Month;
@@ -295,33 +293,15 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
-
-
-                        /*
-                                                    return Json(new
-                                                    {
-                                                        data = (from u in db.Users
-                                                                join s in db.Report11
-                                                                on u.UId equals s.UId into data
-                                                                from s in data.DefaultIfEmpty()
-                                                               *//* where s.Month == Month
-                                                                      && s.Year == Year*//*
-                                                                orderby s.UId
-                                                                select new
-                                                                {
-                                                                    report = s,
-                                                                    UserName = u.Name,
-                                                                }).ToList()
-                                                    }, JsonRequestBehavior.AllowGet);*/
-
 
 
                         case 12:
@@ -331,12 +311,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -349,12 +330,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -367,12 +349,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -385,12 +368,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -403,12 +387,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -426,12 +411,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -443,12 +429,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -460,12 +447,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -482,12 +470,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -499,12 +488,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -516,12 +506,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -533,12 +524,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -550,12 +542,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -567,12 +560,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -589,12 +583,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -606,12 +601,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -624,12 +620,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -646,12 +643,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -663,12 +661,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -680,12 +679,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -697,12 +697,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -714,12 +715,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -731,12 +733,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -753,12 +756,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -770,12 +774,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -787,12 +792,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -804,12 +810,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -821,12 +828,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -838,12 +846,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -855,12 +864,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -872,12 +882,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -889,12 +900,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -906,12 +918,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -928,12 +941,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -945,12 +959,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -967,12 +982,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -984,12 +1000,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1002,12 +1019,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1019,12 +1037,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1036,12 +1055,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1053,12 +1073,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1075,12 +1096,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1093,12 +1115,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1116,12 +1139,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1133,12 +1157,13 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
@@ -1150,15 +1175,1438 @@ namespace Performance_Appraisal_System.Controllers
                                         join u in db.Users
                                         on s.UId equals u.UId
                                         where s.Month == Month
-                                              && s.Year == Year
-                                        orderby s.UId
+                                              && s.Year == Year && s.NotApplicable == false
+                                        orderby u.SortKey ascending
                                         select new
                                         {
                                             report = s,
                                             UserName = u.Name,
+                                            RoleId = u.RoleId,
                                         }).ToList()
                             }, JsonRequestBehavior.AllowGet);
 
+                    }
+                    break;
+            }
+
+            return Json(new { data = "" }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+        public ActionResult PendingReportListView(String SubjectName, int? DepartmentId, int? SubjectId, int? Month, int? Year)
+        {
+            var Current_Month = Convert.ToString(DateTime.Now.Month - 1);
+            var Current_Year = Convert.ToString(DateTime.Now.Year);
+
+            if (Month != null)
+            {
+                Current_Month = Convert.ToString(Month);
+            }
+            if (Year != null)
+            {
+                Current_Month = Convert.ToString(Year);
+            }
+
+            if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
+            {
+                Current_Month = Convert.ToString(System.Web.HttpContext.Current.Session["ReportMonth"]);
+                Current_Year = Convert.ToString(System.Web.HttpContext.Current.Session["ReportYear"]);
+            }
+            else if (DateTime.Now.Month == 1)
+            {
+                Current_Month = Convert.ToString(12);
+                Current_Year = Convert.ToString(DateTime.Now.Year - 1);
+            }
+
+            ViewBag.Months = new SelectList(Enumerable.Range(1, 12).Select(x =>
+               new SelectListItem()
+               {
+                   Text = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames[x - 1],
+                   Value = x.ToString()
+               }), "Value", "Text", Current_Month);
+
+
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year - 2, 10).Select(x =>
+                 new SelectListItem()
+                 {
+                     Text = x.ToString(),
+                     Value = x.ToString()
+                 }), "Value", "Text", Current_Year);
+
+            ViewBag.DepartmentId = DepartmentId;
+            ViewBag.SubjectName = SubjectName;
+            ViewBag.SubjectId = SubjectId;
+
+
+            return View();
+        }
+
+
+        public JsonResult GetPendingReportData(String DepartmentName, int DepartmentId, int SubjectId, int Month, int Year)
+        {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+
+            switch (DepartmentId)
+            {
+                case 1:
+                    switch (SubjectId)
+                    {
+                        case 11:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report11.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 12:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report12.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 13:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report13.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 14:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report14.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 15:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report15.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 16:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report16.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                    }
+                    break;
+
+                case 2:
+                    switch (SubjectId)
+                    {
+                        case 17:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report17.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 18:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report18.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 23:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report23.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 3:
+                    switch (SubjectId)
+                    {
+                        case 24:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report24.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 25:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report25.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 26:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report26.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 27:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report27.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 28:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report28.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 29:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report29.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 4:
+                    switch (SubjectId)
+                    {
+                        case 30:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report30.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 31:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report31.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 34:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report34.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 5:
+                    switch (SubjectId)
+                    {
+                        case 35:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report35.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 36:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report36.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 37:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report37.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 38:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report38.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 39:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report39.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 40:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report40.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 6:
+                    switch (SubjectId)
+                    {
+                        case 41:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report41.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 42:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report42.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 43:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report43.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 44:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report44.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 45:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report45.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 46:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report46.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 47:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report47.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 48:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report48.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 49:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report49.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 50:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report50.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 7:
+                    switch (SubjectId)
+                    {
+                        case 51:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report51.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 52:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report52.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 8:
+                    switch (SubjectId)
+                    {
+                        case 53:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report53.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 54:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report54.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 56:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report56.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 57:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report57.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 58:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report58.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 59:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report59.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 9:
+                    switch (SubjectId)
+                    {
+                        case 60:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report60.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 61:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report61.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 10:
+                    switch (SubjectId)
+
+                    {
+                        case 62:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report62.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 63:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report63.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 64:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where !db.Report64.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+            }
+
+            return Json(new { data = "" }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        public JsonResult GetNotApplicableReportData(String DepartmentName, int DepartmentId, int SubjectId, int Month, int Year)
+        {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+
+            switch (DepartmentId)
+            {
+                case 1:
+                    switch (SubjectId)
+                    {
+                        case 11:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report11.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 12:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report12.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 13:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report13.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 14:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report14.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 15:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report15.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 16:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report16.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                    }
+                    break;
+
+                case 2:
+                    switch (SubjectId)
+                    {
+                        case 17:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report17.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 18:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report18.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 23:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report23.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 3:
+                    switch (SubjectId)
+                    {
+                        case 24:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report24.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 25:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report25.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 26:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report26.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 27:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report27.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 28:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report28.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 29:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report29.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 4:
+                    switch (SubjectId)
+                    {
+                        case 30:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report30.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 31:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report31.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 34:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report34.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 5:
+                    switch (SubjectId)
+                    {
+                        case 35:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report35.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 36:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report36.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 37:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report37.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 38:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report38.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 39:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report39.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 40:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report40.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 6:
+                    switch (SubjectId)
+                    {
+                        case 41:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report41.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 42:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report42.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 43:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report43.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 44:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report44.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 45:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report45.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 46:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report46.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 47:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report47.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 48:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report48.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 49:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report49.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 50:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report50.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 7:
+                    switch (SubjectId)
+                    {
+                        case 51:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report51.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 52:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report52.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 8:
+                    switch (SubjectId)
+                    {
+                        case 53:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report53.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 54:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report54.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 56:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report56.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 57:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report57.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 58:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report58.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 59:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report59.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 9:
+                    switch (SubjectId)
+                    {
+                        case 60:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report60.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+
+                        case 61:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report61.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+                    }
+                    break;
+
+                case 10:
+                    switch (SubjectId)
+
+                    {
+                        case 62:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report62.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 63:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report63.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
+
+                        case 64:
+                            return Json(new
+                            {
+                                data = (from User in db.Users
+                                        where db.Report64.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year && f.NotApplicable == true)
+                                        orderby User.SortKey ascending
+                                        select new
+                                        {
+                                            UserName = User.Name,
+                                            RoleId = User.RoleId,
+                                        }).ToList()
+                            }, JsonRequestBehavior.AllowGet);
                     }
                     break;
             }
@@ -1261,14 +2709,16 @@ namespace Performance_Appraisal_System.Controllers
                            group r by r.UId into GroupReport
                            join u in db.Users
                            on GroupReport.FirstOrDefault().UId equals u.UId
+                           orderby u.SortKey ascending
                            select new
                            {
                                Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
                                /*Appraisal_Percentage = Math.Round( (Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / GroupReport.Sum(x => x.Total_Marks)), 2),*/
-                               Appraisal_Percentage = Math.Round( (Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
+                               Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
                                Total_Marks = (100 - GroupReport.Sum(x => x.Not_Applicable_Marks)),
                                Name = u.Name.Trim(),
                                UId = u.UId,
+                               RoleId = u.RoleId,
 
                            }).ToList();
 
