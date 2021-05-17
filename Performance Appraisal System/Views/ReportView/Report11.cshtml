@@ -165,8 +165,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report' },
-                { extend: 'print', text: 'Print' }
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear }
             ]
         });
 

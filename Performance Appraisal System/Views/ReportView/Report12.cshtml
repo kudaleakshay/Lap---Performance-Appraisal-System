@@ -100,6 +100,11 @@
         var DepartmentId = $("#DepartmentId").val();
         var SubjectId = $("#SubjectId").val();
 
+                
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
+
         table = $("#ReportTable").DataTable({
             paging: false,
             responsive: true,
@@ -140,11 +145,11 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report' },
-                { extend: 'print', text: 'Print' }
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear }
             ]
         });
-    
+
         const tableData = getTableData(table);
         createHighcharts(tableData);
         setTableEvents(table);
@@ -169,6 +174,11 @@
     }
 
     function createHighcharts(data) {
+
+                
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
         Highcharts.setOptions({
             lang: {
                 thousandsSep: ","
@@ -177,7 +187,7 @@
 
         Highcharts.chart("chart", {
             title: {
-                text: "@ViewBag.Title"
+                text: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear
             },
             xAxis: [
                 {

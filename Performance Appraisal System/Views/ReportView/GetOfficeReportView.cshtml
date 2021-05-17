@@ -86,6 +86,10 @@
         var Year = $("#Year").val();
         $("#Year").blur();
 
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
         table = $("#BranchTable").DataTable({
             paging: false,
             responsive: true,
@@ -162,7 +166,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: '@ViewBag.UserName - मुल्यांकन प्रणाली अहवाल' }
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +'- मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +'- मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear }
             ]
         });
 

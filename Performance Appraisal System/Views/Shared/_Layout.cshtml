@@ -58,7 +58,7 @@
             @if (Session["UserName"] != null)
             {
 <a class="active" style=" float: right;background-color:#021d4d; color: white;" href="/Account/Logout">लॉग ऑऊट</a>
-                <a style="float: right; color: white;">Welcome @Session["Name"].ToString() !</a> }
+                <a style="float: right; color: white;"> @Session["Name"].ToString() !</a> }
             else
             {
 <a class="active" style="float: right; background-color: #021d4d; color: white;" href="/Account/Login">लॉग इन</a>}

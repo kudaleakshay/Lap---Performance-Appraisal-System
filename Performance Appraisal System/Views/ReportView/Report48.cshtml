@@ -92,6 +92,11 @@
         var Year = $("#Year").val();
         var DepartmentId = $("#DepartmentId").val();
         var SubjectId = $("#SubjectId").val();
+
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+        
         table = $("#ReportTable").DataTable({
             paging: false,
             responsive: true,
@@ -131,7 +136,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report' }
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear }
             ]
         });
 
