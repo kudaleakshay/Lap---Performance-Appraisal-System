@@ -95,7 +95,7 @@
         var Year = $("#Year").val();
         $("#Year").blur();
 
-        
+
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
 
@@ -182,7 +182,10 @@
                 { "data": "report.Remarks" },
                 {
                     "render": function (data, type, full, meta) {
-                        return '<button style="margin-bottom: 0 !important;" class = "btn btn-outline-dark">Report</button>';
+                        if (@ViewBag.UserRole == 2 || @ViewBag.UserRole == 3) {
+                            return '<button style="margin-bottom: 0 !important;" class = "btn btn-outline-dark">Report</button>';
+                        }
+                        return '';
                     }
                 },
             ],
@@ -202,12 +205,10 @@
 
     $('#ReportTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
+
         window.open(
-            "/ReportView/GetDepartmentReportView?DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId, "_self");
+                "/ReportView/GetDepartmentReportView?DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId, "_self");
     });
-
-
-
 
 
     function getTableData(table) {
@@ -303,11 +304,6 @@
     }
 
 
-
-
-
-
-
     $("#Month").change(function () {
         table.destroy();
         bindDataTable();
@@ -320,4 +316,3 @@
 
 
 </script>
-

@@ -1194,7 +1194,6 @@ namespace Performance_Appraisal_System.Controllers
         }
 
 
-
         public ActionResult PendingReportListView(String SubjectName, int? DepartmentId, int? SubjectId, int? Month, int? Year)
         {
             var Current_Month = Convert.ToString(DateTime.Now.Month - 1);
@@ -2638,6 +2637,9 @@ namespace Performance_Appraisal_System.Controllers
                                        .FirstOrDefault();
 
             ViewBag.DepartmentName = department.DepartmentName;
+            
+            User user = (User)HttpContext.Session["User"];
+            ViewBag.UserRole = user.RoleId;
 
             ViewBag.UId = UId;
             ViewBag.DepartmentId = DepartmentId;

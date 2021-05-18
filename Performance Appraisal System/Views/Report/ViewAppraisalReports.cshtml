@@ -3,42 +3,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{
-    Html.RenderPartial("PrevNextBar");
-}
-
 <div class="container" style="padding: 30px;background: white;">
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;
         background: #f2f7fb !important;">
         <br>
         <br>
-        <h3 class="card-title text-center">मुल्यांकन प्रणाली अहवाल पहा</h3>
+        <h3 class="card-title text-center">मुल्यांकन प्रणाली अहवाल</h3>
         <hr>
 
+        <br>
 
-        <div class="center-div">
+        <div class="form-row" style="text-align:center; justify-content:space-around">
+
+            <div class="form-group col-md-4">
+                <div class="card danger-card">
+                    <div class="card-body">
+                        <img src="~/Images/circle.svg" class="card-img-absolute" alt="circle-image">
+                        <h5 class="card-title">महाराष्ट्र राज्य अहवाल</h5>
+                        <p class="card-text">( State Appraisal Reports )</p>
+                        <hr>
+                        <a href="/ReportView/GetStateReportView" title="महाराष्ट्र राज्य अहवाल" class="btn btn-dark">Show Reports</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <div class="card success-card">
+                    <div class="card-body">
+                        <img src="~/Images/circle.svg" class="card-img-absolute" alt="circle-image">
+                        <h5 class="card-title">शाखा निहाय अहवाल</h5>
+                        <p class="card-text">( Branch-wise Appraisal Reports )</p>
+                        <hr>
+                        <a href="/Report/DepartmentReportSelection" title="शाखा निहाय अहवाल" class="btn btn-dark">Show Reports</a>
+                    </div>
+                </div>
+            </div>
 
 
-            <a href="/ReportView/GetStateReportView" title="State Appraisal Reports ( महाराष्ट्र राज्य अहवाल )" class="extra-btn" style="background: #388e3c !important;">
-                महाराष्ट्र राज्य अहवाल <br> ( State Appraisal Reports )
-            </a>
-            <br>
-            <br>
-
-
-            <a href="/Report/DepartmentReportSelection" title="Branch-Wise Appraisal Reports ( शाखा निहाय अहवाल )" class="extra-btn" style="background: #388e3c !important;">
-                शाखा निहाय अहवाल <br> ( Branch-wise Appraisal Reports )
-            </a>
-            <br>
-            <br>
-
-            <a href="/Report/OfficeReportSelection" title="Office-Wise Appraisal Reports ( कार्यालय निहाय अहवाल )" class="extra-btn" style="background: #388e3c !important;">
-                कार्यालय निहाय अहवाल <br> ( Office-wise Appraisal Reports )
-            </a>
-            <br>
-            <br>
+            <div class="form-group col-md-4">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <img src="~/Images/circle.svg" class="card-img-absolute" alt="circle-image">
+                        <h5 class="card-title">कार्यालय निहाय अहवाल</h5>
+                        <p class="card-text">( Office-wise Appraisal Reports )</p>
+                        <hr>
+                        <a href="/Report/OfficeReportSelection" title="कार्यालय निहाय अहवाल" class="btn btn-dark">Show Reports</a>
+                    </div>
+                </div>
+            </div>
 
         </div>
+
+        <br>
+        <br>
+
     </div>
 
 </div>
