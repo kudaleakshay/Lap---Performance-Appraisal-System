@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    Html.RenderPartial("PrevNextBar");
+}
 
 <div class="container" style="padding: 30px;background: white;">
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -57,8 +60,8 @@
                             </tr>
                         </tfoot>
                      </table>
-                    <br>
-                    <br>
+<br>
+<br>
                     <hr>
                     <div id="chart"></div>
                 </div>

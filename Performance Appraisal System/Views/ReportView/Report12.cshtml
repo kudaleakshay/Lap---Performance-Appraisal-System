@@ -1,8 +1,11 @@
 ﻿@model Performance_Appraisal_System.ViewModels.DepartmentsReportViewModel
 
+@{ ViewBag.Title = "सेवानिवृत्ती प्रकरणे";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
 @{
-    ViewBag.Title = "सेवानिवृत्ती प्रकरणे";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.RenderPartial("PrevNextBar");
 }
 
 <div class="container" style="padding: 30px;background: white;">
@@ -60,31 +63,27 @@
                         </thead>
                         <tbody style="text-align: center;"></tbody>
                         @*  <tfoot>
-                <tr style="background:#a8bdbd; font-size:18px">
-                    <th style="text-align:center">महाराष्ट्र</th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                </tr>
-            </tfoot>*@
+                                <tr style="background:#a8bdbd; font-size:18px">
+                                    <th style="text-align:center">महाराष्ट्र</th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                </tr>
+                            </tfoot>*@
                     </table>
 
-                    <div class="center-div">
+                    @{ Html.RenderPartial("NotApplicableListView"); }
 
-                        <button class="btn btn-danger" onclick="getPendingList()">मूल्यांकन अहवाल न भरलेल्या कार्यालयांची यादी</button>
-
-                    </div>  
-
-                        <hr>
-                        <div id="chart"></div>
-                    </div>
-                    <br>
-                    <br>
+                    <hr>
+                    <div id="chart"></div>
                 </div>
+                <br>
+                <br>
+            </div>
         </div>
     </div>
 </div>
@@ -283,6 +282,5 @@
 
         window.open("/ReportView/PendingReportListView?SubjectName=@ViewBag.Title&DepartmentId=" + DepartmentId + "&SubjectId=" + SubjectId + "&Month=" + Month + "&Year=" + Year, "_self");
     }
-
 
 </script>

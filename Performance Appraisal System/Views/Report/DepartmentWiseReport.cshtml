@@ -4,8 +4,11 @@
     ViewBag.Title = "मूल्यांक भारांक तक्ता";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<br>
-<br>
+
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
 <div class="container" style="padding: 30px;background: white;">
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
         <br>

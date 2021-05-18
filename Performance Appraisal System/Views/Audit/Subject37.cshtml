@@ -5,8 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<br>
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
+
 @using (Html.BeginForm("Subject37", "Audit", FormMethod.Post))
 {
     <div class="container" style="padding: 30px;background: white;">
@@ -85,7 +88,7 @@
                             </div>
 
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -158,10 +161,10 @@
 
 
                             @*<div class="form-group col-md-10">
-                                @Html.LabelFor(temp => temp.Remarks)
-                                @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
-                                @Html.ValidationMessageFor(temp => temp.Remarks)
-                            </div>*@
+                                    @Html.LabelFor(temp => temp.Remarks)
+                                    @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                                    @Html.ValidationMessageFor(temp => temp.Remarks)
+                                </div>*@
 
                         </div>
                     </div>

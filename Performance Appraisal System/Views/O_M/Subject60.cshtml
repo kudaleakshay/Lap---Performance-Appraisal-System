@@ -4,9 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    Html.RenderPartial("PrevNextBar");
+}
 
-<br>
-<br>
+
 @using (Html.BeginForm("Subject60", "O_M", FormMethod.Post))
 {
     <div class="container" style="padding: 30px;background: white;">

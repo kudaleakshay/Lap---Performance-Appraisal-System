@@ -406,3 +406,127 @@
     color: #e77817 !important;
     font-size: 20px;
 }
+
+
+
+.nextprev {
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+
+    .nextprev input {
+        font-size: 17px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+    }
+
+        .nextprev input:link, .nextprev a:visited {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .nextprev input.w3-right, .nextprev a.w3-left {
+            background-color: #04AA6D;
+            color: #ffffff;
+            border-color: #04AA6D
+        }
+
+
+.w3-cell-row:before, .w3-cell-row:after, .w3-clear:after, .w3-clear:before, .w3-bar:before, .w3-bar:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.w3-left {
+    float: left !important
+}
+
+.w3-right {
+    float: right !important
+}
+
+.ws-btn {
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-touch-callout: none;
+    user-select: none;
+    background-color: #04AA6D;
+    color: #ffffff
+}
+
+    .ws-btn:hover, .ws-btn:active {
+        background-color: #059862 !important;
+        color: #ffffff;
+    }
+
+
+
+.success-card {
+    width: 100%;
+    background: linear-gradient(to right, #59b8b0, #00e385) !important;
+    color: white;
+    text-align: center;
+}
+
+.info-card {
+    width: 100%;
+    background: linear-gradient(to right, #60b8ff, #0371c8 99%) !important;
+    color: white;
+    text-align: center;
+}
+
+.danger-card {
+    width: 100%;
+    background: linear-gradient(to right, #ff9551, #ff0044) !important;
+    color: white;
+    text-align: center;
+}
+
+
+.success-card-invert {
+    width: 100%;
+    background: linear-gradient(to left, #59b8b0, #00e385) !important;
+    color: white;
+    text-align: center;
+}
+
+.info-card-invert {
+    width: 100%;
+    background: linear-gradient(to left, #60b8ff, #0371c8 99%) !important;
+    color: white;
+    text-align: center;
+}
+
+.danger-card-invert {
+    width: 100%;
+    background: linear-gradient(to left, #ff9551, #ff0044) !important;
+    color: white;
+    text-align: center;
+}
+
+.card-img-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+
+.card-img-absolute-invert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(-1);
+    height: 100%;
+}

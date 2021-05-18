@@ -5,8 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<br>
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
 @using (Html.BeginForm("Subject36", "Audit", FormMethod.Post))
 {
     <div class="container" style="padding: 30px;background: white;">
@@ -124,7 +126,7 @@
                     </div>
 
 
-                   
+
                 </div>
             </div>
         </div>

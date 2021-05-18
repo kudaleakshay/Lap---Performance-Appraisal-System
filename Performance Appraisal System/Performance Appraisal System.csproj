@@ -660,6 +660,8 @@
     <Content Include="Views\ReportView\Report64.cshtml" />
     <Content Include="Views\ReportView\Report48.cshtml" />
     <Content Include="Views\ReportView\PendingReportListView.cshtml" />
+    <Content Include="Views\Shared\NotApplicableListView.cshtml" />
+    <Content Include="Views\Shared\PrevNextBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

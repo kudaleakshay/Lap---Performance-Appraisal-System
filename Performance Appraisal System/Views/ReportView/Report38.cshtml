@@ -4,6 +4,9 @@
     ViewBag.Title = "विनिर्दिष्ट अहवालावर निबंधकाने केलेली कारवाई";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    Html.RenderPartial("PrevNextBar");
+}
 
 <div class="container" style="padding: 30px;background: white;">
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -63,8 +66,10 @@
                         </thead>
                         <tbody style="text-align: center;"></tbody>
                      </table>
-                    <br>
-                    <br>
+
+                    @{ Html.RenderPartial("NotApplicableListView"); }
+
+
 
                     <hr>
                     <div id="chart"></div>
@@ -256,5 +261,15 @@
         bindDataTable();
         $("#Year").blur();
     })
+
+    function getPendingList(DepartmentId) {
+
+        var Month = $("#Month").val();
+        var Year = $("#Year").val();
+        var DepartmentId = $("#DepartmentId").val();
+        var SubjectId = $("#SubjectId").val();
+
+        window.open("/ReportView/PendingReportListView?SubjectName=@ViewBag.Title&DepartmentId=" + DepartmentId + "&SubjectId=" + SubjectId + "&Month=" + Month + "&Year=" + Year, "_self");
+    }
 
 </script>

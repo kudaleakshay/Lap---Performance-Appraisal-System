@@ -4,6 +4,9 @@
     ViewBag.Title = "मूल्यांकन अहवाल न भरलेल्या कार्यालयांची यादी";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    Html.RenderPartial("PrevNextBar");
+}
 
 <div class="container" style="padding: 30px;background: white;">
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -121,8 +124,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.SubjectName - Pending Report List" + " - " + SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.SubjectName - Pending Report List" + " - " + SelectedMonth + " " + SelectedYear }
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.SubjectName - मूल्यांकन अहवाल न भरलेल्या कार्यालयांची यादी" + " - " + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.SubjectName - मूल्यांकन अहवाल न भरलेल्या कार्यालयांची यादी" + " - " + SelectedMonth + " " + SelectedYear }
             ]
           });
     }
@@ -171,8 +174,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.SubjectName - Pending Report List" + " - " + SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.SubjectName - Pending Report List" + " - " + SelectedMonth + " " + SelectedYear }
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.SubjectName - विषय लागु नसलेल्या कार्यालयांची यादी" + " - " + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.SubjectName - विषय लागु नसलेल्या कार्यालयांची यादी" + " - " + SelectedMonth + " " + SelectedYear }
             ]
           });
     }

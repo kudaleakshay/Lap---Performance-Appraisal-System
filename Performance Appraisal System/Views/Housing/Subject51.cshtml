@@ -5,8 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<br>
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
+
 @using (Html.BeginForm("Subject51", "Housing", FormMethod.Post))
 {
     <div class="container" style="padding: 30px;background: white;">
@@ -183,10 +186,10 @@
                             </div>
 
                             @*<div class="form-group col-md-10">
-                                @Html.LabelFor(temp => temp.Remarks)
-                                @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
-                                @Html.ValidationMessageFor(temp => temp.Remarks)
-                            </div>*@
+                                    @Html.LabelFor(temp => temp.Remarks)
+                                    @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                                    @Html.ValidationMessageFor(temp => temp.Remarks)
+                                </div>*@
 
                         </div>
                     </div>
@@ -239,7 +242,7 @@
         var Total_Marks = Number(@Session["TotalMarks"].ToString());
     }
 
-    
+
 
     function Total_Cases() {
         var Total = Number($("#Last_Month_Pending_Cases").val()) + Number($("#Current_Month_Received_Cases").val());
@@ -248,7 +251,7 @@
         $("#Total_Cases_val").css("font-weight", "bold");
     }
 
-    
+
     function Total_Cases_Aim() {
         var Total = Number($("#Last_Month_Cases_Aim").val()) + Number($("#Current_Month_Cases_Aim").val());
         $("#Total_Cases_Aim").val(Total);
@@ -256,7 +259,7 @@
         $("#Total_Cases_Aim_val").css("font-weight", "bold");
     }
 
-    
+
     function Total_Disposed_Cases() {
         var Total = Number($("#Last_Month_Disposed_Cases").val()) + Number($("#Current_Month_Disposed_Cases").val());
         $("#Total_Disposed_Cases").val(Total);
@@ -307,7 +310,7 @@
 
     $("#Last_Month_Cases_Aim").change(Total_Cases_Aim);
     $("#Current_Month_Cases_Aim").change(Total_Cases_Aim);
-    
+
     $("#Last_Month_Disposed_Cases").change(Total_Disposed_Cases);
     $("#Current_Month_Disposed_Cases").change(Total_Disposed_Cases);
 

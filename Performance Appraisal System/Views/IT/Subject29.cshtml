@@ -5,8 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<br>
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
+
 @using (Html.BeginForm("Subject29", "IT", FormMethod.Post))
 {
     <div class="container" style="padding: 30px;background: white;">
@@ -315,7 +318,7 @@
     $("#PM_Last_Month_Pending_Complaints").change(Appraisal_Marks);
     $("#PM_Current_Month_Received_Complaints").change(Appraisal_Marks);
     $("#PM_Current_Month_Resolved_Complaints").change(Appraisal_Marks);
-    
+
 
     $("#Aim").change(Appraisal_Marks);
     $("#Achieved").change(Appraisal_Marks);

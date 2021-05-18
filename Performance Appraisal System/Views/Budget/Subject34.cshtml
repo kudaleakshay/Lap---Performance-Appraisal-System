@@ -5,8 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<br>
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
 @using (Html.BeginForm("Subject34", "Budget", FormMethod.Post))
 {
 

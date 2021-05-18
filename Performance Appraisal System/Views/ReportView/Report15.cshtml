@@ -4,6 +4,9 @@
     ViewBag.Title = "महालेखापाल प्रलंबित लेखापरिच्छेद अहवाल सादर करणे";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    Html.RenderPartial("PrevNextBar");
+}
 
 <div class="container" style="padding: 30px;background: white;">
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -81,8 +84,10 @@
                     </tr>
                 </tfoot>*@
                      </table>
-                    <br>
-                    <br>
+
+                    @{ Html.RenderPartial("NotApplicableListView"); }
+
+
 
                     <hr>
                     <div id="chart"></div>
@@ -276,5 +281,15 @@
         bindDataTable();
         $("#Year").blur();
     })
+
+    function getPendingList(DepartmentId) {
+
+        var Month = $("#Month").val();
+        var Year = $("#Year").val();
+        var DepartmentId = $("#DepartmentId").val();
+        var SubjectId = $("#SubjectId").val();
+
+        window.open("/ReportView/PendingReportListView?SubjectName=@ViewBag.Title&DepartmentId=" + DepartmentId + "&SubjectId=" + SubjectId + "&Month=" + Month + "&Year=" + Year, "_self");
+    }
 
 </script>
