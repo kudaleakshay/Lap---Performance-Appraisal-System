@@ -273,6 +273,7 @@ namespace Performance_Appraisal_System.Controllers
             return View();
         }
 
+
         public JsonResult GetDepartmentReportData(int DepartmentId, int SubjectId, int Month, int Year)
         {
             Session["ReportMonth"] = Month;
@@ -1250,16 +1251,19 @@ namespace Performance_Appraisal_System.Controllers
 
             db.Configuration.ProxyCreationEnabled = false;
 
+            var AvailableUsers = db.Users.Where(u => u.Status == 1 && u.RoleId != 2).ToList();
 
             switch (DepartmentId)
             {
                 case 1:
                     switch (SubjectId)
                     {
+
                         case 11:
+
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report11.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1272,7 +1276,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 12:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report12.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1286,7 +1290,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 13:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report13.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1300,7 +1304,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 14:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report14.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1314,7 +1318,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 15:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report15.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1328,7 +1332,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 16:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report16.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1342,12 +1346,15 @@ namespace Performance_Appraisal_System.Controllers
                     break;
 
                 case 2:
+
+                    AvailableUsers = db.Users.Where(u => u.AppraisalType != 1 && u.Status == 1 && u.RoleId != 2).ToList();
+
                     switch (SubjectId)
                     {
                         case 17:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report17.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1360,7 +1367,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 18:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report18.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1373,7 +1380,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 23:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report23.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1391,7 +1398,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 24:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report24.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1404,7 +1411,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 25:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report25.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1417,7 +1424,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 26:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report26.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1430,7 +1437,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 27:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report27.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1443,7 +1450,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 28:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report28.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1456,7 +1463,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 29:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report29.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1474,7 +1481,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 30:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report30.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1487,7 +1494,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 31:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report31.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1501,7 +1508,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 34:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report34.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1519,7 +1526,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 35:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report35.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1532,7 +1539,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 36:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report36.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1545,7 +1552,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 37:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report37.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1558,7 +1565,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 38:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report38.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1571,7 +1578,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 39:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report39.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1584,7 +1591,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 40:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report40.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1602,7 +1609,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 41:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report41.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1615,7 +1622,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 42:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report42.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1628,7 +1635,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 43:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report43.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1641,7 +1648,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 44:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report44.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1654,7 +1661,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 45:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report45.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1667,7 +1674,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 46:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report46.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1680,7 +1687,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 47:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report47.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1693,7 +1700,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 48:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report48.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1706,7 +1713,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 49:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report49.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1719,7 +1726,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 50:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report50.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1732,12 +1739,15 @@ namespace Performance_Appraisal_System.Controllers
                     break;
 
                 case 7:
+
+                    AvailableUsers = db.Users.Where(u => u.AppraisalType != 2 && u.Status == 1 && u.RoleId != 2).ToList();
+
                     switch (SubjectId)
                     {
                         case 51:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report51.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1750,7 +1760,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 52:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report52.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1768,7 +1778,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 53:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report53.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1781,7 +1791,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 54:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report54.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1795,7 +1805,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 56:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report56.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1808,7 +1818,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 57:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report57.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1821,7 +1831,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 58:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report58.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1834,7 +1844,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 59:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report59.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1852,7 +1862,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 60:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report60.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1866,7 +1876,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 61:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report61.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1885,7 +1895,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 62:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report62.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1898,7 +1908,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 63:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report63.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -1911,7 +1921,7 @@ namespace Performance_Appraisal_System.Controllers
                         case 64:
                             return Json(new
                             {
-                                data = (from User in db.Users
+                                data = (from User in AvailableUsers
                                         where !db.Report64.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
                                         orderby User.SortKey ascending
                                         select new
@@ -2637,7 +2647,7 @@ namespace Performance_Appraisal_System.Controllers
                                        .FirstOrDefault();
 
             ViewBag.DepartmentName = department.DepartmentName;
-            
+
             User user = (User)HttpContext.Session["User"];
             ViewBag.UserRole = user.RoleId;
 
@@ -2670,6 +2680,7 @@ namespace Performance_Appraisal_System.Controllers
                                UId = r.UId,
                                Department = d.DepartmentName,
                            }).ToList();
+
 
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
@@ -2726,7 +2737,6 @@ namespace Performance_Appraisal_System.Controllers
 
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
-
 
     }
 }
