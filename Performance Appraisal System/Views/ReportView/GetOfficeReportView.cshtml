@@ -61,17 +61,17 @@
                     <br>
 
                     <hr>
-                    <br>
-                    <br>
-                    <h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName  यांनी अद्याप माहिती न भरलेले विषय </strong></h5>
+
+                    @*<h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName  यांनी अद्याप माहिती न भरलेले विषय </strong></h5>*@
 
                     <br>
                     <table id="RemainingBranchTable" class="table table-striped branchtable">
-                        <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
+                        <thead style="background-color: #a8bdbd">
                             <tr>
-                                <th>शाखा</th>
+                                <th>माहिती प्राप्त नसलेल्या शाखा</th>
                             </tr>
                         </thead>
+                        <tbody></tbody>
                     </table>
                     <br>
                     <br>
@@ -205,21 +205,30 @@
         var Year = $("#Year").val();
         $("#Year").blur();
 
-
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
+
+        $('#RemainingBranchTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName  यांनी अद्याप माहिती न भरलेले विषय </strong></h5></caption>');
 
         table1 = $("#RemainingBranchTable").DataTable({
             paging: false,
             responsive: true,
             processing: true,
             autoWidth: true,
-            filter: true,
+            filter: false,
             info: false,
             fixedColumns: true,
             order: [],
+            fnInitComplete: function () {
+                if ($(this).find('tbody tr').length <= 1) {
+                    $(this).parent().hide();
+                }
+            },
             language: {
                 emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('td', nRow).css('background-color', '#ffe6e6');
             },
             "ajax": {
                 "url": "/ReportView/GetRemainingBranchData?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
@@ -232,15 +241,15 @@
             "columns": [
                 { "data": "Department" },
             ],
-            dom: 'Bfrtip',
+            @*dom: 'Bfrtip',
             buttons: [
                 { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +'- यांनी अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear },
                 { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +'- यांनी अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear }
-            ]
+            ]*@
         });
     }
 
-   
+
     $('#BranchTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
         window.open(

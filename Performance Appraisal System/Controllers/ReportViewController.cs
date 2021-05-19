@@ -2648,10 +2648,15 @@ namespace Performance_Appraisal_System.Controllers
 
             ViewBag.DepartmentName = department.DepartmentName;
 
-            //get data from DB
-            User user = (User)HttpContext.Session["User"];
-            ViewBag.UserRole = user.RoleId;
+ 
+            User user = db.Users.Where(u => u.UId == UId)
+                                       .FirstOrDefault();
+
             ViewBag.UserName = user.Name;
+            
+            User LoggedInUser = (User)HttpContext.Session["User"];
+            ViewBag.UserRole = LoggedInUser.RoleId;
+            
             ViewBag.UId = UId;
             
             ViewBag.DepartmentId = DepartmentId;
@@ -2684,7 +2689,7 @@ namespace Performance_Appraisal_System.Controllers
                            }).ToList();
 
 
-            return Json(new { data = reports, reports }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetRemainingBranchData(int UId, int Month, int Year)

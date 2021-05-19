@@ -12,7 +12,7 @@
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
         <br>
         <br>
-        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.DepartmentName - मुल्यांकन अहवाल</strong></h5>
+        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.UserName - @ViewBag.DepartmentName - मुल्यांकन अहवाल</strong></h5>
         <hr>
         <div class="card-text">
 
@@ -63,17 +63,16 @@
                     <br>
                     <br>
                     <hr>
-                    <br>
-                    <br>
-                    <h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय</strong></h5>
+                    @*<h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय</strong></h5>*@
 
                     <br>
                     <table id="RemainingSubTable" class="table table-striped branchtable">
-                        <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
+                        <thead style="background-color: #a8bdbd">
                             <tr>
-                                <th>विषय</th>
+                                <th>माहिती प्राप्त नसलेले विषय</th>
                             </tr>
                         </thead>
+                        <tbody></tbody>
                     </table>
                     <br>
                     <br>
@@ -93,7 +92,7 @@
     $(document).ready(function () {
 
         bindDataTable();
-        @*bindRemainignSubTable();*@
+        bindRemainignSubTable();
     });
 
 
@@ -108,7 +107,6 @@
 
         var Year = $("#Year").val();
         $("#Year").blur();
-
 
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
@@ -224,6 +222,7 @@
         var Year = $("#Year").val();
         $("#Year").blur();
 
+        $('#RemainingSubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय</strong></h5></caption>');
 
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
@@ -233,29 +232,37 @@
             responsive: true,
             processing: true,
             autoWidth: true,
-            filter: true,
+            filter: false,
             info: false,
             fixedColumns: true,
             order: [],
+            fnInitComplete: function () {
+                if ($(this).find('tbody tr').length <= 1) {
+                    $(this).parent().hide();
+                }
+            },
             language: {
                 emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('td', nRow).css('background-color', '#ffe6e6');
             },
             "ajax": {
                 "url": "/ReportView/GetRemainingSubjectsData?UId=" + UId + "&Month=" + Month + "&Year=" + Year + "&DepartmentId=" + DepartmentId,
                "type": "GET",
-                  "datatype": "json",
-                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+               "datatype": "json",
+               "error": function (XMLHttpRequest, textStatus, errorThrown) {
                     alert("Something went wrong, Please try again...");
                 }
             },
             "columns": [
                 { "data": "Subject" },
             ],
-            dom: 'Bfrtip',
+            @*dom: 'Bfrtip',
             buttons: [
                 { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear },
                 { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear }
-            ]
+            ]*@
         });
 
     }
