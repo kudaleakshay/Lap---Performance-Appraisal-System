@@ -2648,10 +2648,12 @@ namespace Performance_Appraisal_System.Controllers
 
             ViewBag.DepartmentName = department.DepartmentName;
 
+            //get data from DB
             User user = (User)HttpContext.Session["User"];
             ViewBag.UserRole = user.RoleId;
-
+            ViewBag.UserName = user.Name;
             ViewBag.UId = UId;
+            
             ViewBag.DepartmentId = DepartmentId;
             return View();
         }
@@ -2682,8 +2684,73 @@ namespace Performance_Appraisal_System.Controllers
                            }).ToList();
 
 
-            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = reports, reports }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetRemainingBranchData(int UId, int Month, int Year)
+        {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+            User user = db.Users.Where(u => u.UId == UId)
+                                       .FirstOrDefault();
+
+            var DepartmentList = db.Departments.ToList();
+
+            switch (user.AppraisalType)
+            {
+                case 1:
+                    //As Department 2 not in the Appraisal type 1 so remove it from the list
+                    DepartmentList = db.Departments.Where(u => u.Id != 2).ToList();
+                    break;
+
+                case 2:
+
+                    //As Department 7 not in the Appraisal type 2 so remove it from the list
+                    DepartmentList = db.Departments.Where(u => u.Id != 7).ToList();
+                    break;
+            }
+
+            var reports = (from Departments in DepartmentList
+                           where !db.DepartmentMasterReports.Any(f => f.UId == UId && f.Month == Month && f.Year == Year && f.DepartmentId == Departments.Id)
+                           select new
+                           {
+                               Department = Departments.DepartmentName,
+                           }).ToList();
+
+            return Json(new
+            {
+                data = reports
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult GetRemainingSubjectsData(int UId, int Month, int Year, int DepartmentId)
+        {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var SubjectList = db.Subjects.Where(s => s.Type ==2 && s.DepartmentId == DepartmentId).ToList();
+
+            var SubMasterReportsList = db.SubMasterReports.Where(f => f.UId == UId && f.Month == Month && f.Year == Year && f.DepartmentId == DepartmentId).ToList();
+
+            var reports = (from Subjects in SubjectList
+                           where !SubMasterReportsList.Any(f => f.UId == UId && f.Month == Month && f.Year == Year && f.SubjectId == Subjects.SId)
+                           select new
+                           {
+                               Subject = Subjects.SubjectName,
+                           }).ToList();
+
+            return Json(new
+            {
+                data = reports
+            }, JsonRequestBehavior.AllowGet);
+        }
+
 
         public JsonResult GetSubReportData(int UId, int Month, int Year, int DepartmentId)
         {

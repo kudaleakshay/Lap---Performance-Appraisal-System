@@ -59,11 +59,24 @@
                                 <th style="text-align:center"></th>
                             </tr>
                         </tfoot>
-                     </table>
-<br>
-<br>
+                    </table>
+                    <br>
+                    <br>
                     <hr>
-                    <div id="chart"></div>
+                    <br>
+                    <br>
+                    <h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय</strong></h5>
+
+                    <br>
+                    <table id="RemainingSubTable" class="table table-striped branchtable">
+                        <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
+                            <tr>
+                                <th>विषय</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <br>
+                    <br>
                 </div>
                 <br>
                 <br>
@@ -80,6 +93,7 @@
     $(document).ready(function () {
 
         bindDataTable();
+        @*bindRemainignSubTable();*@
     });
 
 
@@ -191,16 +205,59 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.DepartmentName" +'- मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.DepartmentName" +'- मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear }
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.DepartmentName" +'- @ViewBag.UserName मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.DepartmentName" +'- @ViewBag.UserName मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear }
             ]
         });
 
+    }
+
+    function bindRemainignSubTable() {
+
+        var UId = $("#UId").val();
+        var DepartmentId = $("#DepartmentId").val();
 
 
-        const tableData = getTableData(table);
-        createHighcharts(tableData);
-        setTableEvents(table);
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
+        table1 = $("#RemainingSubTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: true,
+            info: false,
+            fixedColumns: true,
+            order: [],
+            language: {
+                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+            },
+            "ajax": {
+                "url": "/ReportView/GetRemainingSubjectsData?UId=" + UId + "&Month=" + Month + "&Year=" + Year + "&DepartmentId=" + DepartmentId,
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
+            },
+            "columns": [
+                { "data": "Subject" },
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear }
+            ]
+        });
+
     }
 
     $('#ReportTable tbody').on('click', 'button', function () {
@@ -211,107 +268,19 @@
     });
 
 
-    function getTableData(table) {
-        const dataArray = [],
-            BranchArray = [],
-            PercentageArray = []
-
-        // loop table rows
-        table.rows({ search: "applied" }).every(function () {
-            const data = this.data();
-            BranchArray.push(data.Subject);
-            PercentageArray.push(parseInt(data.report.Appraisal_Percentage));
-        });
-
-        // store all data in dataArray
-        dataArray.push(BranchArray, PercentageArray);
-
-        return dataArray;
-    }
-
-    function createHighcharts(data) {
-        Highcharts.setOptions({
-            lang: {
-                thousandsSep: ","
-            }
-        });
-
-        Highcharts.chart("chart", {
-            title: {
-                text: "@ViewBag.DepartmentName - मुल्यांकन प्रणाली अहवाल"
-            },
-            xAxis: [
-                {
-                    categories: data[0],
-                    labels: {
-                        rotation: 0
-                    }
-                }
-            ],
-            yAxis: [
-                {
-                    title: {
-                        text: "मूल्यांकन टक्केवारी"
-                    }
-                }
-            ],
-            series: [
-                {
-                    name: "मूल्यांकन टक्केवारी",
-                    color: "#ffc107",
-                    type: "column",
-                    data: data[1],
-                    tooltip: {
-                        valueSuffix: " %"
-                    }
-                }
-            ],
-            tooltip: {
-                shared: true
-            },
-            legend: {
-                backgroundColor: "#ececec",
-                shadow: true,
-            },
-            credits: {
-                enabled: false
-            },
-            noData: {
-                style: {
-                    fontSize: "16px"
-                }
-            }
-        });
-    }
-
-    let draw = false;
-
-    function setTableEvents(table) {
-        // listen for page clicks
-        table.on("page", () => {
-            draw = true;
-        });
-
-        // listen for updates and adjust the chart accordingly
-        table.on("draw", () => {
-            if (draw) {
-                draw = false;
-            } else {
-                const tableData = getTableData(table);
-                createHighcharts(tableData);
-            }
-        });
-    }
-
 
     $("#Month").change(function () {
         table.destroy();
+        table1.destroy();
         bindDataTable();
+        bindRemainignSubTable();
     })
 
     $("#Year").change(function () {
         table.destroy();
+        table1.destroy();
         bindDataTable();
+        bindRemainignSubTable();
     })
 
 

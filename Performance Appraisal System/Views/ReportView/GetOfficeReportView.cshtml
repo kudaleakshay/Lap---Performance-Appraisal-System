@@ -56,12 +56,26 @@
                                 <th style="vertical-align: middle !important;"></th>
                             </tr>
                         </tfoot>
-                     </table>
-<br>
-<br>
- 
+                    </table>
+                    <br>
+                    <br>
+
                     <hr>
-                    <div id="chart"></div>
+                    <br>
+                    <br>
+                    <h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName  यांनी अद्याप माहिती न भरलेले विषय </strong></h5>
+
+                    <br>
+                    <table id="RemainingBranchTable" class="table table-striped branchtable">
+                        <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
+                            <tr>
+                                <th>शाखा</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <br>
+                    <br>
+
                 </div>
                 <br>
                 <br>
@@ -78,6 +92,7 @@
     $(document).ready(function () {
 
         bindDataTable();
+        bindRemainignBranchTable();
     });
 
 
@@ -177,105 +192,55 @@
             ]
         });
 
-
-        const tableData = getTableData(table);
-        createHighcharts(tableData);
-        setTableEvents(table);
     }
 
-    function getTableData(table) {
-        const dataArray = [],
-            BranchArray = [],
-            PercentageArray = []
 
-        // loop table rows
-        table.rows({ search: "applied" }).every(function () {
-            const data = this.data();
-            BranchArray.push(data.Department);
-            PercentageArray.push(parseInt(data.Appraisal_Percentage));
-        });
+    function bindRemainignBranchTable() {
 
-        // store all data in dataArray
-        dataArray.push(BranchArray, PercentageArray);
+        var UId = $("#UId").val();
 
-        return dataArray;
-    }
+        var Month = $("#Month").val();
+        $("#Month").blur();
 
-    function createHighcharts(data) {
-        Highcharts.setOptions({
-            lang: {
-                thousandsSep: ","
-            }
-        });
+        var Year = $("#Year").val();
+        $("#Year").blur();
 
-        Highcharts.chart("chart", {
-            title: {
-                text: "@ViewBag.UserName - मुल्यांकन अहवाल"
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
+        table1 = $("#RemainingBranchTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: true,
+            info: false,
+            fixedColumns: true,
+            order: [],
+            language: {
+                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
             },
-            xAxis: [
-                {
-                    categories: data[0],
-                    labels: {
-                        rotation: 0
-                    }
+            "ajax": {
+                "url": "/ReportView/GetRemainingBranchData?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
                 }
+            },
+            "columns": [
+                { "data": "Department" },
             ],
-            yAxis: [
-                {
-                    title: {
-                        text: "मूल्यांकन टक्केवारी"
-                    }
-                }
-            ],
-            series: [
-                {
-                    name: "मूल्यांकन टक्केवारी",
-                    color: "#ffc107",
-                    type: "column",
-                    data: data[1],
-                    tooltip: {
-                        valueSuffix: " %"
-                    }
-                }
-            ],
-            tooltip: {
-                shared: true
-            },
-            legend: {
-                backgroundColor: "#ececec",
-                shadow: true,
-            },
-            credits: {
-                enabled: false
-            },
-            noData: {
-                style: {
-                    fontSize: "16px"
-                }
-            }
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +'- यांनी अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +'- यांनी अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear }
+            ]
         });
     }
 
-    let draw = false;
-
-    function setTableEvents(table) {
-        // listen for page clicks
-        table.on("page", () => {
-            draw = true;
-        });
-
-        // listen for updates and adjust the chart accordingly
-        table.on("draw", () => {
-            if (draw) {
-                draw = false;
-            } else {
-                const tableData = getTableData(table);
-                createHighcharts(tableData);
-            }
-        });
-    }
-
-
+   
     $('#BranchTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
         window.open(
@@ -285,12 +250,16 @@
 
     $("#Month").change(function () {
         table.destroy();
+        table1.destroy();
         bindDataTable();
+        bindRemainignBranchTable();
     })
 
     $("#Year").change(function () {
         table.destroy();
+        table1.destroy();
         bindDataTable();
+        bindRemainignBranchTable();
     })
 
 
