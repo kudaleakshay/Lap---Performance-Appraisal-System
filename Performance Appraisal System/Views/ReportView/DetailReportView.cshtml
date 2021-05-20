@@ -12,8 +12,12 @@
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
         <br>
         <br>
-        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.UserName - @ViewBag.DepartmentName - मुल्यांकन अहवाल</strong></h5>
+        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.UserName - मुल्यांकन अहवाल</strong></h5>
         <hr>
+        <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
+            एकुण गुण: <strong> @ViewBag.Total </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp प्राप्त गुण: <strong> @ViewBag.AppraisalMarks </strong>
+            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp प्राप्त गुणांची टक्केवारी <strong> @ViewBag.Appraisal_Percentage </strong>
+        </div>
         <div class="card-text">
 
             <div class="center-group">
@@ -47,7 +51,7 @@
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
-                        <tfoot>
+                        @*<tfoot>
                             <tr style="background:#a8bdbd; font-size:18px">
                                 <th style="text-align:center">एकुण</th>
                                 <th style="text-align:center"></th>
@@ -56,7 +60,7 @@
                                 <th style="text-align:center"></th>
                                 <th style="text-align:center"></th>
                             </tr>
-                        </tfoot>
+                        </tfoot>*@
                     </table>
                     <br>
                     <br>
@@ -66,7 +70,6 @@
                     <table id="RemainingSubTable" class="table table-striped branchtable">
                         <thead style="text-align:center; background-color: #a8bdbd">
                             <tr>
-                                <th style="text-align:center">शाखा</th>
                                 <th style="text-align:center">माहिती प्राप्त नसलेले विषय</th>
                             </tr>
                         </thead>
@@ -340,7 +343,7 @@
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
 
-        table1 = $("#NASubTable").DataTable({
+        table3 = $("#NASubTable").DataTable({
             paging: false,
             responsive: true,
             processing: true,
@@ -424,15 +427,19 @@
     $("#Month").change(function () {
         table.destroy();
         table1.destroy();
+        table3.destroy();
         bindDataTable();
         bindRemainignSubTable();
+        bindNASubTable();
     })
 
     $("#Year").change(function () {
         table.destroy();
         table1.destroy();
+        table3.destroy();
         bindDataTable();
         bindRemainignSubTable();
+        bindNASubTable();
     })
 
 

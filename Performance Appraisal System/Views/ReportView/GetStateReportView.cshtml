@@ -17,14 +17,18 @@
 
             <div class="center-group">
                 <div class="form-row">
-                    <div class="form-group col-md-6 center-div">
+                    <div class="form-group col-md-4 center-div">
                         @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, new { @class = "form-control" })
                         @Html.ValidationMessageFor(temp => temp.Month)
                     </div>
 
-                    <div class="form-group col-md-6 center-div">
+                    <div class="form-group col-md-4 center-div">
                         @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, new { @class = "form-control" })
                         @Html.ValidationMessageFor(temp => temp.Year)
+                    </div>
+
+                    <div class="form-group col-md-4 center-div">
+                        @Html.DropDownList("Division", ViewBag.DivisionList as SelectList, "-- All Divisions --", new { @style = "font-size:14px; text-indent: 40%;", @class = "form-control" })
                     </div>
                 </div>
 
@@ -80,7 +84,10 @@
         var Year = $("#Year").val();
         $("#Year").blur();
 
-                        
+        var DivisionId = $("#Division").val();
+        $("#Division").blur();
+
+
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
 
@@ -102,7 +109,7 @@
                 }
             },
             "ajax": {
-                "url": "/ReportView/GetStateReportData?Month=" + Month + "&Year=" + Year,
+                "url": "/ReportView/GetStateReportData?Month=" + Month + "&Year=" + Year + "&DivisionId=" + DivisionId,
                "type": "GET",
                   "datatype": "json",
                 "error": function (XMLHttpRequest, textStatus, errorThrown) {
@@ -133,8 +140,6 @@
         createHighcharts(tableData);
         setTableEvents(table);
     }
-
-
 
     function getTableData(table) {
         const dataArray = [],
@@ -229,8 +234,6 @@
     }
 
 
-
-
     $("#Month").change(function () {
         table.destroy();
         bindDataTable();
@@ -241,10 +244,22 @@
         bindDataTable();
     })
 
+    $("#Division").change(function () {
+        table.destroy();
+        bindDataTable();
+    })
+
     $('#BranchTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
-        window.open(
+
+        var Month = $("#Month").val();
+
+        var Year = $("#Year").val();
+
+        @*window.open(
             "/ReportView/GetOfficeReportView?UId=" + data.UId, "_self");
+*@
+        window.open("/ReportView/DetailReportView?UserName="+data.Name+"&UId=" + data.UId + "&Month=" + Month + "&Year=" + Year, "_self");
     });
 
 

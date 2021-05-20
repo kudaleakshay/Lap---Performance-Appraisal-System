@@ -1284,8 +1284,24 @@ namespace Performance_Appraisal_System.Controllers
                      Value = x.ToString()
                  }), "Value", "Text", Current_Year);
 
-            ViewBag.UserName = UserName;
+            db.Configuration.ProxyCreationEnabled = false;
+            var reports = (from r in db.DepartmentMasterReports
+                           where r.Month == Month
+                                && r.Year == Year && r.UId == UId
+                           group r by r.UId into GroupReport
+                           select new
+                           {
+                               Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
+                               Total_Marks = (100 - GroupReport.Sum(x => x.Not_Applicable_Marks)),
+                               Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
+
+                           }).ToList();
+
             ViewBag.UId = UId;
+            ViewBag.UserName = UserName;
+            ViewBag.Total = reports[0].Total_Marks;
+            ViewBag.AppraisalMarks = reports[0].Appraisal_Marks;
+            ViewBag.Appraisal_Percentage = reports[0].Appraisal_Percentage;
 
             return View();
         }
@@ -2712,6 +2728,9 @@ namespace Performance_Appraisal_System.Controllers
 
         public ActionResult GetStateReportView()
         {
+            List<Division> DivisionList = db.Divisions.ToList();
+            ViewBag.DivisionList = new SelectList(DivisionList, "Id", "DivisionName");
+
             return View();
         }
 
@@ -2806,7 +2825,7 @@ namespace Performance_Appraisal_System.Controllers
         }
 
 
-        public JsonResult GetRemainingSubjectsData(int UId, int Month, int Year, int DepartmentId)
+        public JsonResult GetRemainingSubjectsData(int? UId, int? Month, int? Year, int? DepartmentId)
         {
             Session["ReportMonth"] = Month;
             Session["ReportYear"] = Year;
@@ -2830,7 +2849,7 @@ namespace Performance_Appraisal_System.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult DetailNASubjectsData(int UId, int Month, int Year)
+        public JsonResult DetailNASubjectsData(int? UId, int? Month, int? Year)
         {
             Session["ReportMonth"] = Month;
             Session["ReportYear"] = Year;
@@ -2856,7 +2875,7 @@ namespace Performance_Appraisal_System.Controllers
         }
 
 
-        public JsonResult DetailRemainingSubjectsData(int UId, int Month, int Year)
+        public JsonResult DetailRemainingSubjectsData(int? UId, int? Month, int? Year)
         {
             Session["ReportMonth"] = Month;
             Session["ReportYear"] = Year;
@@ -2907,7 +2926,7 @@ namespace Performance_Appraisal_System.Controllers
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetStateReportData(int Month, int Year)
+        public JsonResult GetStateReportData(int Month, int Year, int? DivisionId)
         {
             Session["ReportMonth"] = Month;
             Session["ReportYear"] = Year;
@@ -2931,6 +2950,33 @@ namespace Performance_Appraisal_System.Controllers
                                RoleId = u.RoleId,
 
                            }).ToList();
+
+
+            if (DivisionId != null)
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                reports = (from r in db.DepartmentMasterReports
+                               where r.Month == Month
+                                    && r.Year == Year
+                               group r by r.UId into GroupReport
+                               join u in db.Users
+                               on GroupReport.FirstOrDefault().UId equals u.UId
+                               where u.DivisionId == DivisionId
+                               orderby u.SortKey ascending
+                               select new
+                               {
+                                   Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
+                                   /*Appraisal_Percentage = Math.Round( (Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / GroupReport.Sum(x => x.Total_Marks)), 2),*/
+                                   Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
+                                   Total_Marks = (100 - GroupReport.Sum(x => x.Not_Applicable_Marks)),
+                                   Name = u.Name.Trim(),
+                                   UId = u.UId,
+                                   RoleId = u.RoleId,
+
+                               }).ToList();
+
+            }
+
 
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
