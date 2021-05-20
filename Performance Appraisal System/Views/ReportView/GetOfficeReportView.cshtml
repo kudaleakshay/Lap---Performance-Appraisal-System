@@ -13,6 +13,11 @@
         <br>
         <br>
         <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.UserName - मुल्यांकन अहवाल</strong></h5>
+        
+        <div class="center-div">
+            <button class="btn btn-outline-dark" onclick="getDetailReport()">Get Detail Report</button>
+        </div>
+
         <hr>
         <div class="card-text">
 
@@ -66,12 +71,12 @@
 
                     <br>
                     <table id="RemainingBranchTable" class="table table-striped branchtable">
-                        <thead style="background-color: #a8bdbd">
+                        <thead style="text-align:center; background-color: #a8bdbd">
                             <tr>
-                                <th>माहिती प्राप्त नसलेल्या शाखा</th>
+                                <th style="text-align:center">माहिती प्राप्त नसलेल्या शाखा</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody style="text-align:center"></tbody>
                     </table>
                     <br>
                     <br>
@@ -93,6 +98,7 @@
 
         bindDataTable();
         bindRemainignBranchTable();
+        $('#RemainingBranchTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName  यांनी अद्याप माहिती न भरलेले शाखा </strong></h5></caption>');
     });
 
 
@@ -208,8 +214,6 @@
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
 
-        $('#RemainingBranchTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName  यांनी अद्याप माहिती न भरलेले विषय </strong></h5></caption>');
-
         table1 = $("#RemainingBranchTable").DataTable({
             paging: false,
             responsive: true,
@@ -271,5 +275,14 @@
         bindRemainignBranchTable();
     })
 
+
+    function getDetailReport() {
+
+        var Month = $("#Month").val();
+        var Year = $("#Year").val();
+        var UId = $("#UId").val();
+
+        window.open("/ReportView/DetailReportView?UserName=@ViewBag.UserName&UId=" + UId + "&Month=" + Month + "&Year=" + Year, "_self");
+    }
 
 </script>

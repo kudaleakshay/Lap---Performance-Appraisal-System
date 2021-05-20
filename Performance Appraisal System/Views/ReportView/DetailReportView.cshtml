@@ -1,0 +1,439 @@
+﻿@using Performance_Appraisal_System.Models
+@model Performance_Appraisal_System.Models.User
+@{
+    ViewBag.Title = "मूल्यांकन अहवाल";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
+<div class="container" style="padding: 30px;background: white;">
+    <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+        <br>
+        <br>
+        <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.UserName - @ViewBag.DepartmentName - मुल्यांकन अहवाल</strong></h5>
+        <hr>
+        <div class="card-text">
+
+            <div class="center-group">
+                <div class="form-row">
+                    <div class="form-group col-md-6 center-div">
+                        @Html.DropDownList("Month", ViewBag.Months as SelectList, "-- Select Month --", new { @style = "font-size:14px; text-indent: 40%;", @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-6 center-div">
+                        @Html.DropDownList("Year", ViewBag.Years as SelectList, "-- Select Year --", new { @style = "font-size:14px; text-indent: 40%;", @class = "form-control" })
+                    </div>
+                </div>
+
+                @Html.HiddenFor(temp => temp.UId, new { id = "UId" })
+
+                <hr>
+                <br>
+                <br>
+
+                <div style="overflow: auto;">
+
+                    <table id="ReportTable" class="table table-striped branchtable">
+                        <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
+                            <tr>
+                                <th>शाखा</th>
+                                <th>विषय</th>
+                                <th>एकुण गुण</th>
+                                <th>प्राप्त गुण</th>
+                                <th>प्राप्त गुणांची टक्केवारी</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center;"></tbody>
+                        <tfoot>
+                            <tr style="background:#a8bdbd; font-size:18px">
+                                <th style="text-align:center">एकुण</th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <br>
+                    <br>
+                    <hr>
+
+                    <br>
+                    <table id="RemainingSubTable" class="table table-striped branchtable">
+                        <thead style="text-align:center; background-color: #a8bdbd">
+                            <tr>
+                                <th style="text-align:center">शाखा</th>
+                                <th style="text-align:center">माहिती प्राप्त नसलेले विषय</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align:center"></tbody>
+                    </table>
+                    <br>
+                    <br>
+
+                    <hr>
+
+                    <br>
+                    <table id="NASubTable" class="table table-striped branchtable">
+                        <thead style="text-align:center; background-color: #a8bdbd">
+                            <tr>
+                                <th style="text-align:center">शाखा</th>
+                                <th style="text-align:center">लागु नसलेले विषय</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align:center"></tbody>
+                    </table>
+                    <br>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        bindDataTable();
+        bindRemainignSubTable();
+        bindNASubTable();
+        $('#RemainingSubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी अद्याप माहिती न भरलेले विषय</strong></h5></caption>');
+        $('#NASubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName - लागु नसलेले विषय</strong></h5></caption>');
+    });
+
+
+    function bindDataTable() {
+
+        var UId = $("#UId").val();
+
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
+        table = $("#ReportTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: true,
+            info: false,
+            fixedColumns: true,
+            order: [],
+            language: {
+                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                switch (aData.report.DepartmentId) {
+                    case 1:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 2:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 3:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 4:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 5:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 6:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 7:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 8:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 9:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 10:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                }
+            },
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(), data;
+
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\$,]/g, '') * 1 :
+                        typeof i === 'number' ?
+                            i : 0;
+                };
+
+                // Total over all pages
+                total_Marks = api
+                    .column(2)
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                total_Appraisal = api
+                    .column(3)
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                if (total_Appraisal > 0 && total_Marks > 0) {
+                    total_Percentage = total_Appraisal * 100 / total_Marks;
+                }
+                else {
+                    total_Percentage = 0;
+                }
+
+                // Update footer
+                $(api.column(2).footer()).html(
+                    total_Marks
+                );
+                $(api.column(3).footer()).html(
+                    total_Appraisal.toFixed(2)
+                );
+                $(api.column(4).footer()).html(
+                    total_Percentage.toFixed(2) + ' %'
+                );
+            },
+            "ajax": {
+                "url": "/ReportView/GetDetailReportData?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
+               "type": "GET",
+                  "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
+            },
+            "columns": [
+                { "data": "DepartmentName" },
+                { "data": "Subject" },
+                { "data": "report.Total_Marks" },
+                { "data": "report.Appraisal_Marks" },
+                { "data": "report.Appraisal_Percentage" },
+                {
+                    "render": function (data, type, full, meta) {
+                            return '<button style="margin-bottom: 0 !important;" class = "btn btn-outline-dark">Report</button>';
+                    }
+                },
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.DepartmentName" +'- @ViewBag.UserName मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.DepartmentName" +'- @ViewBag.UserName मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear }
+            ]
+        });
+
+    }
+
+    function bindRemainignSubTable() {
+
+        var UId = $("#UId").val();
+
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
+        table1 = $("#RemainingSubTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: false,
+            info: false,
+            fixedColumns: true,
+            order: [],
+            fnInitComplete: function () {
+                if ($(this).find('tbody tr').length <= 1) {
+                    $(this).parent().hide();
+                }
+            },
+            language: {
+                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                switch (aData.DepartmentId) {
+                    case 1:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 2:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 3:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 4:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 5:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 6:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 7:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 8:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 9:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 10:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                }
+            },
+            "ajax": {
+                "url": "/ReportView/DetailRemainingSubjectsData?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
+               "type": "GET",
+               "datatype": "json",
+               "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
+            },
+            "columns": [
+                { "data": "Subject" },
+            ],
+            @*dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear }
+            ]*@
+        });
+
+    }
+
+    function bindNASubTable() {
+
+        var UId = $("#UId").val();
+
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
+        var SelectedYear = $("#Year option:selected").html();
+        var SelectedMonth = $("#Month option:selected").html();
+
+        table1 = $("#NASubTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: false,
+            info: false,
+            fixedColumns: true,
+            order: [],
+            fnInitComplete: function () {
+                if ($(this).find('tbody tr').length <= 1) {
+                    $(this).parent().hide();
+                }
+            },
+            language: {
+                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+            },
+            rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                switch (aData.DepartmentId) {
+                    case 1:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 2:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 3:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 4:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 5:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 6:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 7:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                    case 8:
+                        $('td', nRow).css('background-color', '#e6ffe6');
+                        break;
+                    case 9:
+                        $('td', nRow).css('background-color', '#a7bbc7');
+                        break;
+                    case 10:
+                        $('td', nRow).css('background-color', '#ffe6e6');
+                        break;
+                }
+            },
+            "ajax": {
+                "url": "/ReportView/DetailNASubjectsData?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
+                "type": "GET",
+                "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
+            },
+            "columns": [
+                { "data": "DepartmentName" },
+                { "data": "Subject" },
+            ],
+            @* dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" + ' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -' + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" + ' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -' + SelectedMonth + " " + SelectedYear }
+            ] *@
+        });
+
+    }
+
+    $('#ReportTable tbody').on('click', 'button', function () {
+        var data = table.row($(this).parents('tr')).data();
+
+        window.open(
+                "/ReportView/GetDepartmentReportView?DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId, "_self");
+    });
+
+
+
+    $("#Month").change(function () {
+        table.destroy();
+        table1.destroy();
+        bindDataTable();
+        bindRemainignSubTable();
+    })
+
+    $("#Year").change(function () {
+        table.destroy();
+        table1.destroy();
+        bindDataTable();
+        bindRemainignSubTable();
+    })
+
+
+</script>

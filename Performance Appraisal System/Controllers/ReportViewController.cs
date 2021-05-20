@@ -1244,6 +1244,80 @@ namespace Performance_Appraisal_System.Controllers
         }
 
 
+        public ActionResult DetailReportView(String UserName, int? UId, int? Month, int? Year)
+        {
+            var Current_Month = Convert.ToString(DateTime.Now.Month - 1);
+            var Current_Year = Convert.ToString(DateTime.Now.Year);
+
+            if (Month != null)
+            {
+                Current_Month = Convert.ToString(Month);
+            }
+            if (Year != null)
+            {
+                Current_Month = Convert.ToString(Year);
+            }
+
+            if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
+            {
+                Current_Month = Convert.ToString(System.Web.HttpContext.Current.Session["ReportMonth"]);
+                Current_Year = Convert.ToString(System.Web.HttpContext.Current.Session["ReportYear"]);
+            }
+            else if (DateTime.Now.Month == 1)
+            {
+                Current_Month = Convert.ToString(12);
+                Current_Year = Convert.ToString(DateTime.Now.Year - 1);
+            }
+
+            ViewBag.Months = new SelectList(Enumerable.Range(1, 12).Select(x =>
+               new SelectListItem()
+               {
+                   Text = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames[x - 1],
+                   Value = x.ToString()
+               }), "Value", "Text", Current_Month);
+
+
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year - 2, 10).Select(x =>
+                 new SelectListItem()
+                 {
+                     Text = x.ToString(),
+                     Value = x.ToString()
+                 }), "Value", "Text", Current_Year);
+
+            ViewBag.UserName = UserName;
+            ViewBag.UId = UId;
+
+            return View();
+        }
+
+
+        public JsonResult GetDetailReportData(int? UId, int? Month, int? Year)
+        {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var reports = (from r in db.SubMasterReports
+                           join s in db.Subjects
+                           on r.SubjectId equals s.SId
+                           where r.Month == Month
+                                 && r.Year == Year
+                                 && r.UId == UId
+                                 && r.Not_Applicable_Marks == 0
+                                 && s.Type == 2
+                           orderby r.DepartmentId
+                           select new
+                           {
+                               report = r,
+                               DepartmentName = r.Department.DepartmentName,
+                               Subject = s.SubjectName,
+                           }).ToList();
+
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+
         public JsonResult GetPendingReportData(String DepartmentName, int DepartmentId, int SubjectId, int Month, int Year)
         {
             Session["ReportMonth"] = Month;
@@ -2748,6 +2822,57 @@ namespace Performance_Appraisal_System.Controllers
                            select new
                            {
                                Subject = Subjects.SubjectName,
+                           }).ToList();
+
+            return Json(new
+            {
+                data = reports
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DetailNASubjectsData(int UId, int Month, int Year)
+        {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var reports = (from r in db.SubMasterReports
+                           join s in db.Subjects
+                           on r.SubjectId equals s.SId
+                           where r.Month == Month
+                                 && r.Year == Year
+                                 && r.UId == UId
+                                 && r.Not_Applicable_Marks != 0
+                                 && s.Type == 2
+                           orderby r.DepartmentId
+                           select new
+                           {
+                               DepartmentName = r.Department.DepartmentName,
+                               Subject = s.SubjectName,
+                           }).ToList();
+
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult DetailRemainingSubjectsData(int UId, int Month, int Year)
+        {
+            Session["ReportMonth"] = Month;
+            Session["ReportYear"] = Year;
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var SubjectList = db.Subjects.Where(s => s.Type == 2).ToList();
+
+            var SubMasterReportsList = db.SubMasterReports.Where(f => f.UId == UId && f.Month == Month && f.Year == Year).ToList();
+
+            var reports = (from Subjects in SubjectList
+                           where !SubMasterReportsList.Any(f => f.UId == UId && f.Month == Month && f.Year == Year && f.SubjectId == Subjects.SId)
+                           select new
+                           {
+                               Subject = Subjects.SubjectName,
+                               DepartmentId = Subjects.DepartmentId,
                            }).ToList();
 
             return Json(new
