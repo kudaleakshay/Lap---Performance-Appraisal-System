@@ -130,6 +130,10 @@ update [DocPAS].[dbo].[Users] SET Name= N'विभागीय सहनिब�
 
 update [DocPAS].[dbo].[Users] SET Name= N'जिल्हा उपनिबंधक, सहकारी संस्था, '+ Name Where RoleId=4
 
+update [DocPAS].[dbo].[Users] SET Name= N'सहकार आयुक्त कार्यालय' Where UserName= 'comm1' 
+
+update [DocPAS].[dbo].[Users] SET Name= N'सहकार आयुक्त कार्यालय, Admin' Where UserName= 'admin' 
+
 
 
 Update [DocPAS].[dbo].[SubMasterReports]
