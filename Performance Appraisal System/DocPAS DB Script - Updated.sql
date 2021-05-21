@@ -144,3 +144,17 @@ update [DocPAS].[dbo].[Users] SET Name= N'सहकार आयुक्त क
 Update [DocPAS].[dbo].[SubMasterReports]
   Set Appraisal_Percentage = (Appraisal_Marks * 100) / Total_Marks
   where SubjectId=31
+
+
+Update [DocPAS].[dbo].[Users]
+  set AppraisalType=1
+  where UId=2
+
+
+Update [DocPAS].[dbo].[Users]
+  set AppraisalType=2
+  where UId=7
+
+  Update [DocPAS].[dbo].[Users]
+  set AppraisalType=2
+  where UId=8
