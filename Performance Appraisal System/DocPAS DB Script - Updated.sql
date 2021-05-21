@@ -6,6 +6,11 @@ ALTER COLUMN Remarks nvarchar(500);
 go
 
 
+ALTER TABLE [DocPAS].[dbo].[Report13]
+ALTER COLUMN Remarks nvarchar(500);
+go
+
+
 
 ALTER TABLE [DocPAS].[dbo].[Users]
 ADD SortKey int;

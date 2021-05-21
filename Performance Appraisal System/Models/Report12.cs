@@ -52,7 +52,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया सेवानिवृत्ती विषय लाभ अदा केलेल्या अधिकारी / कर्मचारी (शिल्लक) संख्या आवश्यक आहे")]
         [DisplayName("शिल्लक")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Retirement_Benefits_Pendig { get; set; }
 
 
@@ -74,8 +73,8 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Year { get; set; }
 
 
-
-        [DisplayName("संवर्ग")]
+        [Required(ErrorMessage = "कृपया संवर्ग आवश्यक आहे")]
+        [DisplayName("संवर्ग - (अ / ब / क / ड)")]
         public string Remarks { get; set; } 
 
 		public System.DateTime CreatedTime { get; set; }

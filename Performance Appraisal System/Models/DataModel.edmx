@@ -123,7 +123,7 @@
           <Property Name="Month" Type="int" />
           <Property Name="Year" Type="int" />
           <Property Name="CreatedTime" Type="datetime" Nullable="false" />
-          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Report14">
           <Key>
@@ -2783,7 +2783,7 @@
           <Property Name="NotApplicable" Type="Boolean" Nullable="false" />
           <Property Name="Month" Type="Int32" />
           <Property Name="Year" Type="Int32" />
-          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="DocPASModel.FK__Report13__UId__4E88ABD4" FromRole="Report13" ToRole="User" />
           <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>

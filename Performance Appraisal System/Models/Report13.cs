@@ -45,7 +45,6 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया  सेवापुस्तके अद्यायावत झालेली संख्या (शिल्लक) आवश्यक आहे")]
         [DisplayName("शिल्लक")]
-        [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Service_Books_Updation_Pending { get; set; }
 
 
@@ -61,8 +60,6 @@ namespace Performance_Appraisal_System.Models
         public Nullable<double> Appraisal_Percentage { get; set; }
 
 
-
-
         public bool NotApplicable { get; set; }
 
         public Nullable<int> Month { get; set; }
@@ -70,7 +67,8 @@ namespace Performance_Appraisal_System.Models
         public Nullable<int> Year { get; set; }
 
 
-        [DisplayName("संवर्ग")]
+        [Required(ErrorMessage = "कृपया संवर्ग आवश्यक आहे")]
+        [DisplayName("संवर्ग - (अ / ब / क / ड)")]
         public string Remarks { get; set; } 
 
 		public System.DateTime CreatedTime { get; set; }
