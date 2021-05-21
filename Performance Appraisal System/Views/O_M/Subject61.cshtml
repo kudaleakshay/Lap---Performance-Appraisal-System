@@ -237,6 +237,10 @@
                 var Total = (Number($("#Appraisal_Marks").val()) * 100 / Total_Marks);
                 Total = Total.toFixed(2);
 
+        if(Total >100){
+            Total=100;
+        }
+
 
                 if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
                     Total = 0;

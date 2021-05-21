@@ -293,6 +293,10 @@
         var Total = (Number($("#Total_Achieved").val()) * 100 / Number($("#Total_Cases_Aim").val()));
         Total = Total.toFixed(2);
 
+        if(Total >100){
+            Total=100;
+        }
+
         if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
             Total = 0;
         }

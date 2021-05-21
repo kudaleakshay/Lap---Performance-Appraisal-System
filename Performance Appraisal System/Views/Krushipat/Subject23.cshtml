@@ -193,6 +193,10 @@
         Total = Total.toFixed(2);
 
 
+        if(Total >100){
+            Total=100;
+        }
+
         if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
             Total = 0;
         }
@@ -210,7 +214,6 @@
         if (Appraisal_Marks > Total_Marks) {
             Appraisal_Marks = Total_Marks
         }
-
 
         if (isNaN(Appraisal_Marks)) {  // Matches +0, -0, NaN
             Appraisal_Marks = 0;

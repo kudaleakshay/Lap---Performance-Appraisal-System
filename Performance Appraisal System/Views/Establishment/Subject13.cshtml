@@ -210,6 +210,10 @@
         var Total = (Number($("#Service_Books_Updation_Achieved").val()) * 100 / Number($("#Service_Books_Updation_Target").val()));
         Total = Total.toFixed(2);
 
+        if(Total >100){
+            Total=100;
+        }
+
         if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
             Total = 0;
         }
@@ -237,12 +241,10 @@
         $("#Appraisal_Marks_val").css("font-weight", "bold");
     }
 
-
     function SetValue() {
         $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
         $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
     }
-
 
     $("#Service_Books_Updation_Target").change(Service_Books_Updation_Pending);
     $("#Service_Books_Updation_Achieved").change(Service_Books_Updation_Pending);
@@ -253,7 +255,6 @@
     $("#Service_Books_Updation_Target").change(Appraisal_Marks);
     $("#Service_Books_Updation_Achieved").change(Appraisal_Marks);
     $("#Appraisal_Percentage").change(Appraisal_Marks);
-
 
     $('#NotApplicable').prop('checked', false); // Unchecks Not Applicaable by default
 
