@@ -171,7 +171,7 @@ namespace Performance_Appraisal_System.Controllers
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
                     Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
-                    /*Appraisal_Percentage = Reports.Appraisal_Percentage,*/
+                    Appraisal_Percentage = (Reports.Appraisal_Marks * 100)/ Convert.ToDouble(Session["TotalMarks"]),
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
                 };
 

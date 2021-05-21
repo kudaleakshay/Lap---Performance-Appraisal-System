@@ -129,3 +129,9 @@ update [DocPAS].[dbo].[Users] SET SortKey=11 where UserName='ddr_sin'
 update [DocPAS].[dbo].[Users] SET Name= N'विभागीय सहनिबंधक,सहकारी संस्था, '+ Name Where RoleId=3
 
 update [DocPAS].[dbo].[Users] SET Name= N'जिल्हा उपनिबंधक, सहकारी संस्था, '+ Name Where RoleId=4
+
+
+
+Update [DocPAS].[dbo].[SubMasterReports]
+  Set Appraisal_Percentage = (Appraisal_Marks * 100) / Total_Marks
+  where SubjectId=31

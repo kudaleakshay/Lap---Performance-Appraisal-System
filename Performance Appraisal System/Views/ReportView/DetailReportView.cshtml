@@ -145,31 +145,31 @@
                         $('td', nRow).css('background-color', '#ffe6e6');
                         break;
                     case 2:
-                        $('td', nRow).css('background-color', '#e6ffe6');
+                        $('td', nRow).css('background-color', '#ffffcc');
                         break;
                     case 3:
-                        $('td', nRow).css('background-color', '#a7bbc7');
+                        $('td', nRow).css('background-color', '#ccffdd');
                         break;
                     case 4:
-                        $('td', nRow).css('background-color', '#ffe6e6');
+                        $('td', nRow).css('background-color', '#ccffff');
                         break;
                     case 5:
-                        $('td', nRow).css('background-color', '#e6ffe6');
+                        $('td', nRow).css('background-color', '#f7e6ff');
                         break;
                     case 6:
-                        $('td', nRow).css('background-color', '#a7bbc7');
+                        $('td', nRow).css('background-color', '#fff5e5');
                         break;
                     case 7:
-                        $('td', nRow).css('background-color', '#ffe6e6');
+                        $('td', nRow).css('background-color', '#f0f0f5');
                         break;
                     case 8:
-                        $('td', nRow).css('background-color', '#e6ffe6');
+                        $('td', nRow).css('background-color', '#ffe0cc');
                         break;
                     case 9:
-                        $('td', nRow).css('background-color', '#a7bbc7');
+                        $('td', nRow).css('background-color', '#ccd9ff');
                         break;
                     case 10:
-                        $('td', nRow).css('background-color', '#ffe6e6');
+                        $('td', nRow).css('background-color', '#eeeedd');
                         break;
                 }
             },
@@ -282,31 +282,31 @@
                         $('td', nRow).css('background-color', '#ffe6e6');
                         break;
                     case 2:
-                        $('td', nRow).css('background-color', '#e6ffe6');
+                        $('td', nRow).css('background-color', '#ffffcc');
                         break;
                     case 3:
-                        $('td', nRow).css('background-color', '#a7bbc7');
+                        $('td', nRow).css('background-color', '#ccffdd');
                         break;
                     case 4:
-                        $('td', nRow).css('background-color', '#ffe6e6');
+                        $('td', nRow).css('background-color', '#ccffff');
                         break;
                     case 5:
-                        $('td', nRow).css('background-color', '#e6ffe6');
+                        $('td', nRow).css('background-color', '#f7e6ff');
                         break;
                     case 6:
-                        $('td', nRow).css('background-color', '#a7bbc7');
+                        $('td', nRow).css('background-color', '#fff5e5');
                         break;
                     case 7:
-                        $('td', nRow).css('background-color', '#ffe6e6');
+                        $('td', nRow).css('background-color', '#f0f0f5');
                         break;
                     case 8:
-                        $('td', nRow).css('background-color', '#e6ffe6');
+                        $('td', nRow).css('background-color', '#ffccff');
                         break;
                     case 9:
-                        $('td', nRow).css('background-color', '#a7bbc7');
+                        $('td', nRow).css('background-color', '#ccd9ff');
                         break;
                     case 10:
-                        $('td', nRow).css('background-color', '#ffe6e6');
+                        $('td', nRow).css('background-color', '#eeeedd');
                         break;
                 }
             },
@@ -321,11 +321,11 @@
             "columns": [
                 { "data": "Subject" },
             ],
-            @*dom: 'Bfrtip',
+            dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear }
-            ]*@
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +' यांनी अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +' यांनी अद्याप माहिती न भरलेले विषय -'+ SelectedMonth + " " + SelectedYear }
+            ]
         });
 
     }
