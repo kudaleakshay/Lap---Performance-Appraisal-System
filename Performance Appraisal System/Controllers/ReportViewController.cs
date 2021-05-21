@@ -2882,7 +2882,24 @@ namespace Performance_Appraisal_System.Controllers
 
             db.Configuration.ProxyCreationEnabled = false;
 
+            User user = db.Users.Where(u => u.UId == UId)
+                                       .FirstOrDefault();
+
             var SubjectList = db.Subjects.Where(s => s.Type == 2).ToList();
+
+            switch (user.AppraisalType)
+            {
+                case 1:
+                    //As Department 2 not in the Appraisal type 1 so remove it from the list
+                    SubjectList = db.Subjects.Where(s => s.Type == 2 && s.DepartmentId !=2).ToList();
+                    break;
+
+                case 2:
+
+                    //As Department 7 not in the Appraisal type 2 so remove it from the list
+                    SubjectList = db.Subjects.Where(s => s.Type == 2 && s.DepartmentId != 7).ToList();
+                    break;
+            }
 
             var SubMasterReportsList = db.SubMasterReports.Where(f => f.UId == UId && f.Month == Month && f.Year == Year).ToList();
 
