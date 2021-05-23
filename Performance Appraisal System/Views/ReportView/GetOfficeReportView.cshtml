@@ -14,10 +14,6 @@
         <br>
         <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.UserName - मुल्यांकन अहवाल</strong></h5>
         
-        <div class="center-div">
-            <button class="btn btn-outline-dark" onclick="getDetailReport()">Get Detail Report</button>
-        </div>
-
         <hr>
         <div class="card-text">
 
@@ -98,7 +94,7 @@
 
         bindDataTable();
         bindRemainignBranchTable();
-        $('#RemainingBranchTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName  यांनी अद्याप माहिती न भरलेले शाखा </strong></h5></caption>');
+        $('#RemainingBranchTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName  यांनी अद्याप माहिती न भरलेल्या शाखा </strong></h5></caption>');
     });
 
 

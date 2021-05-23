@@ -52,17 +52,19 @@
                         </thead>
                         <tbody style="text-align: center;"></tbody>
                         @*<tfoot>
-                            <tr style="background:#a8bdbd; font-size:18px">
-                                <th style="text-align:center">एकुण</th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                                <th style="text-align:center"></th>
-                            </tr>
-                        </tfoot>*@
+                <tr style="background:#a8bdbd; font-size:18px">
+                    <th style="text-align:center">एकुण</th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"></th>
+                </tr>
+            </tfoot>*@
                     </table>
-                    <br>
+                    <div class="center-div">
+                        <button class="btn w3-right btn-outline-dark" onclick="getDepartmentwiseReport()">Department-wise Reports</button>
+                    </div>
                     <br>
                     <hr>
 
@@ -239,8 +241,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.DepartmentName" +'- @ViewBag.UserName मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.DepartmentName" +'- @ViewBag.UserName मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear }
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName मुल्यांकन प्रणाली अहवाल -"+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.UserName मुल्यांकन प्रणाली अहवाल -"+ SelectedMonth + " " + SelectedYear }
             ]
         });
 
@@ -422,8 +424,6 @@
                 "/ReportView/GetDepartmentReportView?DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId, "_self");
     });
 
-
-
     $("#Month").change(function () {
         table.destroy();
         table1.destroy();
@@ -442,5 +442,11 @@
         bindNASubTable();
     })
 
+    function getDepartmentwiseReport() {
+
+        var UId = $("#UId").val();
+
+        window.open("/ReportView/GetOfficeReportView?UId=" + UId, "_self");
+    }
 
 </script>
