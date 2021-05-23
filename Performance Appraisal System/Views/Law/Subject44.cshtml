@@ -88,7 +88,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
     <div class="container" style="padding: 30px;background: white;">
@@ -161,6 +160,8 @@
                 </div>
             </div>
         </div>
+    </div>
+
     </div>
 
     <div class="container" style="padding: 30px;background: white;">
@@ -290,6 +291,7 @@
         if ($(this).is(':checked')) {
             //If it is checked, hide form
             $("#WrappperDiv").css("display", "none");
+            $('input').val("0");
 
             $("#Aim1").val("0");
             $("#Aim2").val("0");

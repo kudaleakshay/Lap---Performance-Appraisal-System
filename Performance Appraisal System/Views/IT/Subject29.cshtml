@@ -335,6 +335,7 @@
         if ($(this).is(':checked')) {
             //If it is checked, hide form
             $("#WrappperDiv").css("display", "none");
+            $('input').val("0");
 
             $("#CM_Last_Month_Pending_Complaints").val("0");
             $("#CM_Current_Month_Received_Complaints").val("0");

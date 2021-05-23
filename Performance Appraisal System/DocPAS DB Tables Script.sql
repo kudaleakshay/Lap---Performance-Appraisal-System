@@ -1,5 +1,7 @@
 ﻿/*   Started Report tables    */
 
+use DocPAS
+go
 
 /* Department 1 - Establishment */
 

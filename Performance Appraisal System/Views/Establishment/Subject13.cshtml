@@ -263,8 +263,10 @@
         if ($(this).is(':checked')) {
             //If it is checked, hide form
             $("#WrappperDiv").css("display", "none");
+            $('input').val("0");
 
             $("#Service_Books_Total").val("0");
+            $("#Remarks").val("0");
             $("#Service_Books_Updation_Target").val("0");
             $("#Service_Books_Updation_Achieved").val("0");
             $("#Service_Books_Updation_Pending").val("0");

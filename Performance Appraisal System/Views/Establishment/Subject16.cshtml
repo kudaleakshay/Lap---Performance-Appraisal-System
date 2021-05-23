@@ -260,11 +260,13 @@
         if ($(this).is(':checked')) {
             //If it is checked, hide form
             $("#WrappperDiv").css("display", "none");
+            $('input').val("0");
 
             $("#Cases_Target").val("0");
             $("#Last_Month_Achieved").val("0");
             $("#Current_Month_Achieved").val("0");
             $("#Total_Achieved").val("0");
+            $("#Total_Achieved_val").val("0");
 
             $("#Appraisal_Marks").val("0");
             $("#Appraisal_Percentage").val("0");

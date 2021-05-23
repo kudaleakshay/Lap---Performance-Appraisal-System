@@ -283,8 +283,10 @@
         if ($(this).is(':checked')) {
             //If it is checked, hide form
             $("#WrappperDiv").css("display", "none");
+            $('input').val("0");
 
             $("#Retirement_Benefits_Target").val("0");
+            $("#Remarks").val("0");
             $("#Retirement_Benefits_Achieved").val("0");
             $("#Officer_Count").val("0");
             $("#Retired_Officer_Count").val("0");

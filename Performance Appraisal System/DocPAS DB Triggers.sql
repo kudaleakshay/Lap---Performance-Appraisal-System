@@ -1,4 +1,8 @@
-﻿CREATE TRIGGER [dbo].[Insert_Appraisal_Type] ON [DocPAS].[dbo].[Districts]
+﻿
+use DocPAS
+go
+
+CREATE TRIGGER [dbo].[Insert_Appraisal_Type] ON [DocPAS].[dbo].[Districts]
 AFTER INSERT, UPDATE
 AS
 BEGIN

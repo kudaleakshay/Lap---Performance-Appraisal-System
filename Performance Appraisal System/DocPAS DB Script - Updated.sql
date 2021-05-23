@@ -158,3 +158,59 @@ Update [DocPAS].[dbo].[Users]
   Update [DocPAS].[dbo].[Users]
   set AppraisalType=2
   where UId=8
+
+go
+
+
+
+ALTER TRIGGER [dbo].[Get_Appraisal_Percentage] 
+ON [DocPAS].[dbo].[DepartmentMasterReports]
+AFTER INSERT, UPDATE
+AS
+
+BEGIN
+
+Declare @iAMarks as float;
+Declare @iTotal as float;
+Declare @dDepartment as int;
+Declare @iUId as int;
+Declare @iMonth as int;
+Declare @iYear as int;
+Declare @iNotApplicable as float;
+
+Select 
+  @iAMarks = i.Appraisal_Marks,
+  @iTotal = i.Total_Marks,
+  @iNotApplicable = i.Not_Applicable_Marks,
+  @dDepartment = i.[DepartmentId],
+  @iUId = i.[UId],
+  @iMonth = i.[Month],
+  @iYear = i.[Year]
+  
+From inserted i;
+
+BEGIN
+  IF ((@iTotal-@iNotApplicable) != 0 ) 
+  BEGIN
+Update DepartmentMasterReports
+    SET Appraisal_Percentage = round((@iAMarks* 100) / (@iTotal-@iNotApplicable),2)
+Where
+	[DepartmentId] = @dDepartment
+    AND [Year]= @iYear 
+    AND [Month] = @iMonth
+    AND [UId] = @iUId
+END
+  ELSE
+  BEGIN
+  Update DepartmentMasterReports
+    SET Appraisal_Percentage = round((@iAMarks* 100) / (@iTotal-@iNotApplicable),2)
+Where
+	[DepartmentId] = @dDepartment
+    AND [Year]= @iYear 
+    AND [Month] = @iMonth
+    AND [UId] = @iUId
+	END
+
+END
+END
+go

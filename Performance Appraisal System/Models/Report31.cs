@@ -23,12 +23,12 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया अहवाल जमा केल्याची तारीख आवश्यक आहे")]
         [DisplayName("मागील महिन्यात अहवाल जमा केल्याची तारीख")]
-        [Range(1, 31, ErrorMessage = "कृपया योग्य तारीख नमुद करा")]
+        [Range(1, 31, ErrorMessage = "कृपया 1-31 मध्ये योग्य तारीख नमुद करा")]
         public Nullable<int> Last_Month_Report_Submitted { get; set; }
 
         [Required(ErrorMessage = "कृपया अहवाल जमा केल्याची तारीख आवश्यक आहे")]
         [DisplayName("चालु महिन्यात अहवाल जमा केल्याची तारीख")]
-        [Range(1, 31, ErrorMessage = "कृपया योग्य तारीख नमुद करा")]
+        [Range(1, 31, ErrorMessage = "कृपया 1-31 मध्ये  योग्य तारीख नमुद करा")]
         public Nullable<int> Current_Month_Report_Submitted { get; set; }
 
 

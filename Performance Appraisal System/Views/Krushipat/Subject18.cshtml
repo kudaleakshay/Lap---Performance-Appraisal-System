@@ -250,6 +250,7 @@
         if ($(this).is(':checked')) {
             //If it is checked, hide form
             $("#WrappperDiv").css("display", "none");
+            $('input').val("0");
 
             $("#Loan_Allocation_Target").val("0");
             $("#Last_Month_Loan_Allocation").val("0");

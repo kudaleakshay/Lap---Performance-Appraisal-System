@@ -202,8 +202,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report41.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -221,6 +219,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report41.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -250,8 +251,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report42.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -269,6 +268,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report42.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -298,8 +300,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report43.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -317,6 +317,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report43.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -346,8 +349,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report44.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -365,6 +366,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report44.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -394,8 +398,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report45.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -413,6 +415,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report45.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -442,8 +447,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report46.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -461,6 +464,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report46.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -490,8 +496,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report47.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -509,6 +513,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report47.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -538,8 +545,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report48.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -557,6 +562,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report48.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -586,9 +594,7 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report49.Add(Reports);
-                db.SaveChanges();
-
+                
                 SubMasterReport SubReport = new SubMasterReport
                 {
                     UId = Reports.UId,
@@ -605,6 +611,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+                    db.Report49.Add(Reports);
+                    db.SaveChanges();
+
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }
@@ -634,8 +643,6 @@ namespace Performance_Appraisal_System.Controllers
                 Reports.UId = user.UId;
 				Reports.CreatedTime = DateTime.Now;
 
-                db.Report50.Add(Reports);
-                db.SaveChanges();
 
                 SubMasterReport SubReport = new SubMasterReport
                 {
@@ -653,6 +660,9 @@ namespace Performance_Appraisal_System.Controllers
 
                 if (reportController.SaveSubMasterReports(SubReport, user.RoleId))
                 {
+
+                    db.Report50.Add(Reports);
+                    db.SaveChanges();
                     TempData["Message"] = "Report Submitted Successfully";
                     return RedirectToAction("DepartmentWiseReport", "Report");
                 }

@@ -1,4 +1,6 @@
-﻿
+﻿use DocPAS
+go 
+
 insert into Departments values(N'आस्थापना / संवका/लेखा/कायदा व वैधानिक')
 insert into Departments values(N'कृषीपतपुरवठा व भूविकास')
 insert into Departments values(N'माहिती व तंत्रज्ञान / दक्षता')
