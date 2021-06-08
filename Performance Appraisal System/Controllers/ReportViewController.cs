@@ -1327,6 +1327,7 @@ namespace Performance_Appraisal_System.Controllers
                            {
                                report = r,
                                DepartmentName = r.Department.DepartmentName,
+                               Appraisal_Percentage = Math.Round((Double)((r.Appraisal_Marks * 100) / r.Total_Marks), 2),
                                Subject = s.SubjectName,
                            }).ToList();
 
@@ -2774,14 +2775,14 @@ namespace Performance_Appraisal_System.Controllers
                            select new
                            {
                                Total_Marks = r.Total_Marks - r.Not_Applicable_Marks,
-                               Appraisal_Marks = r.Appraisal_Marks,
-                               Appraisal_Percentage = r.Appraisal_Percentage,
+                               /*Appraisal_Marks = r.Appraisal_Marks,
+                               Appraisal_Percentage = r.Appraisal_Percentage,*/
+                               Appraisal_Marks = Math.Round((Double) r.Appraisal_Marks,2),
+                               Appraisal_Percentage = Math.Round((Double) r.Appraisal_Percentage, 2),
                                DepartmentId = r.DepartmentId,
                                UId = r.UId,
                                Department = d.DepartmentName,
                            }).ToList();
-
-
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
 
