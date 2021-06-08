@@ -357,7 +357,8 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
-    <Content Include="DocPAS DB Script - Updated.sql" />
+    <Content Include="DocPAS DB Script - Updated V4.sql" />
+    <Content Include="DocPAS DB Script - Updated V3.sql" />
     <Content Include="DocPAS DB Script - Inserted.sql" />
     <Content Include="DocPAS DB Script.sql" />
     <Content Include="DocPAS DB Tables Script.sql" />

@@ -21,7 +21,7 @@ namespace Performance_Appraisal_System.Models
 
 
         [Required(ErrorMessage = "कृपया मागील महा अखेर प्रकरणांची संख्या आवश्यक आहे")]
-        [DisplayName("मागील महा अखेर प्रकरणे")]
+        [DisplayName("मागील महा अखेर शिल्लक प्रकरणे")]
         [RegularExpression("([0-9][0-9]*[.]*)", ErrorMessage = "फक्त संख्या प्रविष्ट करा")]
         public Nullable<int> Last_Month_Pending_Cases { get; set; }
 

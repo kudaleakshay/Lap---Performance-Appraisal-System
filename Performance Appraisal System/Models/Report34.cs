@@ -21,20 +21,20 @@ namespace Performance_Appraisal_System.Models
 
         [Required(ErrorMessage = "कृपया उद्दिष्ट आवश्यक आहे")]
         [DisplayName("या वार्षिक सालातील वसुल करावयाचे उद्दिष्ट")]
-        public Nullable<int> Yearly_Recovery_Aim { get; set; }
+        public Nullable<double> Yearly_Recovery_Aim { get; set; }
 
 
         [Required(ErrorMessage = "कृपया वसुली रक्कम आवश्यक आहे")]
         [DisplayName("मागील महिन्यात झालेली वसुली")]
-        public Nullable<int> Last_Month_Recovery { get; set; }
+        public Nullable<double> Last_Month_Recovery { get; set; }
 
         [Required(ErrorMessage = "कृपया वसुली रक्कम आवश्यक आहे")]
         [DisplayName("चालु महिन्यात झालेली वसुली")]
-        public Nullable<int> Current_Month_Recovery { get; set; }
+        public Nullable<double> Current_Month_Recovery { get; set; }
 
         [Required(ErrorMessage = "कृपया वसुली आवश्यक आहे")]
         [DisplayName("एकुण वसुली")]
-        public Nullable<int> Total_Recovery { get; set; }
+        public Nullable<double> Total_Recovery { get; set; }
 
 
         [Required(ErrorMessage = "कृपया मुल्यांकनानुसार प्राप्त गुण आवश्यक आहे")]

@@ -1,12 +1,8 @@
 ﻿@model Performance_Appraisal_System.ViewModels.DepartmentsReportViewModel
 
-@{
-    ViewBag.Title = "शासन वरिष्ठ कार्यालाकडून प्राप्त तक्रारी";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@{
-    Html.RenderPartial("PrevNextBar");
-}
+@{ ViewBag.Title = "शासन वरिष्ठ कार्यालाकडून प्राप्त तक्रारी";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+@{ Html.RenderPartial("PrevNextBar"); }
 
 <div class="container" style="padding: 30px;background: white;">
     <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -47,7 +43,7 @@
         vertical-align: middle !important;">
                             <tr>
                                 <th rowspan="2">जिल्हयाचे नावे</th>
-                                <th rowspan="2">मागील महा अखेर  प्रकरणे</th>
+                                <th rowspan="2">मागील महा अखेर शिल्लक प्रकरणे</th>
                                 <th rowspan="2">चालु महिन्यातील प्राप्त प्रकरणे</th>
                                 <th rowspan="2">एकुण प्रकरणे</th>
                                 <th colspan="3">उद्दिष्ट(चालु महिन्यात 45 दिवस पूर्ण होत असलेल्या तक्रारींची संख्या.)</th>
@@ -57,34 +53,34 @@
                             </tr>
 
                             <tr>
-                                <th>मागील महिन्यातील </th>
-                                <th>चालु महिन्यातील </th>
-                                <th>एकुण</th>
-                                <th>मागील महिन्यातील </th>
-                                <th>चालु महिन्यातील </th>
-                                <th>एकुण</th>
+                                <th>उद्दिष्टाप्रमाणे मागील महा अखेरील प्रकरणे</th>
+                                <th>उद्दिष्टाप्रमाणे चालु महिन्यातील प्रकरणे</th>
+                                <th>उद्दिष्टाप्रमाणे एकुण प्रकरणे</th>
+                                <th>मागील महा अखेरील उद्दिष्ट पूर्ती</th>
+                                <th>चालु महा अखेरील उद्दिष्ट पूर्ती</th>
+                                <th>एकुण उद्दिष्ट पूर्ती</th>
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
                         @* <tfoot>
-                    <tr style="background:#a8bdbd; font-size:18px">
-                        <th style="text-align:center">महाराष्ट्र</th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
-                        <th style="text-align:center"></th>
+                                <tr style="background:#a8bdbd; font-size:18px">
+                                    <th style="text-align:center">महाराष्ट्र</th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
 
-                    </tr>
-                </tfoot>*@
-                     </table>
+                                </tr>
+                            </tfoot>*@
+                    </table>
 
                     @{ Html.RenderPartial("NotApplicableListView"); }
 
@@ -114,7 +110,7 @@
         var Year = $("#Year").val();
         var DepartmentId = $("#DepartmentId").val();
         var SubjectId = $("#SubjectId").val();
-                
+
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
 
@@ -166,10 +162,27 @@
             dom: 'Bfrtip',
              buttons: [
                 { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear }
+                 {
+                     extend: 'print', text: 'Print', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear,
+                     messageTop: 'उद्दिष्ट = चालु महिन्यात 45 दिवस पूर्ण होत असलेल्या तक्रारींची संख्या ',
+                     exportOptions: {
+                         columns: ':visible',
+                     },
+                     customize: function (win) {
+                         $(win.document.body).find('table').addClass('display').css('text-align', 'center');
+                         $(win.document.body).find('div').addClass('display').css('margin', '30');
+                         $(win.document.body).find('div').addClass('display').css('text-align', 'center');
+                         $(win.document.body).find('div').addClass('display').css('font-size', '18px');
+
+                         $(win.document.body).find('tr:nth-child(odd) td').each(function (index) {
+                             $(this).css('background-color', '#D0D0D0');
+                             $(this).css('text-align', 'center');
+                         });
+                         $(win.document.body).find('h1').css('text-align', 'center');
+                     } }
             ]
         });
-    
+
         const tableData = getTableData(table);
         createHighcharts(tableData);
         setTableEvents(table);

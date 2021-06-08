@@ -237,7 +237,7 @@
             fixedColumns: true,
             order: [],
             fnInitComplete: function () {
-                if ($(this).find('tbody tr').length <= 1) {
+                if ($(this).find('tbody tr').length < 1) {
                     $(this).parent().hide();
                 }
             },
