@@ -2764,7 +2764,6 @@ namespace Performance_Appraisal_System.Controllers
 
             db.Configuration.ProxyCreationEnabled = false;
 
-
             var reports = (from r in db.DepartmentMasterReports
                            join d in db.Departments
                            on r.DepartmentId equals d.Id
