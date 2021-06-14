@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form-group col-md-4 center-div">
-                        @Html.DropDownList("Division", ViewBag.DivisionList as SelectList, "-- All Divisions --", new { @style = "font-size:14px; text-indent: 40%;", @class = "form-control" })
+                        @Html.DropDownList("Division", ViewBag.DivisionList as SelectList, "महाराष्ट्र राज्य", new { @style = "font-size:14px; text-indent: 40%;", @class = "form-control" })
                     </div>
                 </div>
 
@@ -90,6 +90,7 @@
 
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
+        var SelectedDivision = $("#Division option:selected").html();
 
         table = $("#BranchTable").DataTable({
             paging: false,
@@ -129,8 +130,8 @@
             ],
             dom: 'Bfrtip',
              buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.Title" + " - " + SelectedMonth + " " + SelectedYear }
+                 { extend: 'excelHtml5', text: 'Download Report', title: SelectedDivision + " - मुल्यांकन अहवाल - " + SelectedMonth + " " + SelectedYear},
+                 { extend: 'print', text: 'Print', title: SelectedDivision + " - मुल्यांकन अहवाल - " + SelectedMonth + " " + SelectedYear},
             ]
         });
 
