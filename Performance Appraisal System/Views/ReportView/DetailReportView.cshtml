@@ -408,11 +408,11 @@
                 { "data": "DepartmentName" },
                 { "data": "Subject" },
             ],
-            @* dom: 'Bfrtip',
+             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" + ' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -' + SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" + ' यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय -' + SelectedMonth + " " + SelectedYear }
-            ] *@
+                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" + '- लागु नसलेले विषय -' + SelectedMonth + " " + SelectedYear },
+                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" + ' - लागु नसलेले विषय -' + SelectedMonth + " " + SelectedYear }
+            ]
         });
 
     }
