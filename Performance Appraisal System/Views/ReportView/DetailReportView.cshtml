@@ -15,8 +15,11 @@
         <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>@ViewBag.UserName - मुल्यांकन अहवाल</strong></h5>
         <hr>
         <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
-            एकुण गुण: <strong> @ViewBag.Total </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp प्राप्त गुण: <strong> @ViewBag.AppraisalMarks </strong>
-            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp प्राप्त गुणांची टक्केवारी <strong> @ViewBag.Appraisal_Percentage </strong>
+
+            एकुण गुण:  <span id="TotalMarks"></span> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp प्राप्त गुण: <span id="AppraisalMarks"></span>
+            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp प्राप्त गुणांची टक्केवारी: <span id="AppraisalPercentage"></span> %
+
+
         </div>
         <div class="card-text">
 
@@ -51,16 +54,15 @@
                             </tr>
                         </thead>
                         <tbody style="text-align: center;"></tbody>
-                        @*<tfoot>
-                <tr style="background:#a8bdbd; font-size:18px">
-                    <th style="text-align:center">एकुण</th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"></th>
-                </tr>
-            </tfoot>*@
+                        <tfoot>
+                                <tr style="background:#a8bdbd; font-size:18px">
+                                    <th style="text-align:center" colspan="2">एकुण</th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                    <th style="text-align:center"></th>
+                                </tr>
+                            </tfoot>
                     </table>
                     <div class="center-div">
                         <button class="btn w3-right btn-outline-dark" onclick="getDepartmentwiseReport()">Department-wise Reports</button>
@@ -108,9 +110,13 @@
 
     $(document).ready(function () {
 
+        LoadHeaderData();
+
         bindDataTable();
         bindRemainignSubTable();
         bindNASubTable();
+        
+
         $('#RemainingSubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी अद्याप माहिती न भरलेले विषय</strong></h5></caption>');
         $('#NASubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName - लागु नसलेले विषय</strong></h5></caption>');
     });
@@ -187,36 +193,22 @@
                 };
 
                 // Total over all pages
-                total_Marks = api
-                    .column(2)
-                    .data()
-                    .reduce(function (a, b) {
-                        return intVal(a) + intVal(b);
-                    }, 0);
+                total_Marks = document.getElementById('TotalMarks').innerHTML;
+                total_Appraisal = document.getElementById('AppraisalMarks').innerHTML;
+                total_Percentage = document.getElementById('AppraisalPercentage').innerHTML;
 
-                total_Appraisal = api
-                    .column(3)
-                    .data()
-                    .reduce(function (a, b) {
-                        return intVal(a) + intVal(b);
-                    }, 0);
-
-                if (total_Appraisal > 0 && total_Marks > 0) {
-                    total_Percentage = total_Appraisal * 100 / total_Marks;
-                }
-                else {
-                    total_Percentage = 0;
-                }
 
                 // Update footer
                 $(api.column(2).footer()).html(
                     total_Marks
                 );
+
                 $(api.column(3).footer()).html(
-                    total_Appraisal.toFixed(2)
+                    total_Appraisal
                 );
+
                 $(api.column(4).footer()).html(
-                    total_Percentage.toFixed(2) + ' %'
+                    total_Percentage + ' %'
                 );
             },
             "ajax": {
@@ -241,8 +233,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName मुल्यांकन प्रणाली अहवाल -"+ SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.UserName मुल्यांकन प्रणाली अहवाल -"+ SelectedMonth + " " + SelectedYear }
+                { extend: 'excelHtml5', footer: true, text: 'Download Report', title: "@ViewBag.UserName मुल्यांकन प्रणाली अहवाल -"+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', footer: true, text: 'Print', title: "@ViewBag.UserName मुल्यांकन प्रणाली अहवाल -"+ SelectedMonth + " " + SelectedYear }
             ]
         });
 
@@ -420,26 +412,78 @@
     $('#ReportTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
 
+        var UId = $("#UId").val();
+
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
         window.open(
-                "/ReportView/GetDepartmentReportView?DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId, "_self");
+            "/ReadOnlyReports/ReadOnlyReportView?UId=" + UId + "&DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId + "&Month=" + Month + "&Year=" + Year,"_self");
+
     });
 
+
+    function LoadHeaderData() {
+
+        var UId = $("#UId").val();
+
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
+            $.ajax({
+                type: "get",
+                url: "/ReportView/GetDetailReportHeaders?UId=" + UId + "&Month=" + Month + "&Year=" + Year,
+                contentType: "html",
+                success: function (response) {
+
+                    if (response.data[0] != null) {
+
+                        document.getElementById('TotalMarks').innerHTML = response.data[0].Total_Marks;
+                        document.getElementById('AppraisalMarks').innerHTML = response.data[0].Appraisal_Marks;
+                        document.getElementById('AppraisalPercentage').innerHTML = response.data[0].Appraisal_Percentage;
+                    }
+                    else {
+                        @*alert("No data found for selected financial period");*@
+
+                        document.getElementById('TotalMarks').innerHTML = "0";
+                        document.getElementById('AppraisalMarks').innerHTML = "0";
+                        document.getElementById('AppraisalPercentage').innerHTML = "0";
+                    }
+                },
+            })
+    };
+
     $("#Month").change(function () {
+        LoadHeaderData();
+
         table.destroy();
         table1.destroy();
         table3.destroy();
+
         bindDataTable();
         bindRemainignSubTable();
         bindNASubTable();
+        
     })
 
     $("#Year").change(function () {
+
+        LoadHeaderData();
+
         table.destroy();
         table1.destroy();
         table3.destroy();
+
         bindDataTable();
         bindRemainignSubTable();
         bindNASubTable();
+        
     })
 
     function getDepartmentwiseReport() {

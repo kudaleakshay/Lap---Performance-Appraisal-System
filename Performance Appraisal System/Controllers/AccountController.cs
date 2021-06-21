@@ -131,8 +131,7 @@ namespace Performance_Appraisal_System.Controllers
 
         public string Encrypt(string clearText)
         {
-            Console.WriteLine("Normal" + clearText);
-
+            
             string EncryptionKey = "MAKV2SPBNI99212";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
             using (Aes encryptor = Aes.Create())
@@ -150,7 +149,7 @@ namespace Performance_Appraisal_System.Controllers
                     clearText = Convert.ToBase64String(ms.ToArray());
                 }
             }
-            Console.WriteLine("Encrypted"+ clearText);
+
             return clearText;
         }
 
@@ -158,8 +157,7 @@ namespace Performance_Appraisal_System.Controllers
         public string Decrypt(string cipherText)
         {
 
-            Console.WriteLine("Normal" + cipherText);
-
+            
             string EncryptionKey = "MAKV2SPBNI99212";
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
             using (Aes encryptor = Aes.Create())
@@ -177,12 +175,8 @@ namespace Performance_Appraisal_System.Controllers
                     cipherText = Encoding.Unicode.GetString(ms.ToArray());
                 }
             }
-
-            Console.WriteLine("Decrpt" + cipherText);
-
+            
             return cipherText;
         }
-
-
     }
 }

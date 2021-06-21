@@ -1253,11 +1253,12 @@ namespace Performance_Appraisal_System.Controllers
             {
                 Current_Month = Convert.ToString(Month);
             }
+
             if (Year != null)
             {
                 Current_Month = Convert.ToString(Year);
             }
-
+            
             if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
             {
                 Current_Month = Convert.ToString(System.Web.HttpContext.Current.Session["ReportMonth"]);
@@ -1284,7 +1285,17 @@ namespace Performance_Appraisal_System.Controllers
                      Value = x.ToString()
                  }), "Value", "Text", Current_Year);
 
+            ViewBag.UId = UId;
+            ViewBag.UserName = UserName;
+
+            return View();
+        }
+
+
+        public JsonResult GetDetailReportHeaders(int? UId, int? Month, int? Year)
+        {
             db.Configuration.ProxyCreationEnabled = false;
+
             var reports = (from r in db.DepartmentMasterReports
                            where r.Month == Month
                                 && r.Year == Year && r.UId == UId
@@ -1297,15 +1308,9 @@ namespace Performance_Appraisal_System.Controllers
 
                            }).ToList();
 
-            ViewBag.UId = UId;
-            ViewBag.UserName = UserName;
-            ViewBag.Total = reports[0].Total_Marks;
-            ViewBag.AppraisalMarks = reports[0].Appraisal_Marks;
-            ViewBag.Appraisal_Percentage = reports[0].Appraisal_Percentage;
 
-            return View();
+            return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
         }
-
 
         public JsonResult GetDetailReportData(int? UId, int? Month, int? Year)
         {
@@ -2029,6 +2034,26 @@ namespace Performance_Appraisal_System.Controllers
 
         }
 
+
+        public JsonResult GetReportNotSubmitttedUsers(int Month,int Year)
+        {
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var AvailableUsers = db.Users.Where(u => u.Status == 1 && u.RoleId != 2).ToList();
+
+            return Json(new
+            {
+                data = (from User in AvailableUsers
+                        where !db.SubMasterReports.Any(f => f.UId == User.UId && f.Month == Month && f.Year == Year)
+                        orderby User.SortKey ascending
+                        select new
+                        {
+                            UserName = User.Name,
+                            RoleId = User.RoleId,
+                        }).ToList()
+            }, JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult GetNotApplicableReportData(String DepartmentName, int DepartmentId, int SubjectId, int Month, int Year)
         {

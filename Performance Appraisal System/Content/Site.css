@@ -530,3 +530,9 @@
     transform: scaleX(-1);
     height: 100%;
 }
+
+@media print {
+    .noPrint {
+        display: none;
+    }
+}

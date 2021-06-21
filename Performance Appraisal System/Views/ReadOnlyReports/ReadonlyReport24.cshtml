@@ -1,0 +1,135 @@
+﻿@model Performance_Appraisal_System.Models.Report24
+
+@{
+    ViewBag.Title = "सहकारी संस्थांची नोंदणी";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
+
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <br>
+            <br>
+            <h3 class="card-title text-center"><strong>विभागीय सहनिबंधक, जिल्हा उपनिबंधक व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता</strong></h3>
+            <hr>
+            <div class="card-text">
+                <div class="center-group">
+                    <div class="form-row">
+                        <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
+                            कार्यासनाचे नाव: <strong>@ViewBag.Department</strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> @ViewBag.Title </strong>
+                            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp  Time: <strong> @ViewBag.SubmitTime </strong>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, "-- महिना निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Month)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, "-- वर्ष निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Year)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="WrappperDiv">
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">सहकारी संस्थांच्या नोंदणीचे उद्दीष्टे / साध्य</span>
+                        <span style="font-size: 16px;">( अर्ज दाखल झाल्यापासून 2 महिन्यांच्या आत निकाली काढणे )</span>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Aim)
+                                @Html.TextBoxFor(temp => temp.Aim, new { id = "Aim", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Aim)
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Achieved)
+                                @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Achieved)
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
+                        <hr>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Appraisal_Marks)
+                                @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
+                                @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Appraisal_Percentage)
+                                @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
+                                @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
+                            </div>
+
+                            @*<div class="form-group col-md-10">
+                                @Html.LabelFor(temp => temp.Remarks)
+                                @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Remarks)
+                            </div>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <br>
+
+            <button onclick="window.print();" class="noPrint btn btn-success">
+                🖶 Print
+            </button>
+
+        </div>
+
+        
+    </div>
+
+    <br>
+    <br>
+
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+      $(document).ready()
+    {
+        $('input,textarea').attr('disabled', true);
+    }
+
+</script>

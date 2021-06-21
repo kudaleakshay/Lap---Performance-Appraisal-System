@@ -144,6 +144,7 @@
     <Compile Include="Controllers\LawController.cs" />
     <Compile Include="Controllers\MoneyLendingController.cs" />
     <Compile Include="Controllers\O_MController.cs" />
+    <Compile Include="Controllers\ReadOnlyReportsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReportViewController.cs" />
     <Compile Include="Controllers\StatuscodeController.cs" />
@@ -664,6 +665,8 @@
     <Content Include="Views\Shared\NotApplicableListView.cshtml" />
     <Content Include="Views\Shared\PrevNextBar.cshtml" />
     <Content Include="Views\ReportView\DetailReportView.cshtml" />
+    <Content Include="Views\ReadOnlyReports\ReadonlyReport24.cshtml" />
+    <Content Include="Views\ReadOnlyReports\ReadOnlyReportView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
