@@ -1,0 +1,20 @@
+﻿<div class="container" style="padding: 30px;background: white;">
+    <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+        <br>
+        <br>
+        <h3 class="card-title text-center"><strong> @ViewBag.Department - @ViewBag.Title मूल्यांकन अहवाल</strong></h3>
+        <h3 class="card-title text-center"><strong> @Session["DisplayMonth"].ToString() @Session["ReportYear"].ToString()</strong></h3>
+        <hr>
+        <div class="card-text">
+            <div class="center-group">
+                <div class="form-row">
+                    <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
+                        मूल्यांकन अहवाल जमा केल्याची तारीख : <strong>@ViewBag.SubmitTime</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

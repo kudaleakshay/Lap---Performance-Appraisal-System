@@ -1,7 +1,7 @@
-﻿@model Performance_Appraisal_System.Models.Report24
+﻿@model Performance_Appraisal_System.Models.Report54
 
 @{
-    ViewBag.Title = "सहकारी संस्थांची नोंदणी";
+    ViewBag.Title = " क वर्गातील पतसंस्था ब वर्गात आणणे";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,38 +10,35 @@
     Html.RenderPartial("ReadOnlyLayoutHeader");
 }
 
-
 <div id="WrappperDiv">
-
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
             <div class="card-text">
                 <div class="center-group">
                     <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">सहकारी संस्थांच्या नोंदणीचे उद्दीष्टे / साध्य</span>
-                    <span style="font-size: 16px;">( अर्ज दाखल झाल्यापासून 2 महिन्यांच्या आत निकाली काढणे )</span>
+                    <span style="color: #e77817 !important; font-size: 16px;">संस्था बळकटीकरण उद्दीष्टे / साध्य </span>
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Aim)
-                            @Html.TextBoxFor(temp => temp.Aim, new { id = "Aim", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Aim)
+                            @Html.LabelFor(temp => temp.Annual_Target)
+                            @Html.TextBoxFor(temp => temp.Annual_Target, new { id = "Annual_Target", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Annual_Target)
                         </div>
-                    </div>
-                    <hr>
 
-                    <div class="form-row">
+
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Achieved)
-                            @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Achieved)
+                            @Html.LabelFor(temp => temp.Total_Achieved)
+                            @Html.TextBoxFor(temp => temp.Total_Achieved, new { id = "Total_Achieved", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Total_Achieved)
                         </div>
                     </div>
-                    <br>
                 </div>
             </div>
         </div>
     </div>
+
+
+
 
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -51,6 +48,13 @@
                     <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
                     <hr>
                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Current_Month_Percentage)
+                            @Html.TextBoxFor(temp => temp.Current_Month_Percentage, new { id = "Current_Month_Percentage_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Current_Month_Percentage)
+                            @Html.HiddenFor(temp => temp.Current_Month_Percentage, new { id = "Current_Month_Percentage" })
+
+                        </div>
 
                         <div class="form-group col-md-6">
                             @Html.LabelFor(temp => temp.Appraisal_Marks)
@@ -65,8 +69,8 @@
                             @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
                             @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
                         </div>
-
-                        @*<div class="form-group col-md-10">
+                        @*
+                            <div class="form-group col-md-10">
                                 @Html.LabelFor(temp => temp.Remarks)
                                 @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
                                 @Html.ValidationMessageFor(temp => temp.Remarks)
@@ -76,12 +80,9 @@
                 </div>
             </div>
         </div>
-
-        <br>
-
     </div>
-
 </div>
+
 
 @{
     Html.RenderPartial("PrintButtonBar");

@@ -23,6 +23,7 @@ namespace Performance_Appraisal_System.Controllers
             Session["departments_MarksMapping"] = departments_MarksMapping;
 
             ViewBag.UserRole = user.RoleId;
+            ViewBag.UId = user.UId;
             return View();
         }
 

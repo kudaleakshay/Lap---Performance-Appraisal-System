@@ -1,7 +1,7 @@
-﻿@model Performance_Appraisal_System.Models.Report24
+﻿@model Performance_Appraisal_System.Models.Report62
 
 @{
-    ViewBag.Title = "सहकारी संस्थांची नोंदणी";
+    ViewBag.Title = "महाराष्ट्र सावकारी (नियमन) अधिनियम २०१४ मधील नियम १६ अन्वये तक्रारी बाबत";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,36 +12,35 @@
 
 
 <div id="WrappperDiv">
-
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
             <div class="card-text">
                 <div class="center-group">
                     <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">सहकारी संस्थांच्या नोंदणीचे उद्दीष्टे / साध्य</span>
-                    <span style="font-size: 16px;">( अर्ज दाखल झाल्यापासून 2 महिन्यांच्या आत निकाली काढणे )</span>
+                    <span style="color: #e77817 !important; font-size: 16px;">तक्रारींची माहिती</span>
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Aim)
-                            @Html.TextBoxFor(temp => temp.Aim, new { id = "Aim", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Aim)
+                            @Html.LabelFor(temp => temp.Total_Complaint)
+                            @Html.TextBoxFor(temp => temp.Total_Complaint, new { id = "Total_Complaint", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Total_Complaint)
                         </div>
                     </div>
                     <hr>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Achieved)
-                            @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Achieved)
+                            @Html.LabelFor(temp => temp.Resolved_Complaint)
+                            @Html.TextBoxFor(temp => temp.Resolved_Complaint, new { id = "Resolved_Complaint", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Resolved_Complaint)
                         </div>
+
                     </div>
-                    <br>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -60,11 +59,12 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Appraisal_Percentage)
-                            @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
-                            @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
-                            @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
+                            @Html.LabelFor(temp => temp.Resolved_Percentage)
+                            @Html.TextBoxFor(temp => temp.Resolved_Percentage, new { id = "Resolved_Percentage_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Resolved_Percentage)
+                            @Html.HiddenFor(temp => temp.Resolved_Percentage, new { id = "Resolved_Percentage" })
                         </div>
+
 
                         @*<div class="form-group col-md-10">
                                 @Html.LabelFor(temp => temp.Remarks)
@@ -76,11 +76,7 @@
                 </div>
             </div>
         </div>
-
-        <br>
-
     </div>
-
 </div>
 
 @{

@@ -16,7 +16,8 @@
         <div class="card-text">
 
             <div class="center-group">
-                <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>विभागीय सहनिबंधक यांचा मुल्यांकन प्रणाली अहवाल</strong></h5>
+               
+              @*  <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>विभागीय सहनिबंधक यांचा मुल्यांकन प्रणाली अहवाल</strong></h5>
                 <table id="DJRTable" class="table table-striped branchtable">
                     <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
                         <tr>
@@ -29,9 +30,11 @@
                 <hr>
                 <hr>
                 <br>
-                <br>
+                <br>*@
 
                 <h5 class="card-title text-center" style="color: #e77817 !important; font-size: 20px;"><strong>जिल्हा उपनिबंधक यांचा मुल्यांकन प्रणाली अहवाल</strong></h5>
+                <hr>
+                <br>
                 <table id="DDRTable" class="table table-striped branchtable">
                     <thead style="text-align: center; vertical-align: middle !important; background-color: #a8bdbd">
                         <tr>
@@ -75,14 +78,49 @@
 
     $(document).ready(function () {
 
-        bindDJRTable();
         bindDDRTable();
+
+        @*bindDJRTable();*@
         @*bindARTable();*@
 
     });
 
 
-    function bindDJRTable() {
+    function bindDDRTable() {
+        DDRtable = $("#DDRTable").DataTable({
+            paging: false,
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            filter: false,
+            info: false,
+            fixedColumns: true,
+            order: [],
+            language: {
+                emptyTable: "जिल्हा उपनिबंधक कार्यालय आपल्या कार्यक्षेत्रात नाहीत अथवा माहिती उपलब्ध नाही"
+            },
+            "ajax": {
+                "url": "/Report/GetDDROfficeData",
+                "type": "GET",
+                "datatype": "json",
+                "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Something went wrong, Please try again...");
+                }
+            },
+            "columns": [
+                { "data": "Name" },
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<button style="margin-bottom: 0 !important;" class = "btn btn-info">Show Report</button>';
+                    }
+                },
+            ]
+        });
+    }
+
+
+
+    @*function bindDJRTable() {
         DJRtable = $("#DJRTable").DataTable({
             paging: false,
             responsive: true,
@@ -113,36 +151,7 @@
                 },
             ]
         });
-    }
-
-    function bindDDRTable() {
-        DDRtable = $("#DDRTable").DataTable({
-            responsive: true,
-            processing: true,
-            autoWidth: true,
-            fixedColumns: true,
-            order: [],
-            language: {
-                emptyTable: "जिल्हा उपनिबंधक कार्यालय आपल्या कार्यक्षेत्रात नाहीत अथवा माहिती उपलब्ध नाही"
-            },
-            "ajax": {
-                "url": "/Report/GetDDROfficeData",
-               "type": "GET",
-                  "datatype": "json",
-                "error": function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Something went wrong, Please try again...");
-                }
-            },
-            "columns": [
-                { "data": "Name" },
-                {
-                    "render": function (data, type, full, meta) {
-                        return '<button style="margin-bottom: 0 !important;" class = "btn btn-info">Show Report</button>';
-                    }
-                },
-            ]
-        });
-    }
+    }*@
 
     @*
         function bindARTable() {

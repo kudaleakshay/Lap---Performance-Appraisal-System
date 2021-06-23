@@ -1,7 +1,7 @@
-﻿@model Performance_Appraisal_System.Models.Report24
+﻿@model Performance_Appraisal_System.Models.Report30
 
 @{
-    ViewBag.Title = "सहकारी संस्थांची नोंदणी";
+    ViewBag.Title = "वाटप करण्यात आलेला निधी खर्च करणे याबाबीमध्ये कार्यक्रम खर्च (प्लॅन) व अनिवार्य खर्च ( नॉन प्लॅन)";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,34 +10,52 @@
     Html.RenderPartial("ReadOnlyLayoutHeader");
 }
 
-
 <div id="WrappperDiv">
-
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
             <div class="card-text">
                 <div class="center-group">
                     <br>
-                    <span style="color: #e77817 !important; font-size: 16px;">सहकारी संस्थांच्या नोंदणीचे उद्दीष्टे / साध्य</span>
-                    <span style="font-size: 16px;">( अर्ज दाखल झाल्यापासून 2 महिन्यांच्या आत निकाली काढणे )</span>
+                    <span style="color: #e77817 !important; font-size: 16px;">वाटप करण्यात आलेल्या निधीची माहिती ( रुपये लाखात )</span>
                     <hr>
+
                     <div class="form-row">
+
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Aim)
-                            @Html.TextBoxFor(temp => temp.Aim, new { id = "Aim", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Aim)
+                            @Html.LabelFor(temp => temp.BDS_Funds_Aim)
+                            @Html.TextBoxFor(temp => temp.BDS_Funds_Aim, new { id = "BDS_Funds_Aim", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.BDS_Funds_Aim)
                         </div>
                     </div>
                     <hr>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            @Html.LabelFor(temp => temp.Achieved)
-                            @Html.TextBoxFor(temp => temp.Achieved, new { id = "Achieved", @class = "form-control" })
-                            @Html.ValidationMessageFor(temp => temp.Achieved)
+                            @Html.LabelFor(temp => temp.Last_Month_Achieved_Expenses)
+                            @Html.TextBoxFor(temp => temp.Last_Month_Achieved_Expenses, new { id = "Last_Month_Achieved_Expenses", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Last_Month_Achieved_Expenses)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Current_Month_Achieved_Expenses)
+                            @Html.TextBoxFor(temp => temp.Current_Month_Achieved_Expenses, new { id = "Current_Month_Achieved_Expenses", @class = "form-control" })
+                            @Html.ValidationMessageFor(temp => temp.Current_Month_Achieved_Expenses)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Total_Expenses)
+                            @Html.TextBoxFor(temp => temp.Total_Expenses, new { id = "Total_Expenses_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Total_Expenses)
+                            @Html.HiddenFor(temp => temp.Total_Expenses, new { id = "Total_Expenses" })
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(temp => temp.Balance_Amount)
+                            @Html.TextBoxFor(temp => temp.Balance_Amount, new { id = "Balance_Amount_val", @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(temp => temp.Balance_Amount)
+                            @Html.HiddenFor(temp => temp.Balance_Amount, new { id = "Balance_Amount" })
                         </div>
                     </div>
-                    <br>
                 </div>
             </div>
         </div>
@@ -76,12 +94,10 @@
                 </div>
             </div>
         </div>
-
-        <br>
-
     </div>
-
 </div>
+
+
 
 @{
     Html.RenderPartial("PrintButtonBar");
@@ -97,3 +113,4 @@ $('#Button').prop('disabled', false);
     }
 
 </script>
+

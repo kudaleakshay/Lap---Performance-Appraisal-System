@@ -1,7 +1,9 @@
 ﻿@{ ViewBag.Title = "मुल्यांकन प्रणाली"; }
 
 
-@{var UserRole = ViewBag.UserRole;}
+@{var UserRole = ViewBag.UserRole;
+    var UId = ViewBag.UId;
+}
 
 <br>
 <br>
@@ -27,15 +29,7 @@
                             <h5 class="card-title">मुल्यांकन अहवाल पहा</h5>
                             <hr>
                             <p class="card-text">येथे आपण मुल्यांकन प्रणाली महाराष्ट्र राज्य अहवाल , शाखा निहाय अहवाल , कार्यालय निहाय अहवाल पाहु शकता.</p>
-                            @if (UserRole == 3 || UserRole == 4)
-                            {
-                                <a href="/Report/OfficeReportSelection" title="मुल्यांकन अहवाल पहा" class="btn btn-dark" style="width: 20rem;">Proceed</a>
-                            }
-                            else
-                            {
-                                <a href="/Report/ViewAppraisalReports" title="मुल्यांकन अहवाल पहा" class="btn btn-dark" style="width: 20rem;">Proceed</a>
-                            }
-
+                            <a href="/Report/ViewAppraisalReports" title="मुल्यांकन अहवाल पहा" class="btn btn-dark" style="width: 20rem;">Proceed</a>
                         </div>
                     </div>
                 </div>

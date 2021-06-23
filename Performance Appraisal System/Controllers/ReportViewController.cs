@@ -1258,7 +1258,7 @@ namespace Performance_Appraisal_System.Controllers
             {
                 Current_Month = Convert.ToString(Year);
             }
-            
+
             if (System.Web.HttpContext.Current.Session["ReportMonth"] != null)
             {
                 Current_Month = Convert.ToString(System.Web.HttpContext.Current.Session["ReportMonth"]);
@@ -2035,7 +2035,7 @@ namespace Performance_Appraisal_System.Controllers
         }
 
 
-        public JsonResult GetReportNotSubmitttedUsers(int Month,int Year)
+        public JsonResult GetReportNotSubmitttedUsers(int Month, int Year)
         {
 
             db.Configuration.ProxyCreationEnabled = false;
@@ -2760,6 +2760,28 @@ namespace Performance_Appraisal_System.Controllers
             return View();
         }
 
+
+        /*        public ActionResult GetDivisonReportView(int UId)
+                {
+                    User user = db.Users.Where(u => u.UId == UId).FirstOrDefault();
+                    ViewBag.DivisionId = user.DivisionId;
+
+                    return View();
+        }
+        */
+
+
+
+        public ActionResult GetDivisionReportView()
+        {
+            User user = (User)HttpContext.Session["User"];
+            List<Division> DivisionList = db.Divisions.Where(d => d.Id == user.DivisionId).ToList();
+            ViewBag.DivisionList = new SelectList(DivisionList, "Id", "DivisionName");
+         
+            return View();
+        }
+
+
         public ActionResult GetSubReportView(int UId, int DepartmentId)
         {
             Department department = db.Departments.Where(u => u.Id == DepartmentId)
@@ -2767,17 +2789,17 @@ namespace Performance_Appraisal_System.Controllers
 
             ViewBag.DepartmentName = department.DepartmentName;
 
- 
+
             User user = db.Users.Where(u => u.UId == UId)
                                        .FirstOrDefault();
 
             ViewBag.UserName = user.Name;
-            
+
             User LoggedInUser = (User)HttpContext.Session["User"];
             ViewBag.UserRole = LoggedInUser.RoleId;
-            
+
             ViewBag.UId = UId;
-            
+
             ViewBag.DepartmentId = DepartmentId;
             return View();
         }
@@ -2801,8 +2823,8 @@ namespace Performance_Appraisal_System.Controllers
                                Total_Marks = r.Total_Marks - r.Not_Applicable_Marks,
                                /*Appraisal_Marks = r.Appraisal_Marks,
                                Appraisal_Percentage = r.Appraisal_Percentage,*/
-                               Appraisal_Marks = Math.Round((Double) r.Appraisal_Marks,2),
-                               Appraisal_Percentage = Math.Round((Double) r.Appraisal_Percentage, 2),
+                               Appraisal_Marks = Math.Round((Double)r.Appraisal_Marks, 2),
+                               Appraisal_Percentage = Math.Round((Double)r.Appraisal_Percentage, 2),
                                DepartmentId = r.DepartmentId,
                                UId = r.UId,
                                Department = d.DepartmentName,
@@ -2857,7 +2879,7 @@ namespace Performance_Appraisal_System.Controllers
 
             db.Configuration.ProxyCreationEnabled = false;
 
-            var SubjectList = db.Subjects.Where(s => s.Type ==2 && s.DepartmentId == DepartmentId).ToList();
+            var SubjectList = db.Subjects.Where(s => s.Type == 2 && s.DepartmentId == DepartmentId).ToList();
 
             var SubMasterReportsList = db.SubMasterReports.Where(f => f.UId == UId && f.Month == Month && f.Year == Year && f.DepartmentId == DepartmentId).ToList();
 
@@ -2887,7 +2909,7 @@ namespace Performance_Appraisal_System.Controllers
                            where r.Month == Month
                                  && r.Year == Year
                                  && r.UId == UId
-                                 && r.Not_Applicable_Marks != 0 
+                                 && r.Not_Applicable_Marks != 0
                                  && s.Type == 2
                            orderby r.DepartmentId
                            select new
@@ -2916,7 +2938,7 @@ namespace Performance_Appraisal_System.Controllers
             {
                 case 1:
                     //As Department 2 not in the Appraisal type 1 so remove it from the list
-                    SubjectList = db.Subjects.Where(s => s.Type == 2 && s.DepartmentId !=2).ToList();
+                    SubjectList = db.Subjects.Where(s => s.Type == 2 && s.DepartmentId != 2).ToList();
                     break;
 
                 case 2:
@@ -2998,24 +3020,24 @@ namespace Performance_Appraisal_System.Controllers
             {
                 db.Configuration.ProxyCreationEnabled = false;
                 reports = (from r in db.DepartmentMasterReports
-                               where r.Month == Month
-                                    && r.Year == Year
-                               group r by r.UId into GroupReport
-                               join u in db.Users
-                               on GroupReport.FirstOrDefault().UId equals u.UId
-                               where u.DivisionId == DivisionId
-                               orderby u.SortKey ascending
-                               select new
-                               {
-                                   Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
-                                   /*Appraisal_Percentage = Math.Round( (Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / GroupReport.Sum(x => x.Total_Marks)), 2),*/
-                                   Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
-                                   Total_Marks = (100 - GroupReport.Sum(x => x.Not_Applicable_Marks)),
-                                   Name = u.Name.Trim(),
-                                   UId = u.UId,
-                                   RoleId = u.RoleId,
+                           where r.Month == Month
+                                && r.Year == Year
+                           group r by r.UId into GroupReport
+                           join u in db.Users
+                           on GroupReport.FirstOrDefault().UId equals u.UId
+                           where u.DivisionId == DivisionId
+                           orderby u.SortKey ascending
+                           select new
+                           {
+                               Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
+                               /*Appraisal_Percentage = Math.Round( (Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / GroupReport.Sum(x => x.Total_Marks)), 2),*/
+                               Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
+                               Total_Marks = (100 - GroupReport.Sum(x => x.Not_Applicable_Marks)),
+                               Name = u.Name.Trim(),
+                               UId = u.UId,
+                               RoleId = u.RoleId,
 
-                               }).ToList();
+                           }).ToList();
 
             }
 

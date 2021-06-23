@@ -38,7 +38,10 @@
                         </div>
                     </div>
 
-                    <br>
+                    <div class="center-div">
+                        <button type="submit" name="ActionType" class="btn btn-danger" value="NotApp-btn">@Model.Subjects.FirstOrDefault().Department.DepartmentName विषय लागु नाही</button>
+                    </div>
+                    
                     <br>
 
                     <table class="table table-striped branchtable">
@@ -76,4 +79,10 @@
         $('#DepartmentId').val(DepartmentId);
         $('#SubSubjectId').val(SId);
     }
+
+    function DepartmentNotApp(DepartmentId) {
+        console.log("DID:" + DepartmentId);
+        $("form").attr("action", "/Report/CancelForm");
+    }
+
 </script>
