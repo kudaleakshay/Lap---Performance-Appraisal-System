@@ -20,7 +20,6 @@ namespace Performance_Appraisal_System.Controllers
 
         public ReportController()
         {
-
             var Current_Month = Convert.ToString(DateTime.Now.Month - 1);
             var Current_Year = Convert.ToString(DateTime.Now.Year);
 
@@ -67,7 +66,6 @@ namespace Performance_Appraisal_System.Controllers
         {
             User user = (User)HttpContext.Session["User"];
             AppraisalReportViewModel reports = new AppraisalReportViewModel();
-
 
             reports.Month = DateTime.Now.Month - 1;
             reports.Year = DateTime.Now.Year;
@@ -123,6 +121,8 @@ namespace Performance_Appraisal_System.Controllers
         [HttpPost]
         public ActionResult SubReports(AppraisalReportViewModel reports)
         {
+            User user = (User)HttpContext.Session["User"];
+
             AppraisalReportViewModel SubReports = new AppraisalReportViewModel
             {
                 DepartmentId = reports.DepartmentId
@@ -135,6 +135,7 @@ namespace Performance_Appraisal_System.Controllers
             SubReports.Subjects = db.Subjects.Where(x => x.Type == 2 && x.DepartmentId == SubReports.DepartmentId).ToList();
 
             Session["ReportDepartmentName"] = SubReports.Subjects.FirstOrDefault().Department.DepartmentName;
+            ViewBag.UserRole = user.RoleId;
 
             return View(SubReports);
         }
@@ -273,6 +274,7 @@ namespace Performance_Appraisal_System.Controllers
                                 Retirement_Benefits_Target = 0,
                                 Retirement_Benefits_Achieved = 0,
                                 Retirement_Benefits_Pendig = 0,
+                                Remarks = "0",
 
                             };
                             db.Report12.Add(report12);
@@ -293,6 +295,7 @@ namespace Performance_Appraisal_System.Controllers
                                 Service_Books_Updation_Target = 0,
                                 Service_Books_Updation_Achieved = 0,
                                 Service_Books_Updation_Pending = 0,
+                                Remarks = "0",
 
                             };
                             db.Report13.Add(report13);
@@ -570,9 +573,9 @@ namespace Performance_Appraisal_System.Controllers
                                 NotApplicable = true,
                                 Appraisal_Marks = 0,
 
-                                Aim = 0,
-                                Last_Month_Report_Submitted = 0,
-                                Current_Month_Report_Submitted = 0,
+                                Aim = 31,
+                                Last_Month_Report_Submitted = 31,
+                                Current_Month_Report_Submitted = 31,
 
                             };
                             db.Report31.Add(report31);
@@ -1402,19 +1405,35 @@ namespace Performance_Appraisal_System.Controllers
             var ifDataExist = db.SubMasterReports.Where(r => r.UId == Report.UId && r.Month == Report.Month && r.Year == Report.Year
                                                                && r.DepartmentId == Report.DepartmentId
                                                                && r.SubjectId == Report.SubjectId).FirstOrDefault();
-            if (ifDataExist == null)
-            {
-                db.SubMasterReports.Add(Report);
-                db.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
 
+            try
+            {
+                if (ifDataExist == null)
+                {
+                    db.SubMasterReports.Add(Report);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
         }
-
 
         public string getRemark(int? RoleId)
         {

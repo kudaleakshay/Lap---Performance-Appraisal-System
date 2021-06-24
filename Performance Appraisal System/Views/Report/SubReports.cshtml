@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{var UserRole = ViewBag.UserRole;
+}
+
 @{
     Html.RenderPartial("PrevNextBar");
 }
@@ -38,10 +41,9 @@
                         </div>
                     </div>
 
-                    <div class="center-div">
-                        <button type="submit" name="ActionType" class="btn btn-danger" value="NotApp-btn">@Model.Subjects.FirstOrDefault().Department.DepartmentName विषय लागु नाही</button>
-                    </div>
-                    
+
+
+
                     <br>
 
                     <table class="table table-striped branchtable">
@@ -65,24 +67,32 @@
 
                         </tbody>
                     </table>
-                }
+                    <hr>
+                    if (UserRole == 3)
+                    {
+                        <div class="center-div">
+                            <button type="submit" name="ActionType" class="btn btn-danger" value="NotApp-btn" onclick="return confirm('या महिन्यासाठीच्या मुल्यांकन अहवालात आपण @Model.Subjects.FirstOrDefault().Department.DepartmentName या कार्यासनातील सर्व विषय आपणास लागु नाहीत असे सादर करु इच्छिता?')">@Model.Subjects.FirstOrDefault().Department.DepartmentName कार्यासनातील वरील सर्व विषय लागु नाहीत</button>
+                        </div>
+                    }
+                    <br>
+
+
+            }
             </div>
-            <hr>
         </div>
+
     </div>
 
-</div>
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script>
+        function getDepartment(DepartmentId, SId) {
+            $('#DepartmentId').val(DepartmentId);
+            $('#SubSubjectId').val(SId);
+        }
 
-<script src="~/Scripts/jquery-3.5.1.min.js"></script>
-<script>
-    function getDepartment(DepartmentId, SId) {
-        $('#DepartmentId').val(DepartmentId);
-        $('#SubSubjectId').val(SId);
-    }
+        function DepartmentNotApp(DepartmentId) {
+            console.log("DID:" + DepartmentId);
+            $("form").attr("action", "/Report/CancelForm");
+        }
 
-    function DepartmentNotApp(DepartmentId) {
-        console.log("DID:" + DepartmentId);
-        $("form").attr("action", "/Report/CancelForm");
-    }
-
-</script>
+    </script>

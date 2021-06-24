@@ -194,10 +194,7 @@
                 { "data": "report.Remarks" },
                 {
                     "render": function (data, type, full, meta) {
-                        if (@ViewBag.UserRole == 2 || @ViewBag.UserRole == 3) {
-                            return '<button style="margin-bottom: 0 !important;" class = "btn btn-outline-dark">Report</button>';
-                        }
-                        return '';
+                           return '<button style="margin-bottom: 0 !important;" class = "btn btn-outline-dark">Report</button>';
                     }
                 },
             ],
@@ -270,8 +267,18 @@
     $('#ReportTable tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
 
+
+        var UId = $("#UId").val();
+
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
         window.open(
-                "/ReportView/GetDepartmentReportView?DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId, "_self");
+            "/ReadOnlyReports/ReadOnlyReportView?UId=" + UId + "&DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId + "&Month=" + Month + "&Year=" + Year, "_self");
+
     });
 
 

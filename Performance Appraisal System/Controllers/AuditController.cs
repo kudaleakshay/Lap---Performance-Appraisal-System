@@ -35,12 +35,12 @@ namespace Performance_Appraisal_System.Controllers
                }), "Value", "Text", Current_Month);
 
 
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year -2, 10).Select(x =>
-               new SelectListItem()
-               {
-                   Text = x.ToString(),
-                   Value = x.ToString()
-               }), "Value", "Text", Current_Year);
+            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year - 2, 10).Select(x =>
+                new SelectListItem()
+                {
+                    Text = x.ToString(),
+                    Value = x.ToString()
+                }), "Value", "Text", Current_Year);
 
         }
 
@@ -144,7 +144,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
-				Reports.CreatedTime = DateTime.Now;
+                Reports.CreatedTime = DateTime.Now;
 
 
                 SubMasterReport SubReport = new SubMasterReport
@@ -155,7 +155,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 : Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -179,7 +179,8 @@ namespace Performance_Appraisal_System.Controllers
             else
             {
                 ModelState.AddModelError("Error", "Invalid Data");
-                return View();
+                TempData["Error"] = "Something went wrong, Please check your input data and try again later";
+                return RedirectToAction("DepartmentWiseReport", "Report");
             }
         }
 
@@ -206,7 +207,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 : Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Appraisal_Percentage,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -230,7 +231,8 @@ namespace Performance_Appraisal_System.Controllers
             else
             {
                 ModelState.AddModelError("Error", "Invalid Data");
-                return View();
+                TempData["Error"] = "Something went wrong, Please check your input data and try again later";
+                return RedirectToAction("DepartmentWiseReport", "Report");
             }
         }
 
@@ -244,7 +246,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
-				Reports.CreatedTime = DateTime.Now;
+                Reports.CreatedTime = DateTime.Now;
 
 
                 SubMasterReport SubReport = new SubMasterReport
@@ -255,7 +257,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 : Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Percentage_Action_Taken,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -279,7 +281,8 @@ namespace Performance_Appraisal_System.Controllers
             else
             {
                 ModelState.AddModelError("Error", "Invalid Data");
-                return View();
+                TempData["Error"] = "Something went wrong, Please check your input data and try again later";
+                return RedirectToAction("DepartmentWiseReport", "Report");
             }
         }
 
@@ -293,7 +296,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
-				Reports.CreatedTime = DateTime.Now;
+                Reports.CreatedTime = DateTime.Now;
 
 
                 SubMasterReport SubReport = new SubMasterReport
@@ -304,7 +307,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 : Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Percentage_Action_Taken,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -329,7 +332,8 @@ namespace Performance_Appraisal_System.Controllers
             else
             {
                 ModelState.AddModelError("Error", "Invalid Data");
-                return View();
+                TempData["Error"] = "Something went wrong, Please check your input data and try again later";
+                return RedirectToAction("DepartmentWiseReport", "Report");
             }
         }
 
@@ -343,7 +347,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
-				Reports.CreatedTime = DateTime.Now;
+                Reports.CreatedTime = DateTime.Now;
 
 
                 SubMasterReport SubReport = new SubMasterReport
@@ -354,7 +358,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 : Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Percentage_Action_Taken,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -379,7 +383,8 @@ namespace Performance_Appraisal_System.Controllers
             else
             {
                 ModelState.AddModelError("Error", "Invalid Data");
-                return View();
+                TempData["Error"] = "Something went wrong, Please check your input data and try again later";
+                return RedirectToAction("DepartmentWiseReport", "Report");
             }
         }
 
@@ -393,7 +398,7 @@ namespace Performance_Appraisal_System.Controllers
                 User user = (User)HttpContext.Session["User"];
 
                 Reports.UId = user.UId;
-				Reports.CreatedTime = DateTime.Now;
+                Reports.CreatedTime = DateTime.Now;
 
 
                 SubMasterReport SubReport = new SubMasterReport
@@ -404,7 +409,7 @@ namespace Performance_Appraisal_System.Controllers
                     Year = Reports.Year,
                     DepartmentId = Convert.ToInt32(Session["ReportDepartment"]),
                     SubjectId = Convert.ToInt32(Session["ReportSubDepartment"]),
-                    Total_Marks = Reports.NotApplicable ? 0 :Convert.ToDouble(Session["TotalMarks"]),
+                    Total_Marks = Reports.NotApplicable ? 0 : Convert.ToDouble(Session["TotalMarks"]),
                     Appraisal_Marks = Reports.Appraisal_Marks,
                     Appraisal_Percentage = Reports.Percentage_Action_Taken,
                     Not_Applicable_Marks = Reports.NotApplicable ? Convert.ToDouble(Session["TotalMarks"]) : 0,
@@ -429,7 +434,8 @@ namespace Performance_Appraisal_System.Controllers
             else
             {
                 ModelState.AddModelError("Error", "Invalid Data");
-                return View();
+                TempData["Error"] = "Something went wrong, Please check your input data and try again later";
+                return RedirectToAction("DepartmentWiseReport", "Report");
             }
         }
 

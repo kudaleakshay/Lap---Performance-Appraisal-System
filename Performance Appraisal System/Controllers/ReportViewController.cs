@@ -1296,13 +1296,15 @@ namespace Performance_Appraisal_System.Controllers
         {
             db.Configuration.ProxyCreationEnabled = false;
 
-            var reports = (from r in db.DepartmentMasterReports
-                           where r.Month == Month
-                                && r.Year == Year && r.UId == UId
+            var MatchingReports = db.SubMasterReports.Where(r => r.Month == Month && r.Year == Year && r.UId == UId);
+
+            var reports = (from r in MatchingReports
+
                            group r by r.UId into GroupReport
                            select new
                            {
                                Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
+                               NAMarks = GroupReport.Sum(x => x.Not_Applicable_Marks).ToString().Trim(),
                                Total_Marks = (100 - GroupReport.Sum(x => x.Not_Applicable_Marks)),
                                Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
 
@@ -2760,24 +2762,12 @@ namespace Performance_Appraisal_System.Controllers
             return View();
         }
 
-
-        /*        public ActionResult GetDivisonReportView(int UId)
-                {
-                    User user = db.Users.Where(u => u.UId == UId).FirstOrDefault();
-                    ViewBag.DivisionId = user.DivisionId;
-
-                    return View();
-        }
-        */
-
-
-
         public ActionResult GetDivisionReportView()
         {
             User user = (User)HttpContext.Session["User"];
             List<Division> DivisionList = db.Divisions.Where(d => d.Id == user.DivisionId).ToList();
             ViewBag.DivisionList = new SelectList(DivisionList, "Id", "DivisionName");
-         
+
             return View();
         }
 
@@ -2811,22 +2801,20 @@ namespace Performance_Appraisal_System.Controllers
 
             db.Configuration.ProxyCreationEnabled = false;
 
-            var reports = (from r in db.DepartmentMasterReports
+            var MatchingRecords = db.SubMasterReports.Where(r => r.Month == Month && r.Year == Year && r.UId == UId && r.Not_Applicable_Marks <= 0);
+
+            var reports = (from r in MatchingRecords
+                           group r by r.DepartmentId into GroupReport
                            join d in db.Departments
-                           on r.DepartmentId equals d.Id
-                           where r.Month == Month
-                                 && r.Year == Year
-                                 && r.UId == UId
-                           orderby r.DepartmentId
+                           on GroupReport.FirstOrDefault().DepartmentId equals d.Id
+                           orderby GroupReport.FirstOrDefault().DepartmentId
                            select new
                            {
-                               Total_Marks = r.Total_Marks - r.Not_Applicable_Marks,
-                               /*Appraisal_Marks = r.Appraisal_Marks,
-                               Appraisal_Percentage = r.Appraisal_Percentage,*/
-                               Appraisal_Marks = Math.Round((Double)r.Appraisal_Marks, 2),
-                               Appraisal_Percentage = Math.Round((Double)r.Appraisal_Percentage, 2),
-                               DepartmentId = r.DepartmentId,
-                               UId = r.UId,
+                               Total_Marks = (GroupReport.Sum(x => x.Total_Marks) - GroupReport.Sum(x => x.Not_Applicable_Marks)),
+                               Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
+                               Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (GroupReport.Sum(x => x.Total_Marks) - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
+                               DepartmentId = GroupReport.FirstOrDefault().DepartmentId,
+                               UId = GroupReport.FirstOrDefault().UId,
                                Department = d.DepartmentName,
                            }).ToList();
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
@@ -2859,7 +2847,7 @@ namespace Performance_Appraisal_System.Controllers
             }
 
             var reports = (from Departments in DepartmentList
-                           where !db.DepartmentMasterReports.Any(f => f.UId == UId && f.Month == Month && f.Year == Year && f.DepartmentId == Departments.Id)
+                           where !db.SubMasterReports.Any(f => f.UId == UId && f.Month == Month && f.Year == Year && f.DepartmentId == Departments.Id)
                            select new
                            {
                                Department = Departments.DepartmentName,
@@ -2996,9 +2984,10 @@ namespace Performance_Appraisal_System.Controllers
             Session["ReportYear"] = Year;
 
             db.Configuration.ProxyCreationEnabled = false;
-            var reports = (from r in db.DepartmentMasterReports
-                           where r.Month == Month
-                                && r.Year == Year
+
+            var MatchingReports = db.SubMasterReports.Where(r => r.Month == Month && r.Year == Year);
+
+            var reports = (from r in MatchingReports
                            group r by r.UId into GroupReport
                            join u in db.Users
                            on GroupReport.FirstOrDefault().UId equals u.UId
@@ -3006,7 +2995,6 @@ namespace Performance_Appraisal_System.Controllers
                            select new
                            {
                                Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
-                               /*Appraisal_Percentage = Math.Round( (Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / GroupReport.Sum(x => x.Total_Marks)), 2),*/
                                Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
                                Total_Marks = (100 - GroupReport.Sum(x => x.Not_Applicable_Marks)),
                                Name = u.Name.Trim(),
@@ -3019,9 +3007,7 @@ namespace Performance_Appraisal_System.Controllers
             if (DivisionId != null)
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                reports = (from r in db.DepartmentMasterReports
-                           where r.Month == Month
-                                && r.Year == Year
+                reports = (from r in MatchingReports
                            group r by r.UId into GroupReport
                            join u in db.Users
                            on GroupReport.FirstOrDefault().UId equals u.UId
@@ -3030,7 +3016,6 @@ namespace Performance_Appraisal_System.Controllers
                            select new
                            {
                                Appraisal_Marks = GroupReport.Sum(x => x.Appraisal_Marks).ToString().Trim(),
-                               /*Appraisal_Percentage = Math.Round( (Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / GroupReport.Sum(x => x.Total_Marks)), 2),*/
                                Appraisal_Percentage = Math.Round((Double)((GroupReport.Sum(x => x.Appraisal_Marks) * 100) / (100 - GroupReport.Sum(x => x.Not_Applicable_Marks))), 2),
                                Total_Marks = (100 - GroupReport.Sum(x => x.Not_Applicable_Marks)),
                                Name = u.Name.Trim(),

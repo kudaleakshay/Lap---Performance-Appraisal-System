@@ -136,12 +136,7 @@
                 };
 
                 // Total over all pages
-                total_Marks = api
-                    .column(1)
-                    .data()
-                    .reduce(function (a, b) {
-                        return intVal(a) + intVal(b);
-                    }, 0);
+                total_Marks = 100;
 
                 total_Appraisal = api
                     .column(2)
@@ -189,8 +184,8 @@
             ],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excelHtml5', text: 'Download Report', title: "@ViewBag.UserName" +'- मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear },
-                { extend: 'print', text: 'Print', title: "@ViewBag.UserName" +'- मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear }
+                { extend: 'excelHtml5', footer: true, text: 'Download Report', title: "@ViewBag.UserName" +'- मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear },
+                { extend: 'print', footer: true, text: 'Print', title: "@ViewBag.UserName" +'- मुल्यांकन प्रणाली अहवाल -'+ SelectedMonth + " " + SelectedYear }
             ]
         });
 

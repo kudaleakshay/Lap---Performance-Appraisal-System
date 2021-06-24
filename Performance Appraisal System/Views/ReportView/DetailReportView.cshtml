@@ -18,6 +18,10 @@
 
             एकुण गुण:  <span id="TotalMarks"></span> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp प्राप्त गुण: <span id="AppraisalMarks"></span>
             &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp प्राप्त गुणांची टक्केवारी: <span id="AppraisalPercentage"></span> %
+            <br><br>
+            <div>
+                लागु नसलेल्या विषयांचे गुण : <span id="NAMarks"></span>
+            </div>
 
 
         </div>
@@ -55,14 +59,14 @@
                         </thead>
                         <tbody style="text-align: center;"></tbody>
                         <tfoot>
-                                <tr style="background:#a8bdbd; font-size:18px">
-                                    <th style="text-align:center" colspan="2">एकुण</th>
-                                    <th style="text-align:center"></th>
-                                    <th style="text-align:center"></th>
-                                    <th style="text-align:center"></th>
-                                    <th style="text-align:center"></th>
-                                </tr>
-                            </tfoot>
+                            <tr style="background:#a8bdbd; font-size:18px">
+                                <th style="text-align:center" colspan="2">एकुण</th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                                <th style="text-align:center"></th>
+                            </tr>
+                        </tfoot>
                     </table>
                     <div class="center-div">
                         <button class="btn w3-right btn-outline-dark" onclick="getDepartmentwiseReport()">Department-wise Reports</button>
@@ -115,7 +119,7 @@
         bindDataTable();
         bindRemainignSubTable();
         bindNASubTable();
-        
+
 
         $('#RemainingSubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी अद्याप माहिती न भरलेले विषय</strong></h5></caption>');
         $('#NASubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName - लागु नसलेले विषय</strong></h5></caption>');
@@ -145,7 +149,7 @@
             fixedColumns: true,
             order: [],
             language: {
-                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+                emptyTable: "या महिन्यासाठी मुल्यांकन अहवाल प्राप्त नाही"
             },
             rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
                 switch (aData.report.DepartmentId) {
@@ -268,7 +272,7 @@
                 }
             },
             language: {
-                emptyTable: "माहिती उपलब्ध नाही"
+                emptyTable: "या महिन्यासाठी सर्व विषयांची माहिती प्राप्त झाली आहे"
             },
             rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
                 switch (aData.DepartmentId) {
@@ -352,7 +356,7 @@
                 }
             },
             language: {
-                emptyTable: "माहिती उपलब्ध नाही"
+                emptyTable: "या महिन्यासाठी सर्व विषय लागु आहेत."
             },
             rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
                 switch (aData.DepartmentId) {
@@ -447,6 +451,8 @@
                         document.getElementById('TotalMarks').innerHTML = response.data[0].Total_Marks;
                         document.getElementById('AppraisalMarks').innerHTML = response.data[0].Appraisal_Marks;
                         document.getElementById('AppraisalPercentage').innerHTML = response.data[0].Appraisal_Percentage;
+                        document.getElementById('NAMarks').innerHTML = response.data[0].NAMarks;
+
                     }
                     else {
                         @*alert("No data found for selected financial period");*@
@@ -454,6 +460,7 @@
                         document.getElementById('TotalMarks').innerHTML = "0";
                         document.getElementById('AppraisalMarks').innerHTML = "0";
                         document.getElementById('AppraisalPercentage').innerHTML = "0";
+                        document.getElementById('NAMarks').innerHTML = "0";
                     }
                 },
             })
@@ -469,7 +476,7 @@
         bindDataTable();
         bindRemainignSubTable();
         bindNASubTable();
-        
+
     })
 
     $("#Year").change(function () {
@@ -483,7 +490,7 @@
         bindDataTable();
         bindRemainignSubTable();
         bindNASubTable();
-        
+
     })
 
     function getDepartmentwiseReport() {
