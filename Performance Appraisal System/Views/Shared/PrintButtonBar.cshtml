@@ -1,6 +1,22 @@
-﻿<div class="container" style="padding:0px 30px 30px 30px;background: white;">
-    <button onclick="window.print();" class="noPrint btn btn-success">
-        🖶 Print
-    </button>
+﻿@{var IsAccessToUpdate = ViewBag.IsAccessToUpdate;
+}
+
+
+<div class="container" style="padding:0px 30px 30px 30px;background: white;">
+    @if (IsAccessToUpdate == "true")
+    {
+        <button type="submit" class="noPrint btn btn-success">
+            Edit
+        </button>
+    }
+    else
+    {
+        <button type="reset" onclick="window.print();" class="noPrint btn btn-success">
+            🖶 Print
+        </button>
+    }
+
+
+
     <br>
 </div>

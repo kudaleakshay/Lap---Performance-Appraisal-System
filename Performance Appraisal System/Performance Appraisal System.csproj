@@ -148,6 +148,7 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReportViewController.cs" />
     <Compile Include="Controllers\StatuscodeController.cs" />
+    <Compile Include="Controllers\UpdateReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -716,6 +717,53 @@
     <Content Include="Views\ReadOnlyReports\ReadonlyReport63.cshtml" />
     <Content Include="Views\ReadOnlyReports\ReadonlyReport64.cshtml" />
     <Content Include="Views\ReportView\GetDivisionReportView.cshtml" />
+    <Content Include="Views\UpdateReports\Subject11.cshtml" />
+    <Content Include="Views\UpdateReports\Subject12.cshtml" />
+    <Content Include="Views\UpdateReports\Subject13.cshtml" />
+    <Content Include="Views\UpdateReports\Subject14.cshtml" />
+    <Content Include="Views\UpdateReports\Subject15.cshtml" />
+    <Content Include="Views\UpdateReports\Subject16.cshtml" />
+    <Content Include="Views\UpdateReports\Subject17.cshtml" />
+    <Content Include="Views\UpdateReports\Subject18.cshtml" />
+    <Content Include="Views\UpdateReports\Subject23.cshtml" />
+    <Content Include="Views\UpdateReports\Subject24.cshtml" />
+    <Content Include="Views\UpdateReports\Subject25.cshtml" />
+    <Content Include="Views\UpdateReports\Subject26.cshtml" />
+    <Content Include="Views\UpdateReports\Subject27.cshtml" />
+    <Content Include="Views\UpdateReports\Subject28.cshtml" />
+    <Content Include="Views\UpdateReports\Subject29.cshtml" />
+    <Content Include="Views\UpdateReports\Subject30.cshtml" />
+    <Content Include="Views\UpdateReports\Subject31.cshtml" />
+    <Content Include="Views\UpdateReports\Subject34.cshtml" />
+    <Content Include="Views\UpdateReports\Subject35.cshtml" />
+    <Content Include="Views\UpdateReports\Subject36.cshtml" />
+    <Content Include="Views\UpdateReports\Subject37.cshtml" />
+    <Content Include="Views\UpdateReports\Subject38.cshtml" />
+    <Content Include="Views\UpdateReports\Subject39.cshtml" />
+    <Content Include="Views\UpdateReports\Subject40.cshtml" />
+    <Content Include="Views\UpdateReports\Subject41.cshtml" />
+    <Content Include="Views\UpdateReports\Subject42.cshtml" />
+    <Content Include="Views\UpdateReports\Subject43.cshtml" />
+    <Content Include="Views\UpdateReports\Subject44.cshtml" />
+    <Content Include="Views\UpdateReports\Subject45.cshtml" />
+    <Content Include="Views\UpdateReports\Subject46.cshtml" />
+    <Content Include="Views\UpdateReports\Subject47.cshtml" />
+    <Content Include="Views\UpdateReports\Subject48.cshtml" />
+    <Content Include="Views\UpdateReports\Subject49.cshtml" />
+    <Content Include="Views\UpdateReports\Subject50.cshtml" />
+    <Content Include="Views\UpdateReports\Subject51.cshtml" />
+    <Content Include="Views\UpdateReports\Subject52.cshtml" />
+    <Content Include="Views\UpdateReports\Subject53.cshtml" />
+    <Content Include="Views\UpdateReports\Subject54.cshtml" />
+    <Content Include="Views\UpdateReports\Subject56.cshtml" />
+    <Content Include="Views\UpdateReports\Subject57.cshtml" />
+    <Content Include="Views\UpdateReports\Subject58.cshtml" />
+    <Content Include="Views\UpdateReports\Subject59.cshtml" />
+    <Content Include="Views\UpdateReports\Subject60.cshtml" />
+    <Content Include="Views\UpdateReports\Subject61.cshtml" />
+    <Content Include="Views\UpdateReports\Subject62.cshtml" />
+    <Content Include="Views\UpdateReports\Subject63.cshtml" />
+    <Content Include="Views\UpdateReports\Subject64.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,269 @@
+﻿@model Performance_Appraisal_System.Models.Report53
+
+@{
+    ViewBag.Title = " ड वर्गातील पतसंस्था क वर्गात आणणे";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    Html.RenderPartial("PrevNextBar");
+}
+
+
+@using (Html.BeginForm("Subject53", "Credit_Societies", FormMethod.Post))
+{
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <br>
+            <br>
+            <h3 class="card-title text-center"><strong>विभागीय सहनिबंधक, जिल्हा उपनिबंधक व त्या अंतर्गत असलेले उपनिबंधक कार्यालये यांसाठी अधिकाऱ्यांचा मूल्यांक भारांक तक्ता</strong></h3>
+            <hr>
+            <div class="card-text">
+                <div class="center-group">
+                    <div class="form-row">
+                        <div class="form-group col-md-12 center-div" style="color: #e77817 !important; font-size: 20px;">
+                            कार्यासनाचे नाव: <strong> @Session["ReportDepartmentName"].ToString() </strong> &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp विषय: <strong> @ViewBag.Title </strong>
+                            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp<strong> गुण:  @Session["TotalMarks"].ToString() </strong>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, "-- महिना निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Month)
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, "-- वर्ष निवडा --", new { @class = "form-control" })
+                            <br>
+                            @Html.ValidationMessageFor(temp => temp.Year)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group col-md-12 center-div" style="font-size: 20px;">
+        @Html.CheckBoxFor(temp => temp.NotApplicable, new { id = "NotApplicable" })
+        <strong>&nbsp&nbspविषय लागु नाही / या महिन्यासाठी उद्दिष्ठे लागु नाही </strong>
+    </div>
+
+    <div id="WrappperDiv">
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">संस्था बळकटीकरण उद्दीष्टे / साध्य </span>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Annual_Target)
+                                @Html.TextBoxFor(temp => temp.Annual_Target, new { id = "Annual_Target", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Annual_Target)
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Total_Achieved)
+                                @Html.TextBoxFor(temp => temp.Total_Achieved, new { id = "Total_Achieved", @class = "form-control" })
+                                @Html.ValidationMessageFor(temp => temp.Total_Achieved)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container" style="padding: 30px;background: white;">
+            <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+                <div class="card-text">
+                    <div class="center-group">
+                        <br>
+                        <span style="color: #e77817 !important; font-size: 16px;">मुल्यांकनानुसार प्राप्त गुण</span>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Current_Month_Percentage)
+                                @Html.TextBoxFor(temp => temp.Current_Month_Percentage, new { id = "Current_Month_Percentage_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Current_Month_Percentage)
+                                @Html.HiddenFor(temp => temp.Current_Month_Percentage, new { id = "Current_Month_Percentage" })
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Appraisal_Marks)
+                                @Html.TextBoxFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Appraisal_Marks)
+                                @Html.HiddenFor(temp => temp.Appraisal_Marks, new { id = "Appraisal_Marks" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(temp => temp.Appraisal_Percentage)
+                                @Html.TextBoxFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage_val", @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(temp => temp.Appraisal_Percentage)
+                                @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
+                            </div>
+
+                            @*<div class="form-group col-md-10">
+                                    @Html.LabelFor(temp => temp.Remarks)
+                                    @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+                                    @Html.ValidationMessageFor(temp => temp.Remarks)
+                                </div>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container" style="padding: 30px;background: white;">
+        <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
+            <div class="card-text">
+                <div class="center-group">
+                    <br>
+                    <span style="color: #e77817 !important; font-size: 17px;">
+                        Confirmation / पुष्टीकरण
+                    </span>
+                    <hr>
+
+                    <div style="text-align:justify; font-size: 16px; line-height:25px">
+                        I affirm that the above mentioned information submitted by me is true and correct to my knowledge and belief. / मी प्रमाणित करतो की मी वर नमूद केलेली माहिती माझ्या माहितीनुसार सत्य आणि अचूक आहे.
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" onclick="return confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर करु इच्छिता?')">Submit / माहिती भरा</button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+
+
+}
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script>
+      $(document).ready()
+    {
+        var isReportSubmitted = @Html.Raw(Json.Encode(ViewBag.isReportSubmitted));
+        if (isReportSubmitted == true) {
+            if (window.confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर केला आहे.'))
+                window.open("/Report/DepartmentWiseReport", "_self");
+            else
+                window.open("/Report/DepartmentWiseReport", "_self");
+        }
+
+        var Total_Marks = Number(@Session["TotalMarks"].ToString());
+    }
+
+    function Current_Month_Percentage() {
+        var Total = (Number($("#Total_Achieved").val()) * 100 / Number($("#Annual_Target").val()));
+        Total = Total.toFixed(2);
+
+        if(Total >100){
+            Total=100;
+        }
+
+        if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
+            Total = 0;
+        }
+
+        $("#Current_Month_Percentage").val(Number(Total));
+        $("#Current_Month_Percentage_val").val(Number(Total));
+        $("#Current_Month_Percentage_val").css("font-weight", "bold");
+    }
+
+    function Appraisal_Percentage() {
+        var Total = (Number($("#Total_Achieved").val()) * 100 / Number($("#Annual_Target").val()));
+        Total = Total.toFixed(2);
+
+        if(Total >100){
+            Total=100;
+        }
+
+        if (isNaN(Total) || Total == "Infinity") {  // Matches +0, -0, NaN
+            Total = 0;
+        }
+
+        $("#Appraisal_Percentage").val(Number(Total));
+        $("#Appraisal_Percentage_val").val(Number(Total));
+        $("#Appraisal_Percentage_val").css("font-weight", "bold");
+    }
+
+    function Appraisal_Marks() {
+
+        var Appraisal_Marks = (Number($("#Total_Achieved").val()) * Total_Marks / Number($("#Annual_Target").val()));
+        Appraisal_Marks = Appraisal_Marks.toFixed(2);
+
+        if (isNaN(Appraisal_Marks)) {  // Matches +0, -0, NaN
+            Appraisal_Marks = 0;
+        }
+
+        if (Appraisal_Marks > Total_Marks) {
+            Appraisal_Marks = Total_Marks
+        }
+
+        $("#Appraisal_Marks").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").val(Number(Appraisal_Marks));
+        $("#Appraisal_Marks_val").css("font-weight", "bold");
+    }
+
+
+    function SetValue() {
+        $("#Appraisal_Percentage").val(Number($("#Appraisal_Percentage_val").val()));
+        $("#Appraisal_Marks").val(Number($("#Appraisal_Marks_val").val()));
+    }
+
+            $("#Total_Achieved").change(Appraisal_Percentage);
+            $("#Annual_Target").change(Appraisal_Percentage);
+
+            $("#Total_Achieved").change(Current_Month_Percentage);
+            $("#Annual_Target").change(Current_Month_Percentage);
+
+            $("#Total_Achieved").change(Appraisal_Marks);
+            $("#Annual_Target").change(Appraisal_Marks);
+            $("#Appraisal_Percentage").change(Appraisal_Marks);
+
+
+    $('#NotApplicable').prop('checked', false); // Unchecks Not Applicaable by default
+
+    $('#NotApplicable').click(function () {
+        //If the checkbox is checked.
+        if ($(this).is(':checked')) {
+            //If it is checked, hide form
+            $("#WrappperDiv").css("display", "none");
+            $('input').val("0");
+
+            $("#Annual_Target").val("0");
+            $("#Total_Achieved").val("0");
+
+            $("#Current_Month_Percentage").val("0");
+            $("#Appraisal_Marks").val("0");
+            $("#Appraisal_Percentage").val("0");
+            $("#Appraisal_Marks_val").val("0");
+            $("#Appraisal_Percentage_val").val("0");
+            $("#NotApplicable").val(true);
+
+        } else {
+
+            //If it is not checked, show form
+            $("#WrappperDiv").css("display", "block");
+        }
+    });
+
+
+</script>

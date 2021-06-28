@@ -45,7 +45,8 @@ DistrictId int references Districts(Id) on delete set null,
 RoleId int references Roles(Id) on delete set null,
 Status int default 1,
 AppraisalType int,
-ReportTo int)
+ReportTo int,
+SortKey int)
 go
 
 

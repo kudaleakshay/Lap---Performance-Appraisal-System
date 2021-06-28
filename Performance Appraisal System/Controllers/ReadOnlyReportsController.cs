@@ -11,6 +11,7 @@ namespace Performance_Appraisal_System.Controllers
     public class ReadOnlyReportsController : Controller
     {
         private readonly DocPASEntities db = new DocPASEntities();
+        private readonly ReportController reportController = new ReportController();
 
         // GET: ReadOnlyReports
         public ReadOnlyReportsController()
@@ -42,7 +43,7 @@ namespace Performance_Appraisal_System.Controllers
         }
 
 
-        public ActionResult ReadOnlyReportView(int UId, int DepartmentId, int SubjectId, int Month, int Year)
+        public ActionResult ReadOnlyReportView(int UId, int DepartmentId, int SubjectId, int Month, int Year, int? Type)
         {
             DateTime date = new DateTime(Year, Month, 1);
 
@@ -52,25 +53,21 @@ namespace Performance_Appraisal_System.Controllers
 
             db.Configuration.ProxyCreationEnabled = false;
 
-            /* Report24 report24 = db.Report24.Where(r => r.UId == UId && r.Month == Month && r.Year == Year).FirstOrDefault();
-
-             var DepartmentData = db.Departments.Where(d => d.Id == DepartmentId).FirstOrDefault();
-
-             ViewBag.Department = DepartmentData.DepartmentName;
-             if (report24 == null)
-             {
-                 TempData["Error"] = "No data available, Please try after sometime";
-                 return RedirectToAction("Index", "Home");
-             }
-
-             return View("ReadonlyReport24", report24);*/
-
             var DepartmentData = db.Departments.Where(d => d.Id == DepartmentId).FirstOrDefault();
             ViewBag.Department = DepartmentData.DepartmentName;
+            Session["ReportDepartmentName"] = DepartmentData.DepartmentName;
+
+            User user = db.Users.Where(u => u.UId == UId).FirstOrDefault();
+            int AppraisalType = (int)user.AppraisalType;
+
+            Subjects_MarksMapping SMarks = db.Subjects_MarksMapping.Where(x => x.SId == SubjectId && x.AType == AppraisalType).FirstOrDefault(); ;
+            Session["TotalMarks"] = SMarks.Marks;
+
 
             switch (DepartmentId)
             {
                 case 1:
+
                     switch (SubjectId)
                     {
 
@@ -85,7 +82,10 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
 
-                            ViewBag.SubmitTime = report11.CreatedTime;
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject11", report11);
+                            }
                             return View("ReadonlyReport11", report11);
 
                         case 12:
@@ -557,6 +557,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report51.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject51", report51);
+                            }
+
                             return View("ReadonlyReport51", report51);
 
                         case 52:
@@ -736,6 +741,32 @@ namespace Performance_Appraisal_System.Controllers
             }
 
             return View();
+        }
+
+
+
+        public Boolean IsAccessToUpdate(int UId, int? Type)
+        {
+            if (Type == 1)
+            {
+                User CurrentUser = (User)HttpContext.Session["User"];
+
+                int Current_Date = DateTime.Now.Day;
+
+                if (CurrentUser.RoleId == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    if (CurrentUser.UId == UId && Current_Date <= 31)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

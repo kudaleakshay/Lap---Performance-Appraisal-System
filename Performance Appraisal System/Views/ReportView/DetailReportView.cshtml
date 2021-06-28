@@ -231,9 +231,14 @@
                 { "data": "Appraisal_Percentage" },
                 {
                     "render": function (data, type, full, meta) {
-                            return '<button style="margin-bottom: 0 !important;" class = "btn btn-outline-dark">Report</button>';
+                        return '<button style="margin-bottom: 0 !important;" class = "btn-view btn btn-outline-dark">View </button>';
                     }
                 },
+                @*{
+                    "render": function (data, type, full, meta) {
+                        return '<button id="Edit-Data" style="margin-bottom: 0 !important;" class = "btn-edit btn btn-outline-danger">Edit ✎</button>';
+                    }
+                },*@
             ],
             dom: 'Bfrtip',
             buttons: [
@@ -413,7 +418,7 @@
 
     }
 
-    $('#ReportTable tbody').on('click', 'button', function () {
+    $('#ReportTable tbody').on('click', '.btn-view', function () {
         var data = table.row($(this).parents('tr')).data();
 
         var UId = $("#UId").val();
@@ -429,6 +434,21 @@
 
     });
 
+    $('#ReportTable tbody').on('click', '.btn-edit', function EditData() {
+        var data = table.row($(this).parents('tr')).data();
+
+        var UId = $("#UId").val();
+
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
+        window.open(
+            "/ReadOnlyReports/ReadOnlyReportView?UId=" + UId + "&DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId + "&Month=" + Month + "&Year=" + Year +"&Type=1", "_self");
+
+    });
 
     function LoadHeaderData() {
 

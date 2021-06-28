@@ -46,7 +46,7 @@ NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
 CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-Remarks varchar(500))
+Remarks nvarchar(500))
 go
 
 
@@ -65,7 +65,7 @@ NotApplicable Bit DEFAULT 0 NOT NULL,
 Month int,
 Year int,
 CreatedTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-Remarks varchar(500))
+Remarks nvarchar(500))
 go
 
 
