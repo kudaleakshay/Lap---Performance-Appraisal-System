@@ -1,9 +1,11 @@
 ﻿@using Performance_Appraisal_System.Models
 @model Performance_Appraisal_System.Models.User
+
 @{
     ViewBag.Title = "मूल्यांकन अहवाल";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @{
     Html.RenderPartial("PrevNextBar");
 }
@@ -22,7 +24,6 @@
             <div>
                 लागु नसलेल्या विषयांचे गुण : <span id="NAMarks"></span>
             </div>
-
 
         </div>
         <div class="card-text">
@@ -79,6 +80,7 @@
                         <thead style="text-align:center; background-color: #a8bdbd">
                             <tr>
                                 <th style="text-align:center">माहिती प्राप्त नसलेले विषय</th>
+                                <th style="text-align:center"></th>
                             </tr>
                         </thead>
                         <tbody style="text-align:center"></tbody>
@@ -94,6 +96,7 @@
                             <tr>
                                 <th style="text-align:center">शाखा</th>
                                 <th style="text-align:center">लागु नसलेले विषय</th>
+                                <th style="text-align:center"></th>
                             </tr>
                         </thead>
                         <tbody style="text-align:center"></tbody>
@@ -231,14 +234,9 @@
                 { "data": "Appraisal_Percentage" },
                 {
                     "render": function (data, type, full, meta) {
-                        return '<button style="margin-bottom: 0 !important;" class = "btn-view btn btn-outline-dark">View </button>';
+                        return '<div style="display: inline-flex;"><button style="margin: 5px" class = "btn-view btn btn-outline-dark" > View </button > <button style="margin: 5px" id="Edit-Data" class="btn-edit btn btn-outline-danger">Edit</button></div>';
                     }
                 },
-                @*{
-                    "render": function (data, type, full, meta) {
-                        return '<button id="Edit-Data" style="margin-bottom: 0 !important;" class = "btn-edit btn btn-outline-danger">Edit ✎</button>';
-                    }
-                },*@
             ],
             dom: 'Bfrtip',
             buttons: [
@@ -323,6 +321,11 @@
             },
             "columns": [
                 { "data": "Subject" },
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<button id="btn-open" style="margin-bottom: 0 !important;" class="btn-open btn btn-outline-danger">Open</button>';
+                    }
+                },
             ],
             dom: 'Bfrtip',
             buttons: [
@@ -408,6 +411,11 @@
             "columns": [
                 { "data": "DepartmentName" },
                 { "data": "Subject" },
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<button id="Edit-Data" style="margin-bottom: 0 !important;" class="btn-edit btn btn-outline-danger">Edit</button>';
+                    }
+                },
             ],
              dom: 'Bfrtip',
             buttons: [
@@ -447,6 +455,32 @@
 
         window.open(
             "/ReadOnlyReports/ReadOnlyReportView?UId=" + UId + "&DepartmentId=" + data.report.DepartmentId + "&SubjectId=" + data.report.SubjectId + "&Month=" + Month + "&Year=" + Year +"&Type=1", "_self");
+
+    });
+
+
+    $('#NASubTable tbody').on('click', '.btn-edit', function EditData() {
+        var data = table3.row($(this).parents('tr')).data();
+       
+        var UId = $("#UId").val();
+
+        var Month = $("#Month").val();
+        $("#Month").blur();
+
+        var Year = $("#Year").val();
+        $("#Year").blur();
+
+        window.open(
+            "/ReadOnlyReports/ReadOnlyReportView?UId=" + UId + "&DepartmentId=" + data.DepartmentId + "&SubjectId=" + data.SubjectId + "&Month=" + Month + "&Year=" + Year + "&Type=1", "_self");
+
+    });
+
+
+    $('#RemainingSubTable tbody').on('click', '.btn-open', function OpenReport() {
+        var data = table1.row($(this).parents('tr')).data();
+      
+        window.open(
+            "/Report/OpenReportForms?DepartmentId=" + data.DepartmentId + "&SubjectId=" + data.SubjectId, "_self");
 
     });
 

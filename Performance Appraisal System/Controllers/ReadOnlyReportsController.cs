@@ -82,10 +82,13 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
 
+                            ViewBag.SubmitTime = report11.CreatedTime;
+
                             if (IsAccessToUpdate(UId, Type))
                             {
                                 return View("../UpdateReports/Subject11", report11);
                             }
+
                             return View("ReadonlyReport11", report11);
 
                         case 12:
@@ -99,6 +102,12 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report12.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject12", report12);
+                            }
+
                             return View("ReadonlyReport12", report12);
 
                         case 13:
@@ -112,6 +121,12 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report13.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject13", report13);
+                            }
+
                             return View("ReadonlyReport13", report13);
 
                         case 14:
@@ -124,6 +139,12 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report14.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject14", report14);
+                            }
+
                             return View("ReadonlyReport14", report14);
 
                         case 15:
@@ -136,6 +157,12 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report15.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject15", report15);
+                            }
+
                             return View("ReadonlyReport15", report15);
 
                         case 16:
@@ -148,6 +175,12 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report16.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject16", report16);
+                            }
+
                             return View("ReadonlyReport16", report16);
                     }
                     break;
@@ -166,6 +199,12 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report17.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject17", report17);
+                            }
+
+
                             return View("ReadonlyReport17", report17);
 
                         case 18:
@@ -178,6 +217,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report18.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject18", report18);
+                            }
 
                             return View("ReadonlyReport18", report18);
 
@@ -210,6 +254,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report24.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject24", report24);
+                            }
+
                             return View("ReadonlyReport24", report24);
 
                         case 25:
@@ -222,6 +271,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report25.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject25", report25);
+                            }
 
                             return View("ReadonlyReport25", report25);
 
@@ -236,6 +290,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report26.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject26", report26);
+                            }
+
                             return View("ReadonlyReport26", report26);
 
                         case 27:
@@ -248,6 +307,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report27.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject27", report27);
+                            }
 
                             return View("ReadonlyReport27", report27);
 
@@ -262,6 +326,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report28.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject28", report28);
+                            }
+
                             return View("ReadonlyReport28", report28);
 
                         case 29:
@@ -274,6 +343,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report29.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject29", report29);
+                            }
 
                             return View("ReadonlyReport29", report29);
                     }
@@ -293,6 +367,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report30.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject30", report30);
+                            }
+
                             return View("ReadonlyReport30", report30);
 
                         case 31:
@@ -305,6 +384,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report31.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject31", report31);
+                            }
 
                             return View("ReadonlyReport31", report31);
 
@@ -319,6 +403,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report34.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject34", report34);
+                            }
 
                             return View("ReadonlyReport34", report34);
                     }
@@ -339,6 +428,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report35.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject35", report35);
+                            }
+
                             return View("ReadonlyReport35", report35);
 
                         case 36:
@@ -351,6 +445,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report36.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject36", report36);
+                            }
 
                             return View("ReadonlyReport36", report36);
 
@@ -365,6 +464,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report37.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject37", report37);
+                            }
+
                             return View("ReadonlyReport37", report37);
 
                         case 38:
@@ -377,6 +481,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report38.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject38", report38);
+                            }
 
                             return View("ReadonlyReport38", report38);
 
@@ -391,6 +500,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report39.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject39", report39);
+                            }
+
                             return View("ReadonlyReport39", report39);
 
                         case 40:
@@ -403,6 +517,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report40.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject40", report40);
+                            }
 
                             return View("ReadonlyReport40", report40);
                     }
@@ -422,6 +541,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report41.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject41", report41);
+                            }
+
                             return View("ReadonlyReport41", report41);
 
                         case 42:
@@ -434,6 +558,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report42.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject42", report42);
+                            }
 
                             return View("ReadonlyReport42", report42);
 
@@ -448,6 +577,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report43.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject43", report43);
+                            }
+
                             return View("ReadonlyReport43", report43);
 
                         case 44:
@@ -460,6 +594,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report44.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject44", report44);
+                            }
 
                             return View("ReadonlyReport44", report44);
 
@@ -474,6 +613,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report45.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject45", report45);
+                            }
+
                             return View("ReadonlyReport45", report45);
 
                         case 46:
@@ -486,6 +630,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report46.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject46", report46);
+                            }
 
                             return View("ReadonlyReport46", report46);
 
@@ -500,6 +649,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report47.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject47", report47);
+                            }
+
                             return View("ReadonlyReport47", report47);
 
                         case 48:
@@ -512,6 +666,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report48.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject48", report48);
+                            }
 
                             return View("ReadonlyReport48", report48);
 
@@ -526,6 +685,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report49.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject49", report49);
+                            }
+
                             return View("ReadonlyReport49", report49);
 
                         case 50:
@@ -538,6 +702,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report50.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject50", report50);
+                            }
 
                             return View("ReadonlyReport50", report50);
                     }
@@ -575,6 +744,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report52.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject52", report52);
+                            }
+
                             return View("ReadonlyReport52", report52);
 
                     }
@@ -594,6 +768,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report53.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject53", report53);
+                            }
+
                             return View("ReadonlyReport53", report53);
 
                         case 54:
@@ -606,6 +785,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report54.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject54", report54);
+                            }
 
                             return View("ReadonlyReport54", report54);
 
@@ -621,6 +805,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report56.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject56", report56);
+                            }
+
                             return View("ReadonlyReport56", report56);
 
                         case 57:
@@ -633,6 +822,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report57.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject57", report57);
+                            }
 
                             return View("ReadonlyReport57", report57);
 
@@ -647,6 +841,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report58.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject58", report58);
+                            }
+
                             return View("ReadonlyReport58", report58);
 
                         case 59:
@@ -659,6 +858,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report59.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject59", report59);
+                            }
 
                             return View("ReadonlyReport59", report59);
                     }
@@ -678,6 +882,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report60.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject60", report60);
+                            }
+
                             return View("ReadonlyReport60", report60);
 
                         case 61:
@@ -690,6 +899,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report61.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject61", report61);
+                            }
 
                             return View("ReadonlyReport61", report61);
                     }
@@ -709,6 +923,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report62.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject62", report62);
+                            }
+
                             return View("ReadonlyReport62", report62);
 
                         case 63:
@@ -722,6 +941,11 @@ namespace Performance_Appraisal_System.Controllers
                             }
                             ViewBag.SubmitTime = report63.CreatedTime;
 
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject63", report63);
+                            }
+
                             return View("ReadonlyReport63", report63);
 
                         case 64:
@@ -734,6 +958,11 @@ namespace Performance_Appraisal_System.Controllers
                                 return RedirectToAction("Index", "Home");
                             }
                             ViewBag.SubmitTime = report64.CreatedTime;
+
+                            if (IsAccessToUpdate(UId, Type))
+                            {
+                                return View("../UpdateReports/Subject64", report64);
+                            }
 
                             return View("ReadonlyReport64", report64);
                     }

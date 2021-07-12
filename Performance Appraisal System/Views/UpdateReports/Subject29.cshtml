@@ -10,7 +10,7 @@
 }
 
 
-@using (Html.BeginForm("Subject29", "IT", FormMethod.Post))
+@using (Html.BeginForm("Subject29", "UpdateReports", FormMethod.Post))
 {
     <div class="container" style="padding: 30px;background: white;">
         <div class="col-md-12" style="box-shadow: 0px 0px 5px lightgrey;">
@@ -200,6 +200,11 @@
                         I affirm that the above mentioned information submitted by me is true and correct to my knowledge and belief. / मी प्रमाणित करतो की मी वर नमूद केलेली माहिती माझ्या माहितीनुसार सत्य आणि अचूक आहे.
                     </div>
                     <br>
+                    @Html.HiddenFor(temp => temp.UId, new { id = "UId" })
+                            @Html.HiddenFor(temp => temp.RId, new { id = "RId" })
+                            @Html.HiddenFor(temp => temp.Month, new { id = "Month" })
+                            @Html.HiddenFor(temp => temp.Year, new { id = "Year" })
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success" onclick="return confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर करु इच्छिता?')">Submit / माहिती भरा</button>
                     </div>
@@ -335,7 +340,7 @@
         if ($(this).is(':checked')) {
             //If it is checked, hide form
             $("#WrappperDiv").css("display", "none");
-            $('input').val("0");
+            
 
             $("#CM_Last_Month_Pending_Complaints").val("0");
             $("#CM_Current_Month_Received_Complaints").val("0");

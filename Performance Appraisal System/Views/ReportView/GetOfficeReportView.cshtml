@@ -136,7 +136,12 @@
                 };
 
                 // Total over all pages
-                total_Marks = 100;
+                total_Marks = api
+                    .column(1)
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);;
 
                 total_Appraisal = api
                     .column(2)
@@ -220,7 +225,7 @@
                 }
             },
             language: {
-                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+                emptyTable: "या महिन्यासाठी सर्व विषयांची माहिती प्राप्त झाली आहे"
             },
             rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
                 $('td', nRow).css('background-color', '#ffe6e6');

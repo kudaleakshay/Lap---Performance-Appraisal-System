@@ -12,7 +12,7 @@ namespace Performance_Appraisal_System.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class DocPASEntities : DbContext
     {
         public DocPASEntities()

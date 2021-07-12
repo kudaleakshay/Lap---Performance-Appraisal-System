@@ -153,38 +153,102 @@ namespace Performance_Appraisal_System.Controllers
 
             SetAppraisalMarks(reports.SubSubjectId, Convert.ToInt32(Session["AppraisalType"]));
 
+            Session["ReportDepartment"] = reports.DepartmentId;
             switch (reports.DepartmentId)
             {
                 case 1:
+                    Session["ReportDepartmentName"] = "आस्थापना / संवका/लेखा/कायदा व वैधानिक";
                     return RedirectToAction("Index", "Establishment");
 
                 case 2:
+                    Session["ReportDepartmentName"] = "कृषीपतपुरवठा व भूविकास";
                     return RedirectToAction("Index", "Krushipat");
 
                 case 3:
+                    Session["ReportDepartmentName"] = "माहिती व तंत्रज्ञान / दक्षता";
                     return RedirectToAction("Index", "IT");
 
                 case 4:
+                    Session["ReportDepartmentName"] = "अंदाज व नियोजन";
                     return RedirectToAction("Index", "Budget");
 
                 case 5:
+                    Session["ReportDepartmentName"] = "लेखापरीक्षण";
                     return RedirectToAction("Index", "Audit");
 
                 case 6:
+                    Session["ReportDepartmentName"] = "कायदा व वैधानिक";
                     return RedirectToAction("Index", "Law");
 
                 case 7:
+                    Session["ReportDepartmentName"] = "गृहनिर्माण";
                     return RedirectToAction("Index", "Housing");
 
                 case 8:
+                    Session["ReportDepartmentName"] = "पतसंस्था";
                     return RedirectToAction("Index", "Credit_Societies");
 
                 case 9:
+                    Session["ReportDepartmentName"] = "संघटना व कार्यपध्दती";
                     return RedirectToAction("Index", "O_M");
 
                 case 10:
+                    Session["ReportDepartmentName"] = "सावकारी";
                     return RedirectToAction("Index", "MoneyLending");
+            }
 
+            return View();
+        }
+
+
+        public ActionResult OpenReportForms(int DepartmentId,int SubjectId)
+        {
+            Session["ReportSubDepartment"] = SubjectId;
+            Session["ReportDepartment"] = DepartmentId;
+            
+            SetAppraisalMarks(SubjectId, Convert.ToInt32(Session["AppraisalType"]));
+
+            switch (DepartmentId)
+            {
+                case 1:
+                    Session["ReportDepartmentName"] = "आस्थापना / संवका/लेखा/कायदा व वैधानिक";
+                    return RedirectToAction("Index", "Establishment");
+
+                case 2:
+                    Session["ReportDepartmentName"] = "कृषीपतपुरवठा व भूविकास";
+                    return RedirectToAction("Index", "Krushipat");
+
+                case 3:
+                    Session["ReportDepartmentName"] = "माहिती व तंत्रज्ञान / दक्षता";
+                    return RedirectToAction("Index", "IT");
+
+                case 4:
+                    Session["ReportDepartmentName"] = "अंदाज व नियोजन";
+                    return RedirectToAction("Index", "Budget");
+
+                case 5:
+                    Session["ReportDepartmentName"] = "लेखापरीक्षण";
+                    return RedirectToAction("Index", "Audit");
+
+                case 6:
+                    Session["ReportDepartmentName"] = "कायदा व वैधानिक";
+                    return RedirectToAction("Index", "Law");
+
+                case 7:
+                    Session["ReportDepartmentName"] = "गृहनिर्माण";
+                    return RedirectToAction("Index", "Housing");
+
+                case 8:
+                    Session["ReportDepartmentName"] = "पतसंस्था";
+                    return RedirectToAction("Index", "Credit_Societies");
+
+                case 9:
+                    Session["ReportDepartmentName"] = "संघटना व कार्यपध्दती";
+                    return RedirectToAction("Index", "O_M");
+
+                case 10:
+                    Session["ReportDepartmentName"] = "सावकारी";
+                    return RedirectToAction("Index", "MoneyLending");
             }
 
             return View();

@@ -29,13 +29,13 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, "-- महिना निवडा --", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.Month, (IEnumerable<SelectListItem>)ViewBag.Months, "-- महिना निवडा --", new { @class = "form-control", disabled = true })
                             <br>
                             @Html.ValidationMessageFor(temp => temp.Month)
                         </div>
 
                         <div class="form-group col-md-6">
-                            @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, "-- वर्ष निवडा --", new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.Year, (IEnumerable<SelectListItem>)ViewBag.Years, "-- वर्ष निवडा --", new { @class = "form-control", disabled = true })
                             <br>
                             @Html.ValidationMessageFor(temp => temp.Year)
                         </div>
@@ -185,11 +185,12 @@
                                 @Html.HiddenFor(temp => temp.Appraisal_Percentage, new { id = "Appraisal_Percentage" })
                             </div>
 
+                            
                             @*<div class="form-group col-md-10">
-                                    @Html.LabelFor(temp => temp.Remarks)
-                                    @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
-                                    @Html.ValidationMessageFor(temp => temp.Remarks)
-                                </div>*@
+            @Html.LabelFor(temp => temp.Remarks)
+            @Html.TextAreaFor(temp => temp.Remarks, new { id = "Remarks", @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Remarks)
+        </div>*@
 
                         </div>
                     </div>
@@ -212,7 +213,12 @@
                         I affirm that the above mentioned information submitted by me is true and correct to my knowledge and belief. / मी प्रमाणित करतो की मी वर नमूद केलेली माहिती माझ्या माहितीनुसार सत्य आणि अचूक आहे.
                     </div>
                     <br>
-                   
+                    
+                   @Html.HiddenFor(temp => temp.UId, new { id = "UId" })
+                            @Html.HiddenFor(temp => temp.RId, new { id = "RId" })
+                            @Html.HiddenFor(temp => temp.Month, new { id = "Month" })
+                            @Html.HiddenFor(temp => temp.Year, new { id = "Year" })
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success" onclick="return confirm('या महिन्यासाठीचा मुल्यांकन अहवाल आपण सादर करु इच्छिता?')">Edit / माहिती भरा</button>
                     </div>
@@ -340,7 +346,6 @@
         if ($(this).is(':checked')) {
             //If it is checked, hide form
             $("#WrappperDiv").css("display", "none");
-            $('input').val("0");
 
             $("#Last_Month_Pending_Cases").val("0");
             $("#Current_Month_Received_Cases").val("0");
@@ -361,7 +366,6 @@
         } else {
 
             //If it is not checked, show form
-            $('input').val("");
             $("#WrappperDiv").css("display", "block");
         }
     });

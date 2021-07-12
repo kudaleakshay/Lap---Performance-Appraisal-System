@@ -2874,6 +2874,8 @@ namespace Performance_Appraisal_System.Controllers
                            select new
                            {
                                Subject = Subjects.SubjectName,
+                               DepartmentId = Subjects.DepartmentId,
+                               SubjectId = Subjects.SId,
                            }).ToList();
 
             return Json(new
@@ -2902,6 +2904,8 @@ namespace Performance_Appraisal_System.Controllers
                            {
                                DepartmentName = r.Department.DepartmentName,
                                Subject = s.SubjectName,
+                               DepartmentId = r.DepartmentId,
+                               SubjectId = r.SubjectId,
                            }).ToList();
 
             return Json(new { data = reports }, JsonRequestBehavior.AllowGet);
@@ -2942,6 +2946,7 @@ namespace Performance_Appraisal_System.Controllers
                            {
                                Subject = Subjects.SubjectName,
                                DepartmentId = Subjects.DepartmentId,
+                               SubjectId = Subjects.SId,
                            }).ToList();
 
             return Json(new

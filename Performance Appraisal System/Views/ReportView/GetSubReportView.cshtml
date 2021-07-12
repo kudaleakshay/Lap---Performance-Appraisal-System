@@ -68,8 +68,9 @@
                     <br>
                     <table id="RemainingSubTable" class="table table-striped branchtable">
                         <thead style="background-color: #a8bdbd">
-                            <tr>
+                            <tr style="text-align:center !important">
                                 <th>माहिती प्राप्त नसलेले विषय</th>
+                                <th style="text-align:center"></th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -92,6 +93,9 @@
     $(document).ready(function () {
 
         bindDataTable();
+
+        $('#RemainingSubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय</strong></h5></caption>');
+
         bindRemainignSubTable();
     });
 
@@ -219,8 +223,6 @@
         var Year = $("#Year").val();
         $("#Year").blur();
 
-        $('#RemainingSubTable').append('<caption style="caption-side: top"><h5 class="card-title text-center" style="color: #151111 !important; font-size: 16px;"><strong>@ViewBag.UserName यांनी @ViewBag.DepartmentName मध्ये अद्याप माहिती न भरलेले विषय</strong></h5></caption>');
-
         var SelectedYear = $("#Year option:selected").html();
         var SelectedMonth = $("#Month option:selected").html();
 
@@ -239,7 +241,7 @@
                 }
             },
             language: {
-                emptyTable: "माहिती उपलब्ध नाही - कृपया दुसरा  महिना/वर्ष निवडा"
+                emptyTable: "या महिन्यासाठी सर्व विषयांची माहिती प्राप्त झाली आहे"
             },
             rowCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
                     $('td', nRow).css('background-color', '#ffe6e6');
@@ -254,6 +256,11 @@
             },
             "columns": [
                 { "data": "Subject" },
+                {
+                    "render": function (data, type, full, meta) {
+                        return '<button id="btn-open" style="margin-bottom: 0 !important;" class="btn-open btn btn-outline-danger">Open</button>';
+                    }
+                },
             ],
             @*dom: 'Bfrtip',
             buttons: [
@@ -281,6 +288,15 @@
 
     });
 
+    $('#RemainingSubTable tbody').on('click', '.btn-open', function OpenReport() {
+        var data = table1.row($(this).parents('tr')).data();
+        var DepartmentId = $("#DepartmentId").val();
+        console.log(data);
+
+        window.open(
+            "/Report/OpenReportForms?DepartmentId=" + data.DepartmentId + "&SubjectId=" + data.SubjectId, "_self");
+
+    });
 
 
     $("#Month").change(function () {
